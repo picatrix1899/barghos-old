@@ -1,0 +1,51 @@
+package org.barghos.core.tuple;
+
+import org.barghos.core.api.tuple.ITup2dR;
+import org.barghos.core.api.tuple.ITup2fR;
+
+/**
+ * This class is a readonly implementation of a 2-dimensional float tuple.
+ */
+public abstract class PTup2f implements ITup2fR
+{
+	/**
+	 * This generate a readonly PTup2f with the components set to t.
+	 * @param t A tuple that the components are set to.
+	 * @return A new readonly PTup2f with the given components.
+	 */
+	public static PTup2f gen(ITup2fR t) { return gen(t.getX(), t.getY()); }
+	
+	/**
+	 * This generate a readonly PTup2f with the components set to t.
+	 * @param t A tuple that the components are set to.
+	 * @return A new readonly PTup2f with the given components.
+	 */
+	public static PTup2f gen(ITup2dR t) { return gen(t.getX(), t.getY()); }
+	
+	/**
+	 * This generate a readonly PTup2f with the components set to scalar.
+	 * @param scalar A value that the components are set to.
+	 * @return A new readonly PTup2f with the given components.
+	 */
+	public static PTup2f gen(double scalar) { return gen(scalar, scalar); }
+	
+	/**
+	 * This generate a readonly PTup2f with the components set to x and y.
+	 * @param x The x component.
+	 * @param y The y component.
+	 * @return A new readonly PTup2f with the given components.
+	 */
+	public static PTup2f gen(double x, double y)
+	{
+		return new PTup2f()
+		{
+
+			public float getX() { return (float)x; }
+			public float getY() { return (float)y; }
+
+			public int getDimensions() { return 2; }
+			
+		};
+	}
+	
+}
