@@ -1,1 +1,4 @@
-braghos-core/doc/* linguist-vendored
+barghos-core/doc/* linguist-vendored
+barghos-math/doc/* linguist-vendored
+barghos-structs/doc/* linguist-vendored
+barghos-time/doc/* linguist-vendored
