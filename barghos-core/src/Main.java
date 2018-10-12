@@ -1,6 +1,8 @@
 import java.nio.FloatBuffer;
 
 import org.barghos.core.BufferUtils;
+import org.barghos.core.event.Event;
+import org.barghos.core.event.NoArgs;
 
 public class Main
 {
@@ -11,6 +13,10 @@ public class Main
 		
 		FloatBuffer buffer = BufferUtils.wrapFlippedFloatBuffer(f);
 		System.out.println(buffer);
+		
+		
+		Event<NoArgs> test = new Event<NoArgs>();
+		
 	}
 
 }
