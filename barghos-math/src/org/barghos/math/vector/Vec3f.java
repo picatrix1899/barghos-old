@@ -5,77 +5,11 @@ import org.barghos.math.api.vector.IVec3fR;
 import org.barghos.math.api.vector.IVec3W;
 import org.barghos.math.Maths;
 
+/**
+ * A mathematical vector with three components.
+ */
 public class Vec3f implements IVec3fR, IVec3W
 {
-	/** The Zero Vector as constant. */
-	public static final PVec3f ZERO = PVec3f.gen(0.0);
-	
-	/** The positive x-axis normal as constant. */
-	public static final PVec3f AXIS_X = PVec3f.gen(1.0, 0.0, 0.0);
-	
-	/** The positive y-axis normal as constant. */
-	public static final PVec3f AXIS_Y = PVec3f.gen(0.0, 1.0, 0.0);
-	
-	/** The positive z-axis normal as constant. */
-	public static final PVec3f AXIS_Z = PVec3f.gen(0.0, 0.0, 1.0);
-	
-	/** The negative x-axis normal as constant. */
-	public static final PVec3f AXIS_NX = PVec3f.gen(-1.0, 0.0, 0.0);
-	
-	/** The negative y-axis normal as constant.  */
-	public static final PVec3f AXIS_NY = PVec3f.gen(0.0, -1.0, 0.0);
-	
-	/** The negative z-axis normal as constant.  */
-	public static final PVec3f AXIS_NZ = PVec3f.gen(0.0, 0.0, -1.0);
-	
-	/** The diagonal axis normal of positive x and positive y as constant. */
-	public static final PVec3f AXIS_XY = PVec3f.gen(Maths.INV_SQRT2, Maths.INV_SQRT2, 0.0);
-	
-	/** The diagonal axis normal of positive x and positive z as constant. */
-	public static final PVec3f AXIS_XZ = PVec3f.gen(Maths.INV_SQRT2, 0.0, Maths.INV_SQRT2);
-	
-	/** The diagonal axis normal of positive y and positive z as constant. */
-	public static final PVec3f AXIS_YZ = PVec3f.gen(0.0, Maths.INV_SQRT2, Maths.INV_SQRT2);
-	
-	/** The diagonal axis normal of negative x and positive y as constant. */
-	public static final PVec3f AXIS_NXY = PVec3f.gen(-Maths.INV_SQRT2, Maths.INV_SQRT2, 0.0);
-	
-	/** The diagonal axis normal of negative x and positive z as constant. */
-	public static final PVec3f AXIS_NXZ = PVec3f.gen(-Maths.INV_SQRT2, 0.0, Maths.INV_SQRT2);
-	
-	/** The diagonal axis normal of negative y and positive z as constant. */
-	public static final PVec3f AXIS_NYZ = PVec3f.gen(0.0, -Maths.INV_SQRT2, Maths.INV_SQRT2);
-	
-	/** The diagonal axis normal of positive x and negative y as constant. */
-	public static final PVec3f AXIS_XNY = PVec3f.gen(Maths.INV_SQRT2, -Maths.INV_SQRT2, 0.0);
-	
-	/** The diagonal axis normal of positive x and negative z as constant. */
-	public static final PVec3f AXIS_XNZ = PVec3f.gen(Maths.INV_SQRT2, 0.0, -Maths.INV_SQRT2);
-	
-	/** The diagonal axis normal of positive x and negative y as constant. */
-	public static final PVec3f AXIS_YNZ = PVec3f.gen(0.0, Maths.INV_SQRT2, -Maths.INV_SQRT2);
-	
-	/** The diagonal axis normal of positive x, positive y and positive z as constant. */
-	public static final PVec3f AXIS_XYZ = PVec3f.gen(Maths.INV_SQRT3, Maths.INV_SQRT3, Maths.INV_SQRT3);
-	
-	/** The diagonal axis normal of negative x, positive y and positive z as constant. */
-	public static final PVec3f AXIS_NXYZ = PVec3f.gen(-Maths.INV_SQRT3, Maths.INV_SQRT3, Maths.INV_SQRT3);
-	
-	/** The diagonal axis normal of positive x, negative y and positive z as constant. */
-	public static final PVec3f AXIS_XNYZ = PVec3f.gen(Maths.INV_SQRT3, -Maths.INV_SQRT3, Maths.INV_SQRT3);
-	
-	/** The diagonal axis normal of positive x, positive y and negative z as constant. */
-	public static final PVec3f AXIS_XYNZ = PVec3f.gen(Maths.INV_SQRT3, Maths.INV_SQRT3, -Maths.INV_SQRT3);
-	
-	/** The diagonal axis normal of negative x, negative y and positive z as constant. */
-	public static final PVec3f AXIS_NXNYZ = PVec3f.gen(-Maths.INV_SQRT3, -Maths.INV_SQRT3, Maths.INV_SQRT3);
-	
-	/** The diagonal axis normal of negative x, positive y and negative z as constant. */
-	public static final PVec3f AXIS_NXYNZ = PVec3f.gen(-Maths.INV_SQRT3, Maths.INV_SQRT3, -Maths.INV_SQRT3);
-	
-	/** The diagonal axis normal of negative x, negative y and negative z as constant. */
-	public static final PVec3f AXIS_NXNYNZ = PVec3f.gen(-Maths.INV_SQRT3, -Maths.INV_SQRT3, -Maths.INV_SQRT3);
-	
 	/** The x component. */
 	public float x = 0.0f; 
 	
@@ -84,7 +18,6 @@ public class Vec3f implements IVec3fR, IVec3W
 	
 	/** The z component. */
 	public float z = 0.0f;
-	
 	
 	/**
 	 * The default constructor. It sets all components to 0.
@@ -100,7 +33,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	
 	/**
 	 * This constructor sets both components to scalar.
-	 * @param scalar A value that is set to both components.
+	 * @param scalar A value that is set to all components.
 	 */
 	public Vec3f(double scalar) { set(scalar); }
 	
@@ -131,6 +64,7 @@ public class Vec3f implements IVec3fR, IVec3W
 
 	public int getDimensions() { return 3; }
 	
+	
 	/*
 	 * ############################
 	 * ############################
@@ -151,7 +85,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return add(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
+		return Vec3f.add(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
 	/**
@@ -164,11 +98,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(ITup3R v1, double scalar, Vec3f res)
 	{
-		return add(v1, scalar, scalar, scalar, res);
+		return Vec3f.add(v1, scalar, scalar, scalar, res);
 	}
 	
 	/**
-	 * Adds a tuple to x and y and saves the result in res.
+	 * Adds a tuple to x, y and z and saves the result in res.
 	 * <br>(v1.x + x, v1.y + y, v1.z + z)
 	 * @param v1 The tuple to add.
 	 * @param x The x value to add.
@@ -179,7 +113,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
-		return add(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
+		return Vec3f.add(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
 	/**
@@ -192,11 +126,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(double scalar, ITup3R v2, Vec3f res)
 	{
-		return add(scalar, scalar, scalar, v2, res);
+		return Vec3f.add(scalar, scalar, scalar, v2, res);
 	}
 	
 	/**
-	 * Adds x and y to a tuple and saves the result in res.
+	 * Adds x, y and z to a tuple and saves the result in res.
 	 * <br>(x + v2.x, y + v2.y, z + v2.z)
 	 * @param x The x value to add.
 	 * @param y The y value to add.
@@ -207,11 +141,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
-		return add(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.add(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
-	 * Adds x1 and y1 to x2 and y2 and saves the result in res.
+	 * Adds x1, y1 and z1 to x2, y2 and z2 and saves the result in res.
 	 * <br>(x1 + x2, y1 + y2, z1 + z2)
 	 * @param x1 The first x value to add.
 	 * @param y1 The first y value to add.
@@ -238,7 +172,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return sub(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
+		return Vec3f.sub(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
 	/**
@@ -251,11 +185,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(ITup3R v1, double scalar, Vec3f res)
 	{
-		return sub(v1, scalar, scalar, scalar, res);
+		return Vec3f.sub(v1, scalar, scalar, scalar, res);
 	}
 	
 	/**
-	 * Subtracts from a tuple the values x and y and saves the result in res.
+	 * Subtracts from a tuple the values x, y and z and saves the result in res.
 	 * <br>(v1.x - x, v1.y - y, v1.z - z)
 	 * @param v1 The tuple to subtract from.
 	 * @param x The x value to subtract.
@@ -266,7 +200,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
-		return sub(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
+		return Vec3f.sub(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
 	/**
@@ -279,11 +213,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(double scalar, ITup3R v2, Vec3f res)
 	{
-		return sub(scalar, scalar, scalar, v2, res);
+		return Vec3f.sub(scalar, scalar, scalar, v2, res);
 	}
 	
 	/**
-	 * Subtracts from x and y the values of a tuple and saves the result in res.
+	 * Subtracts from x, y and z the values of a tuple and saves the result in res.
 	 * <br>(x - v2.x, y - v2.y, z - v2.z)
 	 * @param x The x value to subtract from.
 	 * @param y The y value to subtract from.
@@ -294,11 +228,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
-		return sub(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.sub(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
-	 * Subtracts from x1 and y1 the values x2 and y2 and saves the result in res.
+	 * Subtracts from x1, y1 and z1 the values x2, y2 and z2 and saves the result in res.
 	 * <br>(x1 - x2, y1 - y2, z1 - z2)
 	 * @param x1 The first x value to subtract from.
 	 * @param y1 The first y value to subtract from.
@@ -325,7 +259,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return mul(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
+		return Vec3f.mul(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 
 	/**
@@ -338,11 +272,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(ITup3R v1, double scalar, Vec3f res)
 	{
-		return mul(v1, scalar, scalar, scalar, res);
+		return Vec3f.mul(v1, scalar, scalar, scalar, res);
 	}
 
 	/**
-	 * Multiplies a tuple with x and y and saves the result in res.
+	 * Multiplies a tuple with x, y and z and saves the result in res.
 	 * <br>(v1.x * x, v1.y * y, v1.z * z)
 	 * @param v1 The tuple to multiply.
 	 * @param x The x value to multiply with.
@@ -353,7 +287,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
-		return mul(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
+		return Vec3f.mul(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
 	/**
@@ -366,11 +300,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(double scalar, ITup3R v2, Vec3f res)
 	{
-		return mul(scalar, scalar, scalar, v2, res);
+		return Vec3f.mul(scalar, scalar, scalar, v2, res);
 	}
 
 	/**
-	 * Multiplies x and y with a tuple and saves the result in res.
+	 * Multiplies x, y and z with a tuple and saves the result in res.
 	 * <br>(x * v2.x, y * v2.y, z * v2.z)
 	 * @param x The x value to multiply.
 	 * @param y The y value to mlutiply.
@@ -381,11 +315,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
-		return mul(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.mul(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
-	 * Multiplies x1 and y1 with x2 and y2 and saves the result in res.
+	 * Multiplies x1, y1 and z1 with x2, y2 and z2 and saves the result in res.
 	 * <br>(x1 * x2, y1 * y2, z1 * z2)
 	 * @param x1 The first x value to multiply.
 	 * @param y1 The first y value to multiply.
@@ -412,7 +346,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return div(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
+		return Vec3f.div(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
 	/**
@@ -425,11 +359,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(ITup3R v1, double scalar, Vec3f res)
 	{
-		return div(v1, scalar, scalar, scalar, res);
+		return Vec3f.div(v1, scalar, scalar, scalar, res);
 	}
 	
 	/**
-	 * Divides a tuple by x and y and saves the result in res.
+	 * Divides a tuple by x, y and z and saves the result in res.
 	 * <br>(v1.x / x, v1.y / y, v1.z / z)
 	 * @param v1 The tuple to divide.
 	 * @param x The x value to divide by.
@@ -440,7 +374,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
-		return div(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
+		return Vec3f.div(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
 	/**
@@ -453,11 +387,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(double scalar, ITup3R v2, Vec3f res)
 	{
-		return div(scalar, scalar, scalar, v2, res);
+		return Vec3f.div(scalar, scalar, scalar, v2, res);
 	}
 
 	/**
-	 * Divides x and y by a tuple and saves the result in res.
+	 * Divides x, y and z by a tuple and saves the result in res.
 	 * <br>(x / v2.x, y / v2.y, z / v2.z)
 	 * @param x The x value to divide.
 	 * @param y The y value to divide.
@@ -468,11 +402,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
-		return div(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.div(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
-	 * Divides x1 and y1 by x2 and y2 and saves the result in res.
+	 * Divides x1, y1 and z1 by x2, y2 and z2 and saves the result in res.
 	 * <br>(x1 / x2, y1 / y2, z1 / z2)
 	 * @param x1 The first x value to divide.
 	 * @param y1 The first y value to divide.
@@ -508,11 +442,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double dot(ITup3R v1, ITup3R v2)
 	{
-		return dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2);
+		return Vec3f.dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2);
 	}
 
 	/**
-	 * Returns the dot product between a tuple and x2 and y2.
+	 * Returns the dot product between a tuple and x2, y2 and z2.
 	 * @param v1 The first tuple.
 	 * @param x2 The x component of the second vector.
 	 * @param y2 The y component of the second vector.
@@ -521,11 +455,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double dot(ITup3R v1, double x2, double y2, double z2)
 	{
-		return dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x2, y2, z2);
+		return Vec3f.dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x2, y2, z2);
 	}
 
 	/**
-	 * Returns the dot product between x1 and y1 and a second tuple.
+	 * Returns the dot product between x1, y1 and z1 and a second tuple.
 	 * @param x1 The x component of the first vector.
 	 * @param y1 The y component of the first vector.
 	 * @param z1 The z component of the first vector.
@@ -534,7 +468,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double dot(double x1, double y1, double z1, ITup3R v2)
 	{
-		return dot(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ());
+		return Vec3f.dot(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ());
 	}
 	
 	/**
@@ -559,7 +493,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLength(ITup3R v)
 	{
-		return reciprocalLength(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.reciprocalLength(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -571,7 +505,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLength(double x, double y, double z)
 	{
-		return 1.0 / length(x, y, z);
+		return 1.0 / Vec3f.length(x, y, z);
 	}
 	
 	/**
@@ -582,7 +516,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLengthSafe(ITup3R v)
 	{
-		return reciprocalLengthSafe(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.reciprocalLengthSafe(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -595,7 +529,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLengthSafe(double x, double y, double z)
 	{
-		return reciprocalLengthSafe(x, y, z, Maths.SMALL_NUMBER);
+		return Vec3f.reciprocalLengthSafe(x, y, z, Maths.SMALL_NUMBER);
 	}
 	
 	/**
@@ -607,7 +541,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLengthSafe(ITup3R v, double tolerance)
 	{
-		return reciprocalLengthSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
+		return Vec3f.reciprocalLengthSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
 	}
 
 	/**
@@ -621,7 +555,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLengthSafe(double x, double y, double z, double tolerance)
 	{
-		return isZero(x, y, z, tolerance) ? 0.0 : 1.0 / length(x, y, z); 
+		return Vec3f.isZero(x, y, z, tolerance) ? 0.0 : 1.0 / Vec3f.length(x, y, z); 
 	}
 	
 	/**
@@ -631,7 +565,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double length(ITup3R v)
 	{
-		return length(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.length(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -643,7 +577,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double length(double x, double y, double z)
 	{
-		return Math.sqrt(squaredLength(x, y, z));
+		return Math.sqrt(Vec3f.squaredLength(x, y, z));
 	} 
 	
 	/**
@@ -654,7 +588,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(ITup3R v)
 	{
-		return lengthSafe(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.lengthSafe(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -667,7 +601,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(double x, double y, double z)
 	{
-		return lengthSafe(x, y, z, Maths.SMALL_NUMBER);
+		return Vec3f.lengthSafe(x, y, z, Maths.SMALL_NUMBER);
 	}
 	
 	/**
@@ -679,7 +613,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(ITup3R v, double tolerance)
 	{
-		return lengthSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
+		return Vec3f.lengthSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
 	}
 
 	/**
@@ -693,7 +627,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(double x, double y, double z, double tolerance)
 	{
-		return isZero(x, y, z, tolerance) ? 0.0 : Math.sqrt(squaredLength(x, y, z));
+		return Vec3f.isZero(x, y, z, tolerance) ? 0.0 : Math.sqrt(Vec3f.squaredLength(x, y, z));
 	}
 	
 	/**
@@ -705,11 +639,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double squaredLength(ITup3R v)
 	{
-		return squaredLength(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.squaredLength(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
-	 * Returns the squared length of x and y.
+	 * Returns the squared length of x, y and z.
 	 * This function should be prefered to length for comparing two vectors
 	 * as it doesn't require a squareroot.
 	 * @param x The x component.
@@ -731,11 +665,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normal(ITup3R v, Vec3f res)
 	{
-		return normal(v.getUniX(), v.getUniY(), v.getUniZ(), res);
+		return Vec3f.normal(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
 	/**
-	 * Returns the given x and y normalized.
+	 * Returns the given x, y and z normalized.
 	 * @param x The x component of the vector.
 	 * @param y The y component of the vector.
 	 * @param z The z component of the vector.
@@ -745,7 +679,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	public static Vec3f normal(double x, double y, double z, Vec3f res)
 	{
 		res = res != null ? res : new Vec3f();
-		double recLength = reciprocalLength(x, y, z);
+		double recLength = Vec3f.reciprocalLength(x, y, z);
 		return res.set(x * recLength, y * recLength, z * recLength);
 	}
 	
@@ -759,11 +693,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normalSafe(ITup3R v, Vec3f res)
 	{
-		return normalSafe(v.getUniX(), v.getUniY(), v.getUniZ(), res);
+		return Vec3f.normalSafe(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
 	/**
-	 * Returns the given x and y normalized. This method is zero-safe.
+	 * Returns the given x, y and z normalized. This method is zero-safe.
 	 * It uses Maths.SMALL_NUMBER as a threshold around zero.
 	 * If the length is zero this function sets res the return to a zero vector.
 	 * @param x The x component of the vector.
@@ -774,7 +708,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normalSafe(double x, double y, double z, Vec3f res)
 	{
-		return normalSafe(x, y, z, Maths.SMALL_NUMBER, res);
+		return Vec3f.normalSafe(x, y, z, Maths.SMALL_NUMBER, res);
 	}
 	
 	/**
@@ -788,11 +722,11 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normalSafe(ITup3R v, double tolerance, Vec3f res)
 	{
-		return normalSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance, res);
+		return Vec3f.normalSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance, res);
 	}
 
 	/**
-	 * Returns the given x and y normalized. This method is zero-safe.
+	 * Returns the given x, y and z normalized. This method is zero-safe.
 	 * It uses the given tolerance as a threshold around zero.
 	 * If the length is zero this function sets res the return to a zero vector.
 	 * @param x The x component of the vector.
@@ -805,8 +739,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	public static Vec3f normalSafe(double x, double y, double z, double tolerance, Vec3f res)
 	{
 		res = res != null ? res : new Vec3f();
-		if(isZero(x, y, tolerance)) return res.set(Vec3f.ZERO);
-		double recLength = reciprocalLength(x, y, z);
+		if(Vec3f.isZero(x, y, z, tolerance)) return res.set(Vec3fAxis.ZERO);
+		double recLength = Vec3f.reciprocalLength(x, y, z);
 		return res.set(x * recLength, y * recLength, z * recLength);
 	}
 	
@@ -818,7 +752,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f invert(ITup3R v, Vec3f res)
 	{
-		return invert(v.getUniX(), v.getUniY(), v.getUniZ(), res);
+		return Vec3f.invert(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
 	/**
@@ -843,7 +777,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f reciprocal(ITup3R v, Vec3f res)
 	{
-		return reciprocal(v.getUniX(), v.getUniY(), v.getUniZ(), res);
+		return Vec3f.reciprocal(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 	
 	/**
@@ -869,7 +803,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return cross(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
+		return Vec3f.cross(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
 	/**
@@ -883,7 +817,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(ITup3R v1, double x2, double y2, double z2, Vec3f res)
 	{
-		return cross(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x2, y2, z2, res);
+		return Vec3f.cross(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x2, y2, z2, res);
 	}
 	
 	/**
@@ -897,7 +831,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(double x1, double y1, double z1, ITup3R v2, Vec3f res)
 	{
-		return cross(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.cross(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
@@ -934,15 +868,15 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static boolean isFinite(ITup3R v)
 	{
-		return isFinite(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.isFinite(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
-	 * Returns if x and y are finite.
+	 * Returns if x, y and z are finite.
 	 * @param x The x component of the vector.
 	 * @param y The y component of the vector.
 	 * @param z The z component of the vector.
-	 * @return True if x and y are finite else (NaN/+Inf/-Inf) false.
+	 * @return True if x, y and z are finite else (NaN/+Inf/-Inf) false.
 	 */
 	public static boolean isFinite(double x, double y, double z)
 	{
@@ -957,20 +891,20 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static boolean isZero(ITup3R v)
 	{
-		return isZero(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.isZero(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
-	 * Returns if x and y are zero.
+	 * Returns if x, y and z are zero.
 	 * Therefore it uses Maths.SMALL_NUMBER as a threshold around zero.
 	 * @param x The x component of the vector.
 	 * @param y The y component of the vector.
 	 * @param z The z component of the vector.
-	 * @return Are x and y within threshold.
+	 * @return Are x, y and z within threshold.
 	 */
 	public static boolean isZero(double x, double y, double z)
 	{
-		return isZero(x, y, z, Maths.SMALL_NUMBER);
+		return Vec3f.isZero(x, y, z, Maths.SMALL_NUMBER);
 	}
 	
 	/**
@@ -982,17 +916,17 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static boolean isZero(ITup3R v, double tolerance)
 	{
-		return isZero(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
+		return Vec3f.isZero(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
 	}
 
 	/**
-	 * Returns if x and y are zero.
+	 * Returns if x, y and z are zero.
 	 * Therefore it uses given tolerance as a threshold around zero.
 	 * @param x The x component of the vector.
 	 * @param y The y component of the vector.
 	 * @param z The z component of the vector.
 	 * @param tolerance The threshold around 0.
-	 * @return Are x and y within threshold.
+	 * @return Are x, y and z within threshold.
 	 */	
 	public static boolean isZero(double x, double y, double z, double tolerance)
 	{
@@ -1017,7 +951,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f abs(ITup3R v, Vec3f res)
 	{
-		return abs(v.getUniX(), v.getUniY(), v.getUniZ(), res);
+		return Vec3f.abs(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
 	/**
@@ -1043,7 +977,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return min(v1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.min(v1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
 	/**
@@ -1055,7 +989,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(ITup3R v1, double scalar, Vec3f res)
 	{
-		return min(v1.getUniX(), v1.getUniY(), v1.getUniZ(), scalar, scalar, scalar, res);
+		return Vec3f.min(v1.getUniX(), v1.getUniY(), v1.getUniZ(), scalar, scalar, scalar, res);
 	}
 	
 	/**
@@ -1069,7 +1003,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
-		return min(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
+		return Vec3f.min(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
 	/**
@@ -1081,7 +1015,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(double scalar, ITup3R v2, Vec3f res)
 	{
-		return min(scalar, scalar, scalar, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.min(scalar, scalar, scalar, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
@@ -1095,7 +1029,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
-		return min(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.min(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
 	/**
@@ -1124,7 +1058,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(ITup3R v1, ITup3R v2, Vec3f res)
 	{
-		return max(v1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.max(v1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
 	/**
@@ -1136,7 +1070,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(ITup3R v1, double scalar, Vec3f res)
 	{
-		return max(v1.getUniX(), v1.getUniY(), v1.getUniZ(), scalar, scalar, scalar, res);
+		return Vec3f.max(v1.getUniX(), v1.getUniY(), v1.getUniZ(), scalar, scalar, scalar, res);
 	}
 
 	/**
@@ -1150,7 +1084,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
-		return max(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
+		return Vec3f.max(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 
 	/**
@@ -1162,7 +1096,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(double scalar, ITup3R v2, Vec3f res)
 	{
-		return max(scalar, scalar, scalar, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.max(scalar, scalar, scalar, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
 	/**
@@ -1176,7 +1110,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
-		return max(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
+		return Vec3f.max(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
 	/**
@@ -1203,7 +1137,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getMinComponent(ITup3R v)
 	{
-		return getMinComponent(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.getMinComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -1225,7 +1159,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getMaxComponent(ITup3R v)
 	{
-		return getMaxComponent(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.getMaxComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -1247,7 +1181,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getAbsMinComponent(ITup3R v)
 	{
-		return getAbsMinComponent(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.getAbsMinComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -1269,7 +1203,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getAbsMaxComponent(ITup3R v)
 	{
-		return getAbsMaxComponent(v.getUniX(), v.getUniY(), v.getUniZ());
+		return Vec3f.getAbsMaxComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
 	/**
@@ -1292,7 +1226,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sign(ITup3R v, Vec3f res)
 	{
-		return sign(v.getUniX(), v.getUniY(), v.getUniZ(), res);
+		return Vec3f.sign(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 	
 	/**
@@ -1318,7 +1252,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(ITup3R v, ITup3R grid, Vec3f res)
 	{
-		return gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), grid, res);
+		return Vec3f.gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), grid, res);
 	}
 	
 	/**
@@ -1330,7 +1264,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(ITup3R v, double gridSize, Vec3f res)
 	{
-		return gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), gridSize, gridSize, gridSize, res);
+		return Vec3f.gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), gridSize, gridSize, gridSize, res);
 	}
 	
 	/**
@@ -1344,7 +1278,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(ITup3R v, double gx, double gy, double gz, Vec3f res)
 	{
-		return gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), gx, gy, gz, res);
+		return Vec3f.gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), gx, gy, gz, res);
 	}
 	
 	/**
@@ -1358,7 +1292,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(double x, double y, double z, ITup3R grid, Vec3f res)
 	{
-		return gridSnap(x, y, z, grid.getUniX(), grid.getUniY(), grid.getUniZ(), res);
+		return Vec3f.gridSnap(x, y, z, grid.getUniX(), grid.getUniY(), grid.getUniZ(), res);
 	}
 	
 	/**
@@ -1372,7 +1306,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(double x, double y, double z, double gridSize, Vec3f res)
 	{
-		return gridSnap(x, y, z, gridSize, gridSize, gridSize, res);
+		return Vec3f.gridSnap(x, y, z, gridSize, gridSize, gridSize, res);
 	}
 	
 	/**
@@ -1391,4 +1325,381 @@ public class Vec3f implements IVec3fR, IVec3W
 		res = res != null ? res : new Vec3f();
 		return res.set(Maths.gridSnap(x, gx), Maths.gridSnap(y, gy), Maths.gridSnap(z, gz));
 	}
+
+	/*
+	 * ############################
+	 * ############################
+	 * ##                        ##
+	 * ##  ARITHMETICS           ##
+	 * ##                        ##
+	 * ############################
+	 * ############################
+	 */
+
+	/**
+	 * Adds a tuple to this and saves the result in res.
+	 * <br>(x + v2.x, y + v2.y, z + v2.z)
+	 * @param v2 The second tuple to add.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f add(ITup3R v2, Vec3f res)
+	{
+		return Vec3f.add(this, v2, res);
+	}
+	
+	/**
+	 * Adds a scalar to this and saves the result in res.
+	 * <br>(x + scalar, y + scalar, z + scalar)
+	 * @param scalar The scalar to add.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f add(double scalar, Vec3f res)
+	{
+		return Vec3f.add(this, scalar, scalar, scalar, res);
+	}
+	
+	/**
+	 * Adds x, y and z to this and saves the result in res.
+	 * <br>(this.x + x, this.y + y, this.z + z)
+	 * @param x The x value to add.
+	 * @param y The y value to add.
+	 * @param z The z value to add.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f add(double x, double y, double z, Vec3f res)
+	{
+		return Vec3f.add(this, x, y, z, res);
+	}
+
+	/**
+	 * Subtracts one tuple from this and saves the result in res.
+	 * <br>(x - v2.x, y - v2.y, z - v2.z)
+	 * @param v2 The second tuple to subtract.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f sub(ITup3R v2, Vec3f res)
+	{
+		return Vec3f.sub(this, v2, res);
+	}
+	
+	/**
+	 * Subtracts a scalar from this and saves the result in res.
+	 * <br>(x - scalar, y - scalar, z - scalar)
+	 * @param scalar The scalar to subtract.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f sub(double scalar, Vec3f res)
+	{
+		return Vec3f.sub(this, scalar, scalar, scalar, res);
+	}
+	
+	/**
+	 * Subtracts x, y and z from this and saves the result in res.
+	 * <br>(this.x - x, this.y - y, this.z - z)
+	 * @param x The x value to subtract.
+	 * @param y The y value to subtract.
+	 * @param z The z value to subtract.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f sub(double x, double y, double z, Vec3f res)
+	{
+		return Vec3f.sub(this, x, y, z, res);
+	}
+
+	/**
+	 * Multiplies this with a tuple and saves the result in res.
+	 * <br>(x * v2.x, y * v2.y, z * v2.z)
+	 * @param v2 The second tuple to mluitply with.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f mul(ITup3R v2, Vec3f res)
+	{
+		return Vec3f.mul(this, v2, res);
+	}
+
+	/**
+	 * Multiplies this with a scalar and saves the result in res.
+	 * <br>(x * scalar, y * scalar, z * scalar)
+	 * @param scalar The scalar to multiply with.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f mul(double scalar, Vec3f res)
+	{
+		return Vec3f.mul(this, scalar, scalar, scalar, res);
+	}
+
+	/**
+	 * Multiplies this with x, y and z and saves the result in res.
+	 * <br>(this.x * x, this.y * y, this.z * z)
+	 * @param x The x value to multiply with.
+	 * @param y The y value to multiply with.
+	 * @param z The z value to multiply with.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f mul(double x, double y, double z, Vec3f res)
+	{
+		return Vec3f.mul(this, x, y, z, res);
+	}
+
+	
+	/**
+	 * Divides this by a tuple and saves the result in res.
+	 * <br>(x / v2.x, y / v2.y, z / v2.z)
+	 * @param v2 The second tuple to divide by.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f div(ITup3R v2, Vec3f res)
+	{
+		return Vec3f.div(this, v2, res);
+	}
+	
+	/**
+	 * Divides this by a scalar and saves the result in res.
+	 * <br>(x / scalar, y / scalar, z / scalar)
+	 * @param scalar The scalar to divide by.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f div(double scalar, Vec3f res)
+	{
+		return Vec3f.div(this, scalar, scalar, scalar, res);
+	}
+	
+	/**
+	 * Divides this by x, y and z and saves the result in res.
+	 * <br>(this.x / x, this.y / y, this.z / z)
+	 * @param x The x value to divide by.
+	 * @param y The y value to divide by.
+	 * @param z The z value to divide by.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f div(double x, double y, double z, Vec3f res)
+	{
+		return Vec3f.div(this, x, y, z, res);
+	}
+
+	/*
+	 * ########################################
+	 * ########################################
+	 * ##                                    ##
+	 * ##  BASIC VECTOR OPERATIONS           ##
+	 * ##                                    ##
+	 * ########################################
+	 * ########################################
+	 */
+	
+	/**
+	 * Returns a vector with the components set to this normalized.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f normal(Vec3f res)
+	{
+		return Vec3f.normal(this, res);
+	}
+	
+	/**
+	 * Normalizes the vector.
+	 * @return This vector normalized.
+	 */
+	public Vec3f normal()
+	{
+		return Vec3f.normal(this, this);
+	}
+	
+	/**
+	 * Returns a vector with the components set to this normalized. This method is zero-safe.
+	 * It uses Maths.SMALL_NUMBER as a threshold around zero.
+	 * If the length is zero this function sets res the return to a zero vector.
+	 * @param v The tuple to normalize.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f normalSafe(Vec3f res)
+	{
+		return Vec3f.normalSafe(this, res);
+	}
+	
+	/**
+	 * Normalizes the vector. This method is zero-safe.
+	 * It uses Maths.SMALL_NUMBER as a threshold around zero.
+	 * If the length is zero this function sets this vector to zero.
+	 * @return This vector normalized or set to zero.
+	 */
+	public Vec3f normalSafe()
+	{
+		return Vec3f.normalSafe(this, this);
+	}
+	
+	/**
+	 * Returns a vector with the components set to this normalized. This method is zero-safe.
+	 * It uses the given tolerance as a threshold around zero.
+	 * If the length is zero this function sets res the return to a zero vector.
+	 * @param v The tuple to normalize.
+	 * @param tolerance The threshold around 0.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f normalSafe(double tolerance, Vec3f res)
+	{
+		return Vec3f.normalSafe(this, tolerance, res);
+	}
+	
+	/**
+	 * Normalizes the vector. This method is zero-safe.
+	 * It uses the given tolerance as a threshold around zero.
+	 * If the length is zero this function sets this vector to zero.
+	 * @param tolerance The threshold around 0.
+	 * @return This vector normalized or set to zero.
+	 */
+	public Vec3f normalSafe(double tolerance)
+	{
+		return Vec3f.normalSafe(this, tolerance, this);
+	}
+	
+	/**
+	 * Returns a vector with the components set to this inverted.
+	 * @param v The input tuple.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f invert(Vec3f res)
+	{
+		return Vec3f.invert(this, res);
+	}
+	
+	/**
+	 * Negates the vector.
+	 * @return This vector negated.
+	 */
+	public Vec3f invert()
+	{
+		return Vec3f.invert(this, this);
+	}
+	
+	/**
+	 * Returns a vector with the components set to the reciprocals of the components of this (1 / x, 1 / y, 1 / z).
+	 * @param v The input tuple.
+	 * @param res The resulting vector. can be null.
+	 * @return The resulting vector from res or a new vector if res is null.
+	 */
+	public Vec3f reciprocal(Vec3f res)
+	{
+		return Vec3f.reciprocal(this, res);
+	}
+	
+	/**
+	 * Sets all components to the reciprocals of the originial components(1 / x, 1 / y, 1 / z).
+	 * @return This vector with the reciprocals of the original components.
+	 */
+	public Vec3f reciprocal()
+	{
+		return Vec3f.reciprocal(this, this);
+	}
+	
+	/**
+	 * Returns the dot product between this and a tuple.
+	 * @param v2 The second float tuple.
+	 * @return The dot product (cosine angle).
+	 */
+	public double dot(ITup3R v2)
+	{
+		return Vec3f.dot(this, v2);
+	}
+
+	/**
+	 * Returns the dot product between this and x2, y2 and z2.
+	 * @param x2 The x component of the second vector.
+	 * @param y2 The y component of the second vector.
+	 * @param z2 The z component of the second vector.
+	 * @return The dot product (cosine angle).
+	 */
+	public double dot(double x2, double y2, double z2)
+	{
+		return Vec3f.dot(this, x2, y2, z2);
+	}
+
+	
+	/**
+	 * Returns the reciprocal of the length(1 / length).
+	 * @return The reciprocal of the length.
+	 */
+	public double reciprocalLength()
+	{
+		return Vec3f.reciprocalLength(this);
+	}
+	
+	/**
+	 * Returns the reciprocal of the length(1 / length). This method is zero-safe.
+	 * It uses Maths.SMALL_NUMBER as a threshold around zero.
+	 * @return The reciprocal of the length or 0.
+	 */
+	public double reciprocalLengthSafe()
+	{
+		return Vec3f.reciprocalLengthSafe(this);
+	}
+	
+	/**
+	 * Returns the reciprocal of the length(1 / length). This method is zero-safe.
+	 * It uses givewn tolerance as a threshold around zero.
+	 * @param tolerance The threshold around 0.
+	 * @return The reciprocal of the length or 0.
+	 */
+	public double reciprocalLengthSafe(double tolerance)
+	{
+		return Vec3f.reciprocalLengthSafe(this, tolerance);
+	}
+	
+	/**
+	 * Returns the length.
+	 * @return The length.
+	 */
+	public double length()
+	{
+		return Vec3f.length(this);
+	}
+	
+	/**
+	 * Returns the length. This method is zero-safe.
+	 * It uses Maths.SMALL_NUMBER as a threshold around zero.
+	 * @return The length.
+	 */
+	public double lengthSafe()
+	{
+		return Vec3f.lengthSafe(this);
+	}
+
+	/**
+	 * Returns the length. This method is zero-safe.
+	 * It uses the given tolerance as a threshold around zero.
+	 * @param tolerance The threshold around 0.
+	 * @return The length.
+	 */
+	public double lengthSafe(double tolerance)
+	{
+		return Vec3f.lengthSafe(this, tolerance);
+	}
+	
+	/**
+	 * Returns the squared length.
+	 * This function should be prefered to length for comparing two vectors
+	 * as it doesn't require a squareroot.
+	 * @return The squared length.
+	 */
+	public double squaredLength()
+	{
+		return Vec3f.squaredLength(this);
+	}
+
 }

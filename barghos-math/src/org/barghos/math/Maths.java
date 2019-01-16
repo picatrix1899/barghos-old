@@ -6,42 +6,54 @@ package org.barghos.math;
 public class Maths
 {
 	/** The number PI with 11 digits after point. */
-	public static final double PI = 3.14159265359d;
+	public static final double PI = 3.14159265359;
 	
 	/** This is the precalculated Half-PI (PI / 2). It's used in some trigonomic calculations. */
-	public static final double HALF_PI = 1.570796326795d;
+	public static final double HALF_PI = 1.570796326795;
 	
 	/**
 	 * This value is a precalculated scalar for conversation from degrees to radians.
 	 * Just multiply it with an angle messured in degree and you get the angle in radians.
 	 */
-	public static final double DEG_TO_RAD = 0.017453292519944444d;
+	public static final double DEG_TO_RAD = 0.017453292519944444;
 	/**
 	 * This value is a precalculated scalar for conversation from radians to degrees.
 	 * Just multiply it with an angle messured in radians and you get the angle in degrees.
 	 */
-	public static final double RAD_TO_DEG = 57.29577951307855d;
+	public static final double RAD_TO_DEG = 57.29577951307855;
 	
 	/**
 	 * This is a precalculated inversed square-root of the number 2 (1 / sqrt(2)).
 	 * It's commonly used for precalculated diagonal normal vectors i.e. vec3(1,1,0).
 	 */
-	public static final double INV_SQRT2 = 0.7071067811865475d;
+	public static final double INV_SQRT2 = 0.7071067811865475;
+	
+	/**
+	 * This is a precalculated inversed square-root of the number 2 (1 / sqrt(2)).
+	 * It's commonly used for precalculated diagonal normal vectors i.e. vec3(1,1,0).
+	 */
+	public static final float INV_SQRT2f = 0.7071067811865475f;
 
 	/**
 	 * This is a precalculated inversed square-root of the number 3 (1 / sqrt(3)).
 	 * It's commonly used for precalculated diagonal normal vectors i.e. vec3(1,1,1).
 	 */
-	public static final double INV_SQRT3 = 0.5773502691896258d;
+	public static final double INV_SQRT3 = 0.5773502691896258;
+	
+	/**
+	 * This is a precalculated inversed square-root of the number 3 (1 / sqrt(3)).
+	 * It's commonly used for precalculated diagonal normal vectors i.e. vec3(1,1,1).
+	 */
+	public static final float INV_SQRT3f = 0.5773502691896258f;
 	
 	/** A very small number used for determining if a floating point number is technically zero. */
-	public static final double SMALL_NUMBER = 1.e-8f;
+	public static final double SMALL_NUMBER = 1.e-8;
 	
 	/**
 	 * A very small number used for determining if two floating point numbers
 	 * are close enough together to count as equal.
 	 */
-	public static final double KINDA_SMALL_NUMBER = 1.e-4f;
+	public static final double KINDA_SMALL_NUMBER = 1.e-4;
 	
 	/**
 	 * Checks if the value is zero with given tolerance.

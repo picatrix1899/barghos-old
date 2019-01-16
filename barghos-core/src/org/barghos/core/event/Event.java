@@ -29,7 +29,7 @@ public class Event<Args extends EventArgs>
 		this.handlers.clear();
 	}
 	
-	public void raise(Args args)
+	public void fire(Args args)
 	{
 		for(EventHandler<Args> handler : handlers.values())
 		{

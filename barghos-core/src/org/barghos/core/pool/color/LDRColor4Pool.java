@@ -68,8 +68,8 @@ public class LDRColor4Pool
 	public static LDRColor4 get(int r, int g, int b, int a) { return pool.get().set(r, g, b, a); }
 	
 	/**
-	 * Stores a LDRColor4 instance in the pool for late reuse.
-	 * @param element The instance to store.
+	 * Stores LDRColor4 instances in the pool for late reuse.
+	 * @param elements The instances to store.
 	 */
-	public static void store(LDRColor4 element) { pool.store(element); }
+	public static void store(LDRColor4 elements) { pool.store(elements); }
 }
