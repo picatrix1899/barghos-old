@@ -1,9 +1,4 @@
 /**
- * 
+ * This package contains different kinds of vectors and corresponding utilities for them.
  */
-/**
- * @author picatrix1899
- *
- */
-
 package org.barghos.math.vector;

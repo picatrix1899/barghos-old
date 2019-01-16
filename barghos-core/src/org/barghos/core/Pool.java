@@ -90,12 +90,13 @@ public class Pool<T>
 	}
 	
 	/**
-	 * Stores an instance in the pool.
-	 * @param t An instance of the type of the pool.
+	 * Stores one or more instances in the pool.
+	 * @param t instances of the type of the pool.
 	 */
-	public void store(T t)
+	public void store(@SuppressWarnings("unchecked") T... t)
 	{
-		this.store.push(t);
+		for(T element : t)
+			this.store.push(element);
 	}
 	
 }

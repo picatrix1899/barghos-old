@@ -66,8 +66,8 @@ public class HDRColor3Pool
 	public static HDRColor3 get(int r, int g, int b) { return pool.get().set(r, g, b); }
 	
 	/**
-	 * Stores a HDRColor3 instance in the pool for late reuse.
-	 * @param element The instance to store.
+	 * Stores HDRColor3 instances in the pool for late reuse.
+	 * @param elements The instances to store.
 	 */
-	public static void store(HDRColor3 element) { pool.store(element); }
+	public static void store(HDRColor3... elements) { pool.store(elements); }
 }
