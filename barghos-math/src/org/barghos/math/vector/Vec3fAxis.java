@@ -84,15 +84,15 @@ public enum Vec3fAxis implements IVec3fR
 
 	/** The diagonal axis normal of negative x and positive y as constant. */
 	AXIS_NXY {
-		public float getX() { return 0; }
-		public float getY() { return -Maths.INV_SQRT2f; }
-		public float getZ() { return Maths.INV_SQRT2f; }
+		public float getX() { return -Maths.INV_SQRT2f; }
+		public float getY() { return Maths.INV_SQRT2f; }
+		public float getZ() { return 0; }
 	},
 	
 	/** The diagonal axis normal of negative x and positive z as constant. */
 	AXIS_NXZ {
-		public float getX() { return 0; }
-		public float getY() { return -Maths.INV_SQRT2f; }
+		public float getX() { return -Maths.INV_SQRT2f; }
+		public float getY() { return 0; }
 		public float getZ() { return Maths.INV_SQRT2f; }
 	},
 	
@@ -105,15 +105,15 @@ public enum Vec3fAxis implements IVec3fR
 
 	/** The diagonal axis normal of positive x and negative y as constant. */
 	AXIS_XNY {
-		public float getX() { return 0; }
-		public float getY() { return Maths.INV_SQRT2f; }
-		public float getZ() { return -Maths.INV_SQRT2f; }
+		public float getX() { return Maths.INV_SQRT2f; }
+		public float getY() { return -Maths.INV_SQRT2f; }
+		public float getZ() { return 0; }
 	},
 	
 	/** The diagonal axis normal of positive x and negative z as constant. */
 	AXIS_XNZ {
-		public float getX() { return 0; }
-		public float getY() { return Maths.INV_SQRT2f; }
+		public float getX() { return Maths.INV_SQRT2f; }
+		public float getY() { return 0; }
 		public float getZ() { return -Maths.INV_SQRT2f; }
 	},
 	
@@ -126,15 +126,15 @@ public enum Vec3fAxis implements IVec3fR
 
 	/** The diagonal axis normal of negative x and negative y as constant. */
 	AXIS_NXNY {
-		public float getX() { return 0; }
+		public float getX() { return -Maths.INV_SQRT2f; }
 		public float getY() { return -Maths.INV_SQRT2f; }
-		public float getZ() { return -Maths.INV_SQRT2f; }
+		public float getZ() { return 0; }
 	},
 	
 	/** The diagonal axis normal of negative x and negative z as constant. */
 	AXIS_NXNZ {
-		public float getX() { return 0; }
-		public float getY() { return -Maths.INV_SQRT2f; }
+		public float getX() { return -Maths.INV_SQRT2f; }
+		public float getY() { return 0; }
 		public float getZ() { return -Maths.INV_SQRT2f; }
 	},
 	

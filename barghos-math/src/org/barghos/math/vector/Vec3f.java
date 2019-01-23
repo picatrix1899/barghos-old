@@ -1702,4 +1702,9 @@ public class Vec3f implements IVec3fR, IVec3W
 		return Vec3f.squaredLength(this);
 	}
 
+	public String toString()
+	{
+		return "vec3f(" + this.x + ", " + this.y + ", " + this.z + ")";
+	}
+	
 }
