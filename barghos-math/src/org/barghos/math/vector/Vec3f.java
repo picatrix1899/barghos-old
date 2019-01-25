@@ -29,7 +29,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 * This contructor sets the components to the values of t.
 	 * @param t A tuple that the components are set to.
 	 */
-	public Vec3f(ITup3R t) { set(t); }
+	public Vec3f(ITup3R t) { assert(t != null); set(t); }
 	
 	/**
 	 * This constructor sets both components to scalar.
@@ -52,7 +52,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	public Vec3f setY(double y) { this.y = (float)y; return this; }
 	public Vec3f setZ(double z) { this.z = (float)z; return this; }
 	
-	public Vec3f set(ITup3R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public Vec3f set(ITup3R t) { assert(t != null); return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
 	public Vec3f set(double scalar) { return set(scalar, scalar, scalar); }
 	public Vec3f set(double x, double y, double z) { return setX(x).setY(y).setZ(z); }
 	
@@ -85,6 +85,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.add(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
@@ -98,6 +100,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(ITup3R v1, double scalar, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.add(v1, scalar, scalar, scalar, res);
 	}
 	
@@ -113,6 +116,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.add(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
@@ -126,6 +130,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(double scalar, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.add(scalar, scalar, scalar, v2, res);
 	}
 	
@@ -141,6 +146,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.add(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -172,6 +178,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.sub(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
@@ -185,6 +193,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(ITup3R v1, double scalar, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.sub(v1, scalar, scalar, scalar, res);
 	}
 	
@@ -200,6 +209,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.sub(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
@@ -213,6 +223,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(double scalar, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.sub(scalar, scalar, scalar, v2, res);
 	}
 	
@@ -228,6 +239,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.sub(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -259,6 +271,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.mul(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 
@@ -272,6 +286,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(ITup3R v1, double scalar, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.mul(v1, scalar, scalar, scalar, res);
 	}
 
@@ -287,6 +302,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.mul(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
@@ -300,6 +316,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(double scalar, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.mul(scalar, scalar, scalar, v2, res);
 	}
 
@@ -315,6 +332,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.mul(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -346,6 +364,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.div(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
@@ -359,6 +379,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(ITup3R v1, double scalar, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.div(v1, scalar, scalar, scalar, res);
 	}
 	
@@ -374,6 +395,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.div(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
@@ -387,6 +409,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(double scalar, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.div(scalar, scalar, scalar, v2, res);
 	}
 
@@ -402,6 +425,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.div(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -442,6 +466,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double dot(ITup3R v1, ITup3R v2)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2);
 	}
 
@@ -455,6 +481,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double dot(ITup3R v1, double x2, double y2, double z2)
 	{
+		assert(v1 != null);
 		return Vec3f.dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x2, y2, z2);
 	}
 
@@ -468,6 +495,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double dot(double x1, double y1, double z1, ITup3R v2)
 	{
+		assert(v2 != null);
 		return Vec3f.dot(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ());
 	}
 	
@@ -493,6 +521,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLength(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.reciprocalLength(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -516,6 +545,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLengthSafe(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.reciprocalLengthSafe(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -541,6 +571,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double reciprocalLengthSafe(ITup3R v, double tolerance)
 	{
+		assert(v != null);
 		return Vec3f.reciprocalLengthSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
 	}
 
@@ -565,6 +596,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double length(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.length(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -588,6 +620,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.lengthSafe(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -613,6 +646,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(ITup3R v, double tolerance)
 	{
+		assert(v != null);
 		return Vec3f.lengthSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
 	}
 
@@ -639,6 +673,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double squaredLength(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.squaredLength(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -665,6 +700,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normal(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.normal(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
@@ -693,6 +729,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normalSafe(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.normalSafe(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
@@ -722,6 +759,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normalSafe(ITup3R v, double tolerance, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.normalSafe(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance, res);
 	}
 
@@ -752,6 +790,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f invert(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.invert(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
@@ -777,6 +816,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f reciprocal(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.reciprocal(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 	
@@ -803,6 +843,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.cross(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2, res);
 	}
 	
@@ -817,6 +859,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(ITup3R v1, double x2, double y2, double z2, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.cross(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x2, y2, z2, res);
 	}
 	
@@ -831,6 +874,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(double x1, double y1, double z1, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.cross(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -868,6 +912,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static boolean isFinite(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.isFinite(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -891,6 +936,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static boolean isZero(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.isZero(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -916,6 +962,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static boolean isZero(ITup3R v, double tolerance)
 	{
+		assert(v != null);
 		return Vec3f.isZero(v.getUniX(), v.getUniY(), v.getUniZ(), tolerance);
 	}
 
@@ -951,6 +998,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f abs(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.abs(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 
@@ -977,6 +1025,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.min(v1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
@@ -989,6 +1039,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(ITup3R v1, double scalar, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.min(v1.getUniX(), v1.getUniY(), v1.getUniZ(), scalar, scalar, scalar, res);
 	}
 	
@@ -1003,6 +1054,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.min(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 	
@@ -1015,6 +1067,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(double scalar, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.min(scalar, scalar, scalar, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -1029,6 +1082,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.min(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 	
@@ -1058,6 +1112,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(ITup3R v1, ITup3R v2, Vec3f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec3f.max(v1, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
@@ -1070,6 +1126,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(ITup3R v1, double scalar, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.max(v1.getUniX(), v1.getUniY(), v1.getUniZ(), scalar, scalar, scalar, res);
 	}
 
@@ -1084,6 +1141,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(ITup3R v1, double x, double y, double z, Vec3f res)
 	{
+		assert(v1 != null);
 		return Vec3f.max(v1.getUniX(), v1.getUniY(), v1.getUniZ(), x, y, z, res);
 	}
 
@@ -1096,6 +1154,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(double scalar, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.max(scalar, scalar, scalar, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
@@ -1110,6 +1169,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(double x, double y, double z, ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.max(x, y, z, v2.getUniX(), v2.getUniY(), v2.getUniZ(), res);
 	}
 
@@ -1137,6 +1197,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getMinComponent(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.getMinComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -1159,6 +1220,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getMaxComponent(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.getMaxComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -1181,6 +1243,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getAbsMinComponent(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.getAbsMinComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -1203,6 +1266,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static float getAbsMaxComponent(ITup3R v)
 	{
+		assert(v != null);
 		return Vec3f.getAbsMaxComponent(v.getUniX(), v.getUniY(), v.getUniZ());
 	}
 
@@ -1226,6 +1290,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sign(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.sign(v.getUniX(), v.getUniY(), v.getUniZ(), res);
 	}
 	
@@ -1252,6 +1317,8 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(ITup3R v, ITup3R grid, Vec3f res)
 	{
+		assert(v != null);
+		assert(grid != null);
 		return Vec3f.gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), grid, res);
 	}
 	
@@ -1264,6 +1331,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(ITup3R v, double gridSize, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), gridSize, gridSize, gridSize, res);
 	}
 	
@@ -1278,6 +1346,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(ITup3R v, double gx, double gy, double gz, Vec3f res)
 	{
+		assert(v != null);
 		return Vec3f.gridSnap(v.getUniX(), v.getUniY(), v.getUniZ(), gx, gy, gz, res);
 	}
 	
@@ -1292,6 +1361,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(double x, double y, double z, ITup3R grid, Vec3f res)
 	{
+		assert(grid != null);
 		return Vec3f.gridSnap(x, y, z, grid.getUniX(), grid.getUniY(), grid.getUniZ(), res);
 	}
 	
@@ -1345,6 +1415,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public Vec3f add(ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.add(this, v2, res);
 	}
 	
@@ -1383,6 +1454,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public Vec3f sub(ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.sub(this, v2, res);
 	}
 	
@@ -1421,6 +1493,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public Vec3f mul(ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.mul(this, v2, res);
 	}
 
@@ -1460,6 +1533,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public Vec3f div(ITup3R v2, Vec3f res)
 	{
+		assert(v2 != null);
 		return Vec3f.div(this, v2, res);
 	}
 	
@@ -1615,6 +1689,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public double dot(ITup3R v2)
 	{
+		assert(v2 != null);
 		return Vec3f.dot(this, v2);
 	}
 
@@ -1707,4 +1782,16 @@ public class Vec3f implements IVec3fR, IVec3W
 		return "vec3f(" + this.x + ", " + this.y + ", " + this.z + ")";
 	}
 	
+	public boolean equals(Object obj)
+	{
+		if(obj == null) return false;
+		if(!(obj instanceof Vec3f)) return false;
+		Vec3f v = (Vec3f)obj;
+		
+		if(this.x != v.x) return false;
+		if(this.y != v.y) return false;
+		if(this.z != v.z) return false;
+		
+		return true;
+	}
 }
