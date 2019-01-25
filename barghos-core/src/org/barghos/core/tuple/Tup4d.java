@@ -19,7 +19,7 @@ public class Tup4d extends Tupd implements ITup4dR, ITup4dW
 	 * This constructor sets the components to t.
 	 * @param t A tuple that the components are set to.
 	 */
-	public Tup4d(ITup4R t) { super(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
+	public Tup4d(ITup4R t) { super(4); assert(t != null); set(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
 	
 	/**
 	 * This constructor sets the components to scalar.
@@ -41,7 +41,7 @@ public class Tup4d extends Tupd implements ITup4dR, ITup4dW
 	public Tup4d setZ(double z) { this.v[2] = z; return this; }
 	public Tup4d setW(double w) { this.v[3] = w; return this; }
 	
-	public Tup4d set(ITup4R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
+	public Tup4d set(ITup4R t) { assert(t != null); return set(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
 	public Tup4d set(double scalar) { return set(scalar, scalar, scalar, scalar); }
 	public Tup4d set(double x, double y, double z, double w) { return setX(x).setY(y).setZ(z).setW(w); }
 

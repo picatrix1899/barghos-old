@@ -21,6 +21,7 @@ public class Pool<T>
 	 */
 	public Pool(Class<T> clazz)
 	{
+		assert(clazz != null);
 		this.clazz = clazz;
 	}
 	
@@ -33,6 +34,7 @@ public class Pool<T>
 	 */
 	public Pool(Class<T> clazz, int size)
 	{
+		assert(clazz != null);
 		this.clazz = clazz;
 		
 		try
@@ -95,6 +97,7 @@ public class Pool<T>
 	 */
 	public void store(@SuppressWarnings("unchecked") T... t)
 	{
+		assert(t != null);
 		for(T element : t)
 			this.store.push(element);
 	}

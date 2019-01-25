@@ -88,7 +88,7 @@ public class HDRColor3 implements IHDRColor3R, IHDRColor3W
 	 * The values of t are interpreted as in unitspace (0.0 - 1.0) but can exceed these limits
 	 * @param t A tuple that the components are set to.
 	 */
-	public HDRColor3(ITup3R t) { set(t); }
+	public HDRColor3(ITup3R t) { assert(t != null); set(t); }
 	
 	/**
 	 * This constructor sets the components to scalar.
@@ -136,7 +136,7 @@ public class HDRColor3 implements IHDRColor3R, IHDRColor3W
 	public HDRColor3 setG(int g) { return setUnityG(g / 255.0); }
 	public HDRColor3 setB(int b) { return setUnityB(b / 255.0); }
 	
-	public HDRColor3 set(ITup3R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public HDRColor3 set(ITup3R t) { assert(t != null); return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
 	public HDRColor3 set(double scalar) { return set(scalar, scalar, scalar); }
 	public HDRColor3 set(int scalar) { return set(scalar, scalar, scalar); }
 	public HDRColor3 set(double r, double g, double b) { return setUnityR(r).setUnityG(g).setUnityB(b); }

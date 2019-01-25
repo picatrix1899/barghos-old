@@ -1,5 +1,6 @@
 package org.barghos.math.pool;
 
+import org.barghos.core.Check;
 import org.barghos.core.Pool;
 import org.barghos.core.api.tuple.ITup3dR;
 import org.barghos.core.api.tuple.ITup3fR;
@@ -12,10 +13,10 @@ public class Vec3fPool
 	private Vec3fPool() { }
 	
 	public static Vec3f get() { return pool.get().set(0.0); }
-	public static Vec3f get(ITup3fR v) { return pool.get().set(v); }
-	public static Vec3f get(ITup3dR v) { return pool.get().set(v); }
+	public static Vec3f get(ITup3fR v) { assert(v != null); return pool.get().set(v); }
+	public static Vec3f get(ITup3dR v) { assert(v != null); return pool.get().set(v); }
 	public static Vec3f get(double scalar) { return pool.get().set(scalar); }
 	public static Vec3f get(double x, double y, double z) { return pool.get().set(x, y, z); }
 	
-	public static void store(Vec3f instance) { pool.store(instance); }
+	public static void store(Vec3f... instances) { assert(Check.notNull(instances)); pool.store(instances); }
 }
