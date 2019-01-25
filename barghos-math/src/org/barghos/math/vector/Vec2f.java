@@ -27,7 +27,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 * This contructor sets the components to the values of t.
 	 * @param t A tuple that the components are set to.
 	 */
-	public Vec2f(ITup2R t) { set(t); }
+	public Vec2f(ITup2R t) { assert(t != null); set(t); }
 	
 	/**
 	 * This constructor sets both components to scalar.
@@ -45,7 +45,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	public Vec2f setX(double x) { this.x = (float)x; return this; }
 	public Vec2f setY(double y) { this.y = (float)y; return this; }
 	
-	public Vec2f set(ITup2R t) { return set(t.getUniX(), t.getUniY()); }
+	public Vec2f set(ITup2R t) { assert(t != null); return set(t.getUniX(), t.getUniY()); }
 	public Vec2f set(double scalar) { return set(scalar, scalar); }
 	public Vec2f set(double x, double y) { return setX(x).setY(y); }
 	
@@ -76,6 +76,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f add(ITup2R v1, ITup2R v2, Vec2f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.add(v1.getUniX(), v1.getUniY(), v2, res);
 	}
 	
@@ -89,6 +91,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f add(ITup2R v1, double scalar, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.add(v1, scalar, scalar, res);
 	}
 	
@@ -103,6 +106,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f add(ITup2R v1, double x, double y, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.add(v1.getUniX(), v1.getUniY(), x, y, res);
 	}
 	
@@ -116,6 +120,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f add(double scalar, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.add(scalar, scalar, v2, res);
 	}
 	
@@ -130,6 +135,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f add(double x, double y, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.add(x, y, v2.getUniX(), v2.getUniY(), res);
 	}
 	
@@ -159,6 +165,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f sub(ITup2R v1, ITup2R v2, Vec2f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.sub(v1.getUniX(), v1.getUniY(), v2, res);
 	}
 	
@@ -172,6 +180,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f sub(ITup2R v1, double scalar, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.sub(v1, scalar, scalar, res);
 	}
 	
@@ -186,6 +195,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f sub(ITup2R v1, double x, double y, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.sub(v1.getUniX(), v1.getUniY(), x, y, res);
 	}
 	
@@ -199,6 +209,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f sub(double scalar, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.sub(scalar, scalar, v2, res);
 	}
 	
@@ -213,6 +224,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f sub(double x, double y, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.sub(x, y, v2.getUniX(), v2.getUniY(), res);
 	}
 	
@@ -242,6 +254,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f mul(ITup2R v1, ITup2R v2, Vec2f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.mul(v1.getUniX(), v1.getUniY(), v2, res);
 	}
 
@@ -255,6 +269,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f mul(ITup2R v1, double scalar, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.mul(v1, scalar, scalar, res);
 	}
 
@@ -269,6 +284,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f mul(ITup2R v1, double x, double y, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.mul(v1.getUniX(), v1.getUniY(), x, y, res);
 	}
 	
@@ -282,6 +298,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f mul(double scalar, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.mul(scalar, scalar, v2, res);
 	}
 
@@ -296,6 +313,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f mul(double x, double y, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.mul(x, y, v2.getUniX(), v2.getUniY(), res);
 	}
 	
@@ -325,6 +343,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f div(ITup2R v1, ITup2R v2, Vec2f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.div(v1.getUniX(), v1.getUniY(), v2, res);
 	}
 	
@@ -338,6 +358,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f div(ITup2R v1, double scalar, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.div(v1, scalar, scalar, res);
 	}
 	
@@ -352,6 +373,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f div(ITup2R v1, double x, double y, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.div(v1.getUniX(), v1.getUniY(), x, y, res);
 	}
 	
@@ -365,6 +387,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f div(double scalar, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.div(scalar, scalar, v2, res);
 	}
 
@@ -379,6 +402,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f div(double x, double y, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.div(x, y, v2.getUniX(), v2.getUniY(), res);
 	}
 	
@@ -416,6 +440,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double dot(ITup2R v1, ITup2R v2)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.dot(v1.getUniX(), v1.getUniY(), v2);
 	}
 
@@ -428,6 +454,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double dot(ITup2R v1, double x2, double y2)
 	{
+		assert(v1 != null);
 		return Vec2f.dot(v1.getUniX(), v1.getUniY(), x2, y2);
 	}
 
@@ -440,6 +467,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double dot(double x1, double y1, ITup2R v2)
 	{
+		assert(v2 != null);
 		return Vec2f.dot(x1, y1, v2.getUniX(), v2.getUniY());
 	}
 	
@@ -463,6 +491,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double reciprocalLength(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.reciprocalLength(v.getUniX(), v.getUniY());
 	}
 
@@ -485,6 +514,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double reciprocalLengthSafe(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.reciprocalLengthSafe(v.getUniX(), v.getUniY());
 	}
 
@@ -509,6 +539,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double reciprocalLengthSafe(ITup2R v, double tolerance)
 	{
+		assert(v != null);
 		return Vec2f.reciprocalLengthSafe(v.getUniX(), v.getUniY(), tolerance);
 	}
 
@@ -532,6 +563,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double length(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.length(v.getUniX(), v.getUniY());
 	}
 
@@ -554,6 +586,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double lengthSafe(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.lengthSafe(v.getUniX(), v.getUniY());
 	}
 
@@ -578,6 +611,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double lengthSafe(ITup2R v, double tolerance)
 	{
+		assert(v != null);
 		return Vec2f.lengthSafe(v.getUniX(), v.getUniY(), tolerance);
 	}
 
@@ -603,6 +637,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double squaredLength(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.squaredLength(v.getUniX(), v.getUniY());
 	}
 
@@ -628,6 +663,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f normal(ITup2R v, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.normal(v.getUniX(), v.getUniY(), res);
 	}
 
@@ -655,6 +691,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f normalSafe(ITup2R v, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.normalSafe(v.getUniX(), v.getUniY(), res);
 	}
 
@@ -683,6 +720,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f normalSafe(ITup2R v, double tolerance, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.normalSafe(v.getUniX(), v.getUniY(), tolerance, res);
 	}
 
@@ -712,6 +750,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f invert(ITup2R v, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.invert(v.getUniX(), v.getUniY(), res);
 	}
 
@@ -736,6 +775,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f reciprocal(ITup2R v, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.reciprocal(v.getUniX(), v.getUniY(), res);
 	}
 	
@@ -761,6 +801,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f rotate(ITup2R v, double angleDeg, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.rotate(v.getUniX(), v.getUniY(), angleDeg, res);
 	}
 	
@@ -799,6 +840,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static boolean isFinite(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.isFinite(v.getUniX(), v.getUniY());
 	}
 
@@ -821,6 +863,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static boolean isZero(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.isZero(v.getUniX(), v.getUniY());
 	}
 
@@ -845,6 +888,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static boolean isZero(ITup2R v, double tolerance)
 	{
+		assert(v != null);
 		return Vec2f.isZero(v.getUniX(), v.getUniY(), tolerance);
 	}
 
@@ -879,6 +923,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f abs(ITup2R v, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.abs(v.getUniX(), v.getUniY(), res);
 	}
 
@@ -904,6 +949,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f min(ITup2R v1, ITup2R v2, Vec2f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.min(v1, v2.getUniX(), v2.getUniY(), res);
 	}
 
@@ -916,6 +963,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f min(ITup2R v1, double scalar, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.min(v1.getUniX(), v1.getUniY(), scalar, scalar, res);
 	}
 	
@@ -929,6 +977,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f min(ITup2R v1, double x, double y, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.min(v1.getUniX(), v1.getUniY(), x, y, res);
 	}
 	
@@ -941,6 +990,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f min(double scalar, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return min(scalar, scalar, v2.getUniX(), v2.getUniY(), res);
 	}
 	
@@ -954,6 +1004,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f min(double x, double y, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return min(x, y, v2.getUniX(), v2.getUniY(), res);
 	}
 	
@@ -981,6 +1032,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f max(ITup2R v1, ITup2R v2, Vec2f res)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
 		return Vec2f.max(v1, v2.getUniX(), v2.getUniY(), res);
 	}
 
@@ -993,6 +1046,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f max(ITup2R v1, double scalar, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.max(v1.getUniX(), v1.getUniY(), scalar, scalar, res);
 	}
 
@@ -1006,6 +1060,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f max(ITup2R v1, double x, double y, Vec2f res)
 	{
+		assert(v1 != null);
 		return Vec2f.max(v1.getUniX(), v1.getUniY(), x, y, res);
 	}
 
@@ -1018,6 +1073,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f max(double scalar, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.max(scalar, scalar, v2.getUniX(), v2.getUniY(), res);
 	}
 
@@ -1031,6 +1087,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f max(double x, double y, ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.max(x, y, v2.getUniX(), v2.getUniY(), res);
 	}
 
@@ -1056,6 +1113,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static float getMinComponent(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.getMinComponent(v.getUniX(), v.getUniY());
 	}
 
@@ -1077,6 +1135,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static float getMaxComponent(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.getMaxComponent(v.getUniX(), v.getUniY());
 	}
 
@@ -1098,6 +1157,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static float getAbsMinComponent(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.getAbsMinComponent(v.getUniX(), v.getUniY());
 	}
 
@@ -1119,6 +1179,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static float getAbsMaxComponent(ITup2R v)
 	{
+		assert(v != null);
 		return Vec2f.getAbsMaxComponent(v.getUniX(), v.getUniY());
 	}
 
@@ -1141,6 +1202,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f sign(ITup2R v, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.sign(v.getUniX(), v.getUniY(), res);
 	}
 	
@@ -1166,6 +1228,8 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f gridSnap(ITup2R v, ITup2R grid, Vec2f res)
 	{
+		assert(v != null);
+		assert(grid != null);
 		return Vec2f.gridSnap(v.getUniX(), v.getUniY(), grid, res);
 	}
 	
@@ -1178,6 +1242,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f gridSnap(ITup2R v, double gridSize, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.gridSnap(v.getUniX(), v.getUniY(), gridSize, gridSize, res);
 	}
 	
@@ -1191,6 +1256,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f gridSnap(ITup2R v, double gx, double gy, Vec2f res)
 	{
+		assert(v != null);
 		return Vec2f.gridSnap(v.getUniX(), v.getUniY(), gx, gy, res);
 	}
 	
@@ -1204,6 +1270,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static Vec2f gridSnap(double x, double y, ITup2R grid, Vec2f res)
 	{
+		assert(grid != null);
 		return Vec2f.gridSnap(x, y, grid.getUniX(), grid.getUniY(), res);
 	}
 	
@@ -1254,6 +1321,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public Vec2f add(ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.add(this, v2, res);
 	}
 	
@@ -1291,6 +1359,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public Vec2f sub(ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.sub(this, v2, res);
 	}
 	
@@ -1328,6 +1397,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public Vec2f mul(ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.mul(this, v2, res);
 	}
 
@@ -1365,6 +1435,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public Vec2f div(ITup2R v2, Vec2f res)
 	{
+		assert(v2 != null);
 		return Vec2f.div(this, v2, res);
 	}
 	
@@ -1515,6 +1586,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public double dot(ITup2R v2)
 	{
+		assert(v2 != null);
 		return Vec2f.dot(this, v2);
 	}
 
@@ -1600,5 +1672,22 @@ public class Vec2f implements IVec2fR, IVec2W
 	{
 		return Vec2f.squaredLength(this);
 	}
+
 	
+	public String toString()
+	{
+		return "vec2(" + this.x + ", " + this.y + ")";
+	}
+	
+	public boolean equals(Object obj)
+	{
+		if(obj == null) return false;
+		if(!(obj instanceof Vec2f)) return false;
+		Vec2f v = (Vec2f)obj;
+		
+		if(this.x != v.x) return false;
+		if(this.y != v.y) return false;
+		
+		return true;
+	}
 }
