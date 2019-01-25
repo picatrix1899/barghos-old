@@ -2,36 +2,36 @@ package org.barghos.core.pool.tuple;
 
 import org.barghos.core.Check;
 import org.barghos.core.Pool;
-import org.barghos.core.api.tuple.ITup4R;
-import org.barghos.core.tuple.Tup4f;
+import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.tuple.Tup3f;
 
 /**
  * This pool contains instances of the type Tup4f.
  */
-public class Tup4fPool
+public class Tup3fPool
 {
 	
 	
-	private static final Pool<Tup4f> pool = new Pool<Tup4f>(Tup4f.class);
+	private static final Pool<Tup3f> pool = new Pool<Tup3f>(Tup3f.class);
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and resets it.
 	 * @return A stored instance.
 	 */
-	public static Tup4f get() { return pool.get().set(0.0); }
+	public static Tup3f get() { return pool.get().set(0.0); }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
-	public static Tup4f get(ITup4R t) { assert(t != null); return pool.get().set(t); }
+	public static Tup3f get(ITup3R t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public static Tup4f get(double scalar) { return pool.get().set(scalar, scalar, scalar, scalar); }
+	public static Tup3f get(double scalar) { return pool.get().set(scalar, scalar, scalar); }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and sets its components to x and y.
@@ -40,11 +40,11 @@ public class Tup4fPool
 	 * @param z The z component.
 	 * @param w The w component.
 	 */
-	public static Tup4f get(double x, double y, double z, double w) { return pool.get().set(x, y, z, w); }
+	public static Tup3f get(double x, double y, double z) { return pool.get().set(x, y, z); }
 	
 	/**
-	 * Stores Tup4f instances in the pool for late reuse.
+	 * Stores Tup3f instances in the pool for late reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(Tup4f... instances) { assert(Check.notNull(instances)); pool.store(instances); }
+	public static void store(Tup3f... instances) { assert(Check.notNull(instances)); pool.store(instances); }
 }

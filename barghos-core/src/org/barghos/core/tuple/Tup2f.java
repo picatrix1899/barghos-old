@@ -21,7 +21,7 @@ public class Tup2f extends Tupf implements ITup2fR, ITup2fW
 	 * This constructor sets the components to t.
 	 * @param t A tuple that the components are set to.
 	 */
-	public Tup2f(ITup2R t) { super(t.getUniX(), t.getUniY()); }
+	public Tup2f(ITup2R t) { super(2); assert(t != null); set(t.getUniX(), t.getUniY()); }
 	
 	/**
 	 * This constructor sets the components to scalar.
@@ -39,7 +39,7 @@ public class Tup2f extends Tupf implements ITup2fR, ITup2fW
 	public Tup2f setX(double x) { this.v[0] = (float)x; return this; }
 	public Tup2f setY(double y) { this.v[1] = (float)y; return this; }
 	
-	public Tup2f set(ITup2R t) { return set(t.getUniX(), t.getUniY()); }
+	public Tup2f set(ITup2R t) { assert(t != null); return set(t.getUniX(), t.getUniY()); }
 	public Tup2f set(double scalar) { return set(scalar, scalar); }
 	public Tup2f set(double x, double y) { return setX(x).setY(y); }
 

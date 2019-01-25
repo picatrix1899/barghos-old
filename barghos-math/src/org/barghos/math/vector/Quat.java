@@ -24,33 +24,19 @@ public class Quat implements IQuatR
 	
 	public Quat(Quat q)
 	{
+		assert(q != null);
 		set(q);
 	}
 	
 	public Quat(Mat4f rot)
 	{
+		assert(rot != null);
 		set(rot);
 	}
 	
 	public int getDimensions() { return 4; }
 	
-	public static Quat getFromAxis(Vec3f axis, float angle) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle); }
-	
-	public static Quat getFromAxis(float ax, float ay, float az, float angle)
-	{
-		double halfAngle = angle * 0.5 * Maths.DEG_TO_RAD;
-		double sinHalfAngle = Math.sin(halfAngle);
-		double cosHalfAngle = Math.cos(halfAngle);
-		
-		double rX = ax * sinHalfAngle;
-		double rY = ay * sinHalfAngle;
-		double rZ = az * sinHalfAngle;
-		double rW = cosHalfAngle;
-		
-		return new Quat(rW, rX, rY, rZ).normalize();
-	}
-	
-	public static Quat getFromAxis(ITup3R axis, double angle) { return getFromAxis(axis.getUniX(), axis.getUniY(), axis.getUniZ(), angle); }
+	public static Quat getFromAxis(ITup3R axis, double angle) { assert(axis != null); return getFromAxis(axis.getUniX(), axis.getUniY(), axis.getUniZ(), angle); }
 	
 	public static Quat getFromAxis(double ax, double ay, double az, double angle)
 	{
@@ -63,11 +49,14 @@ public class Quat implements IQuatR
 		double rZ = az * sinHalfAngle;
 		double rW = cosHalfAngle;
 		
-		return new Quat(rW, rX, rY, rZ).normalize();
+		return new Quat(rW, rX, rY, rZ).normal();
 	}
 	
 	public static Quat getFromVectors(Vec3f v1, Vec3f v2)
 	{
+		assert(v1 != null);
+		assert(v2 != null);
+		
 		Vec3f a = v1.normal(null);
 		Vec3f b = v2.normal(null);
 
@@ -76,7 +65,7 @@ public class Quat implements IQuatR
 		
 		double angle = 1.0 + Vec3f.dot(a, b);
 
-		return new Quat(angle, axis.getX(), axis.getY(), axis.getZ()).normalize();
+		return new Quat(angle, axis.getX(), axis.getY(), axis.getZ()).normal();
 	}
 	
 	public double getW() { return this.w; }
@@ -97,6 +86,7 @@ public class Quat implements IQuatR
 	
 	public Quat rotate(ITup3R axis, double angle)
 	{
+		assert(axis != null);
 		return rotate(angle, axis.getUniX(), axis.getUniY(), axis.getUniZ());
 	}
 	
@@ -107,14 +97,16 @@ public class Quat implements IQuatR
 	
 	public Quat rotate(Quat q)
 	{
+		assert(q != null);
 		return q.mul(this, this);
 	}
 	
-	public Quat set(Quat q) { return set(q.getW(), q.getX(), q.getY(), q.getZ()); }
+	public Quat set(Quat q) { assert(q != null); return set(q.getW(), q.getX(), q.getY(), q.getZ()); }
 	
 	//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
 	public Quat set(Mat4f rot) 
 	{
+		assert(rot != null);
 		double trace = rot.m[0][0] + rot.m[1][1] + rot.m[2][2];
 
 		if(trace > 0)
@@ -155,7 +147,7 @@ public class Quat implements IQuatR
 			}
 		}
 
-		normalize(this);
+		normal(this);
 		
 		return this;
 	}
@@ -202,6 +194,7 @@ public class Quat implements IQuatR
 	
 	public Quat mul(Quat q)
 	{
+		assert(q != null);
 		mul(q, this);
 		
 		return this;
@@ -209,6 +202,7 @@ public class Quat implements IQuatR
 	
 	public Quat mul(Quat q, Quat res)
 	{
+		assert(q != null);
 		res = res != null ? res : new Quat();
 		
 		double w_ = this.w * q.getW() - this.x * q.getX() - this.y * q.getY() - this.z * q.getZ(); // w * w' - v * v'
@@ -223,6 +217,7 @@ public class Quat implements IQuatR
 	
 	public Quat mul(ITup3R v)
 	{
+		assert(v != null);
 		mul(v, this);
 		
 		return this;
@@ -230,6 +225,7 @@ public class Quat implements IQuatR
 	
 	public Quat mul(ITup3R v, Quat res)
 	{
+		assert(v != null);
 		res = res != null ? res : new Quat();
 		
 		double w_ = -this.x * v.getUniX() - this.y * v.getUniY() - this.z * v.getUniZ(); // - v * v'
@@ -244,6 +240,7 @@ public class Quat implements IQuatR
 	
 	public Vec3f transform(ITup3R v, Vec3f res)
 	{
+		assert(v != null);
 		res = res != null ? res : new Vec3f();
 		
 		Quat r = mul(v, null);
@@ -258,12 +255,12 @@ public class Quat implements IQuatR
 	public double squaredLength() { return this.w * this.w + this.x * this.x + this.y * this.y + this.z * this.z; }
 	public double reciprocalLength() { return 1.0 / length(); }
 	
-	public Quat normalize()
+	public Quat normal()
 	{
-		return normalize(this);
+		return normal(this);
 	}
 	
-	public Quat normalize(Quat res)
+	public Quat normal(Quat res)
 	{
 		res = res != null ? res : new Quat();
 		

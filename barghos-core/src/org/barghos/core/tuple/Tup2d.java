@@ -21,13 +21,13 @@ public class Tup2d extends Tupd implements ITup2dR, ITup2dW
 	 * This constructor sets the components to t.
 	 * @param t A tuple that the components are set to.
 	 */
-	public Tup2d(ITup2R t) { super(t.getUniX(), t.getUniY()); }
+	public Tup2d(ITup2R t) { super(2); assert(t != null); set(t); }
 	
 	/**
 	 * This constructor sets the components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public Tup2d(double scalar) { super(scalar, scalar); }
+	public Tup2d(double scalar) { super(scalar); }
 	
 	/**
 	 * This constructor sets the components to x and y.
@@ -39,7 +39,7 @@ public class Tup2d extends Tupd implements ITup2dR, ITup2dW
 	public Tup2d setX(double x) { this.v[0] = x; return this; }
 	public Tup2d setY(double y) { this.v[1] = y; return this; }
 	
-	public Tup2d set(ITup2R t) { return set(t.getUniX(), t.getUniY()); }
+	public Tup2d set(ITup2R t) { assert(t != null); return set(t.getUniX(), t.getUniY()); }
 	public Tup2d set(double scalar) { return set(scalar, scalar); }
 	public Tup2d set(double x, double y) { return setX(x).setY(y); }
 

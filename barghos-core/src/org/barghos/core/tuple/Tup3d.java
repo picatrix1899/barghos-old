@@ -20,7 +20,7 @@ public class Tup3d extends Tupd implements ITup3dR, ITup3dW
 	 * This constructor sets the components to t.
 	 * @param t A tuple that the components are set to.
 	 */
-	public Tup3d(ITup3R t) { super(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public Tup3d(ITup3R t) { super(3); assert(t != null); set(t.getUniX(), t.getUniY(), t.getUniZ()); }
 	
 	/**
 	 * This constructor sets the components to scalar.
@@ -40,7 +40,7 @@ public class Tup3d extends Tupd implements ITup3dR, ITup3dW
 	public Tup3d setY(double y) { this.v[1] = y; return this; }
 	public Tup3d setZ(double z) { this.v[2] = z; return this; }
 	
-	public Tup3d set(ITup3R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public Tup3d set(ITup3R t) { assert(t != null); return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
 	public Tup3d set(double scalar) { return set(scalar, scalar, scalar); }
 	public Tup3d set(double x, double y, double z) { return setX(x).setY(y).setZ(z); }
 

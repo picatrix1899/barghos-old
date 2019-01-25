@@ -1,5 +1,6 @@
 package org.barghos.core.pool.color;
 
+import org.barghos.core.Check;
 import org.barghos.core.Pool;
 import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.core.color.HDRColor4;
@@ -23,7 +24,7 @@ public class HDRColor4Pool
 	 * @param t A tuple that contains the rgba values in unitspace.
 	 * @return A stored instance.
 	 */
-	public static HDRColor4 get(ITup4R t) { return pool.get().set(t); }
+	public static HDRColor4 get(ITup4R t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
 	 * Returns an instance of HDRColor4 from the pool and sets its components to scalar.
@@ -71,5 +72,5 @@ public class HDRColor4Pool
 	 * Stores HDRColor4 instances in the pool for late reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(HDRColor4 elements) { pool.store(elements); }
+	public static void store(HDRColor4... instances) { assert(Check.notNull(instances)); pool.store(instances); }
 }
