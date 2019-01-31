@@ -10,8 +10,8 @@ Vec3f.java
 ```java
 public static Vec3f add(ITup3R v1, ITup3R v2, Vec3f res) // v3 is a querry input
 {
-  res = res != null ? res : new Vec3f();
-  res.set(v1.getUniX() + v2.getUniX(), v1.getUniY() + v2.getUniY(), v1.getUniZ() + v2.getUniZ());
-  return res;
+	res = res != null ? res : new Vec3f();
+	res.set(v1.getUniX() + v2.getUniX(), v1.getUniY() + v2.getUniY(), v1.getUniZ() + v2.getUniZ());
+	return res;
 }
 ```
