@@ -8,6 +8,7 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 
 * [Arithmetical Operations](#arithmetical-operations)
   * [Add (Static)](#add-static)
+  
 ## Arithmetical Operations
 
 ### Add (Static)
