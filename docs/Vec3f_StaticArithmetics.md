@@ -3,13 +3,13 @@
 ## Contents
 
 * [Add](#add)
-  * [Add (vector - vector) without querry input](#add-vector-vector-without-querry-input)
+  * [Add (vector - vector) without querry input](#add-vector--vector-without-querry-input)
 
 ## Add
 
 Adds two vectors or any kind of three dimensional tuple together and optionally safes the result in a vector as [Querry Input](QuerryInput.md). The result vector is then returned. It can be either the [Querry Input](QuerryInput.md) `res` or the newly generated [Vec3f](Vec3f.md).
 
-### Add (vector - vector) without querry input 
+### Add (vector / vector) without querry input 
 
 Adds `v1` and `v2` together and safes and returns the result in a new [Vec3f](Vec3f.md).
 
@@ -26,7 +26,7 @@ res = (3,1,4)
 */
 ```
 
-### Add (vector/vector) with querry input
+### Add (vector / vector) with querry input
 
 Adds `v1` and `v2` together and safes and returns the result in the [Querry Input](QuerryInput.md) `v3`.
 
@@ -45,7 +45,7 @@ res = v3
 */
 ```
 
-### Add (vector/scalar) without querry input
+### Add (vector / scalar) without querry input
 
 Adds to every component in `v1` the value of `scalar` and safes and returns the result in a new [Vec3f](Vec3f.md).
 
@@ -75,7 +75,7 @@ res = (4,3,3)
 */
 ```
 
-### Add (vector/scalar) with querry input
+### Add (vector / scalar) with querry input
 
 Adds to every component in `v1` the value of `scalar` and safes and returns the result in the [Querry Input](QuerryInput.md) `v3`.
 
