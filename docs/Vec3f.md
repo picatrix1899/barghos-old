@@ -19,7 +19,7 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 
 Adds two vectors or any kind of three dimensional tuple together and optionally safes the result in a vector as [Quarry Input](QuarryInput.md). The result vector is then returned. It can be either the [Quarry Input](QuarryInput.md) `res` or the newly generated [Vec3f](Vec3f.md).
 
-#### Add (vector + vector) without quarry input 
+#### Add (vector + vector) without quarry input [To Top](#)
 
 Adds `v1` and `v2` together and safes and returns the result in a new [Vec3f](Vec3f.md).
 
