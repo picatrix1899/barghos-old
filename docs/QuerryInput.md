@@ -1,6 +1,6 @@
 # Querry Input
 
-A querry input is a special parameter in a function. If a function would normally need to return a new instance of something( e.g.
+A querry input is a special parameter in a function. If a function would normally need to return a new instance of something ( e.g.
 the cross-product function of a three dimensional vector), the calling function has no way to use own instance management.
 The querry input is usually the same type as the return value of the function and is used as a container for the result of the function.
 With this the calling method has full control over instance management. If the querry input is `null` a new instance of the corresponding
