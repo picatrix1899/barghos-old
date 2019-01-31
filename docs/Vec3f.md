@@ -6,10 +6,14 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 
 ## Contents
 
-* [Arithmetical Operations](#arithmetical-operations)
-  * [Add (Static)](#add-static)
-  
-## Arithmetical Operations
+* [Static Arithmetical Operations](#static-arithmetical-operations)
+	* [Add](#add-static)
+		* [Add (vector + vector) without quarry input](add-vector--vector-without-quarry-input)
+		* [Add (vector + vector) with quarry input](add-vector--vectory-with-quarry-input)
+		* [Add (vector + value) without quarry input](add-vector--value-without-quarry-input)
+		* [Add (vector + value) with quarry input](add-vector--value-with-quarry-input)
+		
+## Static Arithmetical Operations
 
 ### Add (Static)
 
@@ -51,7 +55,7 @@ res = v3
 */
 ```
 
-#### Add (vector + scalar) without querry input
+#### Add (vector + value) without querry input
 
 Adds to every component in `v1` the value of `scalar` and safes and returns the result in a new [Vec3f](Vec3f.md).
 
@@ -81,7 +85,7 @@ res = (4,3,3)
 */
 ```
 
-#### Add (vector + scalar) with querry input
+#### Add (vector + value) with querry input
 
 Adds to every component in `v1` the value of `scalar` and safes and returns the result in the [Querry Input](QuerryInput.md) `v3`.
 
