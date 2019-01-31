@@ -8,10 +8,10 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 
 * [Static Arithmetical Operations](#static-arithmetical-operations)
 	* [Add](#add-static)
-		* [Add (vector + vector) without quarry input](add-vector--vector-without-quarry-input)
-		* [Add (vector + vector) with quarry input](add-vector--vectory-with-quarry-input)
-		* [Add (vector + value) without quarry input](add-vector--value-without-quarry-input)
-		* [Add (vector + value) with quarry input](add-vector--value-with-quarry-input)
+		* [Add (vector + vector) without quarry input](#add-vector--vector-without-quarry-input)
+		* [Add (vector + vector) with quarry input](#add-vector--vectory-with-quarry-input)
+		* [Add (vector + value) without quarry input](#add-vector--value-without-quarry-input)
+		* [Add (vector + value) with quarry input](#add-vector--value-with-quarry-input)
 		
 ## Static Arithmetical Operations
 
