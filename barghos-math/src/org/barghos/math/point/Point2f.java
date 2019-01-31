@@ -1,7 +1,6 @@
 package org.barghos.math.point;
 
 import org.barghos.core.api.tuple.ITup2R;
-import org.barghos.core.api.tuple.ITup2fR;
 import org.barghos.math.api.point.IPoint2W;
 import org.barghos.math.api.point.IPoint2fR;
 
@@ -14,7 +13,7 @@ public class Point2f implements IPoint2fR, IPoint2W
 	
 	
 	public Point2f() { set(0); }
-	public Point2f(ITup2fR t) { assert(t != null); set(t); }
+	public Point2f(ITup2R t) { assert(t != null); set(t); }
 	public Point2f(double scalar) { set(scalar); }
 	public Point2f(double x, double y) { set(x, y); }
 	

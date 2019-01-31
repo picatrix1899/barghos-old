@@ -1,6 +1,6 @@
 package org.barghos.math.geometry;
 
-import org.barghos.core.api.tuple.ITup3fR;
+import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.api.point.IPoint3fR;
 import org.barghos.math.api.vector.IVec3fR;
 import org.barghos.math.point.Point3f;
@@ -23,10 +23,10 @@ public class CuboidCenterHalfExtendf
 	public CuboidCenterHalfExtendf set(double cx, double cy, double cz, IVec3fR halfExtend) { assert(halfExtend != null); return setCenter(cx, cy, cz).setHalfExtend(halfExtend); };
 	public CuboidCenterHalfExtendf set(double cx, double cy, double cz, double hex, double hey, double hez) { return setCenter(cx, cy, cz).setHalfExtend(hex, hey, hez); }
 	
-	public CuboidCenterHalfExtendf setCenter(ITup3fR center) { assert(center != null); assert(center != null); this.center.set(center); return this; }
+	public CuboidCenterHalfExtendf setCenter(ITup3R center) { assert(center != null); assert(center != null); this.center.set(center); return this; }
 	public CuboidCenterHalfExtendf setCenter(double x, double y, double z) { this.center.set(x, y, z); return this; }
 	
-	public CuboidCenterHalfExtendf setHalfExtend(ITup3fR halfExtend) { assert(halfExtend != null); assert(halfExtend != null); this.halfExtend.set(halfExtend); return this; }
+	public CuboidCenterHalfExtendf setHalfExtend(ITup3R halfExtend) { assert(halfExtend != null); assert(halfExtend != null); this.halfExtend.set(halfExtend); return this; }
 	public CuboidCenterHalfExtendf setHalfExtend(double x, double y, double z) { this.halfExtend.set(x, y, z); return this; }
 	
 	public float getCenterX() { return this.center.getX(); }
