@@ -13,7 +13,7 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 
 ### Add (Static)
 
-Adds two vectors or any kind of three dimensional tuple together and optionally safes the result in a vector as [Querry Input](Querry Input.md). The result vector is then returned. It can be either the querry input `res` or the newly generated Vec3f.
+Adds two vectors or any kind of three dimensional tuple together and optionally safes the result in a vector as [Querry Input](QuerryInput.md). The result vector is then returned. It can be either the querry input `res` or the newly generated Vec3f.
 
 #### Add without querry input
 
