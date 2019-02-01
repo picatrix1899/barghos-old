@@ -21,7 +21,7 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 
 ### Add (Static)
 
-Adds two vectors or any kind of three dimensional tuple together and optionally safes the result in a vector as [Quarry Input](QuarryInput.md). The result vector is then returned. It can be either the [Quarry Input](QuarryInput.md) `res` or the newly generated [Vec3f](Vec3f.md).
+Adds two vectors or any kind of three dimensional tuple together and optionally safes the result in a vector as [Quarry Input](../QuarryInput.md). The result vector is then returned. It can be either the [Quarry Input](../QuarryInput.md) `res` or the newly generated [Vec3f](Vec3f.md).
 
 [**&laquo;To The Top&raquo;**](#)
 
@@ -51,7 +51,7 @@ res = (3,1,4)
 
 #### Add (vector + vector) with quarry input
 
-Adds `v1` and `v2` together and safes and returns the result in the [Quarry Input](QuarryInput.md) `v3`.
+Adds `v1` and `v2` together and safes and returns the result in the [Quarry Input](../QuarryInput.md) `v3`.
 
 | Component | Operation   |
 | --------- | ----------  |
@@ -114,7 +114,7 @@ res = (4,3,3)
 
 #### Add (vector + value) with quarry input
 
-Adds to every component in `v1` the value of `scalar` and safes and returns the result in the [Quarry Input](QuarryInput.md) `v3`.
+Adds to every component in `v1` the value of `scalar` and safes and returns the result in the [Quarry Input](../QuarryInput.md) `v3`.
 
 | Component | Operation    |
 | --------- | -----------  |
@@ -202,7 +202,7 @@ res = (4,1,2)
 
 #### Add (vector + x, y, z) with quarry input
 
-Adds to every component in `v1` the coresponding value and safes and returns the result in the [Quarry Input](QuarryInput.md) `v3`.
+Adds to every component in `v1` the coresponding value and safes and returns the result in the [Quarry Input](../QuarryInput.md) `v3`.
 
 | Component | Operation    |
 | --------- | -----------  |
