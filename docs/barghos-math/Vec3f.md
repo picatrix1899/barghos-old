@@ -211,11 +211,11 @@ res = (4,1,2)
 
 Adds to every component in `v1` the coresponding value and safes and returns the result in the [Quarry Input](../QuarryInput.md) `v3`.
 
-| Component | Operation    |
-| --------- | -----------  |
-| x         | v1.x + x |
-| y         | v1.y + y |
-| z         | v1.z + z |
+| Component | Operation |
+| --------- | ----------|
+| x         | v1.x + x  |
+| y         | v1.y + y  |
+| z         | v1.z + z  |
 
 ```java
 Vec3f v1 = new Vec3f(1,0,0);
@@ -263,9 +263,9 @@ Adds to `value` each component in `v2` and safes and returns the result in a new
 
 | Component | Operation    |
 | --------- | -----------  |
-| x         | value + v1.x |
-| y         | value + v1.y |
-| z         | value + v1.z |
+| x         | value + v2.x |
+| y         | value + v2.y |
+| z         | value + v2.z |
 
 ```java
 Vec3f v2 = new Vec3f(1,0,0);
@@ -301,9 +301,9 @@ Adds to `value` each component in `v2` and safes and returns the result in the [
 
 | Component | Operation    |
 | --------- | -----------  |
-| x         | v1.x + value |
-| y         | v1.y + value |
-| z         | v1.z + value |
+| x         | value + v2.x |
+| y         | value + v2.y |
+| z         | value + v2.z |
 
 ```java
 Vec3f v2 = new Vec3f(1,0,0);
@@ -343,9 +343,9 @@ Adds to `x, y and z` the coresponding component in `v2` and safes and returns th
 
 | Component | Operation |
 | --------- | ----------|
-| x         | x + v1.x  |
-| y         | y + v1.y  |
-| z         | z + v1.z  |
+| x         | x + v2.x  |
+| y         | y + v2.y  |
+| z         | z + v2.z  |
 
 ```java
 Vec3f v1 = new Vec3f(1,0,0);
@@ -387,11 +387,11 @@ res = (4,1,2)
 
 Adds to `x, y and z` the coresponding component in `v2` and safes and returns the result in the [Quarry Input](../QuarryInput.md) `v3`.
 
-| Component | Operation    |
-| --------- | -----------  |
-| x         | x + v1.x |
-| y         | y + v1.y |
-| z         | z + v1.z |
+| Component | Operation |
+| --------- | --------- |
+| x         | x + v2.x  |
+| y         | y + v2.y  |
+| z         | z + v2.z  |
 
 ```java
 Vec3f v2 = new Vec3f(1,0,0);
