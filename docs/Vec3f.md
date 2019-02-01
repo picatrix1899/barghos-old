@@ -27,6 +27,12 @@ Adds two vectors or any kind of three dimensional tuple together and optionally 
 
 Adds `v1` and `v2` together and safes and returns the result in a new [Vec3f](Vec3f.md).
 
+| Component | Operation   |
+| --------- | ----------  |
+| x         | v1.x + v2.x |
+| y         | v1.y + v2.y |
+| z         | v1.z + v2.z |
+
 ```java
 Vec3f v1 = new Vec3f(1,0,0);
 Vec3f v2 = new Vec3f(2,1,4);
@@ -44,6 +50,12 @@ res = (3,1,4)
 #### Add (vector + vector) with quarry input
 
 Adds `v1` and `v2` together and safes and returns the result in the [Quarry Input](QuarryInput.md) `v3`.
+
+| Component | Operation   |
+| --------- | ----------  |
+| x         | v1.x + v2.x |
+| y         | v1.y + v2.y |
+| z         | v1.z + v2.z |
 
 ```java
 Vec3f v1 = new Vec3f(1,0,0),
@@ -64,6 +76,12 @@ res = v3
 #### Add (vector + value) without quarry input
 
 Adds to every component in `v1` the value of `scalar` and safes and returns the result in a new [Vec3f](Vec3f.md).
+
+| Component | Operation    |
+| --------- | -----------  |
+| x         | v1.x + value |
+| y         | v1.y + value |
+| z         | v1.z + value |
 
 ```java
 Vec3f v1 = new Vec3f(1,0,0);
@@ -96,6 +114,12 @@ res = (4,3,3)
 
 Adds to every component in `v1` the value of `scalar` and safes and returns the result in the [Quarry Input](QuarryInput.md) `v3`.
 
+| Component | Operation    |
+| --------- | -----------  |
+| x         | v1.x + value |
+| y         | v1.y + value |
+| z         | v1.z + value |
+
 ```java
 Vec3f v1 = new Vec3f(1,0,0);
 float scalar = 3;
@@ -122,6 +146,102 @@ Vec3f res = Vec3f.add(v1, scalar, v3);
 v1 = (1,0,0)
 scalar = 3
 v3 = (4,3,3)
+res = v3
+*/
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+#### Add (vector + x, y, z) without quarry input
+
+Adds to every component in `v1` the coresponding value and safes and returns the result in a new [Vec3f](Vec3f.md).
+
+| Component | Operation |
+| --------- | ----------|
+| x         | v1.x + x  |
+| y         | v1.y + y  |
+| z         | v1.z + z  |
+
+```java
+Vec3f v1 = new Vec3f(1,0,0);
+float x = 3;
+float y = 1;
+float z = 2;
+
+Vec3f res = Vec3f.add(v1, x, y, z, null);
+
+/*
+v1 = (1,0,0)
+x = 3
+y = 1
+z = 2
+res = (4,1,2)
+*/
+```
+
+```java
+Vec3f v1 = new Vec3f(1,0,0);
+double x = 3;
+double y = 1;
+double z = 2;
+
+Vec3f res = Vec3f.add(v1, x, y, z, null);
+
+/*
+v1 = (1,0,0)
+x = 3
+y = 1
+z = 2
+res = (4,1,2)
+*/
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+#### Add (vector + x, y, z) with quarry input
+
+Adds to every component in `v1` the coresponding value and safes and returns the result in the [Quarry Input](QuarryInput.md) `v3`.
+
+| Component | Operation    |
+| --------- | -----------  |
+| x         | v1.x + x |
+| y         | v1.y + y |
+| z         | v1.z + z |
+
+```java
+Vec3f v1 = new Vec3f(1,0,0);
+float x = 3;
+float y = 1;
+float z = 2;
+Vec3f v3 = new Vec3f();
+
+Vec3f res = Vec3f.add(v1, scalar, v3);
+
+/*
+v1 = (1,0,0)
+x = 3
+y = 1
+z = 2
+v3 = (4,1,2)
+res = v3
+*/
+```
+
+```java
+Vec3f v1 = new Vec3f(1,0,0);
+double x = 3;
+double y = 1;
+double z = 2;
+Vec3f v3 = new Vec3f();
+
+Vec3f res = Vec3f.add(v1, scalar, v3);
+
+/*
+v1 = (1,0,0)
+x = 3
+y = 1
+z = 2
+v3 = (4,1,2)
 res = v3
 */
 ```
