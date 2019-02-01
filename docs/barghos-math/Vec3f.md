@@ -348,35 +348,35 @@ Adds to `x, y and z` the coresponding component in `v2` and safes and returns th
 | z         | z + v2.z  |
 
 ```java
-Vec3f v1 = new Vec3f(1,0,0);
+Vec3f v2 = new Vec3f(1,0,0);
 float x = 3;
 float y = 1;
 float z = 2;
 
-Vec3f res = Vec3f.add(v1, x, y, z, null);
+Vec3f res = Vec3f.add(x, y, z, v2, null);
 
 /*
-v1 = (1,0,0)
 x = 3
 y = 1
 z = 2
+v2 = (1,0,0)
 res = (4,1,2)
 */
 ```
 
 ```java
-Vec3f v1 = new Vec3f(1,0,0);
+Vec3f v2 = new Vec3f(1,0,0);
 double x = 3;
 double y = 1;
 double z = 2;
 
-Vec3f res = Vec3f.add(v1, x, y, z, null);
+Vec3f res = Vec3f.add(x, y, z, v2, null);
 
 /*
-v1 = (1,0,0)
 x = 3
 y = 1
 z = 2
+v2 = (1,0,0)
 res = (4,1,2)
 */
 ```
