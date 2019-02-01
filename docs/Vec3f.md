@@ -14,6 +14,7 @@ The Vec3f represents a mathematical three dimensional vector. The class provides
 		* [Add (vector + value) with quarry input](#add-vector--value-with-quarry-input)
 		* [Add (vector + x, y, z) without quarry input](#add-vector--x-y-z-without-quarry-input)
 		* [Add (vector + x, y, z) with quarry input](#add-vector--x-y-z-with-quarry-input)
+		
 ## Static Arithmetical Operations
 
 [**&laquo;To The Top&raquo;**](#)
