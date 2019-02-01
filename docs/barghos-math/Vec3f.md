@@ -343,9 +343,9 @@ Adds to `x, y and z` the coresponding component in `v2` and safes and returns th
 
 | Component | Operation |
 | --------- | ----------|
-| x         | v1.x + x  |
-| y         | v1.y + y  |
-| z         | v1.z + z  |
+| x         | x + v1.x  |
+| y         | y + v1.y  |
+| z         | z + v1.z  |
 
 ```java
 Vec3f v1 = new Vec3f(1,0,0);
