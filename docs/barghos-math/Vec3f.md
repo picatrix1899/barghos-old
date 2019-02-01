@@ -337,7 +337,7 @@ res = v3
 
 [**&laquo;To The Top&raquo;**](#)
 
-#### Add (vector + x, y, z) without quarry input
+#### Add (x, y, z + vector) without quarry input
 
 Adds to `x, y and z` the coresponding component in `v2` and safes and returns the result in a new [Vec3f](Vec3f.md).
 
