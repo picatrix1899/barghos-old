@@ -5,37 +5,59 @@ import org.barghos.math.Maths;
 import org.barghos.math.api.vector.IQuatR;
 import org.barghos.math.matrix.Mat4f;
 
+/** A 3-Dimensional Quaternion */
 public class Quat implements IQuatR
 {
+	/** The w component. */
 	public double w;
+	/** The x component. */
 	public double x;
+	/** The y component. */
 	public double y;
+	/** The z component. */
 	public double z;
 
+	/**
+	 * The default constructor. It sets x,y and z to 0 and w to 1.
+	 * It is commonly used in pools.
+	 */
 	public Quat()
 	{
 		this(1.0, 0.0, 0.0, 0.0);
 	}
 	
+	/**
+	 * This constructor sets the components to x, y, z and w.
+	 * @param w The new w component.
+	 * @param x The new x component.
+	 * @param y The new y component.
+	 * @param z The new z component.
+	 */
 	public Quat(double w, double x, double y, double z)
 	{
 		set(w, x, y, z);
 	}
 	
+	/**
+	 * This contructor sets the components to the values of q.
+	 * @param q A Quaternion that the components are set to.
+	 */
 	public Quat(Quat q)
 	{
 		assert(q != null);
 		set(q);
 	}
 	
+	/**
+	 * This constructor sets
+	 * @param rot
+	 */
 	public Quat(Mat4f rot)
 	{
 		assert(rot != null);
 		set(rot);
 	}
-	
-	public int getDimensions() { return 4; }
-	
+
 	public static Quat getFromAxis(ITup3R axis, double angle) { assert(axis != null); return getFromAxis(axis.getUniX(), axis.getUniY(), axis.getUniZ(), angle); }
 	
 	public static Quat getFromAxis(double ax, double ay, double az, double angle)
@@ -269,6 +291,12 @@ public class Quat implements IQuatR
 		res.set(this.w * l, this.x * l, this.y * l, this.z * l);
 
 		return res;
+	}
+
+	@Override
+	public int getDimensions()
+	{
+		return 4;
 	}
 
 }
