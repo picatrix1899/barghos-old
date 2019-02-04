@@ -382,4 +382,44 @@ public class Mat4f
 	public Mat4f translate(ITup3R t) { assert(t != null); return Mat4f.mul(Mat4f.translation(t), this, this); }
 	public Mat4f translate(double x, double y, double z) { return Mat4f.mul(Mat4f.translation(x, y, z), this, this); }
 	public Mat4f rotate(Quat q) { assert(q != null); return Mat4f.mul(Mat4f.rotation(q), this, this); }
+	
+	public float[] toArrayColumnMajor()
+	{
+		float[] out = new float[4 * 4];
+		Tup4f t = Tup4fPool.get();
+		
+		for(int i = 0; i < 4; i++)
+		{
+			getColumn(0, t);
+			
+			out[i * 4 + 0] = t.getX();
+			out[i * 4 + 1] = t.getY();
+			out[i * 4 + 2] = t.getZ();
+			out[i * 4 + 3] = t.getW();
+		}
+
+		Tup4fPool.store(t);
+		
+		return out;		
+	}
+	
+	public float[] toArrayRowMajor()
+	{
+		float[] out = new float[4 * 4];
+		Tup4f t = Tup4fPool.get();
+		
+		for(int i = 0; i < 4; i++)
+		{
+			getRow(0, t);
+			
+			out[i * 4 + 0] = t.getX();
+			out[i * 4 + 1] = t.getY();
+			out[i * 4 + 2] = t.getZ();
+			out[i * 4 + 3] = t.getW();
+		}
+
+		Tup4fPool.store(t);
+		
+		return out;		
+	}
 }
