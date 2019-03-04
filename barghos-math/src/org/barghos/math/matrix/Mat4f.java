@@ -390,7 +390,7 @@ public class Mat4f
 		
 		for(int i = 0; i < 4; i++)
 		{
-			getColumn(0, t);
+			getColumn(i, t);
 			
 			out[i * 4 + 0] = t.getX();
 			out[i * 4 + 1] = t.getY();
@@ -410,7 +410,7 @@ public class Mat4f
 		
 		for(int i = 0; i < 4; i++)
 		{
-			getRow(0, t);
+			getRow(i, t);
 			
 			out[i * 4 + 0] = t.getX();
 			out[i * 4 + 1] = t.getY();
