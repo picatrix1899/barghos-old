@@ -1,7 +1,10 @@
 package org.barghos.archives.zip;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -38,13 +41,51 @@ public class ZipFile
 		return out;
 	}
 	
-	public void extractFile(String file, String target, String targetFile)
+	public void extractFile(String file, String targetFile)
+	{
+		File f = new File(targetFile);
+
+		this.base.
+		
+		extractFile(file, f);
+	}
+	
+	public void extractFile(String file, File f)
+	{
+		if(!f.exists())
+		{
+			try
+			{
+				f.createNewFile();
+			} catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		try(OutputStream sout = new FileOutputStream(f))
+		{
+			extractFile(file, sout);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void extractFile(String file, OutputStream sout)
 	{
 		ZipEntry ent = this.base.getEntry(file);
-		
-		File o = new File(target, ent.);
-		
-		InputStream in = this.base.getInputStream(ent);
-		OutputStream out = new FileOutputStream()
+
+		try(InputStream sin = this.base.getInputStream(ent))
+		{
+				byte[] buffer = new byte[sin.available()];
+				sin.read(buffer);
+				sout.write(buffer);
+				sout.flush();
+		} catch (Exception e1)
+		{
+			e1.printStackTrace();
+		}
 	}
 }
