@@ -14,6 +14,8 @@ public class Main
 			
 			List<String> s = f.listEntries("", true);
 			
+			f.extractFile("bla/f.txt", "f.txt");
+			
 			for(String ss : s)
 			{
 				System.out.println(ss);
