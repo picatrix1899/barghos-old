@@ -22,7 +22,8 @@ import org.barghos.core.api.tuple.ITup4fR;
  */
 public class BufferUtils
 {
-
+	private static ByteOrder order = ByteOrder.nativeOrder();
+	
 	private BufferUtils() { }
 	
 	/**
@@ -32,7 +33,7 @@ public class BufferUtils
 	 */
 	public static ByteBuffer createByteBuffer(int size)
 	{
-		return ByteBuffer.allocateDirect(size).order(ByteOrder.nativeOrder());
+		return ByteBuffer.allocateDirect(size).order(order);
 	}
 	
 	/**
@@ -42,7 +43,7 @@ public class BufferUtils
 	 */
 	public static ShortBuffer createShortBuffer(int size)
 	{
-		return ByteBuffer.allocateDirect(size << 1).order(ByteOrder.nativeOrder()).asShortBuffer();
+		return ByteBuffer.allocateDirect(size << 1).order(order).asShortBuffer();
 	}
 	
 	/**
@@ -52,7 +53,7 @@ public class BufferUtils
 	 */
 	public static IntBuffer createIntBuffer(int size)
 	{
-		return ByteBuffer.allocateDirect(size << 2).order(ByteOrder.nativeOrder()).asIntBuffer();
+		return ByteBuffer.allocateDirect(size << 2).order(order).asIntBuffer();
 	}
 	
 	/**
@@ -62,7 +63,7 @@ public class BufferUtils
 	 */
 	public static LongBuffer createLongBuffer(int size)
 	{
-		return ByteBuffer.allocateDirect(size << 3).order(ByteOrder.nativeOrder()).asLongBuffer();
+		return ByteBuffer.allocateDirect(size << 3).order(order).asLongBuffer();
 	}	
 	
 	/**
@@ -72,7 +73,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer createFloatBuffer(int size)
 	{
-		return ByteBuffer.allocateDirect(size << 2).order(ByteOrder.nativeOrder()).asFloatBuffer();
+		return ByteBuffer.allocateDirect(size << 2).order(order).asFloatBuffer();
 	}		
 	
 	/**
@@ -82,7 +83,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer createDoubleBuffer(int size)
 	{
-		return ByteBuffer.allocateDirect(size << 3).order(ByteOrder.nativeOrder()).asDoubleBuffer();
+		return ByteBuffer.allocateDirect(size << 3).order(order).asDoubleBuffer();
 	}
 	
 	/**
@@ -184,26 +185,22 @@ public class BufferUtils
 	public static FloatBuffer wrapTuple2FBuffer(ITup2fR... v)
 	{
 		assert(v != null);
-		assert(v.length != 0);
 		assert(Check.notNull(v));
-		int dim = 2;
 		
-		float[] f = new float[v.length * dim];
-		
-		int block = 0;
-		
+		int length = v.length;
+		assert(length != 0);
+
+		float[] f = new float[length * 2];
+
 		ITup2fR current;
-		
-		for(int i = 0; i < v.length; i++)
+		for(int i = 0, b = 0; i < length; i++, b += 2)
 		{
-			block = i * dim;
 			current = v[i];
-			
-			f[block] = current.getX();
-			f[block + 1] = current.getY();
+			f[b] = current.getX();
+			f[b + 1] = current.getY();
 		}
 		
-		FloatBuffer buffer = createFloatBuffer(f.length);
+		FloatBuffer buffer = createFloatBuffer(length * 2);
 		buffer.put(f);
 		
 		return buffer;
