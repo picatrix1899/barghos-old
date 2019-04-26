@@ -22,6 +22,8 @@ import org.barghos.core.api.tuple.ITup4fR;
  */
 public class BufferUtils
 {
+
+	private BufferUtils() { }
 	
 	/**
 	 * Creates a Byte-Buffer with given size.
@@ -90,6 +92,7 @@ public class BufferUtils
 	 */
 	public static ByteBuffer wrapByteBuffer(byte... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		ByteBuffer buffer = createByteBuffer(v.length);
 		buffer.put(v);
@@ -104,6 +107,7 @@ public class BufferUtils
 	 */
 	public static ShortBuffer wrapShortBuffer(short... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		ShortBuffer buffer = createShortBuffer(v.length);
 		buffer.put(v);
@@ -118,6 +122,7 @@ public class BufferUtils
 	 */
 	public static IntBuffer wrapIntBuffer(int... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		IntBuffer buffer = createIntBuffer(v.length);
 		buffer.put(v);
@@ -132,6 +137,7 @@ public class BufferUtils
 	 */
 	public static LongBuffer wrapLongBuffer(long... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		LongBuffer buffer = createLongBuffer(v.length);
 		buffer.put(v);
@@ -146,6 +152,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFloatBuffer(float... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		FloatBuffer buffer = createFloatBuffer(v.length);
 		buffer.put(v);
@@ -158,8 +165,9 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public final static DoubleBuffer wrapDoubleBuffer(double... v)
+	public static DoubleBuffer wrapDoubleBuffer(double... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		DoubleBuffer buffer = createDoubleBuffer(v.length);
 		buffer.put(v);
@@ -175,6 +183,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapTuple2FBuffer(ITup2fR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		int dim = 2;
@@ -208,6 +217,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapTuple2DBuffer(ITup2dR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		int dim = 2;
@@ -241,6 +251,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapTuple3FBuffer(ITup3fR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		int dim = 3;
@@ -276,6 +287,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapTuple3DBuffer(ITup3dR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		int dim = 3;
@@ -311,6 +323,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapTuple4FBuffer(ITup4fR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		int dim = 4;
@@ -347,6 +360,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapTuple4DBuffer(ITup4dR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		int dim = 4;
@@ -382,6 +396,7 @@ public class BufferUtils
 	 */
 	public static ByteBuffer wrapFlippedByteBuffer(byte... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		ByteBuffer buffer = wrapByteBuffer(v);
 		buffer.flip();
@@ -396,6 +411,7 @@ public class BufferUtils
 	 */
 	public static ShortBuffer wrapFlippedShortBuffer(short... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		ShortBuffer buffer = wrapShortBuffer(v);
 		buffer.flip();
@@ -410,6 +426,7 @@ public class BufferUtils
 	 */
 	public static IntBuffer wrapFlippedIntBuffer(int... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		IntBuffer buffer = wrapIntBuffer(v);
 		buffer.flip();
@@ -424,6 +441,7 @@ public class BufferUtils
 	 */
 	public static LongBuffer wrapFlippedLongBuffer(long... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		LongBuffer buffer = wrapLongBuffer(v);
 		buffer.flip();
@@ -438,6 +456,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedFloatBuffer(float... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		FloatBuffer buffer = wrapFloatBuffer(v);
 		buffer.flip();
@@ -452,6 +471,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedDoubleBuffer(double... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		DoubleBuffer buffer = wrapDoubleBuffer(v);
 		buffer.flip();
@@ -467,6 +487,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedTuple2FBuffer(ITup2fR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
@@ -484,6 +505,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedTuple2DBuffer(ITup2dR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
@@ -501,6 +523,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedTuple3FBuffer(ITup3fR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
@@ -518,6 +541,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedTuple3DBuffer(ITup3dR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
@@ -535,6 +559,7 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedTuple4FBuffer(ITup4fR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
@@ -552,6 +577,7 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedTuple4DBuffer(ITup4dR... v)
 	{
+		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		

@@ -7,12 +7,16 @@ import org.barghos.core.api.tuple.ITup3fR;
 public class Check
 {
 	
+	private Check() {}
+	
 	public static boolean isTrue(boolean expression) { return expression; }
 	
 	
 	
 	public static boolean isTrue(boolean... expressions)
 	{
+		assert(expressions != null);
+		assert(expressions.length != 0);
 		for(boolean expression : expressions)
 			if(!expression) return false;
 		
@@ -23,6 +27,8 @@ public class Check
 	
 	public static boolean isTrueOOO(boolean... expressions)
 	{
+		assert(expressions != null);
+		assert(expressions.length != 0);
 		for(boolean expression : expressions)
 			if(expression) return true;
 		
