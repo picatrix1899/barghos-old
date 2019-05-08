@@ -95,10 +95,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		ByteBuffer buffer = createByteBuffer(v.length);
-		buffer.put(v);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect(v.length).order(order).put(v);
 	}
 	
 	/**
@@ -110,10 +108,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		ShortBuffer buffer = createShortBuffer(v.length);
-		buffer.put(v);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect(v.length << 1).order(order).asShortBuffer().put(v);
 	}
 	
 	/**
@@ -125,10 +121,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		IntBuffer buffer = createIntBuffer(v.length);
-		buffer.put(v);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect(v.length << 2).order(order).asIntBuffer().put(v);
 	}	
 	
 	/**
@@ -140,10 +134,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		LongBuffer buffer = createLongBuffer(v.length);
-		buffer.put(v);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect(v.length << 3).order(order).asLongBuffer().put(v);
 	}	
 	
 	/**
@@ -155,10 +147,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		FloatBuffer buffer = createFloatBuffer(v.length);
-		buffer.put(v);
 		
-		return buffer;
+		return ByteBuffer.allocateDirect(v.length << 2).order(order).asFloatBuffer().put(v);
 	}
 	
 	/**
@@ -170,10 +160,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		DoubleBuffer buffer = createDoubleBuffer(v.length);
-		buffer.put(v);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect(v.length << 3).order(order).asDoubleBuffer().put(v);
 	}
 	
 	/**
@@ -185,11 +173,11 @@ public class BufferUtils
 	public static FloatBuffer wrapTuple2FBuffer(ITup2fR... v)
 	{
 		assert(v != null);
+		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
 		int length = v.length;
-		assert(length != 0);
-
+		
 		float[] f = new float[length * 2];
 
 		ITup2fR current;
@@ -200,10 +188,7 @@ public class BufferUtils
 			f[b + 1] = current.getY();
 		}
 		
-		FloatBuffer buffer = createFloatBuffer(length * 2);
-		buffer.put(f);
-		
-		return buffer;
+		return ByteBuffer.allocateDirect((length * 2) << 2).order(order).asFloatBuffer().put(f);
 	}
 	
 	/**
@@ -217,27 +202,21 @@ public class BufferUtils
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		int dim = 2;
 		
-		double[] d = new double[v.length * dim];
-		
-		int block = 0;
+		int length = v.length;
+
+		double[] d = new double[length * 2];
 		
 		ITup2dR current;
-		
-		for(int i = 0; i < v.length; i++)
+		for(int i = 0, b = 0; i < length; i++, b += 2)
 		{
-			block = i * dim;
 			current = v[i];
 			
-			d[block] = current.getX();
-			d[block + 1] = current.getY();
+			d[b] = current.getX();
+			d[b + 1] = current.getY();
 		}
-		
-		DoubleBuffer buffer = createDoubleBuffer(d.length);
-		buffer.put(d);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect((length * 2) << 3).order(order).asDoubleBuffer().put(d);
 	}
 	
 	/**
@@ -251,29 +230,22 @@ public class BufferUtils
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		int dim = 3;
 		
-		float[] f = new float[v.length * dim];
+		int length = v.length;
 		
-		int block = 0;
-		
+		float[] f = new float[length * 3];
+
 		ITup3fR current;
-		
-		for(int i = 0; i < v.length; i++)
+		for(int i = 0, b = 0; i < length; i++, b += 3)
 		{
-			block = i * dim;
 			current = v[i];
 			
-			f[block] = current.getX();
-			f[block + 1] = current.getY();
-			f[block + 2] = current.getZ();
+			f[b] = current.getX();
+			f[b + 1] = current.getY();
+			f[b + 2] = current.getZ();
 		}
-		
-		FloatBuffer buffer = createFloatBuffer(f.length);
-		
-		buffer.put(f);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect((length * 3) << 2).order(order).asFloatBuffer().put(f);
 	}
 	
 	/**
@@ -287,29 +259,22 @@ public class BufferUtils
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		int dim = 3;
 		
-		double[] d = new double[v.length * dim];
+		int length = v.length;
 		
-		int block = 0;
-		
+		double[] d = new double[length * 3];
+
 		ITup3dR current;
-		
-		for(int i = 0; i < v.length; i++)
+		for(int i = 0, b = 0; i < length; i++, b += 3)
 		{
-			block = i * dim;
 			current = v[i];
 			
-			d[block] = current.getX();
-			d[block + 1] = current.getY();
-			d[block + 2] = current.getZ();
+			d[b] = current.getX();
+			d[b + 1] = current.getY();
+			d[b + 2] = current.getZ();
 		}
-		
-		DoubleBuffer buffer = createDoubleBuffer(d.length);
-		
-		buffer.put(d);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect((length * 3) << 3).order(order).asDoubleBuffer().put(d);
 	}
 	
 	/**
@@ -323,30 +288,23 @@ public class BufferUtils
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		int dim = 4;
 		
-		float[] f = new float[v.length * dim];
+		int length = v.length;
 		
-		int block = 0;
-		
+		float[] f = new float[length * 4];
+
 		ITup4fR current;
-		
-		for(int i = 0; i < v.length; i++)
+		for(int i = 0, b = 0; i < length; i++, b += 4)
 		{
-			block = i * dim;
 			current = v[i];
 			
-			f[block] = current.getX();
-			f[block + 1] = current.getY();
-			f[block + 2] = current.getZ();
-			f[block + 3] = current.getW();
+			f[b] = current.getX();
+			f[b + 1] = current.getY();
+			f[b + 2] = current.getZ();
+			f[b + 3] = current.getW();
 		}
-		
-		FloatBuffer buffer = createFloatBuffer(f.length);
-		
-		buffer.put(f);
-		
-		return buffer;
+
+		return ByteBuffer.allocateDirect((length * 4) << 2).order(order).asFloatBuffer().put(f);
 	}
 	
 	/**
@@ -360,30 +318,23 @@ public class BufferUtils
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		int dim = 4;
 		
-		double[] d = new double[v.length * dim];
-		
-		int block = 0;
-		
+		int length = v.length;
+
+		double[] d = new double[v.length * 4];
+
 		ITup4dR current;
-		
-		for(int i = 0; i < v.length; i++)
+		for(int i = 0, b = 0; i < v.length; i++, b += 4)
 		{
-			block = i * dim;
 			current = v[i];
 			
-			d[block] = current.getX();
-			d[block + 1] = current.getY();
-			d[block + 2] = current.getZ();
-			d[block + 3] = current.getW();
+			d[b] = current.getX();
+			d[b + 1] = current.getY();
+			d[b + 2] = current.getZ();
+			d[b + 3] = current.getW();
 		}
 		
-		DoubleBuffer buffer = createDoubleBuffer(d.length);
-		
-		buffer.put(d);
-		
-		return buffer;
+		return ByteBuffer.allocateDirect((length * 4) << 3).order(order).asDoubleBuffer().put(d);
 	}
 
 	/**
@@ -395,7 +346,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		ByteBuffer buffer = wrapByteBuffer(v);
+		
+		ByteBuffer buffer = ByteBuffer.allocateDirect(v.length).order(order).put(v);
 		buffer.flip();
 		
 		return buffer;
@@ -410,7 +362,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		ShortBuffer buffer = wrapShortBuffer(v);
+		
+		ShortBuffer buffer = ByteBuffer.allocateDirect(v.length << 1).order(order).asShortBuffer().put(v);
 		buffer.flip();
 		
 		return buffer;
@@ -425,7 +378,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		IntBuffer buffer = wrapIntBuffer(v);
+		
+		IntBuffer buffer = ByteBuffer.allocateDirect(v.length << 2).order(order).asIntBuffer().put(v);
 		buffer.flip();
 		
 		return buffer;
@@ -440,7 +394,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		LongBuffer buffer = wrapLongBuffer(v);
+		
+		LongBuffer buffer = ByteBuffer.allocateDirect(v.length << 3).order(order).asLongBuffer().put(v);
 		buffer.flip();
 		
 		return buffer;
@@ -455,7 +410,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		FloatBuffer buffer = wrapFloatBuffer(v);
+		
+		FloatBuffer buffer = ByteBuffer.allocateDirect(v.length << 2).order(order).asFloatBuffer().put(v);
 		buffer.flip();
 		
 		return buffer;
@@ -470,7 +426,8 @@ public class BufferUtils
 	{
 		assert(v != null);
 		assert(v.length != 0);
-		DoubleBuffer buffer = wrapDoubleBuffer(v);
+		
+		DoubleBuffer buffer = ByteBuffer.allocateDirect(v.length << 3).order(order).asDoubleBuffer().put(v);
 		buffer.flip();
 
 		return buffer;
@@ -488,7 +445,19 @@ public class BufferUtils
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
-		FloatBuffer buffer = wrapTuple2FBuffer(v);
+		int length = v.length;
+		
+		float[] f = new float[length * 2];
+
+		ITup2fR current;
+		for(int i = 0, b = 0; i < length; i++, b += 2)
+		{
+			current = v[i];
+			f[b] = current.getX();
+			f[b + 1] = current.getY();
+		}
+
+		FloatBuffer buffer = ByteBuffer.allocateDirect((length * 2) << 2).order(order).asFloatBuffer().put(f);
 		buffer.flip();
 		
 		return buffer;
@@ -506,7 +475,20 @@ public class BufferUtils
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
-		DoubleBuffer buffer = wrapTuple2DBuffer(v);
+		int length = v.length;
+
+		double[] d = new double[length * 2];
+		
+		ITup2dR current;
+		for(int i = 0, b = 0; i < length; i++, b += 2)
+		{
+			current = v[i];
+			
+			d[b] = current.getX();
+			d[b + 1] = current.getY();
+		}
+
+		DoubleBuffer buffer = ByteBuffer.allocateDirect((length * 2) << 3).order(order).asDoubleBuffer().put(d);
 		buffer.flip();
 		
 		return buffer;
@@ -524,7 +506,21 @@ public class BufferUtils
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
-		FloatBuffer buffer = wrapTuple3FBuffer(v);
+		int length = v.length;
+		
+		float[] f = new float[length * 3];
+
+		ITup3fR current;
+		for(int i = 0, b = 0; i < length; i++, b += 3)
+		{
+			current = v[i];
+			
+			f[b] = current.getX();
+			f[b + 1] = current.getY();
+			f[b + 2] = current.getZ();
+		}
+
+		FloatBuffer buffer = ByteBuffer.allocateDirect((length * 3) << 2).order(order).asFloatBuffer().put(f);
 		buffer.flip();
 		
 		return buffer;
@@ -542,7 +538,21 @@ public class BufferUtils
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
-		DoubleBuffer buffer = wrapTuple3DBuffer(v);
+		int length = v.length;
+		
+		double[] d = new double[length * 3];
+
+		ITup3dR current;
+		for(int i = 0, b = 0; i < length; i++, b += 3)
+		{
+			current = v[i];
+			
+			d[b] = current.getX();
+			d[b + 1] = current.getY();
+			d[b + 2] = current.getZ();
+		}
+
+		DoubleBuffer buffer = ByteBuffer.allocateDirect((length * 3) << 3).order(order).asDoubleBuffer().put(d);
 		buffer.flip();
 		
 		return buffer;
@@ -560,7 +570,22 @@ public class BufferUtils
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
-		FloatBuffer buffer = wrapTuple4FBuffer(v);
+		int length = v.length;
+		
+		float[] f = new float[length * 4];
+
+		ITup4fR current;
+		for(int i = 0, b = 0; i < length; i++, b += 4)
+		{
+			current = v[i];
+			
+			f[b] = current.getX();
+			f[b + 1] = current.getY();
+			f[b + 2] = current.getZ();
+			f[b + 3] = current.getW();
+		}
+
+		FloatBuffer buffer = ByteBuffer.allocateDirect((length * 4) << 2).order(order).asFloatBuffer().put(f);
 		buffer.flip();
 		
 		return buffer;
@@ -578,7 +603,22 @@ public class BufferUtils
 		assert(v.length != 0);
 		assert(Check.notNull(v));
 		
-		DoubleBuffer buffer = wrapTuple4DBuffer(v);
+		int length = v.length;
+
+		double[] d = new double[v.length * 4];
+
+		ITup4dR current;
+		for(int i = 0, b = 0; i < v.length; i++, b += 4)
+		{
+			current = v[i];
+			
+			d[b] = current.getX();
+			d[b + 1] = current.getY();
+			d[b + 2] = current.getZ();
+			d[b + 3] = current.getW();
+		}
+
+		DoubleBuffer buffer = ByteBuffer.allocateDirect((length * 4) << 3).order(order).asDoubleBuffer().put(d);
 		buffer.flip();
 		
 		return buffer;
