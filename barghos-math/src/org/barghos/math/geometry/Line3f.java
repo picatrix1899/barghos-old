@@ -5,7 +5,7 @@ import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.point.Point3f;
 import org.barghos.math.vector.Vec3f;
 
-public class Line3f
+public class Line3f implements FiniteGeometricObject
 {
 	public float p1x, p1y, p1z = 0.0f;
 	public float p2x, p2y, p2z = 0.0f;
@@ -122,7 +122,7 @@ public class Line3f
 	
 	public Line3f set(double x1, double y1, double z1, double x2, double y2, double z2)
 	{
-		return setP1(x1,y1,z1).setP2(x2, y2, z2);
+		return setP1(x1, y1, z1).setP2(x2, y2, z2);
 	}
 	
 	public Line3f setP1(ITup3R p)
@@ -183,5 +183,14 @@ public class Line3f
 	public Vec3f vector()
 	{
 		return Vec3f.sub(p2x, p2y, p2z, p1x, p1y, p1z, new Vec3f());
+	}
+
+	@Override
+	public Point3f[] getPoints()
+	{
+		return new Point3f[] {
+			new Point3f(p1x, p1y, p1z),
+			new Point3f(p2x, p2y, p2z)
+		};
 	}
 }

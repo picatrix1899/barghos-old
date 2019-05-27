@@ -356,7 +356,6 @@ public class Mat4f
 	
 	public Point3f transform(ITup3R r, Point3f res)
 	{
-		assert(r != null);
 		return Mat4f.transform(this, r, res);
 	}
 	
@@ -421,6 +420,22 @@ public class Mat4f
 		Tup4fPool.store(t);
 		
 		return out;		
+	}
+	
+	public boolean isZeroMatrix()
+	{
+		return  this.m[0][0] == 0 && this.m[0][1] == 0 && this.m[0][2] == 0 && this.m[0][3] == 0 &&
+				this.m[1][0] == 0 && this.m[1][1] == 0 && this.m[1][2] == 0 && this.m[1][3] == 0 &&
+				this.m[2][0] == 0 && this.m[2][1] == 0 && this.m[2][2] == 0 && this.m[2][3] == 0 &&
+				this.m[3][0] == 0 && this.m[3][1] == 0 && this.m[3][2] == 0 && this.m[3][3] == 0;
+	}
+	
+	public boolean isIdentityMatrix()
+	{
+		return  this.m[0][0] == 1 && this.m[0][1] == 0 && this.m[0][2] == 0 && this.m[0][3] == 0 &&
+				this.m[1][0] == 0 && this.m[1][1] == 1 && this.m[1][2] == 0 && this.m[1][3] == 0 &&
+				this.m[2][0] == 0 && this.m[2][1] == 0 && this.m[2][2] == 1 && this.m[2][3] == 0 &&
+				this.m[3][0] == 0 && this.m[3][1] == 0 && this.m[3][2] == 0 && this.m[3][3] == 1;
 	}
 	
 	public String toString()

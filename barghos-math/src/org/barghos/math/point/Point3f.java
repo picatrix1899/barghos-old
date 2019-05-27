@@ -39,5 +39,10 @@ public class Point3f implements IPoint3fR, IPoint3W
 
 	
 	public int getDimensions() { return 3; }
+	
+	public String toString()
+	{
+		return "point3f(" + this.x + "f, " + this.y +"f, " + this.z + "f)";
+	}
 
 }

@@ -1,6 +1,7 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.math.api.vector.IVec3fR;
 import org.barghos.math.api.vector.IVec3W;
 import org.barghos.math.Maths;
@@ -470,6 +471,19 @@ public class Vec3f implements IVec3fR, IVec3W
 		assert(v2 != null);
 		return Vec3f.dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2);
 	}
+	
+	/**
+	 * Returns the dot product between two tuples.
+	 * @param v1 The first float tuple.
+	 * @param v2 The second float tuple.
+	 * @return The dot product (cosine angle).
+	 */
+	public static double dot(ITup3R v1, ITup4R v2)
+	{
+		assert(v1 != null);
+		assert(v2 != null);
+		return Vec3f.dot(v1.getUniX(), v1.getUniY(), v1.getUniZ(), v2);
+	}
 
 	/**
 	 * Returns the dot product between a tuple and x2, y2 and z2.
@@ -494,6 +508,20 @@ public class Vec3f implements IVec3fR, IVec3W
 	 * @return The dot product (cosine angle).
 	 */
 	public static double dot(double x1, double y1, double z1, ITup3R v2)
+	{
+		assert(v2 != null);
+		return Vec3f.dot(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ());
+	}
+	
+	/**
+	 * Returns the dot product between x1, y1 and z1 and a second tuple.
+	 * @param x1 The x component of the first vector.
+	 * @param y1 The y component of the first vector.
+	 * @param z1 The z component of the first vector.
+	 * @param v2 The second tuple.
+	 * @return The dot product (cosine angle).
+	 */
+	public static double dot(double x1, double y1, double z1, ITup4R v2)
 	{
 		assert(v2 != null);
 		return Vec3f.dot(x1, y1, z1, v2.getUniX(), v2.getUniY(), v2.getUniZ());
@@ -1779,7 +1807,7 @@ public class Vec3f implements IVec3fR, IVec3W
 
 	public String toString()
 	{
-		return "vec3f(" + this.x + ", " + this.y + ", " + this.z + ")";
+		return "vec3f(" + this.x + "f, " + this.y + "f, " + this.z + "f)";
 	}
 	
 	public boolean equals(Object obj)

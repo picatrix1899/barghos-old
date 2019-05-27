@@ -5,7 +5,7 @@ import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.point.Point3f;
 import org.barghos.math.vector.Vec3f;
 
-public class LineSegment3f
+public class LineSegment3f implements InfiniteGeometricObject
 {
 	public final Point3f p = new Point3f();
 	public final Vec3f d = new Vec3f();
