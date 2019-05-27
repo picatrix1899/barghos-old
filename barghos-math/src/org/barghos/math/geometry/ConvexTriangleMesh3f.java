@@ -49,6 +49,19 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 		return new OBB3f(center, halfExtend, r);
 	}
 
+	public AABB3f getAABBf()
+	{
+		PointSet3f set = getPointSet(null);
+
+		Vec3f min = new Vec3f(set.getMinX(), set.getMinY(), set.getMinZ());
+		Vec3f max = new Vec3f(set.getMaxX(), set.getMaxY(), set.getMaxZ());
+		
+		Vec3f halfExtend = max.sub(min, max).mul(0.5f, max);
+		Point3f center = new Point3f(min.add(halfExtend, min));
+		
+		return new AABB3f(center, halfExtend);
+	}
+	
 	public ConvexTriangleMesh3f transform(Mat4f t, ConvexTriangleMesh3f res)
 	{	
 		List<Triangle3f> tr = new ArrayList<>();
