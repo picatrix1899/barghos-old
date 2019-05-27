@@ -52,5 +52,10 @@ public class Tup4f extends Tupf implements ITup4fR, ITup4fW
 	public float getY() { return this.v[1]; }
 	public float getZ() { return this.v[2]; }
 	public float getW() { return this.v[3]; }
+	
+	public String toString()
+	{
+		return "tup4f(" + this.v[0] + "f, " + this.v[1] + "f, " + this.v[2] + "f, " + this.v[3] + "f)";
+	}
 
 }

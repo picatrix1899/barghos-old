@@ -8,6 +8,9 @@ public class Maths
 	/** The number PI with 11 digits after point. */
 	public static final double PI = 3.14159265359;
 	
+	/** The inverse of PI (1 / PI). */
+	public static final double INV_PI = 0.31830988618;
+	
 	/** This is the precalculated Half-PI (PI / 2). It's used in some trigonomic calculations. */
 	public static final double HALF_PI = 1.570796326795;
 	
@@ -46,9 +49,13 @@ public class Maths
 	 */
 	public static final float INV_SQRT3f = 0.5773502691896258f;
 	
+	public static final double SQRT2 = 1.4142135623730951;
+	
+	public static final double SQRT3 = 1.7320508075688772;
+	
 	/** A very small number used for determining if a floating point number is technically zero. */
 	public static final double SMALL_NUMBER = 1.e-8;
-	
+
 	/**
 	 * A very small number used for determining if two floating point numbers
 	 * are close enough together to count as equal.

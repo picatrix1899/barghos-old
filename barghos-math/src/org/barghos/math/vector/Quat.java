@@ -299,4 +299,9 @@ public class Quat implements IQuatR
 		return 4;
 	}
 
+	
+	public String toString()
+	{
+		return "quat(" + this.w + "d " + this.x + "d " + this.y + "d " + this.z + "d)";
+	}
 }

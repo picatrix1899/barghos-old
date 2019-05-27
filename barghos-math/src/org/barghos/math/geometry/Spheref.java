@@ -3,11 +3,11 @@ package org.barghos.math.geometry;
 import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.point.Point3f;
 
-public class Spheref
+public class Spheref implements InfiniteGeometricObject
 {
 	public final Point3f center = new Point3f();
 	public float radius;
-	
+
 	public Spheref() { }
 	public Spheref(ITup3R center, double radius) { assert(center != null); }
 	public Spheref(Spheref sphere) { assert(sphere != null); }
@@ -23,7 +23,7 @@ public class Spheref
 		res.set(this.center);
 		return res;
 	}
-	
+
 	public Spheref set(Spheref s) { return set(s.center, s.radius); }
 	public Spheref set(ITup3R center, double radius) { return setCenter(center).setRadius(radius); }
 	public Spheref set(double cx, double cy, double cz, double radius) { return setCenter(cx, cy, cz).setRadius(radius); }
@@ -33,5 +33,5 @@ public class Spheref
 	public Spheref setCenterY(double y) { this.center.setY(y); return this; }
 	public Spheref setCenterZ(double z) { this.center.setZ(z); return this; }
 	public Spheref setRadius(double r) { this.radius = (float)r; return this; }
-	
+
 }
