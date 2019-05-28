@@ -131,6 +131,8 @@ public class AABB3f implements FiniteGeometricObject
 
 	public AABB3f transform(Mat4f t, AABB3f res)
 	{
+		assert(t != null);
+		assert(!t.isZeroMatrix());
 		res = res != null ? res : new AABB3f();
 		
 		Vec3f min = Vec3f.sub(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, Vec3fPool.get());
@@ -145,5 +147,31 @@ public class AABB3f implements FiniteGeometricObject
 		Vec3fPool.store(min, max);
 		
 		return res.set(center, halfExtend);
+	}
+	
+	public OBB3f getOBB()
+	{
+		return new OBB3f(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, Mat4f.identity());
+	}
+	
+	public OBB3f getOBB(OBB3f res)
+	{
+		res = res != null ? res : new OBB3f();
+		return res.set(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, Mat4f.identity());
+	}
+	
+	public OBB3f getOBB(Mat4f rotation)
+	{
+		assert(rotation != null);
+		assert(!rotation.isZeroMatrix());
+		return new OBB3f(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, rotation);
+	}
+
+	public OBB3f getOBB(Mat4f rotation, OBB3f res)
+	{
+		assert(rotation != null);
+		assert(!rotation.isZeroMatrix());
+		res = res != null ? res : new OBB3f();
+		return res.set(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, rotation);
 	}
 }
