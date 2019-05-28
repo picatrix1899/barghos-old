@@ -14,7 +14,7 @@ import org.barghos.math.vector.Vec3f;
 import org.barghos.math.vector.Vec4f;
 
 public class Mat4f
-{
+{	
 	public final float[][] m = new float[4][4];
 	
 	public Mat4f() {  }

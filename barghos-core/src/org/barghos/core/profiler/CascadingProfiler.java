@@ -13,11 +13,11 @@ public class CascadingProfiler
 	private ThreadLocal<CascadingProfile> root = new ThreadLocal<>();
 	private ThreadLocal<Stack<ProfilingSession>> sessions = new ThreadLocal<>();
 	private ThreadLocal<Boolean> isEnabled = new ThreadLocal<>();
+	private double offset;
 	
-	
-	public CascadingProfiler()
+	public CascadingProfiler(double offset)
 	{
-		
+		this.offset = offset;
 	}
 	
 	public void isEnabled(boolean b)
@@ -28,7 +28,7 @@ public class CascadingProfiler
 	public void start(String name)
 	{
 		if(this.isEnabled.get() == null || !this.isEnabled.get()) return;
-		if(this.root.get() == null) this.root.set(new CascadingProfile(""));
+		if(this.root.get() == null) this.root.set(new CascadingProfile("", this.offset));
 		if(this.sessions.get() == null) this.sessions.set(new Stack<>());
 		
 		CascadingProfile profile;
@@ -50,7 +50,7 @@ public class CascadingProfiler
 	public ProfilingSession startSession(String name)
 	{
 		if(this.isEnabled.get() == null || !this.isEnabled.get()) return new DummyProfilingSession();
-		if(this.root.get() == null) this.root.set(new CascadingProfile(""));
+		if(this.root.get() == null) this.root.set(new CascadingProfile("", this.offset));
 		if(this.sessions.get() == null) this.sessions.set(new Stack<>());
 		
 		CascadingProfile profile;
@@ -81,6 +81,9 @@ public class CascadingProfiler
 		if(this.isEnabled.get() == null || !this.isEnabled.get()) return "";
 		StringBuilder builder = new StringBuilder();
 		
+		builder.append("PROFILER-RESULTS\n");
+		builder.append("{\n");
+		
 		if(!this.root.get().getProfiles().isEmpty())
 		{
 			for(CascadingProfile p : this.root.get().getProfiles().values())
@@ -88,6 +91,8 @@ public class CascadingProfiler
 				build(0, p, builder);
 			}
 		}
+		
+		builder.append("}\n");
 		
 		return builder.toString();
 	}
@@ -125,10 +130,12 @@ public class CascadingProfiler
 		private long startTime;
 		private double time;
 		private String name;
-
-		public CascadingProfile(String name)
+		private double offset;
+			
+		public CascadingProfile(String name, double offset)
 		{
 			this.name = name;
+			this.offset = offset;
 		}
 		
 		public Map<String,CascadingProfile> getProfiles()
@@ -146,7 +153,7 @@ public class CascadingProfiler
 			}
 			else
 			{
-				profile = new CascadingProfile(name);
+				profile = new CascadingProfile(name, this.offset);
 				this.profiles.put(name, profile);
 			}
 			
@@ -163,6 +170,14 @@ public class CascadingProfiler
 		public void stop()
 		{
 			double newTime = System.nanoTime() - this.startTime;
+			
+			if(time == 0)
+				time = newTime;
+			
+			if(newTime < time - offset || time + offset < newTime)
+			{
+				time = (time + newTime) * 0.5;
+			}
 			
 			if(this.time > 0.0)
 			{
