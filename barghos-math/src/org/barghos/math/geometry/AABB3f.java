@@ -95,6 +95,16 @@ public class AABB3f implements FiniteGeometricObject
 		return res.set(this.heX, this.heY, this.heZ);
 	}
 	
+	public Point3f getMin()
+	{
+		return new Point3f(this.cX - this.heX, this.cY - this.heY, this.cZ - this.heZ);
+	}
+	
+	public Point3f getMax()
+	{
+		return new Point3f(this.cX + this.heX, this.cY + this.heY, this.cZ + this.heZ);
+	}
+	
 	@Override
 	public Point3f[] getPoints()
 	{
