@@ -6,7 +6,7 @@ This class provides easy and convenient ways to create java.nio Buffers for the 
 array or set of data and optionally flip the resulting Buffer to ready it for reading. Beside of the primitive types it's also possible to wrap entire tuples. All Buffers use the native
 byte order of the current System.
 
---- 
+---
 
 ## Contents
 
@@ -33,6 +33,8 @@ byte order of the current System.
   * [WrapFlippedLongBuffer](#wrapflippedlongbuffer)
   * [WrapFlippedFloatBuffer](#wrapflippedfloatbuffer)
   * [WrapFlippedDoubleBuffer](#wrapflippeddoublebuffer)
+  * [WrapFlippedTuple2FBuffer](#wrapflippedtuple2fbuffer)
+  * [WrapFlippedTuple3FBuffer](#wrapflippedtuple3fbuffer)
 
 ---
 
@@ -210,6 +212,60 @@ DoubleBuffer buffer = BufferUtils.wrapDoubleBuffer(10.0d, 30.0d, 255.0d);
 // Example 2 - array
 double[] array = new double[] { 10.0d, 30.0d, 255.0d };
 DoubleBuffer buffer = BufferUtils.wrapDoubleBuffer(array);
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+## WrapTuple2FBuffer
+
+With the function `wrapTuple2FBuffer(ITup2fR... data)`you create a new `FloatBuffer` with the size of data.length * 2 and put the elements of data in order as x, y and z into the buffer. Due to the fact that the
+input type is the interface `ITup2fR` it accepts any derivation e.g. `Tuple2f` or `Vec2f`.
+
+```java
+// Example 1a - parameter array
+Tuple2f t1 = new Tuple2f(10.0f, 20.5f);
+Tuple2f t2 = new Tuple2f(30.7f, 40.0f);
+FloatBuffer buffer = BufferUtils.wrapTuple2FBuffer(t1, t2);
+
+// Example 1b - Equivalent to Example 1a
+FloatBuffer buffer = BufferUtils.wrapFloatBuffer(10.0f, 20.5f, 30.7f, 40.0f);
+
+// Example 1c - Equivalent to Example 1a
+Tuple2f t1 = new Tuple2f(10.0f, 20.5f);
+Tuple2f t2 = new Tuple2f(30.7f, 40.0f);
+
+FloatBuffer buffer = BufferUtils.wrapFloatBuffer(t1.getX(), t1.getY(), t2.getX(), t2.getY());
+
+// Example 2 - array
+Tuple2f[] array = new Tuple2f[] { new Tuple2f(10.0f,20.5f), new Tuple2f(30.7f, 40.0f) };
+FloatBuffer buffer = BufferUtils.wrapTuple2FBuffer(array);
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+## WrapTuple3FBuffer
+
+With the function `wrapTuple3FBuffer(ITup3fR... data)`you create a new `FloatBuffer` with the size of data.length * 3 and put the elements of data in order as x, y and z into the buffer. Due to the fact that the
+input type is the interface `ITup3fR` it accepts any derivation e.g. `Tuple3f` or `Vec3f`.
+
+```java
+// Example 1a - parameter array
+Tuple3f t1 = new Tuple3f(10.0f, 15.0f, 20.0f);
+Tuple3f t2 = new Tuple3f(30.0f, 35.0f, 40.0f);
+FloatBuffer buffer = BufferUtils.wrapTuple3FBuffer(t1, t2);
+
+// Example 1b - Equivalent to Example 1a
+FloatBuffer buffer = BufferUtils.wrapFloatBuffer(10.0f, 15.0f, 20.0f, 30.0f, 35.0f, 40.0f);
+
+// Example 1c - Equivalent to Example 1a
+Tuple3f t1 = new Tuple3f(10.0f, 15.0f, 20.0f);
+Tuple3f t2 = new Tuple3f(30.0f, 35.0f, 40.0f);
+
+FloatBuffer buffer = BufferUtils.wrapFloatBuffer(t1.getX(), t1.getY(), t1.getZ(), t2.getX(), t2.getY(), t2.getZ());
+
+// Example 2 - array
+Tuple3f[] array = new Tuple3f[] { Tuple3f(10.0f, 15.0f, 20.0f), new Tuple3f(30.0f, 35.0f, 40.0f) };
+FloatBuffer buffer = BufferUtils.wrapTuple3FBuffer(array);
 ```
 
 [**&laquo;To The Top&raquo;**](#)
