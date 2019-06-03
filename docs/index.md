@@ -2,5 +2,5 @@
 
 ## Projects
 
-* [Barghos-Core](barghos-core/BarghosCore.md)
+* [Barghos-Core](barghos-core/index.md)
 * [Barghos-Math](barghos-math/index.md)
