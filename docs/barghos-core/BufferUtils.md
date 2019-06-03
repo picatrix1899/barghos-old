@@ -27,6 +27,12 @@ byte order of the current System.
   * [WrapTuple2FBuffer](#wraptuple2fbuffer)
   * [WrapTuple3FBuffer](#wraptuple3fbuffer)
 * [Wrapping arrays in Buffers and flip](#wrapping-arrays-in-buffers-and-flip)
+  * [WrapFlippedByteBuffer](#wrapflippedbytebuffer)
+  * [WrapFlippedShortBuffer](#wrapflippedshortbuffer)
+  * [WrapFlippedIntBuffer](#wrapflippedintbuffer)
+  * [WrapFlippedLongBuffer](#wrapflippedlongbuffer)
+  * [WrapFlippedFloatBuffer](#wrapflippedfloatbuffer)
+  * [WrapFlippedDoubleBuffer](#wrapflippeddoublebuffer)
 
 ---
 
@@ -144,6 +150,66 @@ ShortBuffer buffer = BufferUtils.wrapShortBuffer((short)10, (short)30, (short)25
 // Example 2 - array
 short[] array = new short[] { (short)10, (short)30, (short)255 };
 ShortBuffer buffer = BufferUtils.wrapShortBuffer(array);
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+## WrapIntBuffer
+
+With the function `wrapIntBuffer(int... data)`you create a new `IntBuffer` with the size of data.length and put the elements of data in order into the buffer.
+
+```java
+// Example 1 - parameter array
+IntBuffer buffer = BufferUtils.wrapIntBuffer(10, 30, 255);
+
+// Example 2 - array
+int[] array = new int[] { 10, 30, 255 };
+IntBuffer buffer = BufferUtils.wrapIntBuffer(array);
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+## WrapLongBuffer
+
+With the function `wrapLongBuffer(long... data)`you create a new `LongBuffer` with the size of data.length and put the elements of data in order into the buffer.
+
+```java
+// Example 1 - parameter array
+LongBuffer buffer = BufferUtils.wrapLongBuffer(10l, 30l, 255l);
+
+// Example 2 - array
+long[] array = new long[] { 10l, 30l, 255l };
+LongBuffer buffer = BufferUtils.wrapLongBuffer(array);
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+## WrapFloatBuffer
+
+With the function `wrapFloatBuffer(float... data)`you create a new `FloatBuffer` with the size of data.length and put the elements of data in order into the buffer.
+
+```java
+// Example 1 - parameter array
+FloatBuffer buffer = BufferUtils.wrapFloatBuffer(10.0f, 30.0f, 255.0f);
+
+// Example 2 - array
+float[] array = new float[] { 10.0f, 30.0f, 255.0f };
+FloatBuffer buffer = BufferUtils.wrapFloatBuffer(array);
+```
+
+[**&laquo;To The Top&raquo;**](#)
+
+## WrapDoubleBuffer
+
+With the function `wrapDoubleBuffer(double... data)`you create a new `DoubleBuffer` with the size of data.length and put the elements of data in order into the buffer.
+
+```java
+// Example 1 - parameter array
+DoubleBuffer buffer = BufferUtils.wrapDoubleBuffer(10.0d, 30.0d, 255.0d);
+
+// Example 2 - array
+double[] array = new double[] { 10.0d, 30.0d, 255.0d };
+DoubleBuffer buffer = BufferUtils.wrapDoubleBuffer(array);
 ```
 
 [**&laquo;To The Top&raquo;**](#)
