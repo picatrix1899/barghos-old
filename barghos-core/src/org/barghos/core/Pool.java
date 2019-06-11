@@ -79,7 +79,7 @@ public class Pool<T>
 	public T get()
 	{
 		if(this.store.size() > 0) return this.store.pop();
-		
+
 		try
 		{
 			return this.clazz.newInstance();

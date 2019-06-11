@@ -14,25 +14,57 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 
 	private List<Triangle3f> triangles = new ArrayList<>();
 	
+	public ConvexTriangleMesh3f()
+	{
+		
+	}
+	
+	public ConvexTriangleMesh3f(ConvexTriangleMesh3f mesh)
+	{
+		set(mesh.triangles);
+	}
+	
 	public ConvexTriangleMesh3f(List<Triangle3f> triangles)
 	{
-		this.triangles.addAll(triangles);
+		set(triangles);
 	}
 
+	public boolean isValid()
+	{
+		return !this.triangles.isEmpty();
+	}
+	
+	public ConvexTriangleMesh3f set(List<Triangle3f> triangles)
+	{
+		assert(triangles != null);
+		assert(triangles.size() > 0);
+		this.triangles.clear();
+		
+		for(int i = 0; i < triangles.size(); i++)
+			this.triangles.add(new Triangle3f(triangles.get(i)));
+		
+		return this;
+	}
+	
 	public Point3f[] getPoints()
 	{
 		Point3f[] p = new Point3f[triangles.size() * 3];
 		
 		for(int i = 0; i < triangles.size(); i++)
 		{
-			p[i * 3] = triangles.get(i).getP1(new Point3f());
-			p[i * 3 + 1] = triangles.get(i).getP2(new Point3f());
-			p[i * 3 + 2] = triangles.get(i).getP3(new Point3f());
+			p[i * 3] = triangles.get(i).getP1(null);
+			p[i * 3 + 1] = triangles.get(i).getP2(null);
+			p[i * 3 + 2] = triangles.get(i).getP3(null);
 		}
 		
 		return p;
 	}
-
+	
+	public List<Triangle3f> getTriangles()
+	{
+		return new ArrayList<>(this.triangles);
+	}
+	
 	public OBB3f getOBBf(Mat4f t, Mat4f r)
 	{
 		PointSet3f set = getPointSet(null);
@@ -64,14 +96,15 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 	
 	public ConvexTriangleMesh3f transform(Mat4f t, ConvexTriangleMesh3f res)
 	{	
+		res = res != null ? res : new ConvexTriangleMesh3f();
 		List<Triangle3f> tr = new ArrayList<>();
 		
-		for(int i = 0; i < tr.size(); i++)
+		for(int i = 0; i < this.triangles.size(); i++)
 		{
-			tr.add(tr.get(i).transform(t, null));
+			tr.add(this.triangles.get(i).transform(t, null));
 		}
 		
-		return new ConvexTriangleMesh3f(tr);
+		return res.set(tr);
 	}
 
 }
