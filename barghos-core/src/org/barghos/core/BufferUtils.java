@@ -8,6 +8,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.util.List;
 
 import org.barghos.core.api.tuple.ITup2dR;
 import org.barghos.core.api.tuple.ITup2fR;
@@ -100,6 +101,23 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Creates a Byte-Buffer from the given elements.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The new Byte-Buffer.
+	 */
+	public static ByteBuffer wrapByteBuffer(List<Byte> v)
+	{
+		assert(v != null);
+		assert(!v.isEmpty());
+		
+		ByteBuffer buffer = ByteBuffer.allocateDirect(v.size()).order(order);
+		for(int i = 0; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+ 	
+	/**
 	 * Creates a Short-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Short-Buffer.
@@ -110,6 +128,23 @@ public class BufferUtils
 		assert(v.length != 0);
 
 		return ByteBuffer.allocateDirect(v.length << 1).order(order).asShortBuffer().put(v);
+	}
+	
+	/**
+	 * Creates a Short-Buffer from the given elements.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The new Short-Buffer.
+	 */
+	public static ShortBuffer wrapShortBuffer(List<Short> v)
+	{
+		assert(v != null);
+		assert(!v.isEmpty());
+		
+		ShortBuffer buffer = ByteBuffer.allocateDirect(v.size() << 1).order(order).asShortBuffer();
+		for(int i = 0; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
 	}
 	
 	/**
@@ -126,6 +161,24 @@ public class BufferUtils
 	}	
 	
 	/**
+	 * Creates a Int-Buffer from the given elements.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The new Int-Buffer.
+	 */
+	public static IntBuffer wrapIntBuffer(List<Integer> v)
+	{
+		assert(v != null);
+		assert(!v.isEmpty());
+		
+		IntBuffer buffer = ByteBuffer.allocateDirect(v.size() << 2).order(order).asIntBuffer();
+		for(int i = 0; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+ 	
+	
+	/**
 	 * Creates a Long-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Long-Buffer.
@@ -137,6 +190,23 @@ public class BufferUtils
 
 		return ByteBuffer.allocateDirect(v.length << 3).order(order).asLongBuffer().put(v);
 	}	
+	
+	/**
+	 * Creates a Long-Buffer from the given elements.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The new Long-Buffer.
+	 */
+	public static LongBuffer wrapLongBuffer(List<Long> v)
+	{
+		assert(v != null);
+		assert(!v.isEmpty());
+		
+		LongBuffer buffer = ByteBuffer.allocateDirect(v.size() << 3).order(order).asLongBuffer();
+		for(int i = 0; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
 	
 	/**
 	 * Creates a Float-Buffer from the given elements.
@@ -152,6 +222,23 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Creates a Float-Buffer from the given elements.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The new Float-Buffer.
+	 */
+	public static FloatBuffer wrapFloatBuffer(List<Float> v)
+	{
+		assert(v != null);
+		assert(!v.isEmpty());
+		
+		FloatBuffer buffer = ByteBuffer.allocateDirect(v.size() << 2).order(order).asFloatBuffer();
+		for(int i = 0; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
@@ -162,6 +249,23 @@ public class BufferUtils
 		assert(v.length != 0);
 
 		return ByteBuffer.allocateDirect(v.length << 3).order(order).asDoubleBuffer().put(v);
+	}
+	
+	/**
+	 * Creates a Double-Buffer from the given elements.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The new Double-Buffer.
+	 */
+	public static DoubleBuffer wrapDoubleBuffer(List<Float> v)
+	{
+		assert(v != null);
+		assert(!v.isEmpty());
+		
+		DoubleBuffer buffer = ByteBuffer.allocateDirect(v.size() << 3).order(order).asDoubleBuffer();
+		for(int i = 0; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
 	}
 	
 	/**
