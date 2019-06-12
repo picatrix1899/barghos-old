@@ -1,7 +1,7 @@
 package org.barghos.math.geometry;
 
 import org.barghos.core.api.tuple.ITup3R;
-
+import org.barghos.math.Maths;
 import org.barghos.math.point.Point3f;
 import org.barghos.math.vector.Vec3f;
 
@@ -170,7 +170,7 @@ public class Line3f implements FiniteGeometricObject
 	
 	public double length()
 	{
-		return Math.sqrt(squaredLength());
+		return Maths.sqrt(squaredLength());
 	}
 	
 	public Vec3f vector(Vec3f res)

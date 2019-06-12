@@ -575,7 +575,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double length(double x, double y)
 	{
-		return Math.sqrt(Vec2f.squaredLength(x, y));
+		return Maths.sqrt(Vec2f.squaredLength(x, y));
 	} 
 	
 	/**
@@ -625,7 +625,7 @@ public class Vec2f implements IVec2fR, IVec2W
 	 */
 	public static double lengthSafe(double x, double y, double tolerance)
 	{
-		return Vec2f.isZero(x, y, tolerance) ? 0.0 : Math.sqrt(Vec2f.squaredLength(x, y));
+		return Vec2f.isZero(x, y, tolerance) ? 0.0 : Maths.sqrt(Vec2f.squaredLength(x, y));
 	}
 	
 	/**

@@ -637,7 +637,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double length(double x, double y, double z)
 	{
-		return Math.sqrt(Vec3f.squaredLength(x, y, z));
+		return Maths.sqrt(Vec3f.squaredLength(x, y, z));
 	} 
 	
 	/**
@@ -689,7 +689,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static double lengthSafe(double x, double y, double z, double tolerance)
 	{
-		return Vec3f.isZero(x, y, z, tolerance) ? 0.0 : Math.sqrt(Vec3f.squaredLength(x, y, z));
+		return Vec3f.isZero(x, y, z, tolerance) ? 0.0 : Maths.sqrt(Vec3f.squaredLength(x, y, z));
 	}
 	
 	/**
