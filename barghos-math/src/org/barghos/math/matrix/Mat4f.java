@@ -231,24 +231,24 @@ public class Mat4f
 	
 	public Tup4f getRow(int index, Tup4f res)
 	{
-		res = res != null ? res : new Tup4f();
+		if(res == null) res = new Tup4f();
 		return res.set(this.m[index][0], this.m[index][1], this.m[index][2], this.m[index][3]);
 	}
 	
 	public Tup4f getColumn(int index, Tup4f res)
 	{
-		res = res != null ? res : new Tup4f();
+		if(res == null) res = new Tup4f();
 		return res.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]);
 	}
 	
 	public Vec4f getRow(int index, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(this.m[index][0], this.m[index][1], this.m[index][2], this.m[index][3]);
 	}
 	public Vec4f getColumn(int index, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]);
 	}
 	
@@ -282,7 +282,8 @@ public class Mat4f
 	{
 		assert(l != null);
 		assert(r != null);
-		res = res != null ? res : new Mat4f();
+		
+		if(res == null) res = new Mat4f();
 		
 		float m0x_ = l.m[0][0] * r.m[0][0] + l.m[0][1] * r.m[1][0] + l.m[0][2] * r.m[2][0] + l.m[0][3] * r.m[3][0];
 		float m0y_ = l.m[0][0] * r.m[0][1] + l.m[0][1] * r.m[1][1] + l.m[0][2] * r.m[2][1] + l.m[0][3] * r.m[3][1];
@@ -322,7 +323,8 @@ public class Mat4f
 	{
 		assert(l != null);
 		assert(r != null);
-		res = res != null ? res : new Vec3f();
+		
+		if(res == null) res = new Vec3f();
 		
 		float x_ = (float)(l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0);
 		float y_ = (float)(l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0);
@@ -343,7 +345,8 @@ public class Mat4f
 	{
 		assert(l != null);
 		assert(r != null);
-		res = res != null ? res : new Point3f();
+		
+		if(res == null) res = new Point3f();
 		
 		float x_ = (float)(l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0);
 		float y_ = (float)(l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0);
