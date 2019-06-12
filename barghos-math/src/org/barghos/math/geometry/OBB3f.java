@@ -3,9 +3,9 @@ package org.barghos.math.geometry;
 import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.point.Point3f;
-import org.barghos.math.pool.Vec3fPool;
 import org.barghos.math.vector.Vec3f;
 import org.barghos.math.vector.Vec3fAxis;
+import org.barghos.math.vector.Vec3fPool;
 
 public class OBB3f implements FiniteGeometricObject
 {

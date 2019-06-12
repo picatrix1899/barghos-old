@@ -1,30 +1,18 @@
-package org.barghos.math.pool;
+package org.barghos.math.vector;
 
 import org.barghos.core.Check;
-import org.barghos.core.LeakDetectionPool;
-import org.barghos.core.Pool;
+import org.barghos.core.api.IPool;
 import org.barghos.core.api.tuple.ITup3dR;
 import org.barghos.core.api.tuple.ITup3fR;
-import org.barghos.math.vector.Vec3f;
+import org.barghos.core.pool.DequePool;
 
 public class Vec3fPool
 {
-
-	private static final Pool<Vec3f> pool = new LeakDetectionPool<Vec3f>(Vec3f.class);
+	public static final IPool<Vec3f> DEFAULT_POOL = new DequePool<Vec3f>(Vec3f.class);
+	
+	private static IPool<Vec3f> pool = DEFAULT_POOL;
 	
 	private Vec3fPool() { }
-	
-	public static void start() { ((LeakDetectionPool<Vec3f>) pool).startSession(); }
-	public static void stop()
-	{
-		((LeakDetectionPool<Vec3f>) pool).stopSession(); 
-	
-		int leakage = ((LeakDetectionPool<Vec3f>) pool).leakedEntities();
-		
-		if(leakage > 0) System.out.println(leakage);
-			
-	}
-	
 	
 	public static Vec3f get() { return pool.get().set(0.0); }
 	public static Vec3f get(ITup3fR v) { assert(v != null); return pool.get().set(v); }
@@ -33,4 +21,10 @@ public class Vec3fPool
 	public static Vec3f get(double x, double y, double z) { return pool.get().set(x, y, z); }
 	
 	public static void store(Vec3f... instances) { assert(Check.notNull(instances)); pool.store(instances); }
+	
+	public static void ensure(int count) { assert(count > 0); pool.ensure(count); }
+	public static int size() { return pool.size(); }
+	
+	public static IPool<Vec3f> getInnerPool() { return Vec3fPool.pool; }
+	public static void setInnerPool(IPool<Vec3f> pool) { Vec3fPool.pool = pool; }
 }

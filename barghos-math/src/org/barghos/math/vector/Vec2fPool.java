@@ -1,15 +1,15 @@
-package org.barghos.math.pool;
+package org.barghos.math.vector;
 
 import org.barghos.core.Check;
-import org.barghos.core.Pool;
+import org.barghos.core.api.IPool;
 import org.barghos.core.api.tuple.ITup2dR;
 import org.barghos.core.api.tuple.ITup2fR;
-import org.barghos.math.vector.Vec2f;
+import org.barghos.core.pool.DequePool;
 
 
 public class Vec2fPool
 {
-	private static final Pool<Vec2f> pool = new Pool<Vec2f>(Vec2f.class);
+	private static final IPool<Vec2f> pool = new DequePool<Vec2f>(Vec2f.class);
 	
 	private Vec2fPool() { }
 	

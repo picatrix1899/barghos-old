@@ -1,15 +1,20 @@
-package org.barghos.core;
+package org.barghos.core.pool;
 
 import java.lang.reflect.Constructor;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
+
+import org.barghos.core.api.IPool;
 
 /**
  * This class can store instances of a type T for later reuse.
  */
-public class Pool<T>
+public class DequePool<T> implements IPool<T>
 {
 	private final Deque<T> store = new ArrayDeque<T>();
+	
+	private int size;
 	
 	private Class<T> clazz;
 	
@@ -19,7 +24,7 @@ public class Pool<T>
 	 * <br><br><b><u>Important:</u></b> The class needs a default constructor for being instanced by the pool.
 	 * @param clazz The class of the used type.
 	 */
-	public Pool(Class<T> clazz)
+	public DequePool(Class<T> clazz)
 	{
 		assert(clazz != null);
 		this.clazz = clazz;
@@ -32,27 +37,42 @@ public class Pool<T>
 	 * @param clazz The class of the used type.
 	 * @param size The number of initial entries to pregenerate
 	 */
-	public Pool(Class<T> clazz, int size)
+	public DequePool(Class<T> clazz, int size)
 	{
 		assert(clazz != null);
+		assert(size > 0);
 		this.clazz = clazz;
 		
-		try
+		ensure(size);
+	}
+
+	public T get()
+	{
+		if(this.size > 0)
 		{
-			for(int i = 0; i < size; i++)
-				this.store.add(newInstance());
+			this.size--;
+			return this.store.pop();
 		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		
+		return getNew();
 	}
 	
-	/**
-	 * Creates a new instance of the type of the pool.
-	 * @return The new instance.
-	 */
-	private T newInstance()
+	public void store(@SuppressWarnings("unchecked") T... t)
+	{
+		assert(t != null);
+		
+		if(t.length > 0)
+		{
+			int i = 0;
+			for(; i < t.length; i++)
+			{
+				this.store.push(t[i]);
+				this.size++;
+			}
+		}
+	}
+
+	public T getNew()
 	{
 		try
 		{
@@ -65,41 +85,32 @@ public class Pool<T>
 			throw new Error();
 		}
 	}
-	
-	/**
-	 * Returns the count of elements in the pool.
-	 * @return The size
-	 */
-	public int size() { return this.store.size(); }
-	
-	/**
-	 * Returns a stored instance and removes it from the pool.
-	 * @return A stored instance.
-	 */
-	public T get()
-	{
-		if(this.store.size() > 0) return this.store.pop();
 
-		try
+	public void ensure(int count)
+	{
+		if(count <= this.size) return;
+		
+		int neededInstances = count - this.size;
+
+		if(neededInstances > 0)
 		{
-			return this.clazz.newInstance();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			return null;
+			this.size += neededInstances;
+			
+			int i = 0;
+			for(; i < neededInstances; i++)
+			{
+				this.store.push(getNew());
+			}
 		}
 	}
-	
+
 	/**
-	 * Stores one or more instances in the pool.
-	 * @param t instances of the type of the pool.
+	 * Returns the current instance count in the pool.
+	 * @return the current instance count.
 	 */
-	public void store(@SuppressWarnings("unchecked") T... t)
+	public int size()
 	{
-		assert(t != null);
-		for(T element : t)
-			this.store.push(element);
+		return this.size;
 	}
 	
 }
