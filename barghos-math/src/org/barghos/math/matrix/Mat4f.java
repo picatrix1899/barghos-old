@@ -23,12 +23,17 @@ public class Mat4f
 	public Mat4f set(Mat4f m)
 	{
 		assert(m != null);
-		Tup4f t = Tup4fPool.get();
-		setRow(0, m.getRow(0, t));
-		setRow(1, m.getRow(1, t));
-		setRow(2, m.getRow(2, t));
-		setRow(3, m.getRow(3, t));
-		Tup4fPool.store(t);
+	
+		int r = 0, c;
+		for(; r < 4; r++)
+		{
+			c = 0;
+			for(; c < 4; c++)
+			{
+				this.m[r][c] = m.m[r][c];
+			}
+		}
+
 		return this;
 	}
 	
@@ -285,30 +290,28 @@ public class Mat4f
 		
 		if(res == null) res = new Mat4f();
 		
-		float m0x_ = l.m[0][0] * r.m[0][0] + l.m[0][1] * r.m[1][0] + l.m[0][2] * r.m[2][0] + l.m[0][3] * r.m[3][0];
-		float m0y_ = l.m[0][0] * r.m[0][1] + l.m[0][1] * r.m[1][1] + l.m[0][2] * r.m[2][1] + l.m[0][3] * r.m[3][1];
-		float m0z_ = l.m[0][0] * r.m[0][2] + l.m[0][1] * r.m[1][2] + l.m[0][2] * r.m[2][2] + l.m[0][3] * r.m[3][2];
-		float m0w_ = l.m[0][0] * r.m[0][3] + l.m[0][1] * r.m[1][3] + l.m[0][2] * r.m[2][3] + l.m[0][3] * r.m[3][3];
 		
-		float m1x_ = l.m[1][0] * r.m[0][0] + l.m[1][1] * r.m[1][0] + l.m[1][2] * r.m[2][0] + l.m[1][3] * r.m[3][0];
-		float m1y_ = l.m[1][0] * r.m[0][1] + l.m[1][1] * r.m[1][1] + l.m[1][2] * r.m[2][1] + l.m[1][3] * r.m[3][1];
-		float m1z_ = l.m[1][0] * r.m[0][2] + l.m[1][1] * r.m[1][2] + l.m[1][2] * r.m[2][2] + l.m[1][3] * r.m[3][2];
-		float m1w_ = l.m[1][0] * r.m[0][3] + l.m[1][1] * r.m[1][3] + l.m[1][2] * r.m[2][3] + l.m[1][3] * r.m[3][3];
+		float[][] m_ = new float[4][4];
 		
-		float m2x_ = l.m[2][0] * r.m[0][0] + l.m[2][1] * r.m[1][0] + l.m[2][2] * r.m[2][0] + l.m[2][3] * r.m[3][0];
-		float m2y_ = l.m[2][0] * r.m[0][1] + l.m[2][1] * r.m[1][1] + l.m[2][2] * r.m[2][1] + l.m[2][3] * r.m[3][1];
-		float m2z_ = l.m[2][0] * r.m[0][2] + l.m[2][1] * r.m[1][2] + l.m[2][2] * r.m[2][2] + l.m[2][3] * r.m[3][2];
-		float m2w_ = l.m[2][0] * r.m[0][3] + l.m[2][1] * r.m[1][3] + l.m[2][2] * r.m[2][3] + l.m[2][3] * r.m[3][3];
+		int row = 0;
+		for(; row < 4; row++)
+		{
+			m_[row][0] = l.m[row][0] * r.m[0][0] + l.m[row][1] * r.m[1][0] + l.m[row][2] * r.m[2][0] + l.m[row][3] * r.m[3][0];
+			m_[row][1] = l.m[row][0] * r.m[0][1] + l.m[row][1] * r.m[1][1] + l.m[row][2] * r.m[2][1] + l.m[row][3] * r.m[3][1];
+			m_[row][2] = l.m[row][0] * r.m[0][2] + l.m[row][1] * r.m[1][2] + l.m[row][2] * r.m[2][2] + l.m[row][3] * r.m[3][2];
+			m_[row][3] = l.m[row][0] * r.m[0][3] + l.m[row][1] * r.m[1][3] + l.m[row][2] * r.m[2][3] + l.m[row][3] * r.m[3][3];
+		}
 		
-		float m3x_ = l.m[3][0] * r.m[0][0] + l.m[3][1] * r.m[1][0] + l.m[3][2] * r.m[2][0] + l.m[3][3] * r.m[3][0];
-		float m3y_ = l.m[3][0] * r.m[0][1] + l.m[3][1] * r.m[1][1] + l.m[3][2] * r.m[2][1] + l.m[3][3] * r.m[3][1];
-		float m3z_ = l.m[3][0] * r.m[0][2] + l.m[3][1] * r.m[1][2] + l.m[3][2] * r.m[2][2] + l.m[3][3] * r.m[3][2];
-		float m3w_ = l.m[3][0] * r.m[0][3] + l.m[3][1] * r.m[1][3] + l.m[3][2] * r.m[2][3] + l.m[3][3] * r.m[3][3];
-		
-		res.setRow(0, m0x_, m0y_, m0z_, m0w_);
-		res.setRow(1, m1x_, m1y_, m1z_, m1w_);
-		res.setRow(2, m2x_, m2y_, m2z_, m2w_);
-		res.setRow(3, m3x_, m3y_, m3z_, m3w_);
+		row = 0;
+		int c;
+		for(; row < 4; row++)
+		{
+			c = 0;
+			for(; c < 4; c++)
+			{
+				res.m[row][c] = m_[row][c];
+			}
+		}
 		
 		return res;
 	}

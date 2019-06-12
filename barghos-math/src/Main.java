@@ -31,9 +31,19 @@ public class Main
 //		System.out.println(m.getRow(2));
 //		System.out.println(m.transform(Vec3fAxis.AXIS_X,(Vec3f) null));
 		
-		OBB3f a = new OBB3f(new Vec3f(0, 9, -31.5), new Vec3f(4, 9, 4), Mat4f.identity());
-		OBB3f b = new OBB3f(new Vec3f(0, 5, -40), new Vec3f(7, 5, 0), Mat4f.rotation(Quat.getFromAxis(Vec3fAxis.AXIS_Y, 45)));
+//		OBB3f a = new OBB3f(new Vec3f(0, 9, -31.5), new Vec3f(4, 9, 4), Mat4f.identity());
+//		OBB3f b = new OBB3f(new Vec3f(0, 5, -40), new Vec3f(7, 5, 0), Mat4f.rotation(Quat.getFromAxis(Vec3fAxis.AXIS_Y, 45)));
+//		
+//		OBBOBBResolver.iOBBOBB3f(a, b);
 		
-		OBBOBBResolver.iOBBOBB3f(a, b);
+		float[] a1 = new float[] { 1.0f, 2.0f, 3.0f };
+		float[] a2 = new float[3];
+		a2[0] = a1[0];
+		a2[1] = a1[1];
+		a2[2] = a1[2];
+		
+		a1[1] = 2.5f;
+		
+		System.out.println(a2[1]);
 	}
 }
