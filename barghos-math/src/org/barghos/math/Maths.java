@@ -268,4 +268,26 @@ public class Maths
 	{
 		return isZero(value, tolerance) ? 0.0 : 1.0 / value;
 	}
+	
+	public static double sin(double a)
+	{
+		return Math.sin(a);
+	}
+	
+	public static double cos(double a)
+	{
+		return Math.cos(a);
+	}
+	
+	public static double sqrt(double a)
+	{
+		if(Math.abs(1.0 - a) < 2.107342e-08)
+		{
+			return (1 + a) * 0.5;
+		}
+		else
+		{
+			return Math.sqrt(a);
+		}
+	}
 }

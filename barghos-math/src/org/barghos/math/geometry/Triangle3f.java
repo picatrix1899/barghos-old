@@ -323,17 +323,17 @@ public class Triangle3f implements FiniteGeometricObject
 
 	public double getLengthSideP1P2()
 	{
-		return Math.sqrt(getSquaredLengthSideP1P2());
+		return Maths.sqrt(getSquaredLengthSideP1P2());
 	}
 	
 	public double getLengthSideP1P3()
 	{
-		return Math.sqrt(getSquaredLengthSideP1P3());
+		return Maths.sqrt(getSquaredLengthSideP1P3());
 	}
 	
 	public double getLengthSideP2P3()
 	{
-		return Math.sqrt(getSquaredLengthSideP2P3());
+		return Maths.sqrt(getSquaredLengthSideP2P3());
 	}
 	
 	public double getArea()
@@ -347,17 +347,17 @@ public class Triangle3f implements FiniteGeometricObject
 		if(aq == bq && bq == cq)
 		{
 			
-			double a = Math.sqrt(aq);
+			double a = Maths.sqrt(aq);
 			
 			return Maths.INV_SQRT3 * 0.25 * a * a;
 		}
 		else
 		{
-			double a = Math.sqrt(aq);
-			double b = Math.sqrt(bq);
-			double c = Math.sqrt(cq);
+			double a = Maths.sqrt(aq);
+			double b = Maths.sqrt(bq);
+			double c = Maths.sqrt(cq);
 			double s = (a + b + c) * 0.5;
-			return Math.sqrt(s * (s - a ) * (s - b) * (s - c));
+			return Maths.sqrt(s * (s - a ) * (s - b) * (s - c));
 		}
 	}
 	@Override

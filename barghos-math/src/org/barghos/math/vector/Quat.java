@@ -133,7 +133,7 @@ public class Quat implements IQuatR
 
 		if(trace > 0)
 		{
-			double s = 0.5 / Math.sqrt(trace + 1.0);
+			double s = 0.5 / Maths.sqrt(trace + 1.0);
 			this.w = 0.25 / s;
 			
 			
@@ -145,7 +145,7 @@ public class Quat implements IQuatR
 		{
 			if(rot.m[0][0] > rot.m[1][1] && rot.m[0][0] > rot.m[2][2])
 			{
-				double s = 2.0 * Math.sqrt(1.0 + rot.m[0][0] - rot.m[1][1] - rot.m[2][2]);
+				double s = 2.0 * Maths.sqrt(1.0 + rot.m[0][0] - rot.m[1][1] - rot.m[2][2]);
 				this.w = (rot.m[1][2] - rot.m[2][1]) / s;
 				this.x = 0.25 * s;
 				this.y = (rot.m[1][0] + rot.m[0][1]) / s;
@@ -153,7 +153,7 @@ public class Quat implements IQuatR
 			}
 			else if(rot.m[1][1] > rot.m[2][2])
 			{
-				double s = 2.0 * Math.sqrt(1.0 + rot.m[1][1] - rot.m[0][0] - rot.m[2][2]);
+				double s = 2.0 * Maths.sqrt(1.0 + rot.m[1][1] - rot.m[0][0] - rot.m[2][2]);
 				this.w = (rot.m[2][0] - rot.m[0][2]) / s;
 				this.x = (rot.m[1][0] + rot.m[0][1]) / s;
 				this.y = 0.25 * s;
@@ -161,7 +161,7 @@ public class Quat implements IQuatR
 			}
 			else
 			{
-				double s = 2.0 * Math.sqrt(1.0 + rot.m[2][2] - rot.m[0][0] - rot.m[1][1]);
+				double s = 2.0 * Maths.sqrt(1.0 + rot.m[2][2] - rot.m[0][0] - rot.m[1][1]);
 				this.w = (rot.m[0][1] - rot.m[1][0] ) / s;
 				this.x = (rot.m[2][0] + rot.m[0][2] ) / s;
 				this.y = (rot.m[1][2] + rot.m[2][1] ) / s;
@@ -273,7 +273,7 @@ public class Quat implements IQuatR
 		return res;
 	}
 	
-	public double length() { return Math.sqrt(squaredLength()); }
+	public double length() { return Maths.sqrt(squaredLength()); }
 	public double squaredLength() { return this.w * this.w + this.x * this.x + this.y * this.y + this.z * this.z; }
 	public double reciprocalLength() { return 1.0 / length(); }
 	
@@ -293,6 +293,11 @@ public class Quat implements IQuatR
 		return res;
 	}
 
+	public double dot(Quat q)
+	{
+		return this.w * q.w + this.x * q.x + this.y * q.y + this.z * q.z;
+	}
+	
 	@Override
 	public int getDimensions()
 	{
