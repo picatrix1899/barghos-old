@@ -1,6 +1,6 @@
-package org.barghos.core;
+package org.barghos.core.pool;
 
-public class LeakDetectionPool<T> extends Pool<T>
+public class LeakDetectionPool<T> extends DequePool<T>
 {
 
 	int out = 0;
@@ -11,13 +11,18 @@ public class LeakDetectionPool<T> extends Pool<T>
 		super(clazz);
 	}
 
+	public LeakDetectionPool(Class<T> clazz, int size)
+	{
+		super(clazz, size);
+	}
+	
 	public T get()
 	{
 		out++;
 		return super.get();
 	}
 	
-	public void store(T... t)
+	public void store(@SuppressWarnings("unchecked") T... t)
 	{
 		in += t.length;
 		super.store(t);

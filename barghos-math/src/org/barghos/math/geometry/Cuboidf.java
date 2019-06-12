@@ -4,8 +4,8 @@ import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.api.point.IPoint3fR;
 import org.barghos.math.api.vector.IVec3fR;
 import org.barghos.math.point.Point3f;
-import org.barghos.math.pool.Vec3fPool;
 import org.barghos.math.vector.Vec3f;
+import org.barghos.math.vector.Vec3fPool;
 
 public class Cuboidf
 {

@@ -1,16 +1,16 @@
-package org.barghos.core.pool.color;
+package org.barghos.core.color;
 
 import org.barghos.core.Check;
-import org.barghos.core.Pool;
+import org.barghos.core.api.IPool;
 import org.barghos.core.api.tuple.ITup4R;
-import org.barghos.core.color.HDRColor4;
+import org.barghos.core.pool.DequePool;
 
 /**
  * This pool contains instances of the type HDRColor4.
  */
 public class HDRColor4Pool
 {
-	private static final Pool<HDRColor4> pool = new Pool<HDRColor4>(HDRColor4.class);
+	private static final IPool<HDRColor4> pool = new DequePool<HDRColor4>(HDRColor4.class);
 
 	/**
 	 * Returns an instance of HDRColor4 from the pool and resets it.

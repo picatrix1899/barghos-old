@@ -1,16 +1,16 @@
-package org.barghos.core.pool.color;
+package org.barghos.core.color;
 
 import org.barghos.core.Check;
-import org.barghos.core.Pool;
+import org.barghos.core.api.IPool;
 import org.barghos.core.api.tuple.ITup4R;
-import org.barghos.core.color.LDRColor4;
+import org.barghos.core.pool.DequePool;
 
 /**
  * This pool contains instances of the type LDRColor4.
  */
 public class LDRColor4Pool
 {
-	private static final Pool<LDRColor4> pool = new Pool<LDRColor4>(LDRColor4.class);
+	private static final IPool<LDRColor4> pool = new DequePool<LDRColor4>(LDRColor4.class);
 
 	/**
 	 * Returns an instance of LDRColor4 from the pool and resets it.
