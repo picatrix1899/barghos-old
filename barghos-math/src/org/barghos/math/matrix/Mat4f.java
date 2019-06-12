@@ -90,8 +90,8 @@ public class Mat4f
 	
 	public Mat4f initPerspective(double width, double height, double fovY, double near, double far)
 	{
-		float y_scale = (float)(1.0 / Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD));
-		float x_scale = (float)(y_scale / (width / height));
+		double y_scale = 1.0 / Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD);
+		double x_scale = y_scale / (width / height);
 
 		setRow(0, x_scale,	0,			0,								0								);
 		setRow(1, 0,		y_scale,	0,								0								);
@@ -103,8 +103,8 @@ public class Mat4f
 	
 	public Mat4f initPerspective(double fovX, double fovY, double near, double far)
 	{
-		float y_scale = (float)(1.0 / Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD));
-		float x_scale = (float)(1.0 / Math.tan(fovX * 0.5 * Maths.DEG_TO_RAD));
+		double y_scale = 1.0 / Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD);
+		double x_scale = 1.0 / Math.tan(fovX * 0.5 * Maths.DEG_TO_RAD);
 
 		setRow(0, x_scale,	0,			0,								0								);
 		setRow(1, 0,		y_scale,	0,								0								);
@@ -326,9 +326,9 @@ public class Mat4f
 		
 		if(res == null) res = new Vec3f();
 		
-		float x_ = (float)(l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0);
-		float y_ = (float)(l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0);
-		float z_ = (float)(l.m[2][0] * r.getUniX() + l.m[2][1] * r.getUniY() + l.m[2][2] * r.getUniZ() + l.m[2][3] * 1.0);
+		double x_ = l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0;
+		double y_ = l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0;
+		double z_ = l.m[2][0] * r.getUniX() + l.m[2][1] * r.getUniY() + l.m[2][2] * r.getUniZ() + l.m[2][3] * 1.0;
 
 		res.set(x_, y_, z_);
 
@@ -348,9 +348,9 @@ public class Mat4f
 		
 		if(res == null) res = new Point3f();
 		
-		float x_ = (float)(l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0);
-		float y_ = (float)(l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0);
-		float z_ = (float)(l.m[2][0] * r.getUniX() + l.m[2][1] * r.getUniY() + l.m[2][2] * r.getUniZ() + l.m[2][3] * 1.0);
+		double x_ = l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0;
+		double y_ = l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0;
+		double z_ = l.m[2][0] * r.getUniX() + l.m[2][1] * r.getUniY() + l.m[2][2] * r.getUniZ() + l.m[2][3] * 1.0;
 
 		res.set(x_, y_, z_);
 
