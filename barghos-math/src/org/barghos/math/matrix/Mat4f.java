@@ -385,40 +385,32 @@ public class Mat4f
 	public float[] toArrayColumnMajor()
 	{
 		float[] out = new float[4 * 4];
-		Tup4f t = Tup4fPool.get();
-		
-		for(int i = 0; i < 4; i++)
+
+		int i = 0;
+		for(; i < 4; i++)
 		{
-			getColumn(i, t);
-			
-			out[i * 4 + 0] = t.getX();
-			out[i * 4 + 1] = t.getY();
-			out[i * 4 + 2] = t.getZ();
-			out[i * 4 + 3] = t.getW();
+			out[i * 4 + 0] = this.m[0][i];
+			out[i * 4 + 1] = this.m[1][i];
+			out[i * 4 + 2] = this.m[2][i];
+			out[i * 4 + 3] = this.m[3][i];
 		}
 
-		Tup4fPool.store(t);
-		
 		return out;		
 	}
 	
 	public float[] toArrayRowMajor()
 	{
 		float[] out = new float[4 * 4];
-		Tup4f t = Tup4fPool.get();
-		
-		for(int i = 0; i < 4; i++)
+
+		int i = 0;
+		for(; i < 4; i++)
 		{
-			getRow(i, t);
-			
-			out[i * 4 + 0] = t.getX();
-			out[i * 4 + 1] = t.getY();
-			out[i * 4 + 2] = t.getZ();
-			out[i * 4 + 3] = t.getW();
+			out[i * 4 + 0] = this.m[i][0];
+			out[i * 4 + 1] = this.m[i][1];
+			out[i * 4 + 2] = this.m[i][2];
+			out[i * 4 + 3] = this.m[i][3];
 		}
 
-		Tup4fPool.store(t);
-		
 		return out;		
 	}
 	
