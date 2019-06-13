@@ -165,7 +165,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f add(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(x1 + x2, y1 + y2, z1 + z2);
 	}
 
@@ -258,7 +258,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sub(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(x1 - x2, y1 - y2, z1 - z2);
 	}
 
@@ -351,7 +351,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f mul(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(x1 * x2, y1 * y2, z1 * z2);
 	}
 	
@@ -444,7 +444,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f div(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(x1 / x2, y1 / y2, z1 / z2);
 	}
 
@@ -742,7 +742,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normal(double x, double y, double z, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		double recLength = Vec3f.reciprocalLength(x, y, z);
 		return res.set(x * recLength, y * recLength, z * recLength);
 	}
@@ -804,7 +804,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f normalSafe(double x, double y, double z, double tolerance, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		if(Vec3f.isZero(x, y, z, tolerance)) return res.set(Vec3fAxis.ZERO);
 		double recLength = Vec3f.reciprocalLength(x, y, z);
 		return res.set(x * recLength, y * recLength, z * recLength);
@@ -858,7 +858,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f reciprocal(double x, double y, double z, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(1.0 / x, 1.0 / y, 1.0 / z);
 	}
 	
@@ -919,7 +919,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f cross(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2);
 	}
 	
@@ -1040,7 +1040,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f abs(double x, double y, double z, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(Math.abs(x), Math.abs(y), Math.abs(z));
 	}
 	
@@ -1127,7 +1127,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f min(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(Math.min(x1, x2), Math.min(y1, y2), Math.min(z1, z2));
 	}
 	
@@ -1214,7 +1214,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f max(double x1, double y1, double z1, double x2, double y2, double z2, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(Math.max(x1, x2), Math.max(y1, y2), Math.max(z1, z2));
 	}
 	
@@ -1332,7 +1332,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f sign(double x, double y, double z, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(Maths.selectByZero(x, 1.0, -1.0), Maths.selectByZero(y, 1.0, -1.0), Maths.selectByZero(z, 1.0, -1.0));
 	}
 	
@@ -1420,7 +1420,7 @@ public class Vec3f implements IVec3fR, IVec3W
 	 */
 	public static Vec3f gridSnap(double x, double y, double z, double gx, double gy, double gz, Vec3f res)
 	{
-		res = res != null ? res : new Vec3f();
+		if(res == null) res = new Vec3f();
 		return res.set(Maths.gridSnap(x, gx), Maths.gridSnap(y, gy), Maths.gridSnap(z, gz));
 	}
 

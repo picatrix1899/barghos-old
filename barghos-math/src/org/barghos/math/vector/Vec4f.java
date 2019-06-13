@@ -271,7 +271,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f sub(double x1, double y1, double z1, double w1, double x2, double y2, double z2, double w2, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(x1 - x2, y1 - y2, z1 - z2, w1 - w2);
 	}
 
@@ -368,7 +368,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f mul(double x1, double y1, double z1, double w1, double x2, double y2, double z2, double w2, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(x1 * x2, y1 * y2, z1 * z2, w1 * w2);
 	}
 	
@@ -465,7 +465,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f div(double x1, double y1, double z1, double w1, double x2, double y2, double z2, double w2, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(x1 / x2, y1 / y2, z1 / z2, w1 / w2);
 	}
 	
@@ -744,7 +744,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f normal(double x, double y, double z, double w, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		double recLength = Vec4f.reciprocalLength(x, y, z, w);
 		return res.set(x * recLength, y * recLength, z * recLength, w * recLength);
 	}
@@ -808,7 +808,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f normalSafe(double x, double y, double z, double w, double tolerance, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		if(isZero(x, y, z, w, tolerance)) return res.set(0);
 		double recLength = Vec4f.reciprocalLength(x, y, z, w);
 		return res.set(x * recLength, y * recLength, z * recLength, w * recLength);
@@ -837,7 +837,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f invert(double x, double y, double z, double w, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(-x, -y, -z, -w);
 	}
 	
@@ -864,7 +864,7 @@ public class Vec4f implements IVec4fR, IVec4W
 	 */
 	public static Vec4f reciprocal(double x, double y, double z, double w, Vec4f res)
 	{
-		res = res != null ? res : new Vec4f();
+		if(res == null) res = new Vec4f();
 		return res.set(1.0 / x, 1.0 / y, 1.0 / z, 1.0 / w);
 	}
 	
