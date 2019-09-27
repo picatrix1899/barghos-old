@@ -79,15 +79,19 @@ public class Quat implements IQuatR
 		assert(v1 != null);
 		assert(v2 != null);
 		
-		Vec3f a = v1.normal(null);
-		Vec3f b = v2.normal(null);
+		Vec3f a = v1.normal(Vec3fPool.get());
+		Vec3f b = v2.normal(Vec3fPool.get());
 
-		Vec3f axis = Vec3f.cross(a, b, null);
+		Vec3f axis = Vec3f.cross(a, b, Vec3fPool.get());
 		axis.normal(axis);
 		
 		double angle = 1.0 + Vec3f.dot(a, b);
 
-		return new Quat(angle, axis.getX(), axis.getY(), axis.getZ()).normal();
+		Quat out = new Quat(angle, axis.getX(), axis.getY(), axis.getZ()).normal();
+		
+		Vec3fPool.store(a, b, axis);
+		
+		return out;
 	}
 	
 	public double getW() { return this.w; }
@@ -225,14 +229,14 @@ public class Quat implements IQuatR
 	public Quat mul(Quat q, Quat res)
 	{
 		assert(q != null);
-		res = res != null ? res : new Quat();
+		if(res == null) res = new Quat();
 		
 		double w_ = this.w * q.getW() - this.x * q.getX() - this.y * q.getY() - this.z * q.getZ(); // w * w' - v * v'
 		double x_ = this.w * q.getX() + q.getW() * this.x + this.y * q.getZ() - this.z * q.getY(); // s * v'.x + s' * v.x + (V x V').x
 		double y_ = this.w * q.getY() + q.getW() * this.y + this.z * q.getX() - this.x * q.getZ(); // s * v'.y + s' * v.y + (V x V').y
 		double z_ = this.w * q.getZ() + q.getW() * this.z + this.x * q.getY() - this.y * q.getX(); // s * v'.z + s' * v.z + (V x V').z
 
-		res.set(w_, x_, y_, z_);
+		res.set(w_, x_, y_, z_).normal();
 
 		return res;
 	}
@@ -248,14 +252,14 @@ public class Quat implements IQuatR
 	public Quat mul(ITup3R v, Quat res)
 	{
 		assert(v != null);
-		res = res != null ? res : new Quat();
+		if(res == null) res = new Quat();
 		
 		double w_ = -this.x * v.getUniX() - this.y * v.getUniY() - this.z * v.getUniZ(); // - v * v'
 		double x_ =  this.w * v.getUniX() + this.y * v.getUniZ() - this.z * v.getUniY(); // s * v'.x ...
 		double y_ =  this.w * v.getUniY() + this.z * v.getUniX() - this.x * v.getUniZ(); // s * v'.y ...
 		double z_ =  this.w * v.getUniZ() + this.x * v.getUniY() - this.y * v.getUniX(); // s * v*.z ...
 
-		res.set(w_, x_, y_, z_);
+		res.set(w_, x_, y_, z_).normal();
 
 		return res;
 	}
@@ -263,12 +267,16 @@ public class Quat implements IQuatR
 	public Vec3f transform(ITup3R v, Vec3f res)
 	{
 		assert(v != null);
-		res = res != null ? res : new Vec3f();
+		if(res != null) res = new Vec3f();
 		
-		Quat r = mul(v, null);
-		r.mul(conjugate(null), r);
+		Quat r = mul(v, QuatPool.get());
+		Quat c = conjugate(QuatPool.get());
+		
+		r.mul(c, r);
 		
 		res.set(r.getX(),r.getY(), r.getZ());
+		
+		QuatPool.store(r, c);
 		
 		return res;
 	}
@@ -284,7 +292,7 @@ public class Quat implements IQuatR
 	
 	public Quat normal(Quat res)
 	{
-		res = res != null ? res : new Quat();
+		if(res == null) res = new Quat();
 		
 		double l = reciprocalLength();
 		
