@@ -29,9 +29,9 @@ public class VectorInterpolation
 	public static Quat slerp(Quat q1, Quat q2, double alpha, Quat res)
 	{
 		if(res == null) res = new Quat();
-
-		q1 = q1.normal(null);
-		q2 = q2.normal(null);
+		
+		q1 = q1.normal(QuatPool.get());
+		q2 = q2.normal(QuatPool.get());
 		
 		double dot = q1.dot(q2);
 		
@@ -61,6 +61,8 @@ public class VectorInterpolation
 			res.w = q1.w * s0 + q2.w * s1;
 		}
 		
-		return res;
+		QuatPool.store(q1, q2);
+		
+		return res.normal();
 	}
 }
