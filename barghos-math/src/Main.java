@@ -36,14 +36,15 @@ public class Main
 //		
 //		OBBOBBResolver.iOBBOBB3f(a, b);
 		
-		float[] a1 = new float[] { 1.0f, 2.0f, 3.0f };
-		float[] a2 = new float[3];
-		a2[0] = a1[0];
-		a2[1] = a1[1];
-		a2[2] = a1[2];
+		double c = -7500.000954;
+		double v = -833.3333731;
+		double r = c + v;
 		
-		a1[1] = 2.5f;
+		float f = (float)c;
 		
-		System.out.println(a2[1]);
+		double d1 = f;
+		
+		System.out.println(f);
+		System.out.println(d1);
 	}
 }
