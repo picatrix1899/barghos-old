@@ -2,7 +2,6 @@ package org.barghos.math.api.vector;
 
 import org.barghos.core.tuple.tuple2.api.ITup2R;
 import org.barghos.core.tuple.tuple2.api.ITup2fW;
-import org.barghos.math.point.Point2f;
 
 /**
  * This interface grants access to all writing methods of an 2-dimensional float vector.
