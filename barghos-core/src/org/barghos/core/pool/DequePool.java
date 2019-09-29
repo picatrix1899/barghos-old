@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 
 /**
  * This class can store instances of a type T for later reuse.

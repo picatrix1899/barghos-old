@@ -1,7 +1,7 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.IHDRColor4R;
-import org.barghos.core.api.tuple.ITup4fR;
+import org.barghos.core.color.api.IHDRColor4R;
+import org.barghos.core.tuple.tuple4.api.ITup4fR;
 
 /**
  * This class is a readonly implementation of an HDRColor4.

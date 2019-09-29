@@ -1,9 +1,9 @@
 package org.barghos.core.color;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
-import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.core.pool.DequePool;
+import org.barghos.core.pool.api.IPool;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
 
 /**
  * This pool contains instances of the type LDRColor3.

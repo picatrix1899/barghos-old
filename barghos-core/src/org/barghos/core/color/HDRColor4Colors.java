@@ -1,6 +1,6 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.IHDRColor4R;
+import org.barghos.core.color.api.IHDRColor4R;
 
 public enum HDRColor4Colors implements IHDRColor4R
 {

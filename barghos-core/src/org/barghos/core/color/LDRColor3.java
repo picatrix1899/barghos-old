@@ -1,8 +1,8 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.ILDRColor3R;
-import org.barghos.core.api.color.ILDRColor3W;
-import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.color.api.ILDRColor3R;
+import org.barghos.core.color.api.ILDRColor3W;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
 
 /**
  * This class is a simple implementation of an LDRColor3.
@@ -160,4 +160,15 @@ public class LDRColor3 implements ILDRColor3R, ILDRColor3W
 		return (float)(value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value);
 	}
 	
+	public LDRColor3 set(int index, double value)
+	{
+		switch(index)
+		{
+			case 0: return setUnityR(value);
+			case 1: return setUnityG(value);
+			case 2: return setUnityB(value);
+			
+			default: throw new IllegalStateException();
+		}
+	}
 }
