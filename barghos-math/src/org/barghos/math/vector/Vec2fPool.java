@@ -1,10 +1,10 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.tuple.ITup2dR;
-import org.barghos.core.api.tuple.ITup2fR;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
+import org.barghos.core.tuple.tuple2.api.ITup2dR;
+import org.barghos.core.tuple.tuple2.api.ITup2fR;
 
 
 public class Vec2fPool

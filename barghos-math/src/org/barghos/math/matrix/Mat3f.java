@@ -1,9 +1,9 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.api.tuple.ITup3fR;
-import org.barghos.core.api.tuple.ITup3fW;
-import org.barghos.core.tuple.Tup3f;
+import org.barghos.core.tuple.tuple3.Tup3f;
 import org.barghos.core.tuple.tuple3.Tup3fPool;
+import org.barghos.core.tuple.tuple3.api.ITup3fR;
+import org.barghos.core.tuple.tuple3.api.ITup3fW;
 import org.barghos.math.vector.Vec3f;
 
 public class Mat3f

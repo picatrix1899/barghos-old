@@ -50,6 +50,14 @@ public class Tup3f extends Tupf implements ITup3f
 	{
 		super(t.getUniX(), t.getUniY(), t.getUniZ());
 	}
+
+	/**
+	 * This constructor initializes the tuple values with scalar.
+	 */
+	public Tup3f(double scalar)
+	{
+		super(scalar, scalar, scalar);
+	}
 	
 	/**
 	 * This constructor initializes the tuple with the given values.

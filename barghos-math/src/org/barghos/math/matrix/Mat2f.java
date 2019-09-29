@@ -1,8 +1,8 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.api.tuple.ITup2fR;
-import org.barghos.core.api.tuple.ITup2fW;
-import org.barghos.core.tuple.Tup2f;
+import org.barghos.core.tuple.tuple2.Tup2f;
+import org.barghos.core.tuple.tuple2.api.ITup2fR;
+import org.barghos.core.tuple.tuple2.api.ITup2fW;
 
 public class Mat2f
 {
