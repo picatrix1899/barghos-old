@@ -1,7 +1,7 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.api.tuple.ITup3fW;
-import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
+import org.barghos.core.tuple.tuple3.api.ITup3fW;
 
 /**
  * This interface grants access to all writing methods of an 3-dimensional float point.

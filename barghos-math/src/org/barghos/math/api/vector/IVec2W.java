@@ -1,7 +1,8 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.core.api.tuple.ITup2R;
-import org.barghos.core.api.tuple.ITup2fW;
+import org.barghos.core.tuple.tuple2.api.ITup2R;
+import org.barghos.core.tuple.tuple2.api.ITup2fW;
+import org.barghos.math.point.Point2f;
 
 /**
  * This interface grants access to all writing methods of an 2-dimensional float vector.
@@ -44,4 +45,14 @@ public interface IVec2W extends ITup2fW
 	 * @return The current vector or its abstraction.
 	 */
 	IVec2W set(double x, double y);
+	
+	default IVec2W set(int index, double value)
+	{
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			default: throw new IllegalStateException();
+		}
+	}
 }

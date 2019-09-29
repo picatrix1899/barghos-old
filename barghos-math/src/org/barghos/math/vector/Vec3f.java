@@ -1,9 +1,9 @@
 package org.barghos.math.vector;
 
-import org.barghos.core.api.tuple.ITup3R;
-import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.math.api.vector.IVec3fR;
 import org.barghos.math.api.vector.IVec3W;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
+import org.barghos.core.tuple.tuple4.api.ITup4R;
 import org.barghos.math.Maths;
 
 /**

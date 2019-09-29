@@ -1,6 +1,6 @@
 package org.barghos.math.geometry;
 
-import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
 import org.barghos.math.api.point.IPoint3fR;
 import org.barghos.math.api.vector.IVec3fR;
 import org.barghos.math.point.Point3f;

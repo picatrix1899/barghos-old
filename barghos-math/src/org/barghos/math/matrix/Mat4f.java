@@ -1,12 +1,12 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.api.tuple.ITup2R;
-import org.barghos.core.api.tuple.ITup3R;
-import org.barghos.core.api.tuple.ITup4R;
-import org.barghos.core.api.tuple.ITup4fW;
-import org.barghos.core.tuple.Tup3f;
-import org.barghos.core.tuple.Tup4f;
+import org.barghos.core.tuple.tuple2.api.ITup2R;
+import org.barghos.core.tuple.tuple3.Tup3f;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
+import org.barghos.core.tuple.tuple4.Tup4f;
 import org.barghos.core.tuple.tuple4.Tup4fPool;
+import org.barghos.core.tuple.tuple4.api.ITup4R;
+import org.barghos.core.tuple.tuple4.api.ITup4fW;
 import org.barghos.math.Maths;
 import org.barghos.math.point.Point3f;
 import org.barghos.math.vector.Quat;
@@ -182,7 +182,7 @@ public class Mat4f
 	{
 		assert(pos != null);
 		assert(rot != null);
-		if(scale == null) scale = new Tup3f(1.0f);
+		if(scale == null) scale = new Tup3f(1.0);
 		
 		initIdentity();
 		

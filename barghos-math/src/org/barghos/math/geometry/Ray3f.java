@@ -1,6 +1,6 @@
 package org.barghos.math.geometry;
 
-import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.tuple.tuple3.api.ITup3R;
 
 public class Ray3f implements ITup3R, InfiniteGeometricObject
 {
@@ -32,4 +32,15 @@ public class Ray3f implements ITup3R, InfiniteGeometricObject
 	
 	@Override
 	public double getUniZ() { return this.z; }
+	
+	public double getUni(int index)
+	{
+		switch(index)
+		{
+			case 0: return getX();
+			case 1: return getY();
+			case 2: return getZ();
+			default: throw new IllegalStateException();
+		}
+	}
 }
