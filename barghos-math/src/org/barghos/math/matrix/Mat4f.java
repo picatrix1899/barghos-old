@@ -6,7 +6,7 @@ import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.core.api.tuple.ITup4fW;
 import org.barghos.core.tuple.Tup3f;
 import org.barghos.core.tuple.Tup4f;
-import org.barghos.core.tuple.Tup4fPool;
+import org.barghos.core.tuple.tuple4.Tup4fPool;
 import org.barghos.math.Maths;
 import org.barghos.math.point.Point3f;
 import org.barghos.math.vector.Quat;
