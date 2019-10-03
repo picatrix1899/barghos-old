@@ -52,10 +52,30 @@ public interface ITup3fR extends ITup3R, ITupfR
 	float getZ();
 	
 	
+	@Override
+	default double getUniX() { return getX(); }
+	
+	@Override
+	default double getUniY() { return getY(); }
+	
+	@Override
+	default double getUniZ() { return getZ(); }
+	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
 	 */
 	@Override
-	float get(int index);
+	default float get(int index)
+	{
+		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
+
+		switch(index)
+		{
+			case 0: getX();
+			case 1: getY();
+			case 2: getZ();
+			default: throw new IllegalStateException();
+		}
+	}
 }

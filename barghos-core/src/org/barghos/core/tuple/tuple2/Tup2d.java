@@ -66,44 +66,13 @@ public class Tup2d extends Tupd implements ITup2d
 	{
 		super(x, y);
 	}
-	
-	@Override
-	public double getUniX() { return this.v[0]; }
 
-	@Override
-	public double getUniY() { return this.v[1]; }
 
-	
 	@Override
 	public double getX() { return this.v[0]; }
 
 	@Override
 	public double getY() { return this.v[1]; }
-	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	public double getUni(int index)
-	{
-		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
-
-		return this.v[index];
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	public double get(int index)
-	{
-		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
-
-		return this.v[index];
-	}
 
 	
 	@Override
@@ -127,17 +96,10 @@ public class Tup2d extends Tupd implements ITup2d
 		return this;
 	}
 
-	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	public Tup2d set(int index, double value)
-	{
-		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
-		
-		this.v[index] = (float)value;
-		return this;
-	}
+	public Tup2d set(int index, double value) { ITup2d.super.set(index, value); return this; }
 }

@@ -55,5 +55,5 @@ public interface Tup2 extends ITup2W, Tup
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	Tup2 set(int index, double value);
+	default Tup2 set(int index, double value) { ITup2W.super.set(index, value); return this; }
 }

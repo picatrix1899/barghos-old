@@ -22,38 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple2.api;
+package org.barghos.math.api.vector.api;
 
-import org.barghos.core.tuple.tuplen.api.ITupf;
+import org.barghos.core.tuple.tuple2.api.ITup2R;
+import org.barghos.core.tuple.tuple2.api.ITup2f;
 
 /**
  * @author picatrix1899
  *
- * This interface represents a 2-dimensional float tuple.
  */
-public interface ITup2f extends ITup2fW, Tup2, ITupf
+public interface IVec2f extends IVec2fW, Vec2, ITup2f
 {
 	@Override
-	ITup2f setX(double x);
-	
+	IVec2f setX(double x);
+
 	@Override
-	ITup2f setY(double y);
-	
-	
+	IVec2f setY(double y);
+
 	@Override
-	ITup2f set(ITup2R t);
-	
+	IVec2f set(ITup2R t);
+
 	@Override
-	ITup2f set(double scalar);
-	
+	IVec2f set(double scalar);
+
 	@Override
-	ITup2f set(double x, double y);
-	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	default ITup2f set(int index, double value) { ITup2fW.super.set(index, value); return this; }
+	IVec2f set(double x, double y);
 }
