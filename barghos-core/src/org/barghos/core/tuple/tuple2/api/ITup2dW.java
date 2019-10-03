@@ -55,5 +55,5 @@ public interface ITup2dW extends ITup2dR, ITup2W, ITupdW
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	ITup2dW set(int index, double value);
+	default ITup2dW set(int index, double value) { ITup2W.super.set(index, value); return this; }
 }

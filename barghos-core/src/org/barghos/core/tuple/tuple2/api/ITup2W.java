@@ -76,5 +76,15 @@ public interface ITup2W extends ITup2R, ITupW
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	ITup2W set(int index, double value);
+	default ITup2W set(int index, double value)
+	{
+		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
+		
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			default: throw new IllegalStateException();
+		}
+	}
 }

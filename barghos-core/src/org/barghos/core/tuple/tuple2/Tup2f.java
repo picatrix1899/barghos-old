@@ -66,46 +66,13 @@ public class Tup2f extends Tupf implements ITup2f
 	{
 		super(x, y);
 	}
-	
-	@Override
-	public double getUniX() { return this.v[0]; }
 
-	@Override
-	public double getUniY() { return this.v[1]; }
-
-	
 	@Override
 	public float getX() { return this.v[0]; }
 
 	@Override
 	public float getY() { return this.v[1]; }
-	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	public double getUni(int index)
-	{
-		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
 
-		return this.v[index];
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	public float get(int index)
-	{
-		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
-
-		return this.v[index];
-	}
-
-	
 	@Override
 	public Tup2f setX(double x) { this.v[0] = (float)x; return this; }
 
@@ -126,18 +93,11 @@ public class Tup2f extends Tupf implements ITup2f
 		this.v[1] = (float)y;
 		return this;
 	}
-
 	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	public Tup2f set(int index, double value)
-	{
-		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
-		
-		this.v[index] = (float)value;
-		return this;
-	}
+	public Tup2f set(int index, double value) { ITup2f.super.set(index, value); return this; }
 }

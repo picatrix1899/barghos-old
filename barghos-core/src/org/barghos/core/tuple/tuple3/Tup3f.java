@@ -66,15 +66,6 @@ public class Tup3f extends Tupf implements ITup3f
 	{
 		super(x, y, z);
 	}
-	
-	@Override
-	public double getUniX() { return this.v[0]; }
-
-	@Override
-	public double getUniY() { return this.v[1]; }
-
-	@Override
-	public double getUniZ() { return this.v[2]; }
 
 	
 	@Override
@@ -85,31 +76,6 @@ public class Tup3f extends Tupf implements ITup3f
 
 	@Override
 	public float getZ() { return this.v[2]; }
-	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-	 */
-	@Override
-	public double getUni(int index)
-	{
-		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-
-		return this.v[index];
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-	 */
-	@Override
-	public float get(int index)
-	{
-		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-
-		return this.v[index];
-	}
 
 	
 	@Override

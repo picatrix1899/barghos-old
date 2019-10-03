@@ -45,11 +45,26 @@ public interface ITup2fR extends ITup2R, ITupfR
 	 */
 	float getY();
 	
+	@Override
+	default double getUniX() { return getX(); }
+	
+	@Override
+	default double getUniY() { return getY(); }
 	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	float get(int index);
+	default float get(int index)
+	{
+		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
+
+		switch(index)
+		{
+			case 0: getX();
+			case 1: getY();
+			default: throw new IllegalStateException();
+		}
+	}
 }

@@ -59,7 +59,18 @@ public interface ITup3R extends ITupR
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
 	 */
 	@Override
-	double getUni(int index);
+	default double getUni(int index)
+	{
+		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
+
+		switch(index)
+		{
+			case 0: getUniX();
+			case 1: getUniY();
+			case 2: getUniZ();
+			default: throw new IllegalStateException();
+		}
+	}
 	
 	@Override
 	default int getDimensions() { return 3; }
