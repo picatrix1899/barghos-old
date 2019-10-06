@@ -35,29 +35,29 @@ import org.barghos.core.tuple.tuple2.api.Tup2;
  */
 public class Tup2fPool
 {
-	private static final IPool<Tup2> pool = new DequePool<Tup2>(Tup2f.class);
+	private static final IPool<Tup2> pool = new DequePool<>(Tup2f.class);
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and resets it.
+	 * Returns an instance of Tup2f from the pool and resets it.
 	 * @return A stored instance.
 	 */
 	public static Tup2 get() { return pool.get().set(0.0); }
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and sets its components to the values of t.
+	 * Returns an instance of Tup2f from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
 	public static Tup2 get(ITup2R t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and sets its components to scalar.
+	 * Returns an instance of Tup2f from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public static Tup2 get(double scalar) { return pool.get().set(scalar, scalar); }
+	public static Tup2 get(double scalar) { return pool.get().set(scalar); }
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and sets its components to x and y.
+	 * Returns an instance of Tup2f from the pool and sets its components to x and y.
 	 * @param x The x component.
 	 * @param y The y component.
 	 */
@@ -71,7 +71,7 @@ public class Tup2fPool
 	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); }
 	
 	/**
-	 * Stores Tup4f instances in the pool for late reuse.
+	 * Stores Tup2f instances in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
 	public static void store(Tup2... instances) { assert(Check.notNull(instances)); pool.store(instances); }

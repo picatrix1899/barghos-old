@@ -44,13 +44,13 @@ public interface ITup3d extends ITup3dR, Tup3, ITupd
 	
 	
 	@Override
-	ITup3d set(ITup3R t);
+	default ITup3d set(ITup3R t) { Tup3.super.set(t); return this; }
 	
 	@Override
-	ITup3d set(double scalar);
+	default ITup3d set(double scalar) { Tup3.super.set(scalar); return this; }
 	
 	@Override
-	ITup3d set(double x, double y, double z);
+	default ITup3d set(double x, double y, double z) { Tup3.super.set(x, y, z); return this; }
 	
 	
 	/**

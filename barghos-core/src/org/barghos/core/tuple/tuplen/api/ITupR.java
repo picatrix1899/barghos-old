@@ -53,4 +53,19 @@ public interface ITupR
 	 * @return True if all values of the tuple are finite values.
 	 */
 	boolean isFinite();
+	
+	/**
+	 * Checks if all values of the tuple are zero.
+	 * @return Are all values zero.
+	 */
+	default boolean isZero() { return isZero(0.0); }
+	
+	/**
+	 * Checks if all values of the tuple are within a tolerance around zero.
+	 * @param tolerance The threshold around 0.
+	 * @return Are all values within the tolerance around zero.
+	 */
+	boolean isZero(double tolerance);
+	
+
 }

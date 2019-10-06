@@ -26,21 +26,25 @@ package org.barghos.core.tuple.tuple4;
 
 import org.barghos.core.tuple.tuple4.api.ITup4R;
 import org.barghos.core.tuple.tuple4.api.ITup4f;
-import org.barghos.core.tuple.tuplen.Tupf;
 
 /**
  * @author picatrix1899
  *
  * This class represents a 4-dimensional float tuple.
  */
-public class Tup4f extends Tupf implements ITup4f
+public class Tup4f implements ITup4f
 {
+	private float x;
+	private float y;
+	private float z;
+	private float w;
+	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
 	public Tup4f()
 	{
-		super(4);
+		set(0);
 	}
 	
 	/**
@@ -48,7 +52,15 @@ public class Tup4f extends Tupf implements ITup4f
 	 */
 	public Tup4f(ITup4R t)
 	{
-		super(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW());
+		set(t);
+	}
+	
+	/**
+	 * This constructor initializes the tuple values with scalar.
+	 */
+	public Tup4f(double scalar)
+	{
+		set(scalar);
 	}
 	
 	/**
@@ -56,99 +68,30 @@ public class Tup4f extends Tupf implements ITup4f
 	 */
 	public Tup4f(double x, double y, double z, double w)
 	{
-		super(x, y, z, w);
-	}
-	
-	@Override
-	public double getUniX() { return this.v[0]; }
-
-	@Override
-	public double getUniY() { return this.v[1]; }
-
-	@Override
-	public double getUniZ() { return this.v[2]; }
-	
-	@Override
-	public double getUniW() { return this.v[3]; }
-
-	
-	@Override
-	public float getX() { return this.v[0]; }
-
-	@Override
-	public float getY() { return this.v[1]; }
-
-	@Override
-	public float getZ() { return this.v[2]; }
-	
-	@Override
-	public float getW() { return this.v[3]; }
-	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
-	 */
-	@Override
-	public double getUni(int index)
-	{
-		if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
-
-		return this.v[index];
+		set(x, y, z, w);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
-	 */
 	@Override
-	public float get(int index)
-	{
-		if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
+	public float getX() { return this.x; }
 
-		return this.v[index];
-	}
+	@Override
+	public float getY() { return this.y; }
 
+	@Override
+	public float getZ() { return this.z; }
 	
 	@Override
-	public Tup4f setX(double x) { this.v[0] = (float)x; return this; }
+	public float getW() { return this.w; }
 
 	@Override
-	public Tup4f setY(double y) { this.v[1] = (float)y; return this; }
+	public Tup4f setX(double x) { this.x = (float)x; return this; }
 
 	@Override
-	public Tup4f setZ(double z) { this.v[2] = (float)z; return this; }
+	public Tup4f setY(double y) { this.y = (float)y; return this; }
+
+	@Override
+	public Tup4f setZ(double z) { this.z = (float)z; return this; }
 	
 	@Override
-	public Tup4f setW(double w) { this.v[3] = (float)w; return this; }
-	
-	
-	@Override
-	public Tup4f set(ITup4R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
-
-	@Override
-	public Tup4f set(double scalar) { return set(scalar, scalar, scalar, scalar); }
-
-	@Override
-	public Tup4f set(double x, double y, double z, double w)
-	{
-		this.v[0] = (float)x;
-		this.v[1] = (float)y;
-		this.v[2] = (float)z;
-		return this;
-	}
-
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
-	 */
-	@Override
-	public Tup4f set(int index, double value)
-	{
-		if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
-		
-		this.v[index] = (float)value;
-		return this;
-	}
+	public Tup4f setW(double w) { this.w = (float)w; return this; }
 }

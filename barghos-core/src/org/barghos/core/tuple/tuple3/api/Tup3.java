@@ -60,23 +60,22 @@ public interface Tup3 extends ITup3R, Tup
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	Tup3 set(ITup3R t);
+	default Tup3 set(ITup3R t) { assert(t != null); return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
 	
 	/**
 	 * Sets the values to the given value.
 	 * @param scalar The new value.
 	 * @return The current tuple.
 	 */
-	Tup3 set(double scalar);
+	default Tup3 set(double scalar) { return set(scalar, scalar, scalar); }
 	
 	/**
 	 * Sets the values to the corresponding given values.
 	 * @param x The new x value.
 	 * @param y The new y value.
-	 * @param z The new z value.
 	 * @return The current tuple.
 	 */
-	Tup3 set(double x, double y, double z);
+	default Tup3 set(double x, double y, double z) { return setX(x).setY(y).setZ(z); }
 	
 	
 	/**

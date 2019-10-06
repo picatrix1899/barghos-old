@@ -24,6 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4.api;
 
+import org.barghos.core.OverrideCause;
 import org.barghos.core.tuple.tuplen.api.ITupdR;
 
 /**
@@ -93,4 +94,10 @@ public interface ITup4dR extends ITup4R, ITupdR
 	{
 		return Double.isFinite(getX()) && Double.isFinite(getY()) && Double.isFinite(getZ()) && Double.isFinite(getW());
 	}
+	
+	@Override
+	@OverrideCause("ITup4R and ITupdR both have default implementations of getUni(int index).")
+	default double getUni(int index) { return ITup4R.super.getUni(index); }
+
+	default boolean isZero(double tolerance) { return ITup4R.super.isZero(tolerance); }
 }

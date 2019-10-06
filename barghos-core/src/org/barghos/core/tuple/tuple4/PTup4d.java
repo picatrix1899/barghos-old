@@ -68,58 +68,6 @@ public abstract class PTup4d implements ITup4dR
 			
 			@Override
 			public double getW() { return (float)w; }
-
-
-			@Override
-			public double getUniX() { return x; }
-			
-			@Override
-			public double getUniY() { return y; }
-			
-			@Override
-			public double getUniZ() { return z; }
-			
-			@Override
-			public double getUniW() { return w; }
-			
-			
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
-			 */
-			@Override
-			public double getUni(int index)
-			{
-				if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
-				
-				switch(index)
-				{
-					case 0: return x;
-					case 1: return y;
-					case 2: return z;
-					case 3: return w;
-					default: throw new IllegalStateException();
-				}
-			}
-			
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
-			 */
-			@Override
-			public double get(int index)
-			{
-				if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
-				
-				switch(index)
-				{
-					case 0: return x;
-					case 1: return y;
-					case 2: return z;
-					case 3: return w;
-					default: throw new IllegalStateException();
-				}
-			}
 		};
 	}
 }

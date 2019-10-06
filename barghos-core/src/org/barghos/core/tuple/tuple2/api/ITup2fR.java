@@ -78,4 +78,6 @@ public interface ITup2fR extends ITup2R, ITupfR
 	@Override
 	@OverrideCause("ITup2R and ITupfR both have default implementations of getUni(int index).")
 	default double getUni(int index) { return ITup2R.super.getUni(index); }
+
+	default boolean isZero(double tolerance) { return ITup2R.super.isZero(tolerance); }
 }

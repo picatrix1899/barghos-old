@@ -33,41 +33,20 @@ import org.barghos.core.tuple.tuplen.api.ITupd;
  */
 public interface ITup2d extends ITup2dR, Tup2, ITupd
 {
-	/**
-	 * Sets the x value of the tuple.
-	 * @param x The new x value.
-	 * @return The current tuple.
-	 */
+	@Override
 	ITup2d setX(double x);
 	
-	/**
-	 * Sets the y value of the tuple.
-	 * @param y The new y value.
-	 * @return The current tuple.
-	 */
+	@Override
 	ITup2d setY(double y);
 	
 	
-	/**
-	 * Adopts the values from the given tuple.
-	 * @param t The tuple that values will be adopted from.
-	 * @return The current tuple.
-	 */
+	@Override
 	default ITup2d set(ITup2R t) { Tup2.super.set(t); return this; }
 	
-	/**
-	 * Sets the values to the given value.
-	 * @param scalar The new value.
-	 * @return The current tuple.
-	 */
+	@Override
 	default ITup2d set(double scalar) { Tup2.super.set(scalar); return this; }
 	
-	/**
-	 * Sets the values to the corresponding given values.
-	 * @param x The new x value.
-	 * @param y The new y value.
-	 * @return The current tuple.
-	 */
+	@Override
 	default ITup2d set(double x, double y) { Tup2.super.set(x, y); return this; }
 	
 	/**

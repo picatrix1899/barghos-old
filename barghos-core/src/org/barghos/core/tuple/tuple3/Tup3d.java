@@ -26,21 +26,24 @@ package org.barghos.core.tuple.tuple3;
 
 import org.barghos.core.tuple.tuple3.api.ITup3R;
 import org.barghos.core.tuple.tuple3.api.ITup3d;
-import org.barghos.core.tuple.tuplen.Tupd;
 
 /**
  * @author picatrix1899
  *
  * This class represents a 3-dimensional double tuple.
  */
-public class Tup3d extends Tupd implements ITup3d
+public class Tup3d implements ITup3d
 {
+	private double x;
+	private double y;
+	private double z;
+	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
 	public Tup3d()
 	{
-		super(3);
+		set(0);
 	}
 	
 	/**
@@ -48,7 +51,7 @@ public class Tup3d extends Tupd implements ITup3d
 	 */
 	public Tup3d(ITup3R t)
 	{
-		super(t.getUniX(), t.getUniY(), t.getUniZ());
+		set(t);
 	}
 	
 	/**
@@ -56,7 +59,7 @@ public class Tup3d extends Tupd implements ITup3d
 	 */
 	public Tup3d(double scalar)
 	{
-		super(scalar, scalar, scalar);
+		set(scalar);
 	}
 	
 	/**
@@ -64,49 +67,26 @@ public class Tup3d extends Tupd implements ITup3d
 	 */
 	public Tup3d(double x, double y, double z)
 	{
-		super(x, y, z);
+		set(x, y, z);
 	}
 
 	@Override
-	public double getX() { return this.v[0]; }
+	public double getX() { return this.x; }
 
 	@Override
-	public double getY() { return this.v[1]; }
+	public double getY() { return this.y; }
 
 	@Override
-	public double getZ() { return this.v[2]; }
-
-	
-	@Override
-	public Tup3d setX(double x) { this.v[0] = (float)x; return this; }
-
-	@Override
-	public Tup3d setY(double y) { this.v[1] = (float)y; return this; }
-
-	@Override
-	public Tup3d setZ(double z) { this.v[2] = (float)z; return this; }
+	public double getZ() { return this.z; }
 
 	
 	@Override
-	public Tup3d set(ITup3R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public ITup3d setX(double x) { this.x = x; return this; }
 
 	@Override
-	public Tup3d set(double scalar) { return set(scalar, scalar, scalar); }
+	public ITup3d setY(double y) { this.y = y; return this; }
 
 	@Override
-	public Tup3d set(double x, double y, double z)
-	{
-		this.v[0] = (float)x;
-		this.v[1] = (float)y;
-		this.v[2] = (float)z;
-		return this;
-	}
+	public ITup3d setZ(double z) { this.z = z; return this; }
 
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-	 */
-	@Override
-	public Tup3d set(int index, double value) { ITup3d.super.set(index, value); return this; }
 }
