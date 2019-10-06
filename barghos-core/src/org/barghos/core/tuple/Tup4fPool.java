@@ -1,7 +1,7 @@
 package org.barghos.core.tuple;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.core.pool.DequePool;
 
@@ -12,7 +12,7 @@ public class Tup4fPool
 {
 	
 	
-	private static final IPool<Tup4f> pool = new DequePool<Tup4f>(Tup4f.class);
+	private static final IPool<Tup4f> pool = new DequePool<>(Tup4f.class);
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and resets it.

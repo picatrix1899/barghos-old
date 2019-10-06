@@ -1,7 +1,7 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.api.tuple.ITup2dR;
 import org.barghos.core.api.tuple.ITup2fR;
 import org.barghos.core.pool.DequePool;
@@ -9,7 +9,7 @@ import org.barghos.core.pool.DequePool;
 
 public class Vec2fPool
 {
-	private static final IPool<Vec2f> pool = new DequePool<Vec2f>(Vec2f.class);
+	private static final IPool<Vec2f> pool = new DequePool<>(Vec2f.class);
 	
 	private Vec2fPool() { }
 	
