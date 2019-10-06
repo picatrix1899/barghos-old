@@ -1,7 +1,7 @@
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.ILDRColor3R;
-import org.barghos.core.tuple.tuple3.api.ITup3fR;
+import org.barghos.core.api.color.ILDRColor3R;
+import org.barghos.core.api.tuple.ITup3fR;
 
 /**
  * This class is a readonly implementation of an LDRColor3.

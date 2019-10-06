@@ -1,8 +1,8 @@
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.IHDRColor4R;
-import org.barghos.core.color.api.IHDRColor4W;
-import org.barghos.core.tuple.tuple4.api.ITup4R;
+import org.barghos.core.api.color.IHDRColor4R;
+import org.barghos.core.api.color.IHDRColor4W;
+import org.barghos.core.api.tuple.ITup4R;
 
 /**
  * This class is a simple implementation of an HDRColor4.
@@ -164,16 +164,4 @@ public class HDRColor4 implements IHDRColor4R, IHDRColor4W
 	
 	public int getDimensions() { return 4; }
 
-	public HDRColor4 set(int index, double value)
-	{
-		switch(index)
-		{
-			case 0: return setUnityR(value);
-			case 1: return setUnityG(value);
-			case 2: return setUnityB(value);
-			case 3: return setUnityA(value);
-			
-			default: throw new IllegalStateException();
-		}
-	}
 }

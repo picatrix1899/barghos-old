@@ -1,6 +1,6 @@
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.ILDRColor4R;
+import org.barghos.core.api.color.ILDRColor4R;
 
 public enum LDRColor4Colors implements ILDRColor4R
 {

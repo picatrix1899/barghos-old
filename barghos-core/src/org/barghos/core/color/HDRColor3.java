@@ -1,8 +1,8 @@
 package org.barghos.core.color;
 
-import org.barghos.core.color.api.IHDRColor3R;
-import org.barghos.core.color.api.IHDRColor3W;
-import org.barghos.core.tuple.tuple3.api.ITup3R;
+import org.barghos.core.api.color.IHDRColor3R;
+import org.barghos.core.api.color.IHDRColor3W;
+import org.barghos.core.api.tuple.ITup3R;
 
 /**
  * This class is a simple implementation of an HDRColor3.
@@ -152,17 +152,5 @@ public class HDRColor3 implements IHDRColor3R, IHDRColor3W
 	public int getB() { return Math.round(this.b * 255); }
 	
 	public int getDimensions() { return 3; }
-
-	public HDRColor3 set(int index, double value)
-	{
-		switch(index)
-		{
-			case 0: return setUnityR(value);
-			case 1: return setUnityG(value);
-			case 2: return setUnityB(value);
-			
-			default: throw new IllegalStateException();
-		}
-	}
 	
 }
