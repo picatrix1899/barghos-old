@@ -1,7 +1,7 @@
 package org.barghos.math.vector;
 
+import org.barghos.core.api.tuple.ITup2R;
 import org.barghos.math.api.vector.IVec2fR;
-import org.barghos.core.tuple.tuple2.api.ITup2R;
 import org.barghos.math.Maths;
 import org.barghos.math.api.vector.IVec2W;
 
@@ -1673,25 +1673,6 @@ public class Vec2f implements IVec2fR, IVec2W
 		return Vec2f.squaredLength(this);
 	}
 
-	public float get(int index)
-	{
-		switch(index)
-		{
-			case 0: return getX();
-			case 1: return getY();
-			default: throw new IllegalStateException();
-		}
-	}
-	public double getUni(int index)
-	{
-		switch(index)
-		{
-			case 0: return getX();
-			case 1: return getY();
-			default: throw new IllegalStateException();
-		}
-	}
-	
 	
 	public String toString()
 	{

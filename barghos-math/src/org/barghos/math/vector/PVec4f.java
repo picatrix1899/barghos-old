@@ -1,6 +1,6 @@
 package org.barghos.math.vector;
 
-import org.barghos.core.tuple.tuple4.api.ITup4fR;
+import org.barghos.core.api.tuple.ITup4fR;
 import org.barghos.math.api.vector.IVec4fR;
 
 public abstract class PVec4f implements IVec4fR
@@ -20,28 +20,6 @@ public abstract class PVec4f implements IVec4fR
 
 			public int getDimensions() { return 4; }
 			
-			public float get(int index)
-			{
-				switch(index)
-				{
-					case 0: return getX();
-					case 1: return getY();
-					case 2: return getZ();
-					case 3: return getW();
-					default: throw new IllegalStateException();
-				}
-			}
-			public double getUni(int index)
-			{
-				switch(index)
-				{
-					case 0: return getX();
-					case 1: return getY();
-					case 2: return getZ();
-					case 3: return getW();
-					default: throw new IllegalStateException();
-				}
-			}
 		};
 	}
 	

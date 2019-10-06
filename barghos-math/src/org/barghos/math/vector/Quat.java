@@ -1,6 +1,6 @@
 package org.barghos.math.vector;
 
-import org.barghos.core.tuple.tuple3.api.ITup3R;
+import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.Maths;
 import org.barghos.math.api.vector.IQuatR;
 import org.barghos.math.matrix.Mat4f;
@@ -312,27 +312,6 @@ public class Quat implements IQuatR
 		return 4;
 	}
 
-	
-	public double get(int index)
-	{
-		switch(index)
-		{
-			case 0: return getX();
-			case 1: return getY();
-			case 2: return getZ();
-			default: throw new IllegalStateException();
-		}
-	}
-	public double getUni(int index)
-	{
-		switch(index)
-		{
-			case 0: return getX();
-			case 1: return getY();
-			case 2: return getZ();
-			default: throw new IllegalStateException();
-		}
-	}
 	
 	public String toString()
 	{

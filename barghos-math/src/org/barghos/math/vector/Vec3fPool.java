@@ -1,10 +1,10 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.Check;
+import org.barghos.core.api.IPool;
+import org.barghos.core.api.tuple.ITup3dR;
+import org.barghos.core.api.tuple.ITup3fR;
 import org.barghos.core.pool.DequePool;
-import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple.tuple3.api.ITup3dR;
-import org.barghos.core.tuple.tuple3.api.ITup3fR;
 
 public class Vec3fPool
 {
@@ -22,7 +22,7 @@ public class Vec3fPool
 	
 	public static void store(Vec3f... instances) { assert(Check.notNull(instances)); pool.store(instances); }
 	
-	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); }
+	public static void ensure(int count) { assert(count > 0); pool.ensure(count); }
 	public static int size() { return pool.size(); }
 	
 	public static IPool<Vec3f> getInnerPool() { return Vec3fPool.pool; }

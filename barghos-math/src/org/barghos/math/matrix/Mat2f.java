@@ -1,8 +1,8 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.tuple.tuple2.Tup2f;
-import org.barghos.core.tuple.tuple2.api.ITup2fR;
-import org.barghos.core.tuple.tuple2.api.ITup2f;
+import org.barghos.core.api.tuple.ITup2fR;
+import org.barghos.core.api.tuple.ITup2fW;
+import org.barghos.core.tuple.Tup2f;
 
 public class Mat2f
 {
@@ -63,8 +63,8 @@ public class Mat2f
 	public Tup2f getRow(int index) { return new Tup2f(this.m[index][0], this.m[index][1]); }
 	public Tup2f getColumn(int index) { return new Tup2f(this.m[0][index], this.m[1][index]); }
 	
-	public void getRow(int index, ITup2f t) { t.set(this.m[index][0], this.m[index][1]); }
-	public void getColumn(int index, ITup2f t) { t.set(this.m[0][index], this.m[1][index]); }
+	public void getRow(int index, ITup2fW t) { t.set(this.m[index][0], this.m[index][1]); }
+	public void getColumn(int index, ITup2fW t) { t.set(this.m[0][index], this.m[1][index]); }
 	
 	public static float determinant(Mat2f m)
 	{

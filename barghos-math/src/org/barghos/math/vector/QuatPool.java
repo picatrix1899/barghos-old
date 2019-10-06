@@ -1,8 +1,8 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.Check;
+import org.barghos.core.api.IPool;
 import org.barghos.core.pool.DequePool;
-import org.barghos.core.pool.api.IPool;
 
 public class QuatPool
 {

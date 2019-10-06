@@ -1,12 +1,12 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.core.tuple.tuple4.api.ITup4R;
-import org.barghos.core.tuple.tuple4.api.ITup4f;
+import org.barghos.core.api.tuple.ITup4R;
+import org.barghos.core.api.tuple.ITup4fW;
 
 /**
  * This interface grants access to all writing methods of an 4-dimensional float vector.
  */
-public interface IVec4W extends ITup4f
+public interface IVec4W extends ITup4fW
 {
 	/**
 	 * Sets the x component to x.
@@ -60,16 +60,4 @@ public interface IVec4W extends ITup4f
 	 * @return The current vector or its abstraction.
 	 */
 	IVec4W set(double x, double y, double z, double w);
-	
-	default IVec4W set(int index, double value)
-	{
-		switch(index)
-		{
-			case 0: return setX(value);
-			case 1: return setY(value);
-			case 2: return setZ(value);
-			case 3: return setW(value);
-			default: throw new IllegalStateException();
-		}
-	}
 }

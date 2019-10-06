@@ -1,7 +1,7 @@
 package org.barghos.math.vector;
 
+import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.math.api.vector.IVec4fR;
-import org.barghos.core.tuple.tuple4.api.ITup4R;
 import org.barghos.math.Maths;
 import org.barghos.math.api.vector.IVec4W;
 
