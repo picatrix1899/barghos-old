@@ -67,14 +67,14 @@ public interface Tup4 extends ITup4R, Tup
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	Tup4 set(ITup4R t);
+	default Tup4 set(ITup4R t) { assert(t != null); return set(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
 	
 	/**
 	 * Sets the values to the given value.
 	 * @param scalar The new value.
 	 * @return The current tuple.
 	 */
-	Tup4 set(double scalar);
+	default Tup4 set(double scalar) { return set(scalar, scalar, scalar, scalar); }
 	
 	/**
 	 * Sets the values to the corresponding given values.
@@ -84,7 +84,7 @@ public interface Tup4 extends ITup4R, Tup
 	 * @param w The new w value.
 	 * @return The current tuple.
 	 */
-	Tup4 set(double x, double y, double z, double w);
+	default Tup4 set(double x, double y, double z, double w) { return setX(x).setY(y).setZ(z).setW(w); }
 	
 	
 	/**

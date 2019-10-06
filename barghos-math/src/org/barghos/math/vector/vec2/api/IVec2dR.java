@@ -22,16 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.math.api.vector.api;
+package org.barghos.math.vector.vec2.api;
 
-import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple2.api.ITup2f;
+import org.barghos.core.tuple.tuple2.api.ITup2dR;
 
 /**
  * @author picatrix1899
  *
  */
-public interface IVec2f extends IVec2fR, Vec2, ITup2f
+public interface IVec2dR extends IVec2R, ITup2dR
 {
 
 }

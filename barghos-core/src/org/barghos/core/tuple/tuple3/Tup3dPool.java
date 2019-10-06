@@ -31,33 +31,33 @@ import org.barghos.core.tuple.tuple3.api.ITup3R;
 import org.barghos.core.tuple.tuple3.api.Tup3;
 
 /**
- * This pool contains instances of the type Tup3f.
+ * This pool contains instances of the type Tup3d.
  */
-public class Tup3fPool
+public class Tup3dPool
 {
-	private static final IPool<Tup3> pool = new DequePool<>(Tup3f.class);
+	private static final IPool<Tup3> pool = new DequePool<>(Tup3d.class);
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and resets it.
+	 * Returns an instance of Tup3d from the pool and resets it.
 	 * @return A stored instance.
 	 */
 	public static Tup3 get() { return pool.get().set(0.0); }
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and sets its components to the values of t.
+	 * Returns an instance of Tup3d from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
 	public static Tup3 get(ITup3R t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and sets its components to scalar.
+	 * Returns an instance of Tup3d from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
 	public static Tup3 get(double scalar) { return pool.get().set(scalar); }
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and sets its components to x, y and z.
+	 * Returns an instance of Tup3d from the pool and sets its components to x, y and z.
 	 * @param x The x component.
 	 * @param y The y component.
 	 * @param z The z component.
@@ -72,7 +72,7 @@ public class Tup3fPool
 	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); }
 	
 	/**
-	 * Stores Tup3f instances in the pool for later reuse.
+	 * Stores Tup3d instances in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
 	public static void store(Tup3... instances) { assert(Check.notNull(instances)); pool.store(instances); }

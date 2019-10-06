@@ -25,54 +25,78 @@ SOFTWARE.
 package org.barghos.core.tuple.tuple3;
 
 import org.barghos.core.Check;
+import org.barghos.core.PrecisionLevel;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
 import org.barghos.core.tuple.tuple3.api.ITup3R;
 import org.barghos.core.tuple.tuple3.api.Tup3;
 
 /**
- * This pool contains instances of the type Tup3f.
+ * This pool contains instances of the type Tup3 with either float or double precision.
  */
-public class Tup3fPool
+public class Tup3Pool
 {
-	private static final IPool<Tup3> pool = new DequePool<>(Tup3f.class);
+	private static PrecisionLevel currentPrecision = PrecisionLevel.FLOAT;
+	private static IPool<Tup3> pool = new DequePool<>(Tup3f.class);
+	private static int ensuredAmount = 0;
+	
+	public static void setPrecisionLevel(PrecisionLevel level)
+	{
+		if(currentPrecision != level)
+		{
+			switch(level)
+			{
+				case DOUBLE:
+					Tup3Pool.pool = new DequePool<>(Tup3d.class);
+					break;
+				case FLOAT:
+					Tup3Pool.pool = new DequePool<>(Tup3f.class);
+					break;
+				default:
+					throw new IllegalStateException();
+			}
+			pool.ensure(Tup3Pool.ensuredAmount);
+			
+			Tup3Pool.currentPrecision = level;
+		}
+	}
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and resets it.
+	 * Returns an instance of Tup3 from the pool and resets it.
 	 * @return A stored instance.
 	 */
 	public static Tup3 get() { return pool.get().set(0.0); }
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and sets its components to the values of t.
+	 * Returns an instance of Tup3 from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
 	public static Tup3 get(ITup3R t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and sets its components to scalar.
+	 * Returns an instance of Tup3 from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
 	public static Tup3 get(double scalar) { return pool.get().set(scalar); }
 	
 	/**
-	 * Returns an instance of Tup3f from the pool and sets its components to x, y and z.
+	 * Returns an instance of Tup3 from the pool and sets its components to x, y and z.
 	 * @param x The x component.
 	 * @param y The y component.
 	 * @param z The z component.
 	 */
 	public static Tup3 get(double x, double y, double z) { return pool.get().set(x, y, z); }
-	
+
 	/**
 	 * Ensures a certain amount of instances to be present in the pool at any time.
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
 	 * @param count The amount of instances present in the pool at any time.
 	 */
-	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); }
+	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); Tup3Pool.ensuredAmount = count; }
 	
 	/**
-	 * Stores Tup3f instances in the pool for later reuse.
+	 * Stores Tup3 instances of corresponding precision in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
 	public static void store(Tup3... instances) { assert(Check.notNull(instances)); pool.store(instances); }

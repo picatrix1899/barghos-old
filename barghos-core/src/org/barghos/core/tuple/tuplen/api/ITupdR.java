@@ -61,4 +61,15 @@ public interface ITupdR extends ITupR
 		
 		return true;
 	}
+	
+	@Override
+	default boolean isZero(double tolerance)
+	{
+		for(int i = 0; i < getDimensions(); i++)
+		{
+			if(Math.abs(get(i)) > tolerance) return false;
+		}
+		
+		return true;
+	}
 }

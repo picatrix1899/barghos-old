@@ -24,6 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3.api;
 
+import org.barghos.core.OverrideCause;
 import org.barghos.core.tuple.tuplen.api.ITupfR;
 
 /**
@@ -84,4 +85,10 @@ public interface ITup3fR extends ITup3R, ITupfR
 	{
 		return Float.isFinite(getX()) && Float.isFinite(getY()) && Float.isFinite(getZ());
 	}
+	
+	@Override
+	@OverrideCause("ITup3R and ITupfR both have default implementations of getUni(int index).")
+	default double getUni(int index) { return ITup3R.super.getUni(index); }
+
+	default boolean isZero(double tolerance) { return ITup3R.super.isZero(tolerance); }
 }

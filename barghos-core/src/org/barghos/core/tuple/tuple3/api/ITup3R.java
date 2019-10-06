@@ -74,4 +74,10 @@ public interface ITup3R extends ITupR
 	
 	@Override
 	default int getDimensions() { return 3; }
+	
+	@Override
+	default boolean isZero(double tolerance)
+	{
+		return (Math.abs(getUniX()) > tolerance) && (Math.abs(getUniY()) > tolerance) && (Math.abs(getUniZ()) > tolerance);
+	}
 }

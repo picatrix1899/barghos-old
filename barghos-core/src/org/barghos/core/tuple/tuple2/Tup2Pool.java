@@ -32,12 +32,12 @@ import org.barghos.core.tuple.tuple2.api.ITup2R;
 import org.barghos.core.tuple.tuple2.api.Tup2;
 
 /**
- * This pool contains instances of the type Tup2f.
+ * This pool contains instances of the type Tup2 with either float or double precision.
  */
 public class Tup2Pool
 {
 	private static PrecisionLevel currentPrecision = PrecisionLevel.FLOAT;
-	private static IPool<Tup2> pool = new DequePool<Tup2>(Tup2f.class);
+	private static IPool<Tup2> pool = new DequePool<>(Tup2f.class);
 	private static int ensuredAmount = 0;
 	
 	public static void setPrecisionLevel(PrecisionLevel level)
@@ -47,10 +47,10 @@ public class Tup2Pool
 			switch(level)
 			{
 				case DOUBLE:
-					Tup2Pool.pool = new DequePool<Tup2>(Tup2d.class);
+					Tup2Pool.pool = new DequePool<>(Tup2d.class);
 					break;
 				case FLOAT:
-					Tup2Pool.pool = new DequePool<Tup2>(Tup2f.class);
+					Tup2Pool.pool = new DequePool<>(Tup2f.class);
 					break;
 				default:
 					throw new IllegalStateException();
@@ -62,26 +62,26 @@ public class Tup2Pool
 	}
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and resets it.
+	 * Returns an instance of Tup2 from the pool and resets it.
 	 * @return A stored instance.
 	 */
 	public static Tup2 get() { return pool.get().set(0.0); }
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and sets its components to the values of t.
+	 * Returns an instance of Tup2 from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
 	public static Tup2 get(ITup2R t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and sets its components to scalar.
+	 * Returns an instance of Tup2 from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public static Tup2 get(double scalar) { return pool.get().set(scalar, scalar); }
+	public static Tup2 get(double scalar) { return pool.get().set(scalar); }
 	
 	/**
-	 * Returns an instance of Tup4f from the pool and sets its components to x and y.
+	 * Returns an instance of Tup2 from the pool and sets its components to x and y.
 	 * @param x The x component.
 	 * @param y The y component.
 	 */
@@ -95,7 +95,7 @@ public class Tup2Pool
 	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); Tup2Pool.ensuredAmount = count; }
 	
 	/**
-	 * Stores Tup4f instances in the pool for late reuse.
+	 * Stores Tup2 instances of corresponding precision in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
 	public static void store(Tup2... instances) { assert(Check.notNull(instances)); pool.store(instances); }

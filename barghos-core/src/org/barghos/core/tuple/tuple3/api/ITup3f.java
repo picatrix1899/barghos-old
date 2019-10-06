@@ -44,13 +44,13 @@ public interface ITup3f extends ITup3fR, Tup3, ITupf
 	
 	
 	@Override
-	ITup3f set(ITup3R t);
+	default ITup3f set(ITup3R t) { Tup3.super.set(t); return this; }
 	
 	@Override
-	ITup3f set(double scalar);
+	default ITup3f set(double scalar) { Tup3.super.set(scalar); return this; }
 	
 	@Override
-	ITup3f set(double x, double y, double z);
+	default ITup3f set(double x, double y, double z) { Tup3.super.set(x, y, z); return this; }
 	
 	
 	/**
@@ -58,5 +58,5 @@ public interface ITup3f extends ITup3fR, Tup3, ITupf
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
 	 */
 	@Override
-	ITup3f set(int index, double value);
+	default ITup3f set(int index, double value) { Tup3.super.set(index, value); return this; }
 }

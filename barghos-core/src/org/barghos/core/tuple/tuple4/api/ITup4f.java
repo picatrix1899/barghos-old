@@ -47,13 +47,13 @@ public interface ITup4f extends ITup4fR, Tup4, ITupf
 	
 	
 	@Override
-	ITup4f set(ITup4R t);
+	default ITup4f set(ITup4R t) { Tup4.super.set(t); return this; }
 	
 	@Override
-	ITup4f set(double scalar);
+	default ITup4f set(double scalar) { Tup4.super.set(scalar); return this; }
 	
 	@Override
-	ITup4f set(double x, double y, double z, double w);
+	default ITup4f set(double x, double y, double z, double w) { Tup4.super.set(x, y, z, w); return this; }
 	
 	
 	/**
@@ -61,5 +61,5 @@ public interface ITup4f extends ITup4fR, Tup4, ITupf
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
 	 */
 	@Override
-	ITup4f set(int index, double value);
+	default ITup4f set(int index, double value) { Tup4.super.set(index, value); return this; }
 }

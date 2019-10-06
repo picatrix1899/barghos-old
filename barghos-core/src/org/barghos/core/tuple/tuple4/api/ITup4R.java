@@ -64,11 +64,30 @@ public interface ITup4R extends ITupR
 	
 	/**
 	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
+	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	double getUni(int index);
+	default double getUni(int index)
+	{
+		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
+
+		switch(index)
+		{
+			case 0: getUniX();
+			case 1: getUniY();
+			default: throw new IllegalStateException();
+		}
+	}
 	
 	@Override
 	default int getDimensions() { return 4; }
+	
+	@Override
+	default boolean isZero(double tolerance)
+	{
+		return (Math.abs(getUniX()) > tolerance) &&
+				(Math.abs(getUniY()) > tolerance) &&
+				(Math.abs(getUniZ()) > tolerance) &&
+				(Math.abs(getUniW()) > tolerance);
+	}
 }

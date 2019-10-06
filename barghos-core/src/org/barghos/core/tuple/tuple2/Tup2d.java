@@ -78,9 +78,9 @@ public class Tup2d implements ITup2d
 
 	
 	@Override
-	public Tup2d setX(double x) { this.x = (float)x; return this; }
+	public Tup2d setX(double x) { this.x = x; return this; }
 
 	@Override
-	public Tup2d setY(double y) { this.y = (float)y; return this; }
+	public Tup2d setY(double y) { this.y = y; return this; }
 
 }
