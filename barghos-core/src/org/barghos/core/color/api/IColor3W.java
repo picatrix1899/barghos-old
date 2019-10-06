@@ -1,12 +1,12 @@
 package org.barghos.core.color.api;
 
 import org.barghos.core.tuple.tuple3.api.ITup3R;
-import org.barghos.core.tuple.tuple3.api.ITup3fW;
+import org.barghos.core.tuple.tuple3.api.ITup3f;
 
 /**
  * This interface grants access to all writing methods of an RGB-Color.
  */
-public interface IColor3W extends ITup3fW
+public interface IColor3W extends ITup3f
 {
 	/**
 	 * Set the red component to x.

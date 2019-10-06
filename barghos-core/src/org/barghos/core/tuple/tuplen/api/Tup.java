@@ -29,12 +29,14 @@ package org.barghos.core.tuple.tuplen.api;
  *
  * This interface represents a unspecialized n-dimensional immutable tuple.
  */
-public interface Tup extends ITupW
+public interface Tup extends ITupR
 {
 	/**
-	 * {@inheritDoc}
+	 * Sets the value in the tuple at the given index.
+	 * @param index The index of the value in the tuple.
+	 * @param value The new value to save in the tuple.
+	 * @return The current tuple.
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
-	@Override
 	Tup set(int index, double value);
 }

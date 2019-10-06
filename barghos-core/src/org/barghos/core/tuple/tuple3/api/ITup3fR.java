@@ -78,4 +78,10 @@ public interface ITup3fR extends ITup3R, ITupfR
 			default: throw new IllegalStateException();
 		}
 	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		return Float.isFinite(getX()) && Float.isFinite(getY()) && Float.isFinite(getZ());
+	}
 }

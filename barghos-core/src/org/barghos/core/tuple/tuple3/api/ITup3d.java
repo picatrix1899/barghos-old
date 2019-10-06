@@ -31,7 +31,7 @@ import org.barghos.core.tuple.tuplen.api.ITupd;
  *
  * This interface represents a 3-dimensional double tuple.
  */
-public interface ITup3d extends ITup3dW, Tup3, ITupd
+public interface ITup3d extends ITup3dR, Tup3, ITupd
 {
 	@Override
 	ITup3d setX(double x);
@@ -58,5 +58,5 @@ public interface ITup3d extends ITup3dW, Tup3, ITupd
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
 	 */
 	@Override
-	ITup3d set(int index, double value);
+	default ITup3d set(int index, double value) { Tup3.super.set(index, value); return this; }
 }

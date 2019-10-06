@@ -31,28 +31,59 @@ import org.barghos.core.tuple.tuplen.api.Tup;
  *
  * This interface represents a unspecialized 3-dimensional tuple.
  */
-public interface Tup4 extends ITup4W, Tup
+public interface Tup4 extends ITup4R, Tup
 {
-	@Override
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
 	Tup4 setX(double x);
 	
-	@Override
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
 	Tup4 setY(double y);
 	
-	@Override
+	/**
+	 * Sets the z value of the tuple.
+	 * @param z The new z value.
+	 * @return The current tuple.
+	 */
 	Tup4 setZ(double z);
 	
-	@Override
+	/**
+	 * Sets the w value of the tuple.
+	 * @param w The new w value.
+	 * @return The current tuple.
+	 */
 	Tup4 setW(double w);
 	
 	
-	@Override
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
 	Tup4 set(ITup4R t);
 	
-	@Override
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
 	Tup4 set(double scalar);
 	
-	@Override
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @param z The new z value.
+	 * @param w The new w value.
+	 * @return The current tuple.
+	 */
 	Tup4 set(double x, double y, double z, double w);
 	
 	
@@ -61,5 +92,17 @@ public interface Tup4 extends ITup4W, Tup
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
 	 */
 	@Override
-	Tup4 set(int index, double value);
+	default Tup4 set(int index, double value)
+	{
+		if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
+		
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+			case 3: return setW(value);
+			default: throw new IllegalStateException();
+		}
+	}
 }

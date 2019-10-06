@@ -31,20 +31,7 @@ import org.barghos.core.tuple.tuple2.api.ITup2f;
  * @author picatrix1899
  *
  */
-public interface IVec2f extends IVec2fW, Vec2, ITup2f
+public interface IVec2f extends IVec2fR, Vec2, ITup2f
 {
-	@Override
-	IVec2f setX(double x);
 
-	@Override
-	IVec2f setY(double y);
-
-	@Override
-	IVec2f set(ITup2R t);
-
-	@Override
-	IVec2f set(double scalar);
-
-	@Override
-	IVec2f set(double x, double y);
 }

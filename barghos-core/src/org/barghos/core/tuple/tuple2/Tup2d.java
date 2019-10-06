@@ -26,21 +26,23 @@ package org.barghos.core.tuple.tuple2;
 
 import org.barghos.core.tuple.tuple2.api.ITup2R;
 import org.barghos.core.tuple.tuple2.api.ITup2d;
-import org.barghos.core.tuple.tuplen.Tupd;
 
 /**
  * @author picatrix1899
  *
  * This class represents a 2-dimensional double tuple.
  */
-public class Tup2d extends Tupd implements ITup2d
+public class Tup2d implements ITup2d
 {
+	private double x;
+	private double y;
+	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
 	public Tup2d()
 	{
-		super(2);
+		set(0);
 	}
 	
 	/**
@@ -48,7 +50,7 @@ public class Tup2d extends Tupd implements ITup2d
 	 */
 	public Tup2d(ITup2R t)
 	{
-		super(t.getUniX(), t.getUniY());
+		set(t);
 	}
 	
 	/**
@@ -56,7 +58,7 @@ public class Tup2d extends Tupd implements ITup2d
 	 */
 	public Tup2d(double scalar)
 	{
-		super(scalar, scalar);
+		set(scalar);
 	}
 	
 	/**
@@ -64,42 +66,21 @@ public class Tup2d extends Tupd implements ITup2d
 	 */
 	public Tup2d(double x, double y)
 	{
-		super(x, y);
+		set(x, y);
 	}
 
 
 	@Override
-	public double getX() { return this.v[0]; }
+	public double getX() { return this.x; }
 
 	@Override
-	public double getY() { return this.v[1]; }
-
-	
-	@Override
-	public Tup2d setX(double x) { this.v[0] = (float)x; return this; }
-
-	@Override
-	public Tup2d setY(double y) { this.v[1] = (float)y; return this; }
+	public double getY() { return this.y; }
 
 	
 	@Override
-	public Tup2d set(ITup2R t) { return set(t.getUniX(), t.getUniY()); }
+	public Tup2d setX(double x) { this.x = (float)x; return this; }
 
 	@Override
-	public Tup2d set(double scalar) { return set(scalar, scalar); }
+	public Tup2d setY(double y) { this.y = (float)y; return this; }
 
-	@Override
-	public Tup2d set(double x, double y)
-	{
-		this.v[0] = (float)x;
-		this.v[1] = (float)y;
-		return this;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	public Tup2d set(int index, double value) { ITup2d.super.set(index, value); return this; }
 }

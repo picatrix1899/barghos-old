@@ -38,4 +38,27 @@ public interface ITupfR extends ITupR
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
 	float get(int index);
+	
+	/**
+	 * {@inheritDoc}
+	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
+	 */
+	@Override
+	default double getUni(int index)
+	{
+		if(index < 0 || index >= getDimensions()) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (getDimensions() - 1));
+
+		return get(index);
+	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		for(int i = 0; i < getDimensions(); i++)
+		{
+			if(!Float.isFinite(get(i))) return false;
+		}
+		
+		return true;
+	}
 }

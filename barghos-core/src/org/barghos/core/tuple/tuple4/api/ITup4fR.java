@@ -57,11 +57,40 @@ public interface ITup4fR extends ITup4R, ITupfR
 	 */
 	float getW();
 	
+	@Override
+	default double getUniX() { return getX(); }
+	
+	@Override
+	default double getUniY() { return getY(); }
+	
+	@Override
+	default double getUniZ() { return getZ(); }
+	
+	@Override
+	default double getUniW() { return getW(); }
 	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
 	 */
 	@Override
-	float get(int index);
+	default float get(int index)
+	{
+		if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
+
+		switch(index)
+		{
+			case 0: getX();
+			case 1: getY();
+			case 2: getZ();
+			case 3: getW();
+			default: throw new IllegalStateException();
+		}
+	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		return Float.isFinite(getX()) && Float.isFinite(getY()) && Float.isFinite(getZ()) && Float.isFinite(getW());
+	}
 }

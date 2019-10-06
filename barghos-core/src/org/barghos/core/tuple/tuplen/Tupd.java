@@ -57,19 +57,6 @@ public class Tupd implements ITupd
 			this.v[i] = (float)v[i];
 	}
 	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
-	 */
-	@Override
-	public double getUni(int index)
-	{
-		if(index < 0 || index >= v.length) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (v.length - 1));
-		
-		return this.v[index];
-	}
-	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
