@@ -1,12 +1,12 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.pool.DequePool;
 
 public class QuatPool
 {
-	private static final IPool<Quat> pool = new DequePool<Quat>(Quat.class);
+	private static final IPool<Quat> pool = new DequePool<>(Quat.class);
 	
 	private QuatPool() { }
 	

@@ -1,14 +1,14 @@
 package org.barghos.math.vector;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.api.tuple.ITup3dR;
 import org.barghos.core.api.tuple.ITup3fR;
 import org.barghos.core.pool.DequePool;
 
 public class Vec3fPool
 {
-	public static final IPool<Vec3f> DEFAULT_POOL = new DequePool<Vec3f>(Vec3f.class);
+	public static final IPool<Vec3f> DEFAULT_POOL = new DequePool<>(Vec3f.class);
 	
 	private static IPool<Vec3f> pool = DEFAULT_POOL;
 	

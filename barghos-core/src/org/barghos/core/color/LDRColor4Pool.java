@@ -1,7 +1,7 @@
 package org.barghos.core.color;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.api.tuple.ITup4R;
 import org.barghos.core.pool.DequePool;
 
@@ -10,7 +10,7 @@ import org.barghos.core.pool.DequePool;
  */
 public class LDRColor4Pool
 {
-	private static final IPool<LDRColor4> pool = new DequePool<LDRColor4>(LDRColor4.class);
+	private static final IPool<LDRColor4> pool = new DequePool<>(LDRColor4.class);
 
 	/**
 	 * Returns an instance of LDRColor4 from the pool and resets it.
