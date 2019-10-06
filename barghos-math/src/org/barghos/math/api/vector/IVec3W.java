@@ -1,12 +1,12 @@
 package org.barghos.math.api.vector;
 
-import org.barghos.core.tuple.tuple3.api.ITup3R;
-import org.barghos.core.tuple.tuple3.api.ITup3f;
+import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.api.tuple.ITup3fW;
 
 /**
  * This interface grants access to all writing methods of an 3-dimensional float vector.
  */
-public interface IVec3W extends ITup3f
+public interface IVec3W extends ITup3fW
 {
 	/**
 	 * Sets the x component to x.
@@ -52,15 +52,4 @@ public interface IVec3W extends ITup3f
 	 * @return The current vector or its abstraction.
 	 */
 	IVec3W set(double x, double y, double z);
-	
-	default IVec3W set(int index, double value)
-	{
-		switch(index)
-		{
-			case 0: return setX(value);
-			case 1: return setY(value);
-			case 2: return setZ(value);
-			default: throw new IllegalStateException();
-		}
-	}
 }

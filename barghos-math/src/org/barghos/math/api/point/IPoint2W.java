@@ -1,12 +1,12 @@
 package org.barghos.math.api.point;
 
-import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple2.api.ITup2f;
+import org.barghos.core.api.tuple.ITup2R;
+import org.barghos.core.api.tuple.ITup2fW;
 
 /**
  * This interface grants access to all writing methods of an 2-dimensional float point.
  */
-public interface IPoint2W extends ITup2f
+public interface IPoint2W extends ITup2fW
 {
 	/**
 	 * Sets the x component to x.

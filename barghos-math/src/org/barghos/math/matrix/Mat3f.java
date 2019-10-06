@@ -1,9 +1,9 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.tuple.tuple3.Tup3f;
-import org.barghos.core.tuple.tuple3.Tup3fPool;
-import org.barghos.core.tuple.tuple3.api.ITup3fR;
-import org.barghos.core.tuple.tuple3.api.ITup3f;
+import org.barghos.core.api.tuple.ITup3fR;
+import org.barghos.core.api.tuple.ITup3fW;
+import org.barghos.core.tuple.Tup3f;
+import org.barghos.core.tuple.Tup3fPool;
 import org.barghos.math.vector.Vec3f;
 
 public class Mat3f
@@ -82,8 +82,8 @@ public class Mat3f
 		return res.set(this.m[0][index], this.m[1][index], this.m[2][index]);
 	}
 	
-	public void getRow(int index, ITup3f t) { assert(t != null); t.set(this.m[index][0], this.m[index][1], this.m[index][2]); }
-	public void getColumn(int index, ITup3f t) { assert(t != null); t.set(this.m[0][index], this.m[1][index], this.m[2][index]); }
+	public void getRow(int index, ITup3fW t) { assert(t != null); t.set(this.m[index][0], this.m[index][1], this.m[index][2]); }
+	public void getColumn(int index, ITup3fW t) { assert(t != null); t.set(this.m[0][index], this.m[1][index], this.m[2][index]); }
 	
 	public static float determinant(Mat3f m)
 	{

@@ -1,12 +1,12 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple3.Tup3f;
-import org.barghos.core.tuple.tuple3.api.ITup3R;
-import org.barghos.core.tuple.tuple4.Tup4f;
-import org.barghos.core.tuple.tuple4.Tup4fPool;
-import org.barghos.core.tuple.tuple4.api.ITup4R;
-import org.barghos.core.tuple.tuple4.api.ITup4f;
+import org.barghos.core.api.tuple.ITup2R;
+import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.api.tuple.ITup4R;
+import org.barghos.core.api.tuple.ITup4fW;
+import org.barghos.core.tuple.Tup3f;
+import org.barghos.core.tuple.Tup4f;
+import org.barghos.core.tuple.Tup4fPool;
 import org.barghos.math.Maths;
 import org.barghos.math.point.Point3f;
 import org.barghos.math.vector.Quat;
@@ -182,7 +182,7 @@ public class Mat4f
 	{
 		assert(pos != null);
 		assert(rot != null);
-		if(scale == null) scale = new Tup3f(1.0);
+		if(scale == null) scale = new Tup3f(1.0f);
 		
 		initIdentity();
 		
@@ -257,8 +257,8 @@ public class Mat4f
 		return res.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]);
 	}
 	
-	public void getRow(int index, ITup4f t) { assert(t != null); t.set(this.m[index][0], this.m[index][1], this.m[index][2], this.m[index][3]); }
-	public void getColumn(int index, ITup4f t) { assert(t != null); t.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]); }
+	public void getRow(int index, ITup4fW t) { assert(t != null); t.set(this.m[index][0], this.m[index][1], this.m[index][2], this.m[index][3]); }
+	public void getColumn(int index, ITup4fW t) { assert(t != null); t.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]); }
 	
 	
 	public float determinant()
