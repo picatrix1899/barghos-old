@@ -1,20 +1,12 @@
 
 org.barghos.core
+org.barghos.core.api
+org.barghos.core.api.color
+org.barghos.core.api.tuple
 org.barghos.core.color
-org.barghos.core.color.api
 org.barghos.core.event
-org.barghos.core.future
 org.barghos.core.pool
-org.barghos.core.pool.api
-org.barghos.core.profiler
+org.barghos.core.pool.color
+org.barghos.core.pool.tuple
 org.barghos.core.resource
-org.barghos.core.thread
 org.barghos.core.tuple
-org.barghos.core.tuple.tuple2
-org.barghos.core.tuple.tuple2.api
-org.barghos.core.tuple.tuple3
-org.barghos.core.tuple.tuple3.api
-org.barghos.core.tuple.tuple4
-org.barghos.core.tuple.tuple4.api
-org.barghos.core.tuple.tuplen
-org.barghos.core.tuple.tuplen.api

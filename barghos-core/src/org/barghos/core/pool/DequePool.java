@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import org.barghos.core.pool.api.IPool;
+import org.barghos.core.api.IPool;
 
 /**
  * This class can store instances of a type T for later reuse.
@@ -16,7 +16,7 @@ public class DequePool<T> implements IPool<T>
 	
 	private int size;
 	
-	private Class<? extends T> clazz;
+	private Class<T> clazz;
 	
 	/**
 	 * Creates a new Pool of the given type.
@@ -24,7 +24,7 @@ public class DequePool<T> implements IPool<T>
 	 * <br><br><b><u>Important:</u></b> The class needs a default constructor for being instanced by the pool.
 	 * @param clazz The class of the used type.
 	 */
-	public DequePool(Class<? extends T> clazz)
+	public DequePool(Class<T> clazz)
 	{
 		assert(clazz != null);
 		this.clazz = clazz;
@@ -37,7 +37,7 @@ public class DequePool<T> implements IPool<T>
 	 * @param clazz The class of the used type.
 	 * @param size The number of initial entries to pregenerate
 	 */
-	public DequePool(Class<? extends T> clazz, int size)
+	public DequePool(Class<T> clazz, int size)
 	{
 		assert(clazz != null);
 		assert(size > 0);
@@ -76,7 +76,7 @@ public class DequePool<T> implements IPool<T>
 	{
 		try
 		{
-			Constructor<? extends T> c = this.clazz.getConstructor();
+			Constructor<T> c = this.clazz.getConstructor();
 			
 			return c.newInstance();
 		} catch (Exception e)

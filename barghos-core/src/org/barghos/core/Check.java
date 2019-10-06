@@ -2,7 +2,7 @@ package org.barghos.core;
 
 import java.util.List;
 
-import org.barghos.core.tuple.tuple3.api.ITup3fR;
+import org.barghos.core.api.tuple.ITup3fR;
 
 public class Check
 {
