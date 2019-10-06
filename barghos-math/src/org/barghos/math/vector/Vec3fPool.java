@@ -22,7 +22,7 @@ public class Vec3fPool
 	
 	public static void store(Vec3f... instances) { assert(Check.notNull(instances)); pool.store(instances); }
 	
-	public static void ensure(int count) { assert(count > 0); pool.ensure(count); }
+	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); }
 	public static int size() { return pool.size(); }
 	
 	public static IPool<Vec3f> getInnerPool() { return Vec3fPool.pool; }

@@ -31,7 +31,7 @@ import org.barghos.core.tuple.tuplen.api.ITupd;
  *
  * This interface represents a 4-dimensional double tuple.
  */
-public interface ITup4d extends ITup4dW, Tup4, ITupd
+public interface ITup4d extends ITup4dR, Tup4, ITupd
 {
 	@Override
 	ITup4d setX(double x);

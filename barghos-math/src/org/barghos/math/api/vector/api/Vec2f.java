@@ -25,6 +25,7 @@ SOFTWARE.
 package org.barghos.math.api.vector.api;
 
 import org.barghos.core.tuple.tuple2.api.ITup2R;
+import org.barghos.math.Maths;
 
 /**
  * @author picatrix1899
@@ -54,10 +55,10 @@ public class Vec2f implements IVec2f
 	public float getY() { return this.y; }
 
 	@Override
-	public Vec2f setX(double x) { this.x = (float)x; return this; }
+	public Vec2 setX(double x) { this.x = (float)x; return this; }
 
 	@Override
-	public Vec2f setY(double y) { this.y = (float)y; return this; }
+	public Vec2 setY(double y) { this.y = (float)y; return this; }
 
 	@Override
 	public Vec2f set(ITup2R t)
@@ -72,6 +73,7 @@ public class Vec2f implements IVec2f
 	@Override
 	public Vec2f set(double x, double y) { return setX(x).setY(y); }
 
+	
 	
 	@Override
 	public Vec2 add(ITup2R t, Vec2 res) { assert(t != null); return add(t.getUniX(), t.getUniY(), res); }
@@ -99,116 +101,115 @@ public class Vec2f implements IVec2f
 		return res.set(this.x - x, this.y - y);
 	}
 
-	public Vec2 mul(ITup2R t, Vec2 res) {  }
+	@Override
+	public Vec2 mul(ITup2R t, Vec2 res) { assert(t != null); return mul(t.getUniX(), t.getUniY(), res); }
 
-	public Vec2 mul(double scalar, Vec2 res)
-	{
-		return null;
-	}
+	@Override
+	public Vec2 mul(double scalar, Vec2 res) { return mul(scalar, scalar, res); }
 
+	@Override
 	public Vec2 mul(double x, double y, Vec2 res)
 	{
-		return null;
+		if(res == null) res = new Vec2f();
+		return res.set(this.x * x, this.y * y);
 	}
 
-	public Vec2 div(ITup2R t, Vec2 res)
-	{
-		return null;
-	}
+	@Override
+	public Vec2 div(ITup2R t, Vec2 res) { assert(t != null); return div(t.getUniX(), t.getUniY(), res); }
 
-	public Vec2 div(double scalar, Vec2 res)
-	{
-		return null;
-	}
+	@Override
+	public Vec2 div(double scalar, Vec2 res) { return div(scalar, scalar, res); }
 
+	@Override
 	public Vec2 div(double x, double y, Vec2 res)
 	{
-		return null;
+		if(res == null) res = new Vec2f();
+		return res.set(this.x / x, this.y / y);
 	}
 
-	public double length()
-	{
-		return 0;
-	}
+	@Override
+	public double length() { return Maths.sqrt(squaredLength()); }
 
-	public double reciprocalLength()
-	{
-		return 0;
-	}
+	@Override
+	public double reciprocalLength() { return 1.0 / length(); }
 
-	public double squaredLength()
-	{
-		return 0;
-	}
+	@Override
+	public double squaredLength() { return this.x * this.x + this.y * this.y; }
 
-	public double lengthSafe()
-	{
-		return 0;
-	}
+	@Override
+	public double lengthSafe() { return lengthSafe(0.0); }
 
+	@Override
 	public double lengthSafe(double tolerance)
 	{
-		return 0;
+		if(isZero(tolerance)) return 0;
+		return length();
 	}
 
-	public double reciprocalLengthSafe()
-	{
-		return 0;
-	}
+	@Override
+	public double reciprocalLengthSafe(){ return reciprocalLengthSafe(0.0); }
 
+	@Override
 	public double reciprocalLengthSafe(double tolerance)
 	{
-		return 0;
+		if(isZero(tolerance)) return 0;
+		return reciprocalLength();
 	}
 
-	public Vec2 normal(Vec2 res)
-	{
-		return null;
-	}
+	@Override
+	public Vec2 normal(Vec2 res) { return mul(reciprocalLength(), res); }
 
-	public Vec2 normalSafe(Vec2 res)
-	{
-		return null;
-	}
+	@Override
+	public Vec2 normalSafe(Vec2 res) { return normalSafe(0.0, res); }
 
+	@Override
 	public Vec2 normalSafe(double tolerance, Vec2 res)
 	{
-		return null;
+		if(res == null) res = new Vec2f();
+		if(isZero(tolerance)) return res.set(0.0);
+		return mul(reciprocalLengthSafe(tolerance), res);
 	}
 
+	@Override
 	public double dot(ITup2R t)
 	{
-		return 0;
+		return this.x * t.getUniX() + this.y * t.getUniY();
 	}
 
+	@Override
 	public double dot(double x, double y)
 	{
-		return 0;
+		return this.x * x + this.y * y;
 	}
 
+	@Override
 	public boolean isFinite()
 	{
-		return false;
+		return Float.isFinite(this.x) && Float.isFinite(this.y);
 	}
 
-	public boolean isZero()
+
+	@Override
+	public boolean isZero() { return isZero(0.0); }
+	
+	@Override
+	public boolean isZero(double tolerance)
 	{
-		return false;
+		if(tolerance == 0.0) return this.x == 0.0 && this.y == 0.0;
+		return Math.abs(x) <= tolerance && Math.abs(y) <= tolerance;
 	}
 
-	public boolean iszero(double tolerance)
-	{
-		return false;
-	}
-
+	@Override
 	public Vec2 snapToGrid(ITup2R grid, Vec2 res)
 	{
-		return null;
+		return snapToGrid(grid.getUniX(), grid.getUniY(), res);
 	}
 
+	@Override
 	public Vec2 snapToGrid(double gx, double gy, Vec2 res)
 	{
-		return null;
+		if(res == null) res = new Vec2f();
+		return res.set(Maths.gridSnap(this.x, gx), Maths.gridSnap(this.y, gy));
 	}
 
 }

@@ -26,21 +26,23 @@ package org.barghos.core.tuple.tuple2;
 
 import org.barghos.core.tuple.tuple2.api.ITup2R;
 import org.barghos.core.tuple.tuple2.api.ITup2f;
-import org.barghos.core.tuple.tuplen.Tupf;
 
 /**
  * @author picatrix1899
  *
  * This class represents a 2-dimensional float tuple.
  */
-public class Tup2f extends Tupf implements ITup2f
+public class Tup2f implements ITup2f
 {
+	private float x;
+	private float y;
+	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
 	public Tup2f()
 	{
-		super(2);
+		set(0.0);
 	}
 	
 	/**
@@ -48,7 +50,7 @@ public class Tup2f extends Tupf implements ITup2f
 	 */
 	public Tup2f(ITup2R t)
 	{
-		super(t.getUniX(), t.getUniY());
+		set(t);
 	}
 	
 	/**
@@ -56,7 +58,7 @@ public class Tup2f extends Tupf implements ITup2f
 	 */
 	public Tup2f(double scalar)
 	{
-		super(scalar, scalar);
+		set(scalar);
 	}
 	
 	/**
@@ -64,40 +66,18 @@ public class Tup2f extends Tupf implements ITup2f
 	 */
 	public Tup2f(double x, double y)
 	{
-		super(x, y);
+		set(x, y);
 	}
 
 	@Override
-	public float getX() { return this.v[0]; }
+	public float getX() { return this.x; }
 
 	@Override
-	public float getY() { return this.v[1]; }
+	public float getY() { return this.y; }
 
 	@Override
-	public Tup2f setX(double x) { this.v[0] = (float)x; return this; }
+	public ITup2f setX(double x) { this.x = (float)x; return this; }
 
 	@Override
-	public Tup2f setY(double y) { this.v[1] = (float)y; return this; }
-
-	
-	@Override
-	public Tup2f set(ITup2R t) { return set(t.getUniX(), t.getUniY()); }
-
-	@Override
-	public Tup2f set(double scalar) { return set(scalar, scalar); }
-
-	@Override
-	public Tup2f set(double x, double y)
-	{
-		this.v[0] = (float)x;
-		this.v[1] = (float)y;
-		return this;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
-	 */
-	@Override
-	public Tup2f set(int index, double value) { ITup2f.super.set(index, value); return this; }
+	public ITup2f setY(double y) { this.y = (float)y; return this; }
 }

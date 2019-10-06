@@ -31,7 +31,7 @@ import org.barghos.core.tuple.tuplen.api.ITupf;
  *
  * This interface represents a 4-dimensional float tuple.
  */
-public interface ITup4f extends ITup4fW, Tup4, ITupf
+public interface ITup4f extends ITup4fR, Tup4, ITupf
 {
 	@Override
 	ITup4f setX(double x);

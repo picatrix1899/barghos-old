@@ -37,7 +37,7 @@ public abstract class PTup3d implements ITup3dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup3f} with the adopted values.
 	 */
-	public static PTup3d gen(ITup3R t) { return gen(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public static PTup3d gen(ITup3R t) { assert(t != null); return gen(t.getUniX(), t.getUniY(), t.getUniZ()); }
 	
 	/**
 	 * This generate a readonly {@link PTup3f} with the values set to scalar.
@@ -65,53 +65,6 @@ public abstract class PTup3d implements ITup3dR
 			
 			@Override
 			public double getZ() { return z; }
-
-
-			@Override
-			public double getUniX() { return x; }
-			
-			@Override
-			public double getUniY() { return y; }
-			
-			@Override
-			public double getUniZ() { return z; }
-			
-			
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-			 */
-			@Override
-			public double getUni(int index)
-			{
-				if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-				
-				switch(index)
-				{
-					case 0: return x;
-					case 1: return y;
-					case 2: return z;
-					default: throw new IllegalStateException();
-				}
-			}
-			
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-			 */
-			@Override
-			public double get(int index)
-			{
-				if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-				
-				switch(index)
-				{
-					case 0: return (float)x;
-					case 1: return (float)y;
-					case 2: return (float)z;
-					default: throw new IllegalStateException();
-				}
-			}
 		};
 	}
 }

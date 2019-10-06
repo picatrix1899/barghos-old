@@ -29,10 +29,9 @@ package org.barghos.core.tuple.tuplen.api;
  *
  * This interface represents a n-dimensional immutable double tuple.
  */
-public interface ITupd extends ITupdW, Tup
+public interface ITupd extends ITupdR, Tup
 {
 	/**
-	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
 	@Override

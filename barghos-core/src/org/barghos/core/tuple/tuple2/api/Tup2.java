@@ -31,23 +31,44 @@ import org.barghos.core.tuple.tuplen.api.Tup;
  *
  * This interface represents a unspecialized 2-dimensional tuple.
  */
-public interface Tup2 extends ITup2W, Tup
+public interface Tup2 extends ITup2R, Tup
 {
-	@Override
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
 	Tup2 setX(double x);
 	
-	@Override
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
 	Tup2 setY(double y);
 	
 	
-	@Override
-	Tup2 set(ITup2R t);
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
+	default Tup2 set(ITup2R t) { assert(t != null); return set(t.getUniX(), t.getUniY()); }
 	
-	@Override
-	Tup2 set(double scalar);
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
+	default Tup2 set(double scalar) { return set(scalar, scalar); }
 	
-	@Override
-	Tup2 set(double x, double y);
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
+	default Tup2 set(double x, double y) { return setX(x).setY(y); }
 	
 	
 	/**
@@ -55,5 +76,15 @@ public interface Tup2 extends ITup2W, Tup
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	default Tup2 set(int index, double value) { ITup2W.super.set(index, value); return this; }
+	default Tup2 set(int index, double value)
+	{
+		if(index < 0 || index > 1) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 1");
+		
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			default: throw new IllegalStateException();
+		}
+	}
 }

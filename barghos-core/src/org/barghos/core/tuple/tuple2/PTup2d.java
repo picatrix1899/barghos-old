@@ -37,7 +37,7 @@ public abstract class PTup2d implements ITup2dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup2f} with the adopted values.
 	 */
-	public static PTup2d gen(ITup2R t) { return gen(t.getUniX(), t.getUniY()); }
+	public static PTup2d gen(ITup2R t) { assert(t != null); return gen(t.getUniX(), t.getUniY()); }
 	
 	/**
 	 * This generate a readonly {@link PTup2f} with the values set to scalar.

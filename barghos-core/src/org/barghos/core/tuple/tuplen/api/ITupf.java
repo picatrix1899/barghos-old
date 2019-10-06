@@ -29,10 +29,10 @@ package org.barghos.core.tuple.tuplen.api;
  *
  * This interface represents a n-dimensional immutable float tuple.
  */
-public interface ITupf extends ITupfW, Tup
+public interface ITupf extends ITupfR, Tup
 {
+
 	/**
-	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
 	@Override

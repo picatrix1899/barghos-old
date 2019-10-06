@@ -78,4 +78,10 @@ public interface ITup3dR extends ITup3R, ITupdR
 			default: throw new IllegalStateException();
 		}
 	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		return Double.isFinite(getX()) && Double.isFinite(getY()) && Double.isFinite(getZ());
+	}
 }

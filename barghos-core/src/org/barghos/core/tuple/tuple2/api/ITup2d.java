@@ -31,29 +31,49 @@ import org.barghos.core.tuple.tuplen.api.ITupd;
  *
  * This interface represents a 2-dimensional double tuple.
  */
-public interface ITup2d extends ITup2dW, Tup2, ITupd
+public interface ITup2d extends ITup2dR, Tup2, ITupd
 {
-	@Override
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
 	ITup2d setX(double x);
 	
-	@Override
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
 	ITup2d setY(double y);
 	
 	
-	@Override
-	ITup2d set(ITup2R t);
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
+	default ITup2d set(ITup2R t) { Tup2.super.set(t); return this; }
 	
-	@Override
-	ITup2d set(double scalar);
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
+	default ITup2d set(double scalar) { Tup2.super.set(scalar); return this; }
 	
-	@Override
-	ITup2d set(double x, double y);
-	
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
+	default ITup2d set(double x, double y) { Tup2.super.set(x, y); return this; }
 	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 1.
 	 */
 	@Override
-	default ITup2d set(int index, double value) { ITup2dW.super.set(index, value); return this; }
+	default ITup2d set(int index, double value) { Tup2.super.set(index, value); return this; }
 }

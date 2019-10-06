@@ -1,12 +1,12 @@
 package org.barghos.math.api.vector;
 
 import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple2.api.ITup2fW;
+import org.barghos.core.tuple.tuple2.api.ITup2f;
 
 /**
  * This interface grants access to all writing methods of an 2-dimensional float vector.
  */
-public interface IVec2W extends ITup2fW
+public interface IVec2W extends ITup2f
 {
 	/**
 	 * Sets the x component to x.

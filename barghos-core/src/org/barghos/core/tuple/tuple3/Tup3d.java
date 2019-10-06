@@ -66,17 +66,7 @@ public class Tup3d extends Tupd implements ITup3d
 	{
 		super(x, y, z);
 	}
-	
-	@Override
-	public double getUniX() { return this.v[0]; }
 
-	@Override
-	public double getUniY() { return this.v[1]; }
-
-	@Override
-	public double getUniZ() { return this.v[2]; }
-
-	
 	@Override
 	public double getX() { return this.v[0]; }
 
@@ -85,31 +75,6 @@ public class Tup3d extends Tupd implements ITup3d
 
 	@Override
 	public double getZ() { return this.v[2]; }
-	
-	
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-	 */
-	@Override
-	public double getUni(int index)
-	{
-		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-
-		return this.v[index];
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
-	 */
-	@Override
-	public double get(int index)
-	{
-		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-
-		return this.v[index];
-	}
 
 	
 	@Override
@@ -143,11 +108,5 @@ public class Tup3d extends Tupd implements ITup3d
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
 	 */
 	@Override
-	public Tup3d set(int index, double value)
-	{
-		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
-		
-		this.v[index] = (float)value;
-		return this;
-	}
+	public Tup3d set(int index, double value) { ITup3d.super.set(index, value); return this; }
 }

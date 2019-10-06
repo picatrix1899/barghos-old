@@ -1,12 +1,12 @@
 package org.barghos.math.api.vector;
 
 import org.barghos.core.tuple.tuple4.api.ITup4R;
-import org.barghos.core.tuple.tuple4.api.ITup4fW;
+import org.barghos.core.tuple.tuple4.api.ITup4f;
 
 /**
  * This interface grants access to all writing methods of an 4-dimensional float vector.
  */
-public interface IVec4W extends ITup4fW
+public interface IVec4W extends ITup4f
 {
 	/**
 	 * Sets the x component to x.

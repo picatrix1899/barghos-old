@@ -44,7 +44,13 @@ public interface ITupR
 	/**
 	 * Returns the dimension or value count of the tuple.
 	 * This is often used together with the {@link #getUni(int)} function.
-	 * @return The dimension ot value count of the tuple.
+	 * @return The dimension or value count of the tuple.
 	 */
 	int getDimensions();
+	
+	/**
+	 * Returns true if all values of the tuple are finite values.
+	 * @return True if all values of the tuple are finite values.
+	 */
+	boolean isFinite();
 }

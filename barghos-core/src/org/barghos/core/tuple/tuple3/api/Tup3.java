@@ -31,25 +31,51 @@ import org.barghos.core.tuple.tuplen.api.Tup;
  *
  * This interface represents a unspecialized 3-dimensional tuple.
  */
-public interface Tup3 extends ITup3W, Tup
+public interface Tup3 extends ITup3R, Tup
 {
-	@Override
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
 	Tup3 setX(double x);
 	
-	@Override
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
 	Tup3 setY(double y);
 	
-	@Override
+	/**
+	 * Sets the z value of the tuple.
+	 * @param z The new z value.
+	 * @return The current tuple.
+	 */
 	Tup3 setZ(double z);
 	
 	
-	@Override
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
 	Tup3 set(ITup3R t);
 	
-	@Override
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
 	Tup3 set(double scalar);
 	
-	@Override
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @param z The new z value.
+	 * @return The current tuple.
+	 */
 	Tup3 set(double x, double y, double z);
 	
 	
@@ -58,5 +84,16 @@ public interface Tup3 extends ITup3W, Tup
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 2.
 	 */
 	@Override
-	Tup3 set(int index, double value);
+	default Tup3 set(int index, double value)
+	{
+		if(index < 0 || index > 2) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 2");
+		
+		switch(index)
+		{
+			case 0: return setX(value);
+			case 1: return setY(value);
+			case 2: return setZ(value);
+			default: throw new IllegalStateException();
+		}
+	}
 }

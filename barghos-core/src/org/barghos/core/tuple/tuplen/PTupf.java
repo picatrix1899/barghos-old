@@ -50,18 +50,6 @@ public abstract class PTupf implements ITupfR
 			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 			 */
 			@Override
-			public double getUni(int index)
-			{
-				if(index < 0 || index > values.length) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (values.length - 1));
-				
-				return v[index];
-			}
-			
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
-			 */
-			@Override
 			public float get(int index)
 			{
 				if(index < 0 || index > values.length) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (values.length - 1));

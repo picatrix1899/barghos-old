@@ -57,11 +57,40 @@ public interface ITup4dR extends ITup4R, ITupdR
 	 */
 	double getW();
 	
+	@Override
+	default double getUniX() { return getX(); }
+	
+	@Override
+	default double getUniY() { return getY(); }
+	
+	@Override
+	default double getUniZ() { return getZ(); }
+	
+	@Override
+	default double getUniW() { return getW(); }
 	
 	/**
 	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than 3.
 	 */
 	@Override
-	double get(int index);
+	default double get(int index)
+	{
+		if(index < 0 || index > 3) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: 3");
+
+		switch(index)
+		{
+			case 0: getX();
+			case 1: getY();
+			case 2: getZ();
+			case 3: getW();
+			default: throw new IllegalStateException();
+		}
+	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		return Double.isFinite(getX()) && Double.isFinite(getY()) && Double.isFinite(getZ()) && Double.isFinite(getW());
+	}
 }

@@ -31,7 +31,7 @@ import org.barghos.core.tuple.tuplen.api.ITupf;
  *
  * This interface represents a 3-dimensional float tuple.
  */
-public interface ITup3f extends ITup3fW, Tup3, ITupf
+public interface ITup3f extends ITup3fR, Tup3, ITupf
 {
 	@Override
 	ITup3f setX(double x);

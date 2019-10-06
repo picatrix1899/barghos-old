@@ -1,12 +1,12 @@
 package org.barghos.core.color.api;
 
 import org.barghos.core.tuple.tuple4.api.ITup4R;
-import org.barghos.core.tuple.tuple4.api.ITup4fW;
+import org.barghos.core.tuple.tuple4.api.ITup4f;
 
 /**
  * This interface grants access to all writing methods of an RGBA-Color.
  */
-public interface IColor4W extends ITup4fW
+public interface IColor4W extends ITup4f
 {
 	/**
 	 * Set the red component to x.
