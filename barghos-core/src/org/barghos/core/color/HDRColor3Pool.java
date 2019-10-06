@@ -1,7 +1,7 @@
 package org.barghos.core.color;
 
 import org.barghos.core.Check;
-import org.barghos.core.api.IPool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.core.pool.DequePool;
 
@@ -10,7 +10,7 @@ import org.barghos.core.pool.DequePool;
  */
 public class HDRColor3Pool
 {
-	private static final IPool<HDRColor3> pool = new DequePool<HDRColor3>(HDRColor3.class);
+	private static final IPool<HDRColor3> pool = new DequePool<>(HDRColor3.class);
 
 	/**
 	 * Returns an instance of HDRColor3 from the pool and resets it.
