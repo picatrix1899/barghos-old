@@ -24,20 +24,17 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4;
 
-import org.barghos.core.tuple.tuple4.api.ITup4R;
-import org.barghos.core.tuple.tuple4.api.ITup4dR;
-
 /**
  * This class is a readonly implementation of a 4-dimensional float tuple.
  */
-public abstract class PTup4d implements ITup4dR
+public abstract class PTup4d implements Tup4dR
 {
 	/**
 	 * Generates a readonly {@link PTup4d} that adopts the values from the given tuple.
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup4d} with the adopted values.
 	 */
-	public static PTup4d gen(ITup4R t) { return gen(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
+	public static PTup4d gen(Tup4dR t) { return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * This generate a readonly {@link PTup4d} with the values set to scalar.

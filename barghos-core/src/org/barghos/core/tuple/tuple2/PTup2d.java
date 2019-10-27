@@ -24,20 +24,17 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
-import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple2.api.ITup2dR;
-
 /**
  * This class is a readonly implementation of a 2-dimensional double tuple.
  */
-public abstract class PTup2d implements ITup2dR
+public abstract class PTup2d implements Tup2dR
 {
 	/**
 	 * Generates a readonly {@link PTup2f} that adopts the values from the given tuple.
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup2f} with the adopted values.
 	 */
-	public static PTup2d gen(ITup2R t) { assert(t != null); return gen(t.getUniX(), t.getUniY()); }
+	public static PTup2d gen(Tup2dR t) { assert(t != null); return gen(t.getX(), t.getY()); }
 	
 	/**
 	 * This generate a readonly {@link PTup2f} with the values set to scalar.

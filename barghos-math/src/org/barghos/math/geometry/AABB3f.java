@@ -184,4 +184,9 @@ public class AABB3f implements FiniteGeometricObject
 		res = res != null ? res : new OBB3f();
 		return res.set(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, rotation);
 	}
+	
+	public String toString()
+	{
+		return "aabb3f(center: " + new Vec3f(this.cX, this.cY, this.cZ) + ", halfExtend: " + new Vec3f(this.heX, this.heY, this.heZ) + ")";
+	}
 }

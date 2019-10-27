@@ -2,7 +2,7 @@ package org.barghos.core.testcolor;
 
 import org.barghos.core.Check;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple.tuple3.api.ITup3R;
+import org.barghos.core.tuple.tuple3.Tup3fR;
 import org.barghos.core.pool.DequePool;
 
 /**
@@ -16,7 +16,7 @@ public class LDRColor3Pool
 	 * Returns an instance of LDRColor3 from the pool and resets it.
 	 * @return A stored instance.
 	 */
-	public static LDRColor3 get() { return pool.get().set(0.0); }
+	public static LDRColor3 get() { return pool.get().set(0.0f); }
 	
 	/**
 	 * Returns an instance of LDRColor3 from the pool and sets its components to the values of t.
@@ -24,7 +24,7 @@ public class LDRColor3Pool
 	 * @param t A tuple that contains the rgb values in unitspace.
 	 * @return A stored instance.
 	 */
-	public static LDRColor3 get(ITup3R t) { assert(t != null); return pool.get().set(t); }
+	public static LDRColor3 get(Tup3fR t) { assert(t != null); return pool.get().set(t); }
 	
 	/**
 	 * Returns an instance of LDRColor3 from the pool and sets its components to scalar.

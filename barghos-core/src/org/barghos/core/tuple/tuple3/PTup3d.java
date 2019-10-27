@@ -24,23 +24,20 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
-import org.barghos.core.tuple.tuple3.api.ITup3R;
-import org.barghos.core.tuple.tuple3.api.ITup3dR;
-
 /**
  * This class is a readonly implementation of a 3-dimensional double tuple.
  */
-public abstract class PTup3d implements ITup3dR
+public abstract class PTup3d implements Tup3dR
 {
 	/**
 	 * Generates a readonly {@link PTup3f} that adopts the values from the given tuple.
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup3f} with the adopted values.
 	 */
-	public static PTup3d gen(ITup3R t) { assert(t != null); return gen(t.getUniX(), t.getUniY(), t.getUniZ()); }
+	public static PTup3d gen(Tup3dR t) { assert(t != null); return gen(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
-	 * This generate a readonly {@link PTup3f} with the values set to scalar.
+	 * This generate a readonly {@link PTup23f} with the values set to scalar.
 	 * @param scalar The value.
 	 * @return A new readonly {@link PTup3f} with the values set to the given value.
 	 */

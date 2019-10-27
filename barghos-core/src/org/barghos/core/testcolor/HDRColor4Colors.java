@@ -1,8 +1,6 @@
 package org.barghos.core.testcolor;
 
-import org.barghos.core.testcolor.api.IHDRColor4R;
-
-public enum HDRColor4Colors implements IHDRColor4R
+public enum HDRColor4Colors implements HDRColor4R
 {
 	/**
 	 * White Color constant.
@@ -132,8 +130,4 @@ public enum HDRColor4Colors implements IHDRColor4R
 	
 	@Override
 	public int getA() { return 255; }
-	
-	@Override
-	public int getDimensions() { return 4; }
-
 }

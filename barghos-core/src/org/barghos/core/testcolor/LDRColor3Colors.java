@@ -1,8 +1,6 @@
 package org.barghos.core.testcolor;
 
-import org.barghos.core.testcolor.api.ILDRColor3R;
-
-public enum LDRColor3Colors implements ILDRColor3R
+public enum LDRColor3Colors implements LDRColor3R
 {
 	/**
 	 * White Color constant.
@@ -126,8 +124,4 @@ public enum LDRColor3Colors implements ILDRColor3R
 	
 	@Override
 	public float getUnityB() { return (int)Math.round(getB() / 255); }
-
-	@Override
-	public int getDimensions() { return 3; }
-
 }

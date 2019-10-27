@@ -1,12 +1,11 @@
 package org.barghos.core.testcolor;
 
-import org.barghos.core.testcolor.api.ILDRColor4R;
-import org.barghos.core.api.tuple.ITup4fR;
+import org.barghos.core.tuple.tuple4.Tup4fR;
 
 /**
  * This class is a readonly implementation of an LDRColor4.
  */
-public abstract class PLDRColor4 implements ILDRColor4R
+public abstract class PLDRColor4 implements LDRColor4R
 {
 	private PLDRColor4() { }
 	
@@ -16,7 +15,7 @@ public abstract class PLDRColor4 implements ILDRColor4R
 	 * @param t A tuple that the components are set to.
 	 * @return A new readonly PLDRColor4 with the given components.
 	 */
-	public static PLDRColor4 gen(ITup4fR t) { return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public static PLDRColor4 gen(Tup4fR t) { return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * This generate a readonly PLDRColor4 with the components set to scalar.
@@ -49,9 +48,7 @@ public abstract class PLDRColor4 implements ILDRColor4R
 			public int getG() { return clampI(Math.round(g * 255)); }
 			public int getB() { return clampI(Math.round(b * 255)); }
 			public int getA() { return clampI(Math.round(a * 255)); }
-			
-			public int getDimensions() { return 4; }
-			
+
 			private float clampF(float value)
 			{
 				return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;
@@ -96,9 +93,7 @@ public abstract class PLDRColor4 implements ILDRColor4R
 			public int getG() { return clampI(g); }
 			public int getB() { return clampI(b); }
 			public int getA() { return clampI(a); }
-			
-			public int getDimensions() { return 4; }
-			
+
 			private float clampF(float value)
 			{
 				return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;

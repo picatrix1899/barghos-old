@@ -24,15 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
-import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple2.api.ITup2d;
-
 /**
  * @author picatrix1899
  *
  * This class represents a 2-dimensional double tuple.
  */
-public class Tup2d implements ITup2d
+public class Tup2d implements Tup2dR
 {
 	private double x;
 	private double y;
@@ -48,7 +45,7 @@ public class Tup2d implements ITup2d
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup2d(ITup2R t)
+	public Tup2d(Tup2dR t)
 	{
 		set(t);
 	}
@@ -69,18 +66,44 @@ public class Tup2d implements ITup2d
 		set(x, y);
 	}
 
-
-	@Override
 	public double getX() { return this.x; }
 
-	@Override
 	public double getY() { return this.y; }
 
-	
-	@Override
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
 	public Tup2d setX(double x) { this.x = x; return this; }
 
-	@Override
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
 	public Tup2d setY(double y) { this.y = y; return this; }
+	
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
+	public Tup2d set(Tup2dR t) { assert(t != null); return set(t.getX(), t.getY()); }
+	
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
+	public Tup2d set(double scalar) { return set(scalar, scalar); }
+	
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
+	public Tup2d set(double x, double y) { return setX(x).setY(y); }
 
 }
