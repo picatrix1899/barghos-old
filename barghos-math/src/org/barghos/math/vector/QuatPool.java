@@ -10,8 +10,9 @@ public class QuatPool
 	
 	private QuatPool() { }
 	
-	public static Quat get() { return pool.get().set(1.0, 0.0, 0.0, 0.0); }
+	public static Quat get() { return pool.get().set(1.0f, 0.0f, 0.0f, 0.0f); }
 	public static Quat get(Quat q) { assert(q != null); return pool.get().set(q); }
+	public static Quat get(float x, float y, float z, float w) { return pool.get().set(x ,y ,z ,w); }
 	
 	public static void store(Quat... instances) { assert(Check.notNull(instances)); pool.store(instances); }
 	

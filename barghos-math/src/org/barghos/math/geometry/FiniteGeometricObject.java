@@ -1,15 +1,15 @@
 package org.barghos.math.geometry;
 
 import org.barghos.math.matrix.Mat4f;
-import org.barghos.math.point.Point3f;
+import org.barghos.math.point.Point3;
 
 public interface FiniteGeometricObject
 {
-	Point3f[] getPoints();
+	Point3[] getPoints();
 	
-	default Point3f[] getTransformedPoints(Mat4f t)
+	default Point3[] getTransformedPoints(Mat4f t)
 	{
-		Point3f[] p = getPoints();
+		Point3[] p = getPoints();
 		
 		for(int i = 0; i < p.length; i++)
 		{

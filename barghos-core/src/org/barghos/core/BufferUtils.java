@@ -10,12 +10,12 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.List;
 
-import org.barghos.core.api.tuple.ITup2dR;
-import org.barghos.core.api.tuple.ITup2fR;
-import org.barghos.core.api.tuple.ITup3dR;
-import org.barghos.core.api.tuple.ITup3fR;
-import org.barghos.core.api.tuple.ITup4dR;
-import org.barghos.core.api.tuple.ITup4fR;
+import org.barghos.core.tuple.tuple2.Tup2dR;
+import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple.tuple3.Tup3dR;
+import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple.tuple4.Tup4dR;
+import org.barghos.core.tuple.tuple4.Tup4fR;
 
 
 /**
@@ -274,7 +274,7 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
 	 */
-	public static FloatBuffer wrapTuple2FBuffer(ITup2fR... v)
+	public static FloatBuffer wrapTuple2FBuffer(Tup2fR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
@@ -284,7 +284,7 @@ public class BufferUtils
 		
 		float[] f = new float[length * 2];
 
-		ITup2fR current;
+		Tup2fR current;
 		for(int i = 0, b = 0; i < length; i++, b += 2)
 		{
 			current = v[i];
@@ -301,7 +301,7 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public static DoubleBuffer wrapTuple2DBuffer(ITup2dR... v)
+	public static DoubleBuffer wrapTuple2DBuffer(Tup2dR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
@@ -311,7 +311,7 @@ public class BufferUtils
 
 		double[] d = new double[length * 2];
 		
-		ITup2dR current;
+		Tup2dR current;
 		for(int i = 0, b = 0; i < length; i++, b += 2)
 		{
 			current = v[i];
@@ -329,7 +329,7 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
 	 */
-	public static FloatBuffer wrapTuple3FBuffer(ITup3fR... v)
+	public static FloatBuffer wrapTuple3FBuffer(Tup3fR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
@@ -339,7 +339,7 @@ public class BufferUtils
 		
 		float[] f = new float[length * 3];
 
-		ITup3fR current;
+		Tup3fR current;
 		for(int i = 0, b = 0; i < length; i++, b += 3)
 		{
 			current = v[i];
@@ -358,7 +358,7 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public static DoubleBuffer wrapTuple3DBuffer(ITup3dR... v)
+	public static DoubleBuffer wrapTuple3DBuffer(Tup3dR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
@@ -368,7 +368,7 @@ public class BufferUtils
 		
 		double[] d = new double[length * 3];
 
-		ITup3dR current;
+		Tup3dR current;
 		for(int i = 0, b = 0; i < length; i++, b += 3)
 		{
 			current = v[i];
@@ -387,7 +387,7 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
 	 */
-	public static FloatBuffer wrapTuple4FBuffer(ITup4fR... v)
+	public static FloatBuffer wrapTuple4FBuffer(Tup4fR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
@@ -397,7 +397,7 @@ public class BufferUtils
 		
 		float[] f = new float[length * 4];
 
-		ITup4fR current;
+		Tup4fR current;
 		for(int i = 0, b = 0; i < length; i++, b += 4)
 		{
 			current = v[i];
@@ -417,7 +417,7 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public static DoubleBuffer wrapTuple4DBuffer(ITup4dR... v)
+	public static DoubleBuffer wrapTuple4DBuffer(Tup4dR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
@@ -427,7 +427,7 @@ public class BufferUtils
 
 		double[] d = new double[v.length * 4];
 
-		ITup4dR current;
+		Tup4dR current;
 		for(int i = 0, b = 0; i < v.length; i++, b += 4)
 		{
 			current = v[i];
@@ -543,25 +543,13 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
 	 */
-	public static FloatBuffer wrapFlippedTuple2FBuffer(ITup2fR... v)
+	public static FloatBuffer wrapFlippedTuple2FBuffer(Tup2fR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		
-		int length = v.length;
-		
-		float[] f = new float[length * 2];
 
-		ITup2fR current;
-		for(int i = 0, b = 0; i < length; i++, b += 2)
-		{
-			current = v[i];
-			f[b] = current.getX();
-			f[b + 1] = current.getY();
-		}
-
-		FloatBuffer buffer = ByteBuffer.allocateDirect((length * 2) << 2).order(order).asFloatBuffer().put(f);
+		FloatBuffer buffer = wrapTuple2FBuffer(v);
 		buffer.flip();
 		
 		return buffer;
@@ -573,26 +561,13 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public static DoubleBuffer wrapFlippedTuple2DBuffer(ITup2dR... v)
+	public static DoubleBuffer wrapFlippedTuple2DBuffer(Tup2dR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		
-		int length = v.length;
 
-		double[] d = new double[length * 2];
-		
-		ITup2dR current;
-		for(int i = 0, b = 0; i < length; i++, b += 2)
-		{
-			current = v[i];
-			
-			d[b] = current.getX();
-			d[b + 1] = current.getY();
-		}
-
-		DoubleBuffer buffer = ByteBuffer.allocateDirect((length * 2) << 3).order(order).asDoubleBuffer().put(d);
+		DoubleBuffer buffer = wrapTuple2DBuffer(v);
 		buffer.flip();
 		
 		return buffer;
@@ -604,27 +579,13 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
 	 */
-	public static FloatBuffer wrapFlippedTuple3FBuffer(ITup3fR... v)
+	public static FloatBuffer wrapFlippedTuple3FBuffer(Tup3fR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		
-		int length = v.length;
-		
-		float[] f = new float[length * 3];
 
-		ITup3fR current;
-		for(int i = 0, b = 0; i < length; i++, b += 3)
-		{
-			current = v[i];
-			
-			f[b] = current.getX();
-			f[b + 1] = current.getY();
-			f[b + 2] = current.getZ();
-		}
-
-		FloatBuffer buffer = ByteBuffer.allocateDirect((length * 3) << 2).order(order).asFloatBuffer().put(f);
+		FloatBuffer buffer = wrapTuple3FBuffer(v);
 		buffer.flip();
 		
 		return buffer;
@@ -636,27 +597,13 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public static DoubleBuffer wrapFlippedTuple3DBuffer(ITup3dR... v)
+	public static DoubleBuffer wrapFlippedTuple3DBuffer(Tup3dR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		
-		int length = v.length;
-		
-		double[] d = new double[length * 3];
 
-		ITup3dR current;
-		for(int i = 0, b = 0; i < length; i++, b += 3)
-		{
-			current = v[i];
-			
-			d[b] = current.getX();
-			d[b + 1] = current.getY();
-			d[b + 2] = current.getZ();
-		}
-
-		DoubleBuffer buffer = ByteBuffer.allocateDirect((length * 3) << 3).order(order).asDoubleBuffer().put(d);
+		DoubleBuffer buffer = wrapTuple3DBuffer(v);
 		buffer.flip();
 		
 		return buffer;
@@ -668,28 +615,13 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
 	 */
-	public static FloatBuffer wrapFlippedTuple4FBuffer(ITup4fR... v)
+	public static FloatBuffer wrapFlippedTuple4FBuffer(Tup4fR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		
-		int length = v.length;
-		
-		float[] f = new float[length * 4];
 
-		ITup4fR current;
-		for(int i = 0, b = 0; i < length; i++, b += 4)
-		{
-			current = v[i];
-			
-			f[b] = current.getX();
-			f[b + 1] = current.getY();
-			f[b + 2] = current.getZ();
-			f[b + 3] = current.getW();
-		}
-
-		FloatBuffer buffer = ByteBuffer.allocateDirect((length * 4) << 2).order(order).asFloatBuffer().put(f);
+		FloatBuffer buffer = wrapTuple4FBuffer(v);
 		buffer.flip();
 		
 		return buffer;
@@ -701,28 +633,13 @@ public class BufferUtils
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
 	 */
-	public static DoubleBuffer wrapFlippedTuple4DBuffer(ITup4dR... v)
+	public static DoubleBuffer wrapFlippedTuple4DBuffer(Tup4dR... v)
 	{
 		assert(v != null);
 		assert(v.length != 0);
 		assert(Check.notNull(v));
-		
-		int length = v.length;
 
-		double[] d = new double[v.length * 4];
-
-		ITup4dR current;
-		for(int i = 0, b = 0; i < v.length; i++, b += 4)
-		{
-			current = v[i];
-			
-			d[b] = current.getX();
-			d[b + 1] = current.getY();
-			d[b + 2] = current.getZ();
-			d[b + 3] = current.getW();
-		}
-
-		DoubleBuffer buffer = ByteBuffer.allocateDirect((length * 4) << 3).order(order).asDoubleBuffer().put(d);
+		DoubleBuffer buffer = wrapTuple4DBuffer(v);
 		buffer.flip();
 		
 		return buffer;

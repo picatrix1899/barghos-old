@@ -1,66 +1,12 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.IHDRColor4R;
-import org.barghos.core.api.color.IHDRColor4W;
-import org.barghos.core.api.tuple.ITup4R;
+import org.barghos.core.tuple.tuple4.Tup4fR;
 
 /**
  * This class is a simple implementation of an HDRColor4.
  */
-public class HDRColor4 implements IHDRColor4R, IHDRColor4W
+public class HDRColor4 implements HDRColor4R
 {
-	
-	/**
-	 * White Color constant.
-	 */
-	public static final IHDRColor4R WHITE = PHDRColor4.gen(255, 255, 255, 255);
-	
-	/**
-	 * Black Color constant.
-	 */
-	public static final IHDRColor4R BLACK = PHDRColor4.gen(000, 000, 000, 255);
-	
-	/**
-	 * Red Color constant.
-	 */
-	public static final IHDRColor4R RED = PHDRColor4.gen(255, 000, 000, 255);
-	
-	/**
-	 * Green Color constant.
-	 */
-	public static final IHDRColor4R GREEN = PHDRColor4.gen(000, 255, 000, 255);
-	
-	/**
-	 * Blue Color constant.
-	 */
-	public static final IHDRColor4R BLUE = PHDRColor4.gen(000, 000, 255, 255);
-	
-	/** 
-	 * Yellow Color constant.
-	 */
-	public static final IHDRColor4R YELLOW = PHDRColor4.gen(255, 255, 000, 255);
-	
-	/**
-	 * Purple Color constant.
-	 */
-	public static final IHDRColor4R PURPLE = PHDRColor4.gen(128, 0, 128, 255);
-	
-	/** 
-	 * Gold Color constant.
-	 */
-	public static final IHDRColor4R GOLD = PHDRColor4.gen(255, 215, 0, 255);
-	
-	/**
-	 * Orange Color constant.
-	 */
-	public static final IHDRColor4R ORANGE = PHDRColor4.gen(255, 140, 0, 255);
-	
-	/** 
-	 * Grey Color constant.
-	 */
-	public static final IHDRColor4R GREY = PHDRColor4.gen(128, 128, 128, 255);
-	
-	
 	/**
 	 * The red component safed in unitspace.
 	 */
@@ -93,14 +39,14 @@ public class HDRColor4 implements IHDRColor4R, IHDRColor4W
 	 * The values of t are interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
 	 * @param t A tuple that the components are set to.
 	 */
-	public HDRColor4(ITup4R t) { set(t); }
+	public HDRColor4(Tup4fR t) { set(t); }
 	
 	/**
 	 * This constructor sets the components to scalar.
 	 * The scalar is interpreted as in unitspace (0.0 - 1.0) but can exceed these limits.
 	 * @param scalar A value that the components are set to.
 	 */
-	public HDRColor4(double scalar) { set(scalar); }
+	public HDRColor4(float scalar) { set(scalar); }
 	
 	/**
 	 * This constructor sets the components to scalar.
@@ -117,7 +63,7 @@ public class HDRColor4 implements IHDRColor4R, IHDRColor4W
 	 * @param b The blue component in unitspace.
 	 * @param a The alpha component in unitspace.
 	 */
-	public HDRColor4(double r, double g, double b, double a) { set(r, g, b, a); }
+	public HDRColor4(float r, float g, float b, float a) { set(r, g, b, a); }
 	
 	/**
 	 * This constructor sets the components to r, g, b and a.
@@ -130,27 +76,26 @@ public class HDRColor4 implements IHDRColor4R, IHDRColor4W
 	public HDRColor4(int r, int g, int b, int a) { set(r, g, b, a); }
 	
 	
-	public HDRColor4 setX(double x) { IHDRColor4W.super.setX(x); return this; }
-	public HDRColor4 setY(double y) { IHDRColor4W.super.setY(y); return this; }
-	public HDRColor4 setZ(double z) { IHDRColor4W.super.setZ(z); return this; }
-	public HDRColor4 setW(double w) { IHDRColor4W.super.setW(w); return this; }
+	public HDRColor4 setX(float x) { return setUnityR(x); }
+	public HDRColor4 setY(float y) { return setUnityG(y); }
+	public HDRColor4 setZ(float z) { return setUnityB(z); }
+	public HDRColor4 setW(float w) { return setUnityA(w); }
 	
-	public HDRColor4 setUnityR(double r) { this.r = (float)r; return this; }
-	public HDRColor4 setUnityG(double g) { this.g = (float)g; return this; }
-	public HDRColor4 setUnityB(double b) { this.b = (float)b; return this; }
-	public HDRColor4 setUnityA(double a) { this.a = (float)a; return this; }
+	public HDRColor4 setUnityR(float r) { this.r = r; return this; }
+	public HDRColor4 setUnityG(float g) { this.g = g; return this; }
+	public HDRColor4 setUnityB(float b) { this.b = b; return this; }
+	public HDRColor4 setUnityA(float a) { this.a = a; return this; }
 	
-	public HDRColor4 setR(int r) { return setUnityR(r / 255.0); }
-	public HDRColor4 setG(int g) { return setUnityG(g / 255.0); }
-	public HDRColor4 setB(int b) { return setUnityB(b / 255.0); }
-	public HDRColor4 setA(int a) { return setUnityA(a / 255.0); }
+	public HDRColor4 setR(int r) { return setUnityR(r / 255.0f); }
+	public HDRColor4 setG(int g) { return setUnityG(g / 255.0f); }
+	public HDRColor4 setB(int b) { return setUnityB(b / 255.0f); }
+	public HDRColor4 setA(int a) { return setUnityA(a / 255.0f); }
 	
-	public HDRColor4 set(ITup4R t) { return set(t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
-	public HDRColor4 set(double scalar) { return set(scalar, scalar, scalar, scalar); }
+	public HDRColor4 set(Tup4fR t) { return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public HDRColor4 set(float scalar) { return set(scalar, scalar, scalar, scalar); }
 	public HDRColor4 set(int scalar) { return set(scalar, scalar, scalar, scalar); }
-	public HDRColor4 set(double r, double g, double b, double a) { return setUnityR(r).setUnityG(g).setUnityB(b).setUnityA(a); }
+	public HDRColor4 set(float r, float g, float b, float a) { return setUnityR(r).setUnityG(g).setUnityB(b).setUnityA(a); }
 	public HDRColor4 set(int r, int g, int b, int a) { return setR(r).setG(g).setB(b).setA(a); }
-	
 	
 	public float getUnityR() { return this.r; }
 	public float getUnityG() { return this.g; }
@@ -161,7 +106,4 @@ public class HDRColor4 implements IHDRColor4R, IHDRColor4W
 	public int getG() { return Math.round(this.g * 255); }
 	public int getB() { return Math.round(this.b * 255); }
 	public int getA() { return Math.round(this.a * 255); }
-	
-	public int getDimensions() { return 4; }
-
 }

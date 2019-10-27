@@ -1,20 +1,20 @@
 package org.barghos.math.geometry;
 
-import org.barghos.core.api.tuple.ITup3R;
 import org.barghos.math.matrix.Mat4f;
-import org.barghos.math.point.Point3f;
-import org.barghos.math.vector.Vec3f;
-import org.barghos.math.vector.Vec3fPool;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
+import org.barghos.math.vector.vec3.Vec3Pool;
+import org.barghos.math.vector.vec3.Vec3R;
 
 public class AABB3f implements FiniteGeometricObject
 {
 	private float cX, cY, cZ;
 	private float heX, heY, heZ;
 	private boolean isPointsDirty;
-	private Point3f[] points = new Point3f[8];
+	private Point3[] points = new Point3[8];
 	
 	public AABB3f() { }
-	public AABB3f(ITup3R center, ITup3R halfExtend)
+	public AABB3f(Vec3R center, Vec3R halfExtend)
 	{
 		assert(center != null);
 		assert(halfExtend != null);
@@ -26,7 +26,7 @@ public class AABB3f implements FiniteGeometricObject
 		set(cX, cY, cZ, heX, heY, heZ);
 	}
 	
-	public AABB3f set(ITup3R center, ITup3R halfExtend)
+	public AABB3f set(Vec3R center, Vec3R halfExtend)
 	{
 		assert(center != null);
 		assert(halfExtend != null);
@@ -38,10 +38,10 @@ public class AABB3f implements FiniteGeometricObject
 		return setCenter(cX, cY, cZ).setHalfExtend(heX, heY, heZ);
 	}
 	
-	public AABB3f setHalfExtend(ITup3R t)
+	public AABB3f setHalfExtend(Vec3R t)
 	{
 		assert(t != null);
-		return setHalfExtend(t.getUniX(), t.getUniY(), t.getUniZ());
+		return setHalfExtend(t.getX(), t.getY(), t.getZ());
 	}
 	
 	public AABB3f setHalfExtend(double x, double y, double z) { return setHalfExtendX(x).setHalfExtendY(y).setHalfExtendZ(z); }
@@ -53,10 +53,10 @@ public class AABB3f implements FiniteGeometricObject
 	public AABB3f setHalfExtendZ(double z) { this.heZ = (float)z; this.isPointsDirty = true; return this; }
 	
 	
-	public AABB3f setCenter(ITup3R t)
+	public AABB3f setCenter(Vec3R t)
 	{
 		assert(t != null);
-		return setCenter(t.getUniX(), t.getUniY(), t.getUniZ());
+		return setCenter(t.getX(), t.getY(), t.getZ());
 	}
 	
 	public AABB3f setCenter(double x, double y, double z) { return setCenterX(x).setCenterY(y).setCenterZ(z); }
@@ -67,71 +67,70 @@ public class AABB3f implements FiniteGeometricObject
 	
 	public AABB3f setCenterZ(double z) { this.cZ = (float)z; this.isPointsDirty = true; return this; }
 	
-	public Point3f getCenter(Point3f res)
+	public Point3 getCenter(Point3 res)
 	{
-		res = res != null ? res : new Point3f();
+		res = res != null ? res : new Point3();
 		return res.set(this.cX, this.cY, this.cZ);
 	}
 	
-	public Point3f getCenter()
+	public Point3 getCenter()
 	{
-		return new Point3f(this.cX, this.cY, this.cZ);
+		return new Point3(this.cX, this.cY, this.cZ);
 	}
 	
-	public Vec3f getCenter(Vec3f res)
+	public Vec3 getCenter(Vec3 res)
 	{
-		res = res != null ? res : new Vec3f();
+		res = res != null ? res : new Vec3();
 		return res.set(this.cX, this.cY, this.cZ);
 	}
 	
-	public Vec3f getHalfExtend()
+	public Vec3 getHalfExtend()
 	{
-		return new Vec3f(this.heX, this.heY, this.heZ);
+		return new Vec3(this.heX, this.heY, this.heZ);
 	}
 	
-	public Vec3f getHalfExtend(Vec3f res)
+	public Vec3 getHalfExtend(Vec3 res)
 	{
-		res = res != null ? res : new Vec3f();
+		res = res != null ? res : new Vec3();
 		return res.set(this.heX, this.heY, this.heZ);
 	}
 	
-	public Point3f getMin()
+	public Point3 getMin()
 	{
-		return new Point3f(this.cX - this.heX, this.cY - this.heY, this.cZ - this.heZ);
+		return new Point3(this.cX - this.heX, this.cY - this.heY, this.cZ - this.heZ);
 	}
 	
-	public Point3f getMax()
+	public Point3 getMax()
 	{
-		return new Point3f(this.cX + this.heX, this.cY + this.heY, this.cZ + this.heZ);
+		return new Point3(this.cX + this.heX, this.cY + this.heY, this.cZ + this.heZ);
 	}
 	
-	@Override
-	public Point3f[] getPoints()
+	public Point3[] getPoints()
 	{
 		if(this.isPointsDirty)
 		{
-			Vec3f c = Vec3fPool.get(this.cX, this.cY, this.cZ);
+			Vec3 c = Vec3Pool.get(this.cX, this.cY, this.cZ);
 
-			Vec3f v = Vec3fPool.get(this.heX, this.heY, this.heZ);
+			Vec3 v = Vec3Pool.get(this.heX, this.heY, this.heZ);
 
-			Vec3f t1 = Vec3fPool.get(v);
-			Vec3f t2 = Vec3fPool.get(-v.getUniX(), v.getUniY(), v.getUniZ());
-			Vec3f t3 = Vec3fPool.get(-v.getUniX(), -v.getUniY(), v.getUniZ());
-			Vec3f t4 = Vec3fPool.get(v.getUniX(), -v.getUniY(), v.getUniZ());
+			Vec3 t1 = Vec3Pool.get(v);
+			Vec3 t2 = Vec3Pool.get(-v.getX(), v.getY(), v.getZ());
+			Vec3 t3 = Vec3Pool.get(-v.getX(), -v.getY(), v.getZ());
+			Vec3 t4 = Vec3Pool.get(v.getX(), -v.getY(), v.getZ());
 
-			Vec3f r = Vec3fPool.get();
+			Vec3 r = Vec3Pool.get();
 			
-			this.points[0] = new Point3f(c.add(t1, r));
-			this.points[1] = new Point3f(c.add(t2, r));
-			this.points[2] = new Point3f(c.add(t3, r));
-			this.points[3] = new Point3f(c.add(t4, r));
+			this.points[0] = new Point3(c.add(t1, r));
+			this.points[1] = new Point3(c.add(t2, r));
+			this.points[2] = new Point3(c.add(t3, r));
+			this.points[3] = new Point3(c.add(t4, r));
 			
-			this.points[4] = new Point3f(c.sub(t1, r));
-			this.points[5] = new Point3f(c.sub(t2, r));
-			this.points[6] = new Point3f(c.sub(t3, r));
-			this.points[7] = new Point3f(c.sub(t4, r));
+			this.points[4] = new Point3(c.sub(t1, r));
+			this.points[5] = new Point3(c.sub(t2, r));
+			this.points[6] = new Point3(c.sub(t3, r));
+			this.points[7] = new Point3(c.sub(t4, r));
 			
-			Vec3fPool.store(c, v, t1, t2, t3, t4, r);
+			Vec3Pool.store(c, v, t1, t2, t3, t4, r);
 			
 			this.isPointsDirty = false;
 			
@@ -145,16 +144,21 @@ public class AABB3f implements FiniteGeometricObject
 		assert(!t.isZeroMatrix());
 		res = res != null ? res : new AABB3f();
 		
-		Vec3f min = Vec3f.sub(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, Vec3fPool.get());
-		Vec3f max = Vec3f.add(this.cX, this.cY, this.cZ, this.heX, this.heY, this.heZ, Vec3fPool.get());
+		Vec3 c = Vec3Pool.get(this.cX, this.cY, this.cZ);
+		Vec3 he = Vec3Pool.get(this.heX, this.heY, this.heZ);
+		
+		
+		
+		Vec3 min = c.sub(he, Vec3Pool.get());
+		Vec3 max = c.add(he, Vec3Pool.get());
 		
 		t.transform(min, min);
 		t.transform(max, max);
 		
-		Vec3f halfExtend = max.sub(min, max).mul(0.5, null);
-		Vec3f center = min.add(halfExtend, null);
+		Vec3 halfExtend = max.sub(min, max).mul(0.5f, null);
+		Vec3 center = min.add(halfExtend, null);
 		
-		Vec3fPool.store(min, max);
+		Vec3Pool.store(min, max, c, he);
 		
 		return res.set(center, halfExtend);
 	}
@@ -187,6 +191,6 @@ public class AABB3f implements FiniteGeometricObject
 	
 	public String toString()
 	{
-		return "aabb3f(center: " + new Vec3f(this.cX, this.cY, this.cZ) + ", halfExtend: " + new Vec3f(this.heX, this.heY, this.heZ) + ")";
+		return "aabb3f(center: " + new Vec3(this.cX, this.cY, this.cZ) + ", halfExtend: " + new Vec3(this.heX, this.heY, this.heZ) + ")";
 	}
 }

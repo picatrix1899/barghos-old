@@ -1,12 +1,11 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.ILDRColor3R;
-import org.barghos.core.api.tuple.ITup3fR;
+import org.barghos.core.tuple.tuple3.Tup3fR;
 
 /**
  * This class is a readonly implementation of an LDRColor3.
  */
-public abstract class PLDRColor3 implements ILDRColor3R
+public abstract class PLDRColor3 implements LDRColor3R
 {
 	private PLDRColor3() { }
 	
@@ -16,7 +15,7 @@ public abstract class PLDRColor3 implements ILDRColor3R
 	 * @param t A tuple that the components are set to.
 	 * @return A new readonly PLDRColor3 with the given components.
 	 */
-	public static PLDRColor3 gen(ITup3fR t) { return gen(t.getX(), t.getY(), t.getZ()); }
+	public static PLDRColor3 gen(Tup3fR t) { return gen(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * This generate a readonly PLDRColor3 with the components set to scalar.
@@ -46,9 +45,7 @@ public abstract class PLDRColor3 implements ILDRColor3R
 			public int getR() { return clampI(Math.round(r * 255)); }
 			public int getG() { return clampI(Math.round(g * 255)); }
 			public int getB() { return clampI(Math.round(b * 255)); }
-			
-			public int getDimensions() { return 3; }
-			
+
 			private float clampF(float value)
 			{
 				return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;
@@ -90,9 +87,7 @@ public abstract class PLDRColor3 implements ILDRColor3R
 			public int getR() { return clampI(r); }
 			public int getG() { return clampI(g); }
 			public int getB() { return clampI(b); }
-			
-			public int getDimensions() { return 3; }
-			
+
 			private float clampF(float value)
 			{
 				return value > 1.0f ? 1.0f : value < 0.0f ? 0.0f : value;
