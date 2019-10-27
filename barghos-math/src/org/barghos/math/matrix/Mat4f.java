@@ -1,17 +1,17 @@
 package org.barghos.math.matrix;
 
-import org.barghos.core.api.tuple.ITup2R;
-import org.barghos.core.api.tuple.ITup3R;
-import org.barghos.core.api.tuple.ITup4R;
-import org.barghos.core.api.tuple.ITup4fW;
-import org.barghos.core.tuple.Tup3f;
-import org.barghos.core.tuple.Tup4f;
-import org.barghos.core.tuple.Tup4fPool;
+import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple.tuple3.Tup3f;
+import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple.tuple4.Tup4f;
+import org.barghos.core.tuple.tuple4.Tup4fPool;
+import org.barghos.core.tuple.tuple4.Tup4fR;
 import org.barghos.math.Maths;
-import org.barghos.math.point.Point3f;
+import org.barghos.math.point.Point3;
 import org.barghos.math.vector.Quat;
-import org.barghos.math.vector.Vec3f;
-import org.barghos.math.vector.Vec4f;
+import org.barghos.math.vector.vec3.Vec3;
+import org.barghos.math.vector.vec4.Vec4;
+
 
 public class Mat4f
 {	
@@ -56,13 +56,13 @@ public class Mat4f
 		return this;
 	}
 	
-	public Mat4f initScaling(ITup3R t)
+	public Mat4f initScaling(Tup3fR t)
 	{
 		assert(t != null);
-		return initScaling(t.getUniX(), t.getUniY(), t.getUniZ());
+		return initScaling(t.getX(), t.getY(), t.getZ());
 	}
 	
-	public Mat4f initScaling(double x, double y, double z)
+	public Mat4f initScaling(float x, float y, float z)
 	{
 		setRow(0, x,	0.0f,	0.0f, 	0.0f);
 		setRow(1, 0.0f,	y,		0.0f, 	0.0f);
@@ -71,13 +71,13 @@ public class Mat4f
 		return this;
 	}
 	
-	public Mat4f initTranslation(ITup3R t)
+	public Mat4f initTranslation(Tup3fR t)
 	{
 		assert(t != null);
-		return initTranslation(t.getUniX(), t.getUniY(), t.getUniZ());
+		return initTranslation(t.getX(), t.getY(), t.getZ());
 	}
 	
-	public Mat4f initTranslation(double x, double y, double z)
+	public Mat4f initTranslation(float x, float y, float z)
 	{
 		setRow(0, 1.0f, 0.0f, 0.0f, x	);
 		setRow(1, 0.0f, 1.0f, 0.0f, y	);
@@ -87,70 +87,70 @@ public class Mat4f
 		return this;
 	}
 	
-	public Mat4f initPerspective(ITup2R t, double fov, double near, double far)
+	public Mat4f initPerspective(Tup2fR t, float fov, float near, float far)
 	{
 		assert(t != null);
-		return initPerspective(t.getUniX(), t.getUniY(), fov, near, far);
+		return initPerspective(t.getX(), t.getY(), fov, near, far);
 	}
 	
-	public Mat4f initPerspective(double width, double height, double fovY, double near, double far)
+	public Mat4f initPerspective(float width, float height, float fovY, float near, float far)
 	{
-		double y_scale = 1.0 / Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD);
-		double x_scale = y_scale / (width / height);
+		float y_scale = 1.0f / (float)Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD);
+		float x_scale = y_scale / (width / height);
 
-		setRow(0, x_scale,	0,			0,								0								);
-		setRow(1, 0,		y_scale,	0,								0								);
-		setRow(2, 0,		0,			-(far + near) / (far - near),	-2 * near * far / (far - near)	);
-		setRow(3, 0,		0,			-1,	0															);
+		setRow(0, x_scale,	0f,			0f,								0f								);
+		setRow(1, 0f,		y_scale,	0f,								0f								);
+		setRow(2, 0f,		0f,			-(far + near) / (far - near),	-2f * near * far / (far - near)	);
+		setRow(3, 0f,		0f,			-1f,							0f								);
 		
 		return this;
 	}
 	
-	public Mat4f initPerspective(double fovX, double fovY, double near, double far)
+	public Mat4f initPerspective(float fovX, float fovY, float near, float far)
 	{
-		double y_scale = 1.0 / Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD);
-		double x_scale = 1.0 / Math.tan(fovX * 0.5 * Maths.DEG_TO_RAD);
+		float y_scale = 1.0f / (float)Math.tan(fovY * 0.5 * Maths.DEG_TO_RAD);
+		float x_scale = 1.0f / (float)Math.tan(fovX * 0.5 * Maths.DEG_TO_RAD);
 
-		setRow(0, x_scale,	0,			0,								0								);
-		setRow(1, 0,		y_scale,	0,								0								);
-		setRow(2, 0,		0,			-(far + near) / (far - near),	-2 * near * far / (far - near)	);
-		setRow(3, 0,		0,			-1,	0															);
+		setRow(0, x_scale,	0f,			0f,								0f								);
+		setRow(1, 0f,		y_scale,	0,								0f								);
+		setRow(2, 0f,		0f,			-(far + near) / (far - near),	-2f * near * far / (far - near)	);
+		setRow(3, 0f,		0f,			-1f,							0f								);
 		
 		return this;
 	}
 	
-	public Mat4f initPerspective(double left, double right, double bottom, double top, double near, double far)
+	public Mat4f initPerspective(float left, float right, float bottom, float top, float near, float far)
 	{
-		setRow(0, 2 * near / (right - left),		0,									0,								0	);
-		setRow(1, 0,								2 * near / (top - bottom),			0,								0	);
-		setRow(2, (right + left) / (right - left),	(top + bottom) / (top - bottom),	-(far + near) / (far - near),	-1	);
-		setRow(3, 0,								0,									-2 * far * near / (far - near),	0	);
+		setRow(0, 2f * near / (right - left),		0f,									0f,									0f	);
+		setRow(1, 0f,								2f * near / (top - bottom),			0f,									0f	);
+		setRow(2, (right + left) / (right - left),	(top + bottom) / (top - bottom),	-(far + near) / (far - near),		-1f	);
+		setRow(3, 0f,								0f,									-2f * far * near / (far - near),	0f	);
 		
 		return this;
 	}
 	
-	public Mat4f initOrtho(ITup2R t, double near, double far)
+	public Mat4f initOrtho(Tup2fR t, float near, float far)
 	{
 		assert(t != null);
-		return initOrtho(t.getUniX(), t.getUniY(), near, far);
+		return initOrtho(t.getX(), t.getY(), near, far);
 	}
 	
-	public Mat4f initOrtho(double width, double height, double near, double far)
+	public Mat4f initOrtho(float width, float height, float near, float far)
 	{
-		setRow(0, 2.0 / width,	0,				0,						0);
-		setRow(1, 0,			2.0 / height,	0,						0);
-		setRow(2, 0,			0, 				-2.0 / (far - near),	0);
-		setRow(3, 0,			0,				0,						1);
+		setRow(0, 2.0f / width,	0f,				0f,						0f);
+		setRow(1, 0f,			2.0f / height,	0f,						0f);
+		setRow(2, 0f,			0f, 			-2.0f / (far - near),	0f);
+		setRow(3, 0f,			0f,				0f,						1f);
 		
 		return this;
 	}
 	
-	public Mat4f initOrtho(double left, double right, double bottom, double top, double near, double far)
+	public Mat4f initOrtho(float left, float right, float bottom, float top, float near, float far)
 	{
-		setRow(0, 2.0 / (right - left),				0,									0,								0);
-		setRow(1, 0,								2.0 / (top - bottom),				0,								0);
-		setRow(2, 0,								0, 									-2.0 / (far - near),			0);
-		setRow(3, -(right + left) / (right - left),	-(top + bottom) / (top - bottom),	-(far + near) / (far - near), 	1);
+		setRow(0, 2.0f / (right - left),				0f,									0f,								0f);
+		setRow(1, 0f,									2.0f / (top - bottom),				0f,								0f);
+		setRow(2, 0f,									0f, 								-2.0f / (far - near),			0f);
+		setRow(3, -(right + left) / (right - left),		-(top + bottom) / (top - bottom),	-(far + near) / (far - near), 	1f);
 		 
 		return this;
 	}
@@ -158,27 +158,27 @@ public class Mat4f
 	public Mat4f initRotation(Quat q)
 	{
 		assert(q != null);
-		this.m[0][0] = (float)(1.0 - 2.0	*	(q.getY() * q.getY() + q.getZ() * q.getZ()));
-		this.m[0][1] = (float)(2.0			*	(q.getX() * q.getY() - q.getW() * q.getZ()));
-		this.m[0][2] = (float)(2.0			*	(q.getX() * q.getZ() + q.getW() * q.getY()));
-		this.m[0][3] = (float)(0.0);
+		this.m[0][0] = 1.0f - 2.0f	*	(q.getY() * q.getY() + q.getZ() * q.getZ());
+		this.m[0][1] = 2.0f			*	(q.getX() * q.getY() - q.getW() * q.getZ());
+		this.m[0][2] = 2.0f			*	(q.getX() * q.getZ() + q.getW() * q.getY());
+		this.m[0][3] = 0.0f;
 		
-		this.m[1][0] = (float)(2.0			*	(q.getX() * q.getY() + q.getW() * q.getZ()));
-		this.m[1][1] = (float)(1.0 - 2.0	*	(q.getX() * q.getX() + q.getZ() * q.getZ()));
-		this.m[1][2] = (float)(2.0			*	(q.getY() * q.getZ() - q.getW() * q.getX()));
-		this.m[1][3] = (float)(0.0);
+		this.m[1][0] = 2.0f			*	(q.getX() * q.getY() + q.getW() * q.getZ());
+		this.m[1][1] = 1.0f - 2.0f	*	(q.getX() * q.getX() + q.getZ() * q.getZ());
+		this.m[1][2] = 2.0f			*	(q.getY() * q.getZ() - q.getW() * q.getX());
+		this.m[1][3] = 0.0f;
 		
-		this.m[2][0] = (float)(2.0			*	(q.getX() * q.getZ() - q.getW() * q.getY()));
-		this.m[2][1] = (float)(2.0			*	(q.getY() * q.getZ() + q.getW() * q.getX()));
-		this.m[2][2] = (float)(1.0 - 2.0	*	(q.getX() * q.getX() + q.getY() * q.getY()));
-		this.m[2][3] = (float)(0.0);
+		this.m[2][0] = 2.0f			*	(q.getX() * q.getZ() - q.getW() * q.getY());
+		this.m[2][1] = 2.0f			*	(q.getY() * q.getZ() + q.getW() * q.getX());
+		this.m[2][2] = 1.0f - 2.0f	*	(q.getX() * q.getX() + q.getY() * q.getY());
+		this.m[2][3] = 0.0f;
 		
-		setRow(3, 0.0, 0.0, 0.0, 1.0);
+		setRow(3, 0.0f, 0.0f, 0.0f, 1.0f);
 
 		return this;
 	}
 	
-	public Mat4f initModelMatrix(ITup3R pos, Quat rot, ITup3R scale)
+	public Mat4f initModelMatrix(Tup3fR pos, Quat rot, Tup3fR scale)
 	{
 		assert(pos != null);
 		assert(rot != null);
@@ -193,41 +193,41 @@ public class Mat4f
 		return this;
 	}
 	
-	public Mat4f initViewMatrix(ITup3R pos, Quat rot)
+	public Mat4f initViewMatrix(Tup3fR pos, Quat rot)
 	{
 		assert(pos != null);
 		assert(rot != null);
 		initIdentity();
 		
-		translate(-pos.getUniX(), -pos.getUniY(), -pos.getUniZ());
+		translate(-pos.getX(), -pos.getY(), -pos.getZ());
 		rotate(rot.conjugate(null));
 		
 		return this;
 	}
 	
-	public Mat4f setRow(int index, ITup4R t)
+	public Mat4f setRow(int index, Tup4fR t)
 	{
 		assert(t != null);
-		return setRow(index, t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW());
+		return setRow(index, t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
-	public Mat4f setRow(int index, double x, double y, double z, double w)
+	public Mat4f setRow(int index, float x, float y, float z, float w)
 	{
-		this.m[index][0] = (float)x;
-		this.m[index][1] = (float)y;
-		this.m[index][2] = (float)z;
-		this.m[index][3] = (float)w;
+		this.m[index][0] = x;
+		this.m[index][1] = y;
+		this.m[index][2] = z;
+		this.m[index][3] = w;
 		return this;
 	}
 	
-	public Mat4f setColumn(int index, ITup4R t) { assert(t != null); return setColumn(index, t.getUniX(), t.getUniY(), t.getUniZ(), t.getUniW()); }
+	public Mat4f setColumn(int index, Tup4fR t) { assert(t != null); return setColumn(index, t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
-	public Mat4f setColumn(int index, double x, double y, double z, double w)
+	public Mat4f setColumn(int index, float x, float y, float z, float w)
 	{
-		this.m[0][index] = (float)x;
-		this.m[1][index] = (float)y;
-		this.m[2][index] = (float)z;
-		this.m[3][index] = (float)w;
+		this.m[0][index] = x;
+		this.m[1][index] = y;
+		this.m[2][index] = z;
+		this.m[3][index] = w;
 		return this;
 	}
 
@@ -246,20 +246,16 @@ public class Mat4f
 		return res.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]);
 	}
 	
-	public Vec4f getRow(int index, Vec4f res)
+	public Vec4 getRow(int index, Vec4 res)
 	{
-		if(res == null) res = new Vec4f();
+		if(res == null) res = new Vec4();
 		return res.set(this.m[index][0], this.m[index][1], this.m[index][2], this.m[index][3]);
 	}
-	public Vec4f getColumn(int index, Vec4f res)
+	public Vec4 getColumn(int index, Vec4 res)
 	{
-		if(res == null) res = new Vec4f();
+		if(res == null) res = new Vec4();
 		return res.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]);
 	}
-	
-	public void getRow(int index, ITup4fW t) { assert(t != null); t.set(this.m[index][0], this.m[index][1], this.m[index][2], this.m[index][3]); }
-	public void getColumn(int index, ITup4fW t) { assert(t != null); t.set(this.m[0][index], this.m[1][index], this.m[2][index], this.m[3][index]); }
-	
 	
 	public float determinant()
 	{
@@ -322,70 +318,70 @@ public class Mat4f
 		return Mat4f.mul(this, m2, res);
 	}
 	
-	public static Vec3f transform(Mat4f l, ITup3R r, Vec3f res)
+	public static Vec3 transform(Mat4f l, Tup3fR r, Vec3 res)
 	{
 		assert(l != null);
 		assert(r != null);
 		
-		if(res == null) res = new Vec3f();
+		if(res == null) res = new Vec3();
 		
-		double x_ = l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0;
-		double y_ = l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0;
-		double z_ = l.m[2][0] * r.getUniX() + l.m[2][1] * r.getUniY() + l.m[2][2] * r.getUniZ() + l.m[2][3] * 1.0;
+		float x_ = l.m[0][0] * r.getX() + l.m[0][1] * r.getY() + l.m[0][2] * r.getZ() + l.m[0][3] * 1.0f;
+		float y_ = l.m[1][0] * r.getX() + l.m[1][1] * r.getY() + l.m[1][2] * r.getZ() + l.m[1][3] * 1.0f;
+		float z_ = l.m[2][0] * r.getX() + l.m[2][1] * r.getY() + l.m[2][2] * r.getZ() + l.m[2][3] * 1.0f;
 
 		res.set(x_, y_, z_);
 
 		return res;
 	}
 	
-	public Vec3f transform(ITup3R r, Vec3f res)
+	public Vec3 transform(Tup3fR r, Vec3 res)
 	{
 		assert(r != null);
 		return Mat4f.transform(this, r, res);
 	}
 	
-	public static Point3f transform(Mat4f l, ITup3R r, Point3f res)
+	public static Point3 transform(Mat4f l, Tup3fR r, Point3 res)
 	{
 		assert(l != null);
 		assert(r != null);
 		
-		if(res == null) res = new Point3f();
+		if(res == null) res = new Point3();
 		
-		double x_ = l.m[0][0] * r.getUniX() + l.m[0][1] * r.getUniY() + l.m[0][2] * r.getUniZ() + l.m[0][3] * 1.0;
-		double y_ = l.m[1][0] * r.getUniX() + l.m[1][1] * r.getUniY() + l.m[1][2] * r.getUniZ() + l.m[1][3] * 1.0;
-		double z_ = l.m[2][0] * r.getUniX() + l.m[2][1] * r.getUniY() + l.m[2][2] * r.getUniZ() + l.m[2][3] * 1.0;
+		float x_ = l.m[0][0] * r.getX() + l.m[0][1] * r.getY() + l.m[0][2] * r.getZ() + l.m[0][3] * 1.0f;
+		float y_ = l.m[1][0] * r.getX() + l.m[1][1] * r.getY() + l.m[1][2] * r.getZ() + l.m[1][3] * 1.0f;
+		float z_ = l.m[2][0] * r.getX() + l.m[2][1] * r.getY() + l.m[2][2] * r.getZ() + l.m[2][3] * 1.0f;
 
 		res.set(x_, y_, z_);
 
 		return res;
 	}
 	
-	public Point3f transform(ITup3R r, Point3f res)
+	public Point3 transform(Tup3fR r, Point3 res)
 	{
 		return Mat4f.transform(this, r, res);
 	}
 	
 	public static Mat4f identity() { return new Mat4f().initIdentity(); }
 	public static Mat4f zero() { return new Mat4f().initZero(); }
-	public static Mat4f scaling(ITup3R t) { assert(t != null); return scaling(t.getUniX(), t.getUniY(), t.getUniZ()); }
-	public static Mat4f scaling(double x, double y, double z) { return new Mat4f().initScaling(x, y,z); }
-	public static Mat4f translation(ITup3R t) { assert(t != null); return translation(t.getUniX(),t.getUniY(), t.getUniZ()); }
-	public static Mat4f translation(double x, double y, double z) { return new Mat4f().initTranslation(x, y, z); }
-	public static Mat4f perspective(ITup2R t, double fovY, double near, double far) { assert(t != null); return perspective(t.getUniX(), t.getUniY(), fovY, near, far); }
-	public static Mat4f perspective(double width, double height, double fov, double near, double far) { return new Mat4f().initPerspective(width, height, fov, near, far); }
-	public static Mat4f perspective(double fovX, double fovY, double near, double far) { return new Mat4f().initPerspective(fovX, fovY, near, far); }
-	public static Mat4f perspective(double left, double right, double bottom, double top, double near, double far) { return new Mat4f().initPerspective(left, right, bottom, top, near, far); }
-	public static Mat4f ortho(ITup2R t, double near, double far) { assert(t != null); return ortho(t.getUniX(), t.getUniY(), near, far); }
-	public static Mat4f ortho(double width, double height, double near, double far) { return new Mat4f().initOrtho(width, height, near, far); }
-	public static Mat4f ortho(double left, double right, double bottom, double top, double near, double far) { return new Mat4f().initOrtho(left, right, bottom, top, near, far); }
+	public static Mat4f scaling(Tup3fR t) { assert(t != null); return scaling(t.getX(), t.getY(), t.getZ()); }
+	public static Mat4f scaling(float x, float y, float z) { return new Mat4f().initScaling(x, y,z); }
+	public static Mat4f translation(Tup3fR t) { assert(t != null); return translation(t.getX(),t.getY(), t.getZ()); }
+	public static Mat4f translation(float x, float y, float z) { return new Mat4f().initTranslation(x, y, z); }
+	public static Mat4f perspective(Tup2fR t, float fovY, float near, float far) { assert(t != null); return perspective(t.getX(), t.getY(), fovY, near, far); }
+	public static Mat4f perspective(float width, float height, float fov, float near, float far) { return new Mat4f().initPerspective(width, height, fov, near, far); }
+	public static Mat4f perspective(float fovX, float fovY, float near, float far) { return new Mat4f().initPerspective(fovX, fovY, near, far); }
+	public static Mat4f perspective(float left, float right, float bottom, float top, float near, float far) { return new Mat4f().initPerspective(left, right, bottom, top, near, far); }
+	public static Mat4f ortho(Tup2fR t, float near, float far) { assert(t != null); return ortho(t.getX(), t.getY(), near, far); }
+	public static Mat4f ortho(float width, float height, float near, float far) { return new Mat4f().initOrtho(width, height, near, far); }
+	public static Mat4f ortho(float left, float right, float bottom, float top, float near, float far) { return new Mat4f().initOrtho(left, right, bottom, top, near, far); }
 	public static Mat4f rotation(Quat q) { return new Mat4f().initRotation(q); }
-	public static Mat4f modelMatrix(ITup3R pos, Quat rot, ITup3R scale) { assert(pos != null); return new Mat4f().initModelMatrix(pos, rot, scale); }
-	public static Mat4f viewMatrix(ITup3R pos, Quat rot) { assert(pos != null); assert(rot != null); return new Mat4f().initViewMatrix(pos, rot); } 
+	public static Mat4f modelMatrix(Tup3fR pos, Quat rot, Tup3fR scale) { assert(pos != null); return new Mat4f().initModelMatrix(pos, rot, scale); }
+	public static Mat4f viewMatrix(Tup3fR pos, Quat rot) { assert(pos != null); assert(rot != null); return new Mat4f().initViewMatrix(pos, rot); } 
 	
-	public Mat4f scale(ITup3R t) { assert(t != null); return Mat4f.mul(Mat4f.scaling(t), this, this); }
-	public Mat4f scale(double x, double y, double z) { return Mat4f.mul(Mat4f.scaling(x, y, z), this, this); }
-	public Mat4f translate(ITup3R t) { assert(t != null); return Mat4f.mul(Mat4f.translation(t), this, this); }
-	public Mat4f translate(double x, double y, double z) { return Mat4f.mul(Mat4f.translation(x, y, z), this, this); }
+	public Mat4f scale(Tup3fR t) { assert(t != null); return Mat4f.mul(Mat4f.scaling(t), this, this); }
+	public Mat4f scale(float x, float y, float z) { return Mat4f.mul(Mat4f.scaling(x, y, z), this, this); }
+	public Mat4f translate(Tup3fR t) { assert(t != null); return Mat4f.mul(Mat4f.translation(t), this, this); }
+	public Mat4f translate(float x, float y, float z) { return Mat4f.mul(Mat4f.translation(x, y, z), this, this); }
 	public Mat4f rotate(Quat q) { assert(q != null); return Mat4f.mul(Mat4f.rotation(q), this, this); }
 	
 	public float[] toArrayColumnMajor()

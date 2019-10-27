@@ -1,8 +1,6 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.ILDRColor4R;
-
-public enum LDRColor4Colors implements ILDRColor4R
+public enum LDRColor4Colors implements LDRColor4R
 {
 	/**
 	 * White Color constant.
@@ -132,8 +130,4 @@ public enum LDRColor4Colors implements ILDRColor4R
 	
 	@Override
 	public int getA() { return 255; }
-	
-	@Override
-	public int getDimensions() { return 4; }
-
 }

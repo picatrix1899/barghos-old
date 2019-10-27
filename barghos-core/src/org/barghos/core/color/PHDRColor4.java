@@ -1,12 +1,11 @@
 package org.barghos.core.color;
 
-import org.barghos.core.api.color.IHDRColor4R;
-import org.barghos.core.api.tuple.ITup4fR;
+import org.barghos.core.tuple.tuple4.Tup4fR;
 
 /**
  * This class is a readonly implementation of an HDRColor4.
  */
-public abstract class PHDRColor4 implements IHDRColor4R
+public abstract class PHDRColor4 implements HDRColor4R
 {
 	private PHDRColor4() { }
 	
@@ -16,7 +15,7 @@ public abstract class PHDRColor4 implements IHDRColor4R
 	 * @param t A tuple that the components are set to.
 	 * @return A new readonly PHDRColor4 with the given components.
 	 */
-	public static PHDRColor4 gen(ITup4fR t) { return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public static PHDRColor4 gen(Tup4fR t) { return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * This generate a readonly PHDRColor4 with the components set to scalar.
@@ -49,9 +48,6 @@ public abstract class PHDRColor4 implements IHDRColor4R
 			public int getG() { return (int)Math.round(g * 255); }
 			public int getB() { return (int)Math.round(b * 255); }
 			public int getA() { return (int)Math.round(a * 255); }
-			
-			public int getDimensions() { return 4; }
-
 		};
 	}
 	
@@ -86,9 +82,6 @@ public abstract class PHDRColor4 implements IHDRColor4R
 			public int getG() { return g; }
 			public int getB() { return b; }
 			public int getA() { return a; }
-			
-			public int getDimensions() { return 4; }
-
 		};
 	}
 }

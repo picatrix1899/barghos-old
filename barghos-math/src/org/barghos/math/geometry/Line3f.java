@@ -1,15 +1,16 @@
 package org.barghos.math.geometry;
 
-import org.barghos.core.api.tuple.ITup3R;
+import org.barghos.core.tuple.tuple3.Tup3fR;
 import org.barghos.math.Maths;
-import org.barghos.math.point.Point3f;
-import org.barghos.math.vector.Vec3f;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
+import org.barghos.math.vector.vec3.Vec3Pool;
 
 public class Line3f implements FiniteGeometricObject
 {
-	public float p1x, p1y, p1z = 0.0f;
-	public float p2x, p2y, p2z = 0.0f;
-	
+	private Point3 p1 = new Point3();
+	private Point3 p2 = new Point3();
+
 	public Line3f() { }
 	
 	public Line3f(Line3f l)
@@ -18,179 +19,171 @@ public class Line3f implements FiniteGeometricObject
 		set(l);
 	}
 	
-	public Line3f(ITup3R p1, ITup3R p2)
+	public Line3f(Tup3fR p1, Tup3fR p2)
 	{
 		assert(p1 != null);
 		assert(p2 != null);
 		set(p1, p2);
 	}
 	
-	public Line3f(ITup3R p1, double x2, double y2, double z2)
+	public Line3f(Tup3fR p1, float x2, float y2, float z2)
 	{
 		assert(p1 != null);
 		set(p1, x2, y2, z2);
 	}
 	
-	public Line3f(double x1, double y1, double z1, ITup3R p2)
+	public Line3f(float x1, float y1, float z1, Tup3fR p2)
 	{
 		assert(p2 != null);
 		set(x1, y1, z1, p2);
 	}
-	public Line3f(double x1, double y1, double z1, double x2, double y2, double z2)
+	public Line3f(float x1, float y1, float z1, float x2, float y2, float z2)
 	{
 		set(x1, y1, z1, x2, y2, z2);
 	}
 	
-	public Point3f getP1(Point3f res)
+	public Point3 getP1(Point3 res)
 	{
-		res = res != null ? res : new Point3f();
-		return res.set(this.p1x, this.p1y, this.p1z);
+		res = res != null ? res : new Point3();
+		return res.set(this.p1);
 	}
 	
-	public Vec3f getP1(Vec3f res)
+	public Vec3 getP1(Vec3 res)
 	{
-		res = res != null ? res : new Vec3f();
-		return res.set(this.p1x, this.p1y, this.p1z);
+		res = res != null ? res : new Vec3();
+		return res.set(this.p1);
 	}
 	
-	public Point3f getP2(Point3f res)
+	public Point3 getP2(Point3 res)
 	{
-		res = res != null ? res : new Point3f();
-		return res.set(this.p2x, this.p2y, this.p2z);
+		res = res != null ? res : new Point3();
+		return res.set(this.p2);
 	}
 	
-	public Vec3f getP2(Vec3f res)
+	public Vec3 getP2(Vec3 res)
 	{
-		res = res != null ? res : new Vec3f();
-		return res.set(this.p2x, this.p2y, this.p2z);
+		res = res != null ? res : new Vec3();
+		return res.set(this.p2);
 	}
 	
 	public float getX1()
 	{
-		return this.p1x;
+		return this.p1.getX();
 	}
 	
 	public float getX2()
 	{
-		return this.p2x;
+		return this.p2.getX();
 	}
 	
 	public float getY1()
 	{
-		return this.p1y;
+		return this.p1.getY();
 	}
 	
 	public float getY2()
 	{
-		return this.p2y;
+		return this.p2.getY();
 	}
 	
 	public float getZ1()
 	{
-		return this.p1z;
+		return this.p1.getZ();
 	}
 	
 	public float getZ2()
 	{
-		return this.p2z;
+		return this.p2.getZ();
 	}
 	
 	public Line3f set(Line3f l)
 	{
 		assert(l != null);
-		return setP1(l.p1x, l.p1y, l.p1z).setP2(l.p2x, l.p2y, l.p2z);
+		return setP1(l.p1).setP2(l.p2);
 	}
 	
-	public Line3f set(ITup3R p1, ITup3R p2)
+	public Line3f set(Tup3fR p1, Tup3fR p2)
 	{
 		assert(p1 != null);
 		assert(p2 != null);
 		return setP1(p1).setP2(p2);
 	}
 	
-	public Line3f set(ITup3R p1, double x2, double y2, double z2)
+	public Line3f set(Tup3fR p1, float x2, float y2, float z2)
 	{
 		assert(p1 != null);
 		return setP1(p1).setP2(x2, y2, z2);
 	}
 	
-	public Line3f set(double x1, double y1, double z1, ITup3R p2)
+	public Line3f set(float x1, float y1, float z1, Tup3fR p2)
 	{
 		assert(p2 != null);
 		return setP1(x1, y1, z1).setP2(p2);
 	}
 	
-	public Line3f set(double x1, double y1, double z1, double x2, double y2, double z2)
+	public Line3f set(float x1, float y1, float z1, float x2, float y2, float z2)
 	{
 		return setP1(x1, y1, z1).setP2(x2, y2, z2);
 	}
 	
-	public Line3f setP1(ITup3R p)
+	public Line3f setP1(Tup3fR p)
 	{
 		assert(p != null);
-		this.p1x = (float)p.getUniX();
-		this.p1y = (float)p.getUniY();
-		this.p1z = (float)p.getUniZ();
+		this.p1.set(p);
 		return this;
 	}
 	
-	public Line3f setP1(double x, double y, double z)
+	public Line3f setP1(float x, float y, float z)
 	{
-		this.p1x = (float)x;
-		this.p1y = (float)y;
-		this.p1z = (float)z;
+		this.p1.set(x, y, z);
 		return this;
 	}
 	
-	public Line3f setP2(ITup3R p)
+	public Line3f setP2(Tup3fR p)
 	{
 		assert(p != null);
-		this.p2x = (float)p.getUniX();
-		this.p2y = (float)p.getUniY();
-		this.p2z = (float)p.getUniZ();
+		this.p2.set(p);
 		return this;
 	}
 	
-	public Line3f setP2(double x, double y, double z)
+	public Line3f setP2(float x, float y, float z)
 	{
-		this.p2x = (float)x;
-		this.p2y = (float)y;
-		this.p2z = (float)z;
+		this.p2.set(x, y, z);
 		return this;
 	}
 	
-	public double squaredLength()
+	public float squaredLength()
 	{
-		float x = this.p2x - this.p1x;
-		float y = this.p2y - this.p1y;
-		float z = this.p2z - this.p1z;
+		Vec3 v = this.p2.sub(this.p1, Vec3Pool.get());
+		float sqlength = v.squaredLength();
+		Vec3Pool.store(v);
 		
-		return x * x + y * y + z * z;
+		return sqlength;
 	}
 	
-	public double length()
+	public float length()
 	{
-		return Maths.sqrt(squaredLength());
+		return (float)Maths.sqrt(squaredLength());
 	}
 	
-	public Vec3f vector(Vec3f res)
+	public Vec3 vector(Vec3 res)
 	{
-		res = res != null ? res : new Vec3f();
+		res = res != null ? res : new Vec3();
 		
-		return Vec3f.sub(p2x, p2y, p2z, p1x, p1y, p1z, res);
+		return this.p2.sub(this.p1, res);
 	}
 	
-	public Vec3f vector()
+	public Vec3 vector()
 	{
-		return Vec3f.sub(p2x, p2y, p2z, p1x, p1y, p1z, new Vec3f());
+		return this.p2.sub(this.p1, null);
 	}
 
 	@Override
-	public Point3f[] getPoints()
+	public Point3[] getPoints()
 	{
-		return new Point3f[] {
-			new Point3f(p1x, p1y, p1z),
-			new Point3f(p2x, p2y, p2z)
+		return new Point3[] {
+			new Point3(p1),
+			new Point3(p2)
 		};
 	}
 }

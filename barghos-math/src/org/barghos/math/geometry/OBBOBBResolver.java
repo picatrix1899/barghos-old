@@ -1,15 +1,15 @@
 package org.barghos.math.geometry;
 
 import org.barghos.math.matrix.Mat4f;
-import org.barghos.math.point.Point3f;
-import org.barghos.math.vector.Vec3f;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
 
 public class OBBOBBResolver
 {
 	public static boolean iOBBOBB3f(OBB3f a, OBB3f b)
 	{
-		Point3f aCenter = a.getCenter();
-		Point3f bCenter = b.getCenter();
+		Point3 aCenter = a.getCenter();
+		Point3 bCenter = b.getCenter();
 		
 		Mat4f modelSpaceA = a.getModelSpaceMatrix();
 		Mat4f modelSpaceB = b.getModelSpaceMatrix();
@@ -17,30 +17,30 @@ public class OBBOBBResolver
 		PointSet3f aInSpaceA = a.getTransformedPointSet(modelSpaceA);
 		PointSet3f bInSpaceA = b.getTransformedPointSet(modelSpaceA);
 
-		double aMinX = aInSpaceA.getMinX();
-		double aMaxX = aInSpaceA.getMaxX();
+		float aMinX = aInSpaceA.getMinX();
+		float aMaxX = aInSpaceA.getMaxX();
 
-		double bMinX = bInSpaceA.getMinX();
-		double bMaxX = bInSpaceA.getMaxX();
+		float bMinX = bInSpaceA.getMinX();
+		float bMaxX = bInSpaceA.getMaxX();
 
-		double aMinY = aInSpaceA.getMinY();
-		double aMaxY = aInSpaceA.getMaxY();
+		float aMinY = aInSpaceA.getMinY();
+		float aMaxY = aInSpaceA.getMaxY();
 
-		double bMinY = bInSpaceA.getMinY();
-		double bMaxY = bInSpaceA.getMaxY();
+		float bMinY = bInSpaceA.getMinY();
+		float bMaxY = bInSpaceA.getMaxY();
 
-		double aMinZ = aInSpaceA.getMinZ();
-		double aMaxZ = aInSpaceA.getMaxZ();
+		float aMinZ = aInSpaceA.getMinZ();
+		float aMaxZ = aInSpaceA.getMaxZ();
 
-		double bMinZ = bInSpaceA.getMinZ();
-		double bMaxZ = bInSpaceA.getMaxZ();
+		float bMinZ = bInSpaceA.getMinZ();
+		float bMaxZ = bInSpaceA.getMaxZ();
 		
-		double aPNX = Vec3f.dot(aCenter, modelSpaceA.getRow(0));
-		double bPNX = Vec3f.dot(bCenter, modelSpaceA.getRow(0));
-		double aPNY = Vec3f.dot(aCenter, modelSpaceA.getRow(1));
-		double bPNY = Vec3f.dot(bCenter, modelSpaceA.getRow(1));
-		double aPNZ = Vec3f.dot(aCenter, modelSpaceA.getRow(2));
-		double bPNZ = Vec3f.dot(bCenter, modelSpaceA.getRow(2));
+		float aPNX = aCenter.dot(modelSpaceA.getRow(0));
+		float bPNX = bCenter.dot(modelSpaceA.getRow(0));
+		float aPNY = aCenter.dot(modelSpaceA.getRow(1));
+		float bPNY = bCenter.dot(modelSpaceA.getRow(1));
+		float aPNZ = aCenter.dot(modelSpaceA.getRow(2));
+		float bPNZ = bCenter.dot(modelSpaceA.getRow(2));
 
 		if(aPNX < bPNX)
 		{
@@ -96,12 +96,12 @@ public class OBBOBBResolver
 		bMinZ = bInSpaceB.getMinZ();
 		bMaxZ = bInSpaceB.getMaxZ();
 		
-		aPNX = Vec3f.dot(aCenter, modelSpaceB.getRow(0));
-		bPNX = Vec3f.dot(bCenter, modelSpaceB.getRow(0));
-		aPNY = Vec3f.dot(aCenter, modelSpaceB.getRow(1));
-		bPNY = Vec3f.dot(bCenter, modelSpaceB.getRow(1));
-		aPNZ = Vec3f.dot(aCenter, modelSpaceB.getRow(2));
-		bPNZ = Vec3f.dot(bCenter, modelSpaceB.getRow(2));
+		aPNX = aCenter.dot(modelSpaceB.getRow(0));
+		bPNX = bCenter.dot(modelSpaceB.getRow(0));
+		aPNY = aCenter.dot(modelSpaceB.getRow(1));
+		bPNY = bCenter.dot(modelSpaceB.getRow(1));
+		aPNZ = aCenter.dot(modelSpaceB.getRow(2));
+		bPNZ = bCenter.dot(modelSpaceB.getRow(2));
 		
 		if(aPNX < bPNX)
 		{
@@ -139,52 +139,52 @@ public class OBBOBBResolver
 		return true;
 	}
 	
-	public static Vec3f rOBBOBB3f(OBB3f a, OBB3f b)
+	public static Vec3 rOBBOBB3f(OBB3f a, OBB3f b)
 	{
-		Point3f aCenter = a.getCenter();
-		Point3f bCenter = b.getCenter();
+		Point3 aCenter = a.getCenter();
+		Point3 bCenter = b.getCenter();
 		
 		Mat4f modelSpaceA = a.getModelSpaceMatrix();
 
 		PointSet3f aInSpaceA = a.getTransformedPointSet(modelSpaceA);
 		PointSet3f bInSpaceA = b.getTransformedPointSet(modelSpaceA);
 		
-		double aMinX = aInSpaceA.getMinX();
-		double aMaxX = aInSpaceA.getMaxX();
+		float aMinX = aInSpaceA.getMinX();
+		float aMaxX = aInSpaceA.getMaxX();
 		
-		double bMinX = bInSpaceA.getMinX();
-		double bMaxX = bInSpaceA.getMaxX();
+		float bMinX = bInSpaceA.getMinX();
+		float bMaxX = bInSpaceA.getMaxX();
 		
-		double aMinY = aInSpaceA.getMinY();
-		double aMaxY = aInSpaceA.getMaxY();
+		float aMinY = aInSpaceA.getMinY();
+		float aMaxY = aInSpaceA.getMaxY();
 		
-		double bMinY = bInSpaceA.getMinY();
-		double bMaxY = bInSpaceA.getMaxY();
+		float bMinY = bInSpaceA.getMinY();
+		float bMaxY = bInSpaceA.getMaxY();
 		
-		double aMinZ = aInSpaceA.getMinZ();
-		double aMaxZ = aInSpaceA.getMaxZ();
+		float aMinZ = aInSpaceA.getMinZ();
+		float aMaxZ = aInSpaceA.getMaxZ();
 		
-		double bMinZ = bInSpaceA.getMinZ();
-		double bMaxZ = bInSpaceA.getMaxZ();
+		float bMinZ = bInSpaceA.getMinZ();
+		float bMaxZ = bInSpaceA.getMaxZ();
 
-		double aPNX = Vec3f.dot(aCenter, modelSpaceA.getRow(0));
-		double bPNX = Vec3f.dot(bCenter, modelSpaceA.getRow(0));
-		double aPNY = Vec3f.dot(aCenter, modelSpaceA.getRow(1));
-		double bPNY = Vec3f.dot(bCenter, modelSpaceA.getRow(1));
-		double aPNZ = Vec3f.dot(aCenter, modelSpaceA.getRow(2));
-		double bPNZ = Vec3f.dot(bCenter, modelSpaceA.getRow(2));
+		float aPNX = aCenter.dot(modelSpaceA.getRow(0));
+		float bPNX = bCenter.dot(modelSpaceA.getRow(0));
+		float aPNY = aCenter.dot(modelSpaceA.getRow(1));
+		float bPNY = bCenter.dot(modelSpaceA.getRow(1));
+		float aPNZ = aCenter.dot(modelSpaceA.getRow(2));
+		float bPNZ = bCenter.dot(modelSpaceA.getRow(2));
 		
-		double valAX = 0;
+		float valAX = 0;
 		int signAX = 0;
-		double valAY = 0;
+		float valAY = 0;
 		int signAY = 0;
-		double valAZ = 0;
+		float valAZ = 0;
 		int signAZ = 0;
-		double valBX = 0;
+		float valBX = 0;
 		int signBX = 0;
-		double valBY = 0;
+		float valBY = 0;
 		int signBY = 0;
-		double valBZ = 0;
+		float valBZ = 0;
 		int signBZ = 0;
 		
 		if(aPNX < bPNX)
@@ -196,7 +196,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		else
@@ -208,7 +208,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		
@@ -221,7 +221,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		else
@@ -233,7 +233,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		
@@ -246,7 +246,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		else
@@ -258,7 +258,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		
@@ -285,12 +285,12 @@ public class OBBOBBResolver
 		bMinZ = bInSpaceB.getMinZ();
 		bMaxZ = bInSpaceB.getMaxZ();
 		
-		aPNX = Vec3f.dot(aCenter, modelSpaceB.getRow(0));
-		bPNX = Vec3f.dot(bCenter, modelSpaceB.getRow(0));
-		aPNY = Vec3f.dot(aCenter, modelSpaceB.getRow(1));
-		bPNY = Vec3f.dot(bCenter, modelSpaceB.getRow(1));
-		aPNZ = Vec3f.dot(aCenter, modelSpaceB.getRow(2));
-		bPNZ = Vec3f.dot(bCenter, modelSpaceB.getRow(2));
+		aPNX = aCenter.dot(modelSpaceB.getRow(0));
+		bPNX = bCenter.dot(modelSpaceB.getRow(0));
+		aPNY = aCenter.dot(modelSpaceB.getRow(1));
+		bPNY = bCenter.dot(modelSpaceB.getRow(1));
+		aPNZ = aCenter.dot(modelSpaceB.getRow(2));
+		bPNZ = bCenter.dot(modelSpaceB.getRow(2));
 		
 		if(aPNX < bPNX)
 		{
@@ -301,7 +301,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		else
@@ -313,7 +313,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		
@@ -326,7 +326,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		else
@@ -338,7 +338,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		
@@ -351,7 +351,7 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		else
@@ -363,31 +363,31 @@ public class OBBOBBResolver
 			}
 			else
 			{
-				return new Vec3f();
+				return new Vec3();
 			}
 		}
 		
-		Vec3f[] v = new Vec3f[6];
+		Vec3[] v = new Vec3[6];
 		
-		Vec3f axisAX = new Vec3f(modelSpaceA.getRow(0).getUniX(), modelSpaceA.getRow(0).getUniY(), modelSpaceA.getRow(0).getUniZ());
-		Vec3f axisAY = new Vec3f(modelSpaceA.getRow(1).getUniX(), modelSpaceA.getRow(1).getUniY(), modelSpaceA.getRow(1).getUniZ());
-		Vec3f axisAZ = new Vec3f(modelSpaceA.getRow(2).getUniX(), modelSpaceA.getRow(2).getUniY(), modelSpaceA.getRow(2).getUniZ());
-		Vec3f axisBX = new Vec3f(modelSpaceB.getRow(0).getUniX(), modelSpaceB.getRow(0).getUniY(), modelSpaceB.getRow(0).getUniZ());
-		Vec3f axisBY = new Vec3f(modelSpaceB.getRow(1).getUniX(), modelSpaceB.getRow(1).getUniY(), modelSpaceB.getRow(1).getUniZ());
-		Vec3f axisBZ = new Vec3f(modelSpaceB.getRow(2).getUniX(), modelSpaceB.getRow(2).getUniY(), modelSpaceB.getRow(2).getUniZ());
+		Vec3 axisAX = new Vec3(modelSpaceA.getRow(0).getX(), modelSpaceA.getRow(0).getY(), modelSpaceA.getRow(0).getZ());
+		Vec3 axisAY = new Vec3(modelSpaceA.getRow(1).getX(), modelSpaceA.getRow(1).getY(), modelSpaceA.getRow(1).getZ());
+		Vec3 axisAZ = new Vec3(modelSpaceA.getRow(2).getX(), modelSpaceA.getRow(2).getY(), modelSpaceA.getRow(2).getZ());
+		Vec3 axisBX = new Vec3(modelSpaceB.getRow(0).getX(), modelSpaceB.getRow(0).getY(), modelSpaceB.getRow(0).getZ());
+		Vec3 axisBY = new Vec3(modelSpaceB.getRow(1).getX(), modelSpaceB.getRow(1).getY(), modelSpaceB.getRow(1).getZ());
+		Vec3 axisBZ = new Vec3(modelSpaceB.getRow(2).getX(), modelSpaceB.getRow(2).getY(), modelSpaceB.getRow(2).getZ());
 		
-		v[0] = Vec3f.mul(axisAX, valAX * signAX, null);
-		v[1] = Vec3f.mul(axisAY, valAY * signAY, null);
-		v[2] = Vec3f.mul(axisAZ, valAZ * signAZ, null);
+		v[0] = axisAX.mul(valAX * signAX, null);
+		v[1] = axisAY.mul(valAY * signAY, null);
+		v[2] = axisAZ.mul(valAZ * signAZ, null);
 		
-		v[3] = Vec3f.mul(axisBX, valBX * signBX, null);
-		v[4] = Vec3f.mul(axisBY, valBY * signBY, null);
-		v[5] = Vec3f.mul(axisBZ, valBZ * signBZ, null);
+		v[3] = axisBX.mul(valBX * signBX, null);
+		v[4] = axisBY.mul(valBY * signBY, null);
+		v[5] = axisBZ.mul(valBZ * signBZ, null);
 		
 		int index = 0;
 
 		double min = Double.MAX_VALUE;
-		Vec3f c;
+		Vec3 c;
 		double sq;
 		
 		for(int i = 0; i < 6; i++)

@@ -1,39 +1,40 @@
 package org.barghos.math.vector;
 
+import org.barghos.math.vector.vec3.Vec3;
 
 public class VectorInterpolation
 {
-	public static Vec3f lerp(Vec3f v1, Vec3f v2, double alpha, Vec3f res)
+	public static Vec3 lerp(Vec3 v1, Vec3 v2, float alpha, Vec3 res)
 	{
-		if(res == null) res = new Vec3f();
+		if(res == null) res = new Vec3();
 		
-		res.x = (float)(v1.x + alpha * (v2.x - v1.x));
-		res.y = (float)(v1.y + alpha * (v2.y - v1.y));
-		res.z = (float)(v1.z + alpha * (v2.z - v1.z));
+		res.setX(v1.getX() + alpha * (v2.getX() - v1.getX()));
+		res.setY(v1.getY() + alpha * (v2.getY() - v1.getY()));
+		res.setZ(v1.getZ() + alpha * (v2.getZ() - v1.getZ()));
 		
 		return res;
 	}
 	
-	public static Quat lerp(Quat q1, Quat q2, double alpha, Quat res)
+	public static Quat lerp(Quat q1, Quat q2, float alpha, Quat res)
 	{
 		if(res == null) res = new Quat();
 		
-		res.x = (float)(q1.x + alpha * (q2.x - q1.x));
-		res.y = (float)(q1.y + alpha * (q2.y - q1.y));
-		res.z = (float)(q1.z + alpha * (q2.z - q1.z));
-		res.w = (float)(q1.w + alpha * (q2.w - q1.w));
+		res.setX(q1.getX() + alpha * (q2.getX() - q1.getX()));
+		res.setY(q1.getY() + alpha * (q2.getY() - q1.getY()));
+		res.setZ(q1.getZ() + alpha * (q2.getZ() - q1.getZ()));
+		res.setW(q1.getW() + alpha * (q2.getW() - q1.getW()));
 		
 		return res.normal();
 	}
 	
-	public static Quat slerp(Quat q1, Quat q2, double alpha, Quat res)
+	public static Quat slerp(Quat q1, Quat q2, float alpha, Quat res)
 	{
 		if(res == null) res = new Quat();
 		
 		q1 = q1.normal(QuatPool.get());
 		q2 = q2.normal(QuatPool.get());
 		
-		double dot = q1.dot(q2);
+		float dot = q1.dot(q2);
 		
 		if(dot < 0)
 		{
@@ -47,13 +48,13 @@ public class VectorInterpolation
 		}
 		else
 		{
-			double theta_0 = Math.acos(dot);
-			double theta = theta_0 * alpha;
-			double sin_theta = Math.sin(theta);
-			double sin_theta_0 = Math.sin(theta_0);
+			float theta_0 = (float)Math.acos(dot);
+			float theta = theta_0 * alpha;
+			float sin_theta = (float)Math.sin(theta);
+			float sin_theta_0 = (float)Math.sin(theta_0);
 			
-			double s0 = Math.cos(theta) - dot * sin_theta / sin_theta_0;
-			double s1 = sin_theta / sin_theta_0;
+			float s0 = (float)Math.cos(theta) - dot * sin_theta / sin_theta_0;
+			float s1 = sin_theta / sin_theta_0;
 			
 			res.x = q1.x * s0 + q2.x * s1;
 			res.y = q1.y * s0 + q2.y * s1;

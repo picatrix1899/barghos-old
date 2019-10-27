@@ -2,7 +2,7 @@ package org.barghos.core;
 
 import java.util.List;
 
-import org.barghos.core.api.tuple.ITup3fR;
+import org.barghos.core.tuple.tuple3.Tup3fR;
 
 public class Check
 {
@@ -197,7 +197,7 @@ public class Check
 		return false;
 	}
 	
-	public static <A> boolean isValueNull(ITup3fR object)
+	public static <A> boolean isValueNull(Tup3fR object)
 	{
 		return object.getX() == 0.0f && object.getY() == 0.0f && object.getZ() == 0.0f;
 	}

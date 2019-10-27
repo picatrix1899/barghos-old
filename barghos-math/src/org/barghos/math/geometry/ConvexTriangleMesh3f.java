@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.barghos.math.matrix.Mat4f;
-import org.barghos.math.point.Point3f;
-import org.barghos.math.vector.Vec3f;
-
-
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
 
 public class ConvexTriangleMesh3f implements FiniteGeometricObject
 {
@@ -46,9 +44,9 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public Point3f[] getPoints()
+	public Point3[] getPoints()
 	{
-		Point3f[] p = new Point3f[triangles.size() * 3];
+		Point3[] p = new Point3[triangles.size() * 3];
 		
 		for(int i = 0; i < triangles.size(); i++)
 		{
@@ -69,14 +67,14 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 	{
 		PointSet3f set = getPointSet(null);
 
-		Vec3f min = new Vec3f(set.getMinX(), set.getMinY(), set.getMinZ());
-		Vec3f max = new Vec3f(set.getMaxX(), set.getMaxY(), set.getMaxZ());
+		Vec3 min = new Vec3(set.getMinX(), set.getMinY(), set.getMinZ());
+		Vec3 max = new Vec3(set.getMaxX(), set.getMaxY(), set.getMaxZ());
 
 		t.transform(min, min);
 		t.transform(max, max);
 		
-		Vec3f halfExtend = max.sub(min, max).mul(0.5f, max);
-		Point3f center = new Point3f(min.add(halfExtend, min));
+		Vec3 halfExtend = max.sub(min, max).mul(0.5f, max);
+		Point3 center = new Point3(min.add(halfExtend, min));
 		
 		return new OBB3f(center, halfExtend, r);
 	}
@@ -85,11 +83,11 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 	{
 		PointSet3f set = getPointSet(null);
 
-		Vec3f min = new Vec3f(set.getMinX(), set.getMinY(), set.getMinZ());
-		Vec3f max = new Vec3f(set.getMaxX(), set.getMaxY(), set.getMaxZ());
+		Vec3 min = new Vec3(set.getMinX(), set.getMinY(), set.getMinZ());
+		Vec3 max = new Vec3(set.getMaxX(), set.getMaxY(), set.getMaxZ());
 		
-		Vec3f halfExtend = max.sub(min, max).mul(0.5f, max);
-		Point3f center = new Point3f(min.add(halfExtend, min));
+		Vec3 halfExtend = max.sub(min, max).mul(0.5f, max);
+		Point3 center = new Point3(min.add(halfExtend, min));
 		
 		return new AABB3f(center, halfExtend);
 	}

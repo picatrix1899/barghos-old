@@ -5,17 +5,14 @@ import java.util.Collection;
 import java.util.List;
 
 import org.barghos.math.matrix.Mat4f;
-import org.barghos.math.point.Point3f;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
 
 public class PointSet3f implements FiniteGeometricObject
 {
-	private List<Point3f> points = new ArrayList<>();
-	private float minX;
-	private float minY;
-	private float minZ;
-	private float maxX;
-	private float maxY;
-	private float maxZ;
+	private List<Point3> points = new ArrayList<>();
+	private final Vec3 min = new Vec3();
+	private final Vec3 max = new Vec3();
 	
 	private boolean isDirty;
 	
@@ -27,7 +24,7 @@ public class PointSet3f implements FiniteGeometricObject
 		set(set);
 	}
 	
-	public PointSet3f(Point3f... points)
+	public PointSet3f(Point3... points)
 	{
 		assert(points != null);
 		assert(points.length > 0);
@@ -35,7 +32,7 @@ public class PointSet3f implements FiniteGeometricObject
 		set(points);
 	}
 	
-	public PointSet3f(Collection<Point3f> c)
+	public PointSet3f(Collection<Point3> c)
 	{
 		assert(c != null);
 		set(c);
@@ -53,7 +50,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public PointSet3f set(Point3f...points)
+	public PointSet3f set(Point3... points)
 	{
 		assert(points != null);
 		assert(points.length > 0);
@@ -68,7 +65,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 
-	public PointSet3f set(Collection<Point3f> c)
+	public PointSet3f set(Collection<Point3> c)
 	{
 		assert(c != null);
 		this.points.clear();
@@ -78,7 +75,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public PointSet3f add(Point3f... points)
+	public PointSet3f add(Point3... points)
 	{
 		assert(points != null);
 		assert(points.length > 0);
@@ -91,7 +88,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public PointSet3f add(Collection<Point3f> c)
+	public PointSet3f add(Collection<Point3> c)
 	{
 		assert(c != null);
 		this.points.addAll(c);
@@ -101,10 +98,10 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	public PointSet3f transform(Mat4f t)
 	{
-		Point3f[] p = new Point3f[this.points.size()];
+		Point3[] p = new Point3[this.points.size()];
 		
 		for(int i = 0; i < this.points.size(); i++)
-			p[i] = t.transform(this.points.get(i), (Point3f)null);
+			p[i] = t.transform(this.points.get(i), (Point3)null);
 		
 		return set(p);
 	}
@@ -113,10 +110,10 @@ public class PointSet3f implements FiniteGeometricObject
 	{
 		res = res != null ? res : new PointSet3f();
 		
-		Point3f[] p = new Point3f[this.points.size()];
+		Point3[] p = new Point3[this.points.size()];
 		
 		for(int i = 0; i < this.points.size(); i++)
-			p[i] = t.transform(this.points.get(i), (Point3f)null);
+			p[i] = t.transform(this.points.get(i), (Point3)null);
 		
 		return res.set(p);
 	}
@@ -126,9 +123,9 @@ public class PointSet3f implements FiniteGeometricObject
 		return new PointSet3f(this);
 	}
 	
-	public Point3f[] getPoints()
+	public Point3[] getPoints()
 	{
-		return this.points.toArray(new Point3f[this.points.size()]);
+		return this.points.toArray(new Point3[this.points.size()]);
 	}
 	
 	private void calculateExtremes()
@@ -142,37 +139,33 @@ public class PointSet3f implements FiniteGeometricObject
 		float maxY = Float.NEGATIVE_INFINITY;
 		float maxZ = Float.NEGATIVE_INFINITY;
 		
-		Point3f current;
+		Point3 current;
 		
 		for(int i = 0; i < this.points.size(); i++)
 		{
 			current = this.points.get(i);
 			
-			if(current.x < minX)
-				minX = current.x;
+			if(current.getX() < minX)
+				minX = current.getX();
 			
-			if(current.y < minY)
-				minY = current.y;
+			if(current.getY() < minY)
+				minY = current.getY();
 			
-			if(current.z < minZ)
-				minZ = current.z;
+			if(current.getZ() < minZ)
+				minZ = current.getZ();
 			
-			if(current.x > maxX)
-				maxX = current.x;
+			if(current.getX() > maxX)
+				maxX = current.getX();
 			
-			if(current.y > maxY)
-				maxY = current.y;
+			if(current.getY() > maxY)
+				maxY = current.getY();
 			
-			if(current.z > maxZ)
-				maxZ = current.z;
+			if(current.getZ() > maxZ)
+				maxZ = current.getZ();
 		}
 		
-		this.minX = minX;
-		this.minY = minY;
-		this.minZ = minZ;
-		this.maxX = maxX;
-		this.maxY = maxY;
-		this.maxZ = maxZ;
+		this.min.set(minX, minY, minZ);
+		this.max.set(maxX, maxY, maxZ);
 		
 		this.isDirty = false;
 	}
@@ -181,41 +174,41 @@ public class PointSet3f implements FiniteGeometricObject
 	{
 		if(this.isDirty) calculateExtremes();
 
-		return this.minX;
+		return this.min.getX();
 	}
 	
 	public float getMinY()
 	{
 		if(this.isDirty) calculateExtremes();
 
-		return this.minY;
+		return this.min.getY();
 	}
 	
 	public float getMinZ()
 	{
 		if(this.isDirty) calculateExtremes();
 		
-		return this.minZ;
+		return this.min.getZ();
 	}
 	
 	public float getMaxX()
 	{
 		if(this.isDirty) calculateExtremes();
 
-		return this.maxX;
+		return this.max.getX();
 	}
 	
 	public float getMaxY()
 	{
 		if(this.isDirty) calculateExtremes();
 
-		return this.maxY;
+		return this.max.getY();
 	}
 	
 	public float getMaxZ()
 	{
 		if(this.isDirty) calculateExtremes();
 
-		return this.maxZ;
+		return this.max.getZ();
 	}
 }
