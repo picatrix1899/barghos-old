@@ -267,7 +267,7 @@ public class Quat implements IQuatR
 	public Vec3f transform(ITup3R v, Vec3f res)
 	{
 		assert(v != null);
-		if(res != null) res = new Vec3f();
+		if(res == null) res = new Vec3f();
 		
 		Quat r = mul(v, QuatPool.get());
 		Quat c = conjugate(QuatPool.get());

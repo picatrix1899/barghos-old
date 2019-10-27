@@ -24,27 +24,24 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
-import org.barghos.core.tuple.tuple2.api.ITup2R;
-import org.barghos.core.tuple.tuple2.api.ITup2fR;
-
 /**
  * This class is a readonly implementation of a 2-dimensional float tuple.
  */
-public abstract class PTup2f implements ITup2fR
+public abstract class PTup2f implements	Tup2fR
 {
 	/**
 	 * Generates a readonly {@link PTup2f} that adopts the values from the given tuple.
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup2f} with the adopted values.
 	 */
-	public static PTup2f gen(ITup2R t) { assert(t != null); return gen(t.getUniX(), t.getUniY()); }
+	public static PTup2f gen(Tup2fR t) { assert(t != null); return gen(t.getX(), t.getY()); }
 	
 	/**
 	 * This generate a readonly {@link PTup2f} with the values set to scalar.
 	 * @param scalar The value.
 	 * @return A new readonly {@link PTup2f} with the values set to the given value.
 	 */
-	public static PTup2f gen(double scalar) { return gen(scalar, scalar); }
+	public static PTup2f gen(float scalar) { return gen(scalar, scalar); }
 
 	/**
 	 * This generate a readonly {@link PTup2f} with the values set to the corresponding given values.
@@ -52,15 +49,15 @@ public abstract class PTup2f implements ITup2fR
 	 * @param y The y value.
 	 * @return A new readonly {@link PTup2f} with the values set to the corresponding given values.
 	 */
-	public static PTup2f gen(double x, double y)
+	public static PTup2f gen(float x, float y)
 	{
 		return new PTup2f()
 		{
 			@Override
-			public float getX() { return (float)x; }
+			public float getX() { return x; }
 			
 			@Override
-			public float getY() { return (float)y; }
+			public float getY() { return y; }
 		};
 	}
 }

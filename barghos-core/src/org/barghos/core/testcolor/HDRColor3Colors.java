@@ -1,8 +1,6 @@
 package org.barghos.core.testcolor;
 
-import org.barghos.core.testcolor.api.IHDRColor3R;
-
-public enum HDRColor3Colors implements IHDRColor3R
+public enum HDRColor3Colors implements HDRColor3R
 {
 	/**
 	 * White Color constant.
@@ -126,8 +124,4 @@ public enum HDRColor3Colors implements IHDRColor3R
 	
 	@Override
 	public float getUnityB() { return (int)Math.round(getB() / 255); }
-
-	@Override
-	public int getDimensions() { return 3; }
-
 }

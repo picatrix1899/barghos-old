@@ -24,15 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
-import org.barghos.core.tuple.tuple3.api.ITup3R;
-import org.barghos.core.tuple.tuple3.api.ITup3f;
-
 /**
  * @author picatrix1899
  *
  * This class represents a 3-dimensional float tuple.
  */
-public class Tup3f implements ITup3f
+public class Tup3f implements Tup3fR
 {
 	private float x;
 	private float y;
@@ -43,21 +40,21 @@ public class Tup3f implements ITup3f
 	 */
 	public Tup3f()
 	{
-		set(0);
+		set(0.0f);
 	}
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup3f(ITup3R t)
+	public Tup3f(Tup3fR t)
 	{
 		set(t);
 	}
-
+	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup3f(double scalar)
+	public Tup3f(float scalar)
 	{
 		set(scalar);
 	}
@@ -65,28 +62,58 @@ public class Tup3f implements ITup3f
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup3f(double x, double y, double z)
+	public Tup3f(float x, float y, float z)
 	{
 		set(x, y, z);
 	}
 
-	
-	@Override
 	public float getX() { return this.x; }
-
-	@Override
+	
 	public float getY() { return this.y; }
-
-	@Override
+	
 	public float getZ() { return this.z; }
 
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
+	public Tup3f setX(float x) { this.x = x; return this; }
+
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
+	public Tup3f setY(float y) { this.y = y; return this; }
 	
-	@Override
-	public ITup3f setX(double x) { this.x = (float)x; return this; }
-
-	@Override
-	public ITup3f setY(double y) { this.y = (float)y; return this; }
-
-	@Override
-	public ITup3f setZ(double z) { this.z = (float)z; return this; }
+	/**
+	 * Sets the z value of the tuple.
+	 * @param z The new z value.
+	 * @return The current tuple.
+	 */
+	public Tup3f setZ(float z) { this.z = z; return this; }
+	
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
+	public Tup3f set(Tup3fR t) { assert(t != null); return set(t.getX(), t.getY(), t.getZ()); }
+	
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
+	public Tup3f set(float scalar) { return set(scalar, scalar, scalar); }
+	
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @param z The new z value.
+	 * @return The current tuple.
+	 */
+	public Tup3f set(float x, float y, float z) { return setX(x).setY(y).setZ(z); }
 }

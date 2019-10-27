@@ -24,15 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4;
 
-import org.barghos.core.tuple.tuple4.api.ITup4R;
-import org.barghos.core.tuple.tuple4.api.ITup4d;
-
 /**
  * @author picatrix1899
  *
  * This class represents a 4-dimensional double tuple.
  */
-public class Tup4d implements ITup4d
+public class Tup4d implements Tup4dR
 {
 	private double x;
 	private double y;
@@ -50,7 +47,7 @@ public class Tup4d implements ITup4d
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup4d(ITup4R t)
+	public Tup4d(Tup4dR t)
 	{
 		set(t);
 	}
@@ -71,27 +68,63 @@ public class Tup4d implements ITup4d
 		set(x, y, z, w);
 	}
 
-	@Override
 	public double getX() { return this.x; }
 
-	@Override
 	public double getY() { return this.y; }
 
-	@Override
 	public double getZ() { return this.z; }
 	
-	@Override
 	public double getW() { return this.w; }
 
-	@Override
+	/**
+	 * Sets the x value of the tuple.
+	 * @param x The new x value.
+	 * @return The current tuple.
+	 */
 	public Tup4d setX(double x) { this.x = x; return this; }
 
-	@Override
+	/**
+	 * Sets the y value of the tuple.
+	 * @param y The new y value.
+	 * @return The current tuple.
+	 */
 	public Tup4d setY(double y) { this.y = y; return this; }
 
-	@Override
+	/**
+	 * Sets the z value of the tuple.
+	 * @param z The new z value.
+	 * @return The current tuple.
+	 */
 	public Tup4d setZ(double z) { this.z = z; return this; }
 	
-	@Override
+	/**
+	 * Sets the w value of the tuple.
+	 * @param w The new w value.
+	 * @return The current tuple.
+	 */
 	public Tup4d setW(double w) { this.w = w; return this; }
+	
+	/**
+	 * Adopts the values from the given tuple.
+	 * @param t The tuple that values will be adopted from.
+	 * @return The current tuple.
+	 */
+	public Tup4d set(Tup4dR t) { assert(t != null); return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	
+	/**
+	 * Sets the values to the given value.
+	 * @param scalar The new value.
+	 * @return The current tuple.
+	 */
+	public Tup4d set(double scalar) { return set(scalar, scalar, scalar, scalar); }
+	
+	/**
+	 * Sets the values to the corresponding given values.
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @param z The new z value.
+	 * @param w The new w value.
+	 * @return The current tuple.
+	 */
+	public Tup4d set(double x, double y, double z, double w) { return setX(x).setY(y).setZ(z).setW(w); }
 }
