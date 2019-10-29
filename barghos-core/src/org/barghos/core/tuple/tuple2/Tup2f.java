@@ -89,7 +89,11 @@ public class Tup2f implements Tup2fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup2f set(Tup2fR t) { assert(t != null); return set(t.getX(), t.getY()); }
+	public Tup2f set(Tup2fR t)
+	{
+		assert(t != null);
+		return set(t.getX(), t.getY());
+	}
 	
 	/**
 	 * Sets the values to the given value.
