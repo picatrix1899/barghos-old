@@ -9,19 +9,18 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 
-import org.barghos.core.api.tuple.ITup2dR;
-import org.barghos.core.api.tuple.ITup2fR;
-import org.barghos.core.api.tuple.ITup3dR;
-import org.barghos.core.api.tuple.ITup3fR;
-import org.barghos.core.api.tuple.ITup4dR;
-import org.barghos.core.api.tuple.ITup4fR;
-import org.barghos.core.tuple.Tup2d;
-import org.barghos.core.tuple.Tup2f;
-import org.barghos.core.tuple.Tup3d;
-import org.barghos.core.tuple.Tup3f;
-import org.barghos.core.tuple.Tup4d;
-import org.barghos.core.tuple.Tup4f;
-
+import org.barghos.core.tuple.tuple2.Tup2d;
+import org.barghos.core.tuple.tuple2.Tup2dR;
+import org.barghos.core.tuple.tuple2.Tup2f;
+import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple.tuple3.Tup3d;
+import org.barghos.core.tuple.tuple3.Tup3dR;
+import org.barghos.core.tuple.tuple3.Tup3f;
+import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple.tuple4.Tup4d;
+import org.barghos.core.tuple.tuple4.Tup4dR;
+import org.barghos.core.tuple.tuple4.Tup4f;
+import org.barghos.core.tuple.tuple4.Tup4fR;
 import org.junit.jupiter.api.Test;
 
 
@@ -467,7 +466,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapByteBuffer(null);
+			BufferUtils.wrapByteBuffer((byte[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -497,7 +496,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapShortBuffer(null);
+			BufferUtils.wrapShortBuffer((short[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -527,7 +526,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapIntBuffer(null);
+			BufferUtils.wrapIntBuffer((int[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -557,7 +556,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapLongBuffer(null);
+			BufferUtils.wrapLongBuffer((long[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -587,7 +586,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFloatBuffer(null);
+			BufferUtils.wrapFloatBuffer((float[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -617,7 +616,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapDoubleBuffer(null);
+			BufferUtils.wrapDoubleBuffer((double[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -647,7 +646,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapTuple2FBuffer((ITup2fR[])null);
+			BufferUtils.wrapTuple2FBuffer((Tup2fR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -690,7 +689,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapTuple2DBuffer((ITup2dR[])null);
+			BufferUtils.wrapTuple2DBuffer((Tup2dR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -733,7 +732,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapTuple3FBuffer((ITup3fR[])null);
+			BufferUtils.wrapTuple3FBuffer((Tup3fR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -776,7 +775,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapTuple3DBuffer((ITup3dR[])null);
+			BufferUtils.wrapTuple3DBuffer((Tup3dR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -819,7 +818,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapTuple4FBuffer((ITup4fR[])null);
+			BufferUtils.wrapTuple4FBuffer((Tup4fR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -862,7 +861,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapTuple4DBuffer((ITup4dR[])null);
+			BufferUtils.wrapTuple4DBuffer((Tup4dR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -1085,7 +1084,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFlippedTuple2FBuffer((ITup2fR[])null);
+			BufferUtils.wrapFlippedTuple2FBuffer((Tup2fR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -1128,7 +1127,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFlippedTuple2DBuffer((ITup2dR[])null);
+			BufferUtils.wrapFlippedTuple2DBuffer((Tup2dR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -1171,7 +1170,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFlippedTuple3FBuffer((ITup3fR[])null);
+			BufferUtils.wrapFlippedTuple3FBuffer((Tup3fR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -1214,7 +1213,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFlippedTuple3DBuffer((ITup3dR[])null);
+			BufferUtils.wrapFlippedTuple3DBuffer((Tup3dR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -1257,7 +1256,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFlippedTuple4FBuffer((ITup4fR[])null);
+			BufferUtils.wrapFlippedTuple4FBuffer((Tup4fR[])null);
 		}
 		catch(AssertionError e)
 		{
@@ -1300,7 +1299,7 @@ class BufferUtilsTest
 		
 		try
 		{
-			BufferUtils.wrapFlippedTuple4DBuffer((ITup4dR[])null);
+			BufferUtils.wrapFlippedTuple4DBuffer((Tup4dR[])null);
 		}
 		catch(AssertionError e)
 		{
