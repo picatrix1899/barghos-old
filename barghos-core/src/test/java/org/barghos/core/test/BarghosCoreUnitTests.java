@@ -1,4 +1,4 @@
-package org.barghos.core;
+package org.barghos.core.test;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;

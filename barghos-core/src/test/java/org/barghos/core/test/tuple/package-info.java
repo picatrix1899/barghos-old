@@ -6,4 +6,4 @@
  *
  */
 
-package org.barghos.core.tuple;
+package org.barghos.core.test.tuple;
