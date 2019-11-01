@@ -1,7 +1,8 @@
-package org.barghos.core.tuple.tuple2;
+package org.barghos.core.test.tuple.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.barghos.core.tuple.tuple2.Tup2d;
 import org.junit.jupiter.api.Test;
 
 /**

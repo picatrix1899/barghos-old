@@ -1,4 +1,4 @@
-package org.barghos.core;
+package org.barghos.core.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,6 +9,7 @@ import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 
+import org.barghos.core.BufferUtils;
 import org.barghos.core.tuple.tuple2.Tup2d;
 import org.barghos.core.tuple.tuple2.Tup2dR;
 import org.barghos.core.tuple.tuple2.Tup2f;
