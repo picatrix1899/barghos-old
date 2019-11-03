@@ -37,37 +37,27 @@ public class Tup2d implements Tup2dR
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
-	public Tup2d()
-	{
-		set(0);
-	}
+	public Tup2d() { set(0); }
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup2d(Tup2dR t)
-	{
-		set(t);
-	}
+	public Tup2d(Tup2dR t) { set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup2d(double scalar)
-	{
-		set(scalar);
-	}
+	public Tup2d(double scalar) { set(scalar); }
 	
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup2d(double x, double y)
-	{
-		set(x, y);
-	}
+	public Tup2d(double x, double y) { set(x, y); }
 
+	@Override
 	public double getX() { return this.x; }
 
+	@Override
 	public double getY() { return this.y; }
 
 	/**
@@ -89,7 +79,7 @@ public class Tup2d implements Tup2dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup2d set(Tup2dR t) { assert(t != null); return set(t.getX(), t.getY()); }
+	public Tup2d set(Tup2dR t) { return set(t.getX(), t.getY()); }
 	
 	/**
 	 * Sets the values to the given value.
@@ -105,5 +95,39 @@ public class Tup2d implements Tup2dR
 	 * @return The current tuple.
 	 */
 	public Tup2d set(double x, double y) { return setX(x).setY(y); }
+	
+	@Override
+	public String toString()
+	{
+		return "tup2d(x=" + this.x + ", y=" + this.y + ")";
+	}
 
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(this.x);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(this.y);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof Tup2dR)) return false;
+		
+		Tup2dR other = (Tup2dR) obj;
+		if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.getX())) return false;
+		if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.getY())) return false;
+		return true;
+	}
+	
+	@Override
+	public Tup2d clone() { return new Tup2d(this); }
 }

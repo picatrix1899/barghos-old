@@ -37,37 +37,27 @@ public class Tup2f implements Tup2fR
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
-	public Tup2f()
-	{
-		set(0.0f);
-	}
+	public Tup2f() { set(0.0f); }
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup2f(Tup2fR t)
-	{
-		set(t);
-	}
+	public Tup2f(Tup2fR t) { set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup2f(float scalar)
-	{
-		set(scalar);
-	}
+	public Tup2f(float scalar) { set(scalar); }
 	
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup2f(float x, float y)
-	{
-		set(x, y);
-	}
+	public Tup2f(float x, float y) { set(x, y); }
 
+	@Override
 	public float getX() { return this.x; }
 	
+	@Override
 	public float getY() { return this.y; }
 
 	/**
@@ -89,11 +79,7 @@ public class Tup2f implements Tup2fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup2f set(Tup2fR t)
-	{
-		assert(t != null);
-		return set(t.getX(), t.getY());
-	}
+	public Tup2f set(Tup2fR t) { return set(t.getX(), t.getY()); }
 	
 	/**
 	 * Sets the values to the given value.
@@ -109,4 +95,36 @@ public class Tup2f implements Tup2fR
 	 * @return The current tuple.
 	 */
 	public Tup2f set(float x, float y) { return setX(x).setY(y); }
+	
+	@Override
+	public String toString()
+	{
+		return "tup2f(x=" + this.x + ", y=" + this.y + ")";
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(this.x);
+		result = prime * result + Float.floatToIntBits(this.y);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof Tup2fR)) return false;
+		
+		Tup2fR other = (Tup2fR) obj;
+		if (Float.floatToIntBits(this.x) != Float.floatToIntBits(other.getX())) return false;
+		if (Float.floatToIntBits(this.y) != Float.floatToIntBits(other.getY())) return false;
+		return true;
+	}
+	
+	@Override
+	public Tup2f clone() { return new Tup2f(this); }
 }

@@ -34,7 +34,7 @@ public abstract class PTup2f implements	Tup2fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup2f} with the adopted values.
 	 */
-	public static PTup2f gen(Tup2fR t) { assert(t != null); return gen(t.getX(), t.getY()); }
+	public static PTup2f gen(Tup2fR t) { return gen(t.getX(), t.getY()); }
 	
 	/**
 	 * This generate a readonly {@link PTup2f} with the values set to scalar.
@@ -59,5 +59,34 @@ public abstract class PTup2f implements	Tup2fR
 			@Override
 			public float getY() { return y; }
 		};
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup2f(x=" + getX() + ", y=" + getY() + ")";
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(getX());
+		result = prime * result + Float.floatToIntBits(getY());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof Tup2fR)) return false;
+		
+		Tup2fR other = (Tup2fR) obj;
+		if (Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
+		if (Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+		return true;
 	}
 }

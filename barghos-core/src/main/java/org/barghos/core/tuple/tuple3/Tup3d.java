@@ -38,39 +38,30 @@ public class Tup3d implements Tup3dR
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
-	public Tup3d()
-	{
-		set(0);
-	}
+	public Tup3d() { set(0); }
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup3d(Tup3dR t)
-	{
-		set(t);
-	}
+	public Tup3d(Tup3dR t) { set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup3d(double scalar)
-	{
-		set(scalar);
-	}
+	public Tup3d(double scalar) { set(scalar); }
 	
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup3d(double x, double y, double z)
-	{
-		set(x, y, z);
-	}
+	public Tup3d(double x, double y, double z) { set(x, y, z); }
 	
+	@Override
 	public double getX() { return this.x; }
 	
+	@Override
 	public double getY() { return this.y; }
 
+	@Override
 	public double getZ() { return this.z; }
 	
 	/**
@@ -117,4 +108,41 @@ public class Tup3d implements Tup3dR
 	 */
 	public Tup3d set(double x, double y, double z) { return setX(x).setY(y).setZ(z); }
 
+	@Override
+	public String toString()
+	{
+		return "tup3d(x=" + this.x + ", y=" + this.y + ", z=" + this.z + ")";
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(this.x);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(this.y);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(this.z);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof Tup3dR)) return false;
+		
+		Tup3dR other = (Tup3dR) obj;
+		if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.getX())) return false;
+		if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.getY())) return false;
+		if (Double.doubleToLongBits(this.z) != Double.doubleToLongBits(other.getZ())) return false;
+		return true;
+	}
+	
+	@Override
+	public Tup3d clone() { return new Tup3d(this); }
 }

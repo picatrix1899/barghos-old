@@ -38,39 +38,30 @@ public class Tup3f implements Tup3fR
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
-	public Tup3f()
-	{
-		set(0.0f);
-	}
+	public Tup3f() { set(0.0f); }
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup3f(Tup3fR t)
-	{
-		set(t);
-	}
+	public Tup3f(Tup3fR t) { set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup3f(float scalar)
-	{
-		set(scalar);
-	}
+	public Tup3f(float scalar) { set(scalar); }
 	
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup3f(float x, float y, float z)
-	{
-		set(x, y, z);
-	}
+	public Tup3f(float x, float y, float z) { set(x, y, z); }
 
+	@Override
 	public float getX() { return this.x; }
 	
+	@Override
 	public float getY() { return this.y; }
 	
+	@Override
 	public float getZ() { return this.z; }
 
 	/**
@@ -116,4 +107,38 @@ public class Tup3f implements Tup3fR
 	 * @return The current tuple.
 	 */
 	public Tup3f set(float x, float y, float z) { return setX(x).setY(y).setZ(z); }
+	
+	@Override
+	public String toString()
+	{
+		return "tup3f(x=" + this.x + ", y=" + this.y + ", z=" + this.z + ")";
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(this.x);
+		result = prime * result + Float.floatToIntBits(this.y);
+		result = prime * result + Float.floatToIntBits(this.z);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (!(obj instanceof Tup3fR)) return false;
+		
+		Tup3fR other = (Tup3fR) obj;
+		if (Float.floatToIntBits(this.x) != Float.floatToIntBits(other.getX())) return false;
+		if (Float.floatToIntBits(this.y) != Float.floatToIntBits(other.getY())) return false;
+		if (Float.floatToIntBits(this.z) != Float.floatToIntBits(other.getZ())) return false;
+		return true;
+	}
+	
+	@Override
+	public Tup3f clone() { return new Tup3f(this); }
 }

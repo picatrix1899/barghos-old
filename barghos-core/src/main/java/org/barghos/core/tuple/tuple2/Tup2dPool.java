@@ -24,7 +24,6 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
-import org.barghos.core.Check;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
 
@@ -47,7 +46,7 @@ public class Tup2dPool
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
-	public static Tup2d get(Tup2dR t) { assert(t != null); return pool.get().set(t); }
+	public static Tup2d get(Tup2dR t) { return pool.get().set(t); }
 	
 	/**
 	 * Returns an instance of Tup2d from the pool and sets its components to scalar.
@@ -67,11 +66,11 @@ public class Tup2dPool
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
 	 * @param count The amount of instances present in the pool at any time.
 	 */
-	public static void ensure(int count) { assert(count >= 0); pool.ensure(count); }
+	public static void ensure(int count) { pool.ensure(count); }
 	
 	/**
 	 * Stores Tup2d instances in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(Tup2d... instances) { assert(Check.notNull(instances)); pool.store(instances); }
+	public static void store(Tup2d... instances) { pool.store(instances); }
 }

@@ -27,7 +27,7 @@ public interface IPool<T>
 	 * Stores one or more instances in the pool.
 	 * @param t instances of the type of the pool.
 	 */
-	void store(@SuppressWarnings("unchecked") T... instance);
+	int store(@SuppressWarnings("unchecked") T... instance);
 	
 	/**
 	 * Returns the current instance count in the pool.

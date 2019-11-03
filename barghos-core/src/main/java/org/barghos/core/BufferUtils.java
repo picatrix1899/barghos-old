@@ -94,9 +94,6 @@ public class BufferUtils
 	 */
 	public static ByteBuffer wrapByteBuffer(byte... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-
 		return ByteBuffer.allocateDirect(v.length).order(order).put(v);
 	}
 	
@@ -107,9 +104,6 @@ public class BufferUtils
 	 */
 	public static ByteBuffer wrapByteBuffer(List<Byte> v)
 	{
-		assert(v != null);
-		assert(!v.isEmpty());
-		
 		ByteBuffer buffer = ByteBuffer.allocateDirect(v.size()).order(order);
 		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
@@ -124,9 +118,6 @@ public class BufferUtils
 	 */
 	public static ShortBuffer wrapShortBuffer(short... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-
 		return ByteBuffer.allocateDirect(v.length << 1).order(order).asShortBuffer().put(v);
 	}
 	
@@ -137,9 +128,6 @@ public class BufferUtils
 	 */
 	public static ShortBuffer wrapShortBuffer(List<Short> v)
 	{
-		assert(v != null);
-		assert(!v.isEmpty());
-		
 		ShortBuffer buffer = ByteBuffer.allocateDirect(v.size() << 1).order(order).asShortBuffer();
 		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
@@ -154,9 +142,6 @@ public class BufferUtils
 	 */
 	public static IntBuffer wrapIntBuffer(int... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-
 		return ByteBuffer.allocateDirect(v.length << 2).order(order).asIntBuffer().put(v);
 	}	
 	
@@ -167,9 +152,6 @@ public class BufferUtils
 	 */
 	public static IntBuffer wrapIntBuffer(List<Integer> v)
 	{
-		assert(v != null);
-		assert(!v.isEmpty());
-		
 		IntBuffer buffer = ByteBuffer.allocateDirect(v.size() << 2).order(order).asIntBuffer();
 		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
@@ -185,9 +167,6 @@ public class BufferUtils
 	 */
 	public static LongBuffer wrapLongBuffer(long... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-
 		return ByteBuffer.allocateDirect(v.length << 3).order(order).asLongBuffer().put(v);
 	}	
 	
@@ -198,9 +177,6 @@ public class BufferUtils
 	 */
 	public static LongBuffer wrapLongBuffer(List<Long> v)
 	{
-		assert(v != null);
-		assert(!v.isEmpty());
-		
 		LongBuffer buffer = ByteBuffer.allocateDirect(v.size() << 3).order(order).asLongBuffer();
 		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
@@ -215,9 +191,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFloatBuffer(float... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		return ByteBuffer.allocateDirect(v.length << 2).order(order).asFloatBuffer().put(v);
 	}
 	
@@ -228,9 +201,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFloatBuffer(List<Float> v)
 	{
-		assert(v != null);
-		assert(!v.isEmpty());
-		
 		FloatBuffer buffer = ByteBuffer.allocateDirect(v.size() << 2).order(order).asFloatBuffer();
 		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
@@ -245,9 +215,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapDoubleBuffer(double... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-
 		return ByteBuffer.allocateDirect(v.length << 3).order(order).asDoubleBuffer().put(v);
 	}
 	
@@ -258,9 +225,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapDoubleBuffer(List<Float> v)
 	{
-		assert(v != null);
-		assert(!v.isEmpty());
-		
 		DoubleBuffer buffer = ByteBuffer.allocateDirect(v.size() << 3).order(order).asDoubleBuffer();
 		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
@@ -276,10 +240,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapTuple2FBuffer(Tup2fR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-		
 		int length = v.length;
 		
 		float[] f = new float[length * 2];
@@ -303,10 +263,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapTuple2DBuffer(Tup2dR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-		
 		int length = v.length;
 
 		double[] d = new double[length * 2];
@@ -331,10 +287,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapTuple3FBuffer(Tup3fR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-		
 		int length = v.length;
 		
 		float[] f = new float[length * 3];
@@ -360,10 +312,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapTuple3DBuffer(Tup3dR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-		
 		int length = v.length;
 		
 		double[] d = new double[length * 3];
@@ -389,10 +337,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapTuple4FBuffer(Tup4fR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-		
 		int length = v.length;
 		
 		float[] f = new float[length * 4];
@@ -419,10 +363,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapTuple4DBuffer(Tup4dR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-		
 		int length = v.length;
 
 		double[] d = new double[v.length * 4];
@@ -448,9 +388,6 @@ public class BufferUtils
 	 */
 	public static ByteBuffer wrapFlippedByteBuffer(byte... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		ByteBuffer buffer = ByteBuffer.allocateDirect(v.length).order(order).put(v);
 		buffer.flip();
 		
@@ -464,9 +401,6 @@ public class BufferUtils
 	 */
 	public static ShortBuffer wrapFlippedShortBuffer(short... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		ShortBuffer buffer = ByteBuffer.allocateDirect(v.length << 1).order(order).asShortBuffer().put(v);
 		buffer.flip();
 		
@@ -480,9 +414,6 @@ public class BufferUtils
 	 */
 	public static IntBuffer wrapFlippedIntBuffer(int... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		IntBuffer buffer = ByteBuffer.allocateDirect(v.length << 2).order(order).asIntBuffer().put(v);
 		buffer.flip();
 		
@@ -496,9 +427,6 @@ public class BufferUtils
 	 */
 	public static LongBuffer wrapFlippedLongBuffer(long... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		LongBuffer buffer = ByteBuffer.allocateDirect(v.length << 3).order(order).asLongBuffer().put(v);
 		buffer.flip();
 		
@@ -512,9 +440,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedFloatBuffer(float... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		FloatBuffer buffer = ByteBuffer.allocateDirect(v.length << 2).order(order).asFloatBuffer().put(v);
 		buffer.flip();
 		
@@ -528,9 +453,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedDoubleBuffer(double... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		
 		DoubleBuffer buffer = ByteBuffer.allocateDirect(v.length << 3).order(order).asDoubleBuffer().put(v);
 		buffer.flip();
 
@@ -545,10 +467,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedTuple2FBuffer(Tup2fR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-
 		FloatBuffer buffer = wrapTuple2FBuffer(v);
 		buffer.flip();
 		
@@ -563,10 +481,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedTuple2DBuffer(Tup2dR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-
 		DoubleBuffer buffer = wrapTuple2DBuffer(v);
 		buffer.flip();
 		
@@ -581,10 +495,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedTuple3FBuffer(Tup3fR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-
 		FloatBuffer buffer = wrapTuple3FBuffer(v);
 		buffer.flip();
 		
@@ -599,10 +509,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedTuple3DBuffer(Tup3dR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-
 		DoubleBuffer buffer = wrapTuple3DBuffer(v);
 		buffer.flip();
 		
@@ -617,10 +523,6 @@ public class BufferUtils
 	 */
 	public static FloatBuffer wrapFlippedTuple4FBuffer(Tup4fR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-
 		FloatBuffer buffer = wrapTuple4FBuffer(v);
 		buffer.flip();
 		
@@ -635,10 +537,6 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer wrapFlippedTuple4DBuffer(Tup4dR... v)
 	{
-		assert(v != null);
-		assert(v.length != 0);
-		assert(Check.notNull(v));
-
 		DoubleBuffer buffer = wrapTuple4DBuffer(v);
 		buffer.flip();
 		
