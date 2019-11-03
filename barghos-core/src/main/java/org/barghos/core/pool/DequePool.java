@@ -26,7 +26,7 @@ public class DequePool<T> implements IPool<T>
 	 */
 	public DequePool(Class<? extends T> clazz)
 	{
-		assert(clazz != null);
+		if(clazz == null) throw new IllegalArgumentException();
 		this.clazz = clazz;
 	}
 	
@@ -39,8 +39,8 @@ public class DequePool<T> implements IPool<T>
 	 */
 	public DequePool(Class<? extends T> clazz, int size)
 	{
-		assert(clazz != null);
-		assert(size > 0);
+		if(clazz == null) throw new IllegalArgumentException();
+		
 		this.clazz = clazz;
 		
 		ensure(size);
@@ -57,19 +57,25 @@ public class DequePool<T> implements IPool<T>
 		return getNew();
 	}
 	
-	public void store(@SuppressWarnings("unchecked") T... t)
+	public int store(@SuppressWarnings("unchecked") T... t)
 	{
-		assert(t != null);
+		int count = 0;
 		
 		if(t.length > 0)
 		{
 			int i = 0;
 			for(; i < t.length; i++)
 			{
-				this.store.push(t[i]);
-				this.size++;
+				if(t[i] != null)
+				{
+					this.store.push(t[i]);
+					this.size++;
+					count++;
+				}
 			}
 		}
+		
+		return count;
 	}
 
 	public T getNew()
@@ -88,6 +94,7 @@ public class DequePool<T> implements IPool<T>
 
 	public void ensure(int count)
 	{
+		if(count <= 0) return;
 		if(count <= this.size) return;
 		
 		int neededInstances = count - this.size;
@@ -113,4 +120,8 @@ public class DequePool<T> implements IPool<T>
 		return this.size;
 	}
 	
+	public String toString()
+	{
+		return "dequepool(size=" + this.size + ")";
+	}
 }

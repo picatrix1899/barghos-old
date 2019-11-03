@@ -1,50 +1,54 @@
-package org.barghos.core.test.tuple.tuple2;
+package org.barghos.core.test.tuple.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple.tuple2.Tup2d;
+import org.barghos.core.tuple.tuple3.Tup3d;
 
-class Tup2dTest
+class Tup3dTest
 {
 
 	@Test
 	void ctorEmptyTest()
 	{
-		Tup2d t = new Tup2d();
+		Tup3d t = new Tup3d();
 		assertEquals(0.0, t.getX());
 		assertEquals(0.0, t.getY());
+		assertEquals(0.0, t.getZ());
 	}
 
 	@Test
 	void ctorCloneTest()
 	{
-		Tup2d t = new Tup2d(new Tup2d(1.2, 3.4));
+		Tup3d t = new Tup3d(new Tup3d(1.2, 3.4, 5.6));
 		assertEquals(1.2, t.getX());
 		assertEquals(3.4, t.getY());
+		assertEquals(5.6, t.getZ());
 	}
 	
 	@Test
 	void ctorScalarTest()
 	{
-		Tup2d t = new Tup2d(1.2);
+		Tup3d t = new Tup3d(1.2);
 		assertEquals(1.2, t.getX());
 		assertEquals(1.2, t.getY());
+		assertEquals(1.2, t.getZ());
 	}
 	
 	@Test
 	void ctorComponentsTest()
 	{
-		Tup2d t = new Tup2d(1.2, 3.4);
+		Tup3d t = new Tup3d(1.2, 3.4, 5.6);
 		assertEquals(1.2, t.getX());
 		assertEquals(3.4, t.getY());
+		assertEquals(5.6, t.getZ());
 	}
 	
 	@Test
 	void setXTest()
 	{
-		Tup2d t = new Tup2d();
-		Tup2d result = t.setX(1.2);
+		Tup3d t = new Tup3d();
+		Tup3d result = t.setX(1.2);
 		assertEquals(1.2, t.getX());
 		assertSame(t, result);
 	}
@@ -52,49 +56,62 @@ class Tup2dTest
 	@Test
 	void setYTest()
 	{
-		Tup2d t = new Tup2d();
-		Tup2d result = t.setY(1.2);
+		Tup3d t = new Tup3d();
+		Tup3d result = t.setY(1.2);
 		assertEquals(1.2, t.getY());
+		assertSame(t, result);
+	}
+	
+	@Test
+	void setZTest()
+	{
+		Tup3d t = new Tup3d();
+		Tup3d result = t.setZ(1.2);
+		assertEquals(1.2, t.getZ());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setCloneTest()
 	{
-		Tup2d t = new Tup2d();
-		Tup2d result = t.set(new Tup2d(1.2, 3.4));
+		Tup3d t = new Tup3d();
+		Tup3d result = t.set(new Tup3d(1.2, 3.4, 5.6));
 		assertEquals(1.2, t.getX());
 		assertEquals(3.4, t.getY());
+		assertEquals(5.6, t.getZ());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setScalarTest()
 	{
-		Tup2d t = new Tup2d();
-		Tup2d result = t.set(1.2);
+		Tup3d t = new Tup3d();
+		Tup3d result = t.set(1.2);
 		assertEquals(1.2, t.getX());
 		assertEquals(1.2, t.getY());
+		assertEquals(1.2, t.getZ());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void setComponentsTest()
 	{
-		Tup2d t = new Tup2d();
-		Tup2d result = t.set(1.2, 3.4);
+		Tup3d t = new Tup3d();
+		Tup3d result = t.set(1.2, 3.4, 5.6);
 		assertEquals(1.2, t.getX());
 		assertEquals(3.4, t.getY());
+		assertEquals(5.6, t.getZ());
 		assertSame(t, result);
 	}
 	
 	@Test
 	void cloneTest()
 	{
-		Tup2d t = new Tup2d(1.2, 3.4);
-		Tup2d result = t.clone();
+		Tup3d t = new Tup3d(1.2, 3.4, 5.6);
+		Tup3d result = t.clone();
 		assertEquals(1.2, result.getX());
 		assertEquals(3.4, result.getY());
+		assertEquals(5.6, result.getZ());
 		assertNotSame(t, result);
 	}
 }

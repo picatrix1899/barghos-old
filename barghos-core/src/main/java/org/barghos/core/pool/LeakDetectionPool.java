@@ -2,7 +2,6 @@ package org.barghos.core.pool;
 
 public class LeakDetectionPool<T> extends DequePool<T>
 {
-
 	int out = 0;
 	int in = 0;
 	
@@ -22,10 +21,11 @@ public class LeakDetectionPool<T> extends DequePool<T>
 		return super.get();
 	}
 	
-	public void store(@SuppressWarnings("unchecked") T... t)
+	public int store(@SuppressWarnings("unchecked") T... t)
 	{
-		in += t.length;
-		super.store(t);
+		int count = super.store(t);
+		in += count;
+		return count;
 	}
 	
 	public void startSession()
@@ -42,5 +42,10 @@ public class LeakDetectionPool<T> extends DequePool<T>
 	public int leakedEntities()
 	{
 		return out - in;
+	}
+	
+	public String toString()
+	{
+		return "dequepool(size=" + size() + ", leaks=" + leakedEntities() + ")";
 	}
 }
