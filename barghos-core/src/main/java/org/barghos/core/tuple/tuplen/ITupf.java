@@ -25,40 +25,16 @@ SOFTWARE.
 package org.barghos.core.tuple.tuplen;
 
 /**
- * This class is a readonly implementation of a n-dimensional immutable double tuple.
+ * @author picatrix1899
+ *
+ * This interface represents a n-dimensional immutable float tuple.
  */
-public abstract class PTupd implements ITupdR
+public interface ITupf extends ITupfR, Tup
 {
-	/**
-	 * Generates a readonly {@link PTupd} that adopts the given values.
-	 * @param values The values to adopt.
-	 * @return A new readonly {@link PTupd} with the given values.
-	 */
-	public static PTupd gen(double... values)
-	{
-		double[] v = new double[values.length];
 
-		int i = 0;
-		for(; i < values.length; i++)
-			v[i] = values[i];
-		
-		return new PTupd()
-		{
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
-			 */
-			@Override
-			public double get(int index)
-			{
-				if(index < 0 || index > values.length) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (values.length - 1));
-				
-				return v[index];
-			}
-			
-			
-			@Override
-			public int getDimensions() { return v.length; }
-		};
-	}
+	/**
+	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
+	 */
+	@Override
+	ITupf set(int index, double value);
 }

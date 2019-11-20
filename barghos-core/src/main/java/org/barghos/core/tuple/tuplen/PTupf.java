@@ -24,8 +24,6 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuplen;
 
-import org.barghos.core.tuple.tuplen.api.ITupfR;
-
 /**
  * This class is a readonly implementation of a n-dimensional immutable float tuple.
  */
@@ -40,7 +38,8 @@ public abstract class PTupf implements ITupfR
 	{
 		float[] v = new float[values.length];
 		
-		for(int i = 0; i < values.length; i++)
+		int i = 0;
+		for(; i < values.length; i++)
 			v[i] = (float)values[i];
 		
 		return new PTupf()

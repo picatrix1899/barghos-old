@@ -3,6 +3,7 @@ package org.barghos.core.test.tuple.tuple3;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import org.barghos.core.tuple.tuple3.PTup3d;
 import org.barghos.core.tuple.tuple3.Tup3d;
 
 class Tup3dTest
@@ -113,5 +114,35 @@ class Tup3dTest
 		assertEquals(3.4, result.getY());
 		assertEquals(5.6, result.getZ());
 		assertNotSame(t, result);
+	}
+	
+	@Test
+	void toStringTest()
+	{
+		Tup3d t = new Tup3d(1.2, 3.4, 5.6);
+		assertEquals("tup3d(x=1.2, y=3.4, z=5.6)", t.toString());
+	}
+	
+	@Test
+	void hashCodeTest()
+	{
+		Tup3d t = new Tup3d(1.2, 3.4, 5.6);
+		assertEquals(-151489441, t.hashCode());
+	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	void equalsTest()
+	{
+		Tup3d t = new Tup3d(1.2, 3.4, 5.6);
+		assertTrue(t.equals(t));
+		assertFalse(t.equals(null));
+		assertFalse(t.equals(0));
+		assertFalse(t.equals(new Tup3d(3.4, 5.6, 7.8)));
+		assertFalse(t.equals(new Tup3d(1.2, 5.6, 7.8)));
+		assertFalse(t.equals(new Tup3d(1.2, 3.4, 7.8)));
+		
+		assertTrue(t.equals(new Tup3d(1.2, 3.4, 5.6)));
+		assertTrue(t.equals(PTup3d.gen(1.2, 3.4, 5.6)));
 	}
 }

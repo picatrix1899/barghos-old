@@ -29,6 +29,8 @@ package org.barghos.core.tuple.tuple2;
  */
 public abstract class PTup2f implements	Tup2fR
 {
+	private PTup2f() { }
+	
 	/**
 	 * Generates a readonly {@link PTup2f} that adopts the values from the given tuple.
 	 * @param t The tuple that values will be adopted from.

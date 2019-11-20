@@ -13,22 +13,23 @@ import java.util.List;
 public class ListUtils
 {
 	/**
-	 * Finds the occurences of "a" in "list" and return their indices.
+	 * Finds the occurences of "element" in "list" and return their indices.
 	 * @param list The list to search.
 	 * @param element The value to find.
-	 * @return An array of the indices of each occurence of "a" in "list".
+	 * @return An array of the indices of each occurence of "element" in "list".
 	 */
 	public static <A> int[] indicesOf(ArrayList<A> list, A element)
 	{
 		int occurences = ListUtils.occurrencesOf(list, element);
-		
+
 		if(occurences == 0) return null;
 		
 		int[] out = new int[occurences]; 
 		
 		int index = 0;
 		
-		for(int i = 0; i < list.size(); i++)
+		int i = 0;
+		for(; i < list.size(); i++)
 		{
 			
 			if(list.get(i).equals(element) || list.get(i) == element)
@@ -36,7 +37,6 @@ public class ListUtils
 				out[index] = i;
 				index++;
 			}		
-			
 		}
 		
 		return out;

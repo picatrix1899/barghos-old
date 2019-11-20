@@ -34,7 +34,7 @@ public abstract class PTup3f implements	Tup3fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup3f} with the adopted values.
 	 */
-	public static PTup3f gen(Tup3fR t) { assert(t != null); return gen(t.getX(), t.getY(), t.getZ()); }
+	public static PTup3f gen(Tup3fR t) { return gen(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * This generate a readonly {@link PTup3f} with the values set to scalar.

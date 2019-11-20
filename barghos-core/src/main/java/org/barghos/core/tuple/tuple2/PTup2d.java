@@ -64,7 +64,7 @@ public abstract class PTup2d implements Tup2dR
 	@Override
 	public String toString()
 	{
-		return "tup2d(x=" + getX() + ", y=" + getY() + ")";
+		return "ptup2d(x=" + getX() + ", y=" + getY() + ")";
 	}
 
 	@Override

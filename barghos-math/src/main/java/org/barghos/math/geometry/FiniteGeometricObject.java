@@ -11,19 +11,16 @@ public interface FiniteGeometricObject
 	{
 		Point3[] p = getPoints();
 		
-		for(int i = 0; i < p.length; i++)
-		{
+		int i = 0;
+		for(; i < p.length; i++)
 			t.transform(p[i], p[i]);
-		}
 		
 		return p;
 	}
 	
 	default PointSet3f getPointSet()
 	{
-		PointSet3f res = new PointSet3f();
-		
-		return res.set(getPoints());
+		return new PointSet3f(getPoints());
 	}
 	
 	default PointSet3f getPointSet(PointSet3f res)
@@ -37,7 +34,7 @@ public interface FiniteGeometricObject
 	{
 		PointSet3f res = new PointSet3f();
 		
-		PointSet3f s = getPointSet(null);
+		PointSet3f s = getPointSet();
 		
 		s.transform(t, s);
 		
@@ -48,11 +45,11 @@ public interface FiniteGeometricObject
 	{
 		res = res != null ? res : new PointSet3f();
 		
-		PointSet3f s = getPointSet(null);
+		getPointSet(res);
 		
-		s.transform(t, s);
+		res.transform(t, res);
 		
-		return res.set(s);
+		return res;
 	}
 
 }

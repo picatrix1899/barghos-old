@@ -33,44 +33,44 @@ import org.barghos.core.pool.api.IPool;
 public class Tup2dPool
 {
 	
-	private static final IPool<Tup2d> pool = new DequePool<>(Tup2d.class);
+	public static IPool<Tup2d> POOL = new DequePool<>(Tup2d.class);
 	
 	/**
 	 * Returns an instance of Tup2d from the pool and resets it.
 	 * @return A stored instance.
 	 */
-	public static Tup2d get() { return pool.get().set(0.0f); }
+	public static Tup2d get() { return POOL.get().set(0.0f); }
 	
 	/**
 	 * Returns an instance of Tup2d from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
-	public static Tup2d get(Tup2dR t) { return pool.get().set(t); }
+	public static Tup2d get(Tup2dR t) { return POOL.get().set(t); }
 	
 	/**
 	 * Returns an instance of Tup2d from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public static Tup2d get(double scalar) { return pool.get().set(scalar); }
+	public static Tup2d get(double scalar) { return POOL.get().set(scalar); }
 	
 	/**
 	 * Returns an instance of Tup2d from the pool and sets its components to x and y.
 	 * @param x The x component.
 	 * @param y The y component.
 	 */
-	public static Tup2d get(double x, double y) { return pool.get().set(x, y); }
+	public static Tup2d get(double x, double y) { return POOL.get().set(x, y); }
 	
 	/**
 	 * Ensures a certain amount of instances to be present in the pool at any time.
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
 	 * @param count The amount of instances present in the pool at any time.
 	 */
-	public static void ensure(int count) { pool.ensure(count); }
+	public static void ensure(int count) { POOL.ensure(count); }
 	
 	/**
 	 * Stores Tup2d instances in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(Tup2d... instances) { pool.store(instances); }
+	public static void store(Tup2d... instances) { POOL.store(instances); }
 }
