@@ -24,8 +24,6 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuplen;
 
-import org.barghos.core.tuple.tuplen.api.ITupf;
-
 /**
  * This class represents a n-dimensional immutable float tuple.
  */
@@ -53,7 +51,8 @@ public class Tupf implements ITupf
 	public Tupf(double... v)
 	{
 		this(v.length);
-		for(int i = 0; i < v.length; i++)
+		int i = 0;
+		for(; i < v.length; i++)
 			this.v[i] = (float)v[i];
 	}
 	

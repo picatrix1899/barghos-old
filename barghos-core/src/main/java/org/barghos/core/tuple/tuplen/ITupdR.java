@@ -22,50 +22,54 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuplen.api;
+package org.barghos.core.tuple.tuplen;
 
 /**
  * @author picatrix1899
  *
- * This interface represents a readonly version of a unspecialized n-dimensional immutable tuple.
+ * This interface represents a readonly version of a n-dimensional immutable double tuple.
  */
-public interface ITupR
+public interface ITupdR extends ITupR
 {
 	/**
 	 * Returns the value from the tuple at the given index.
-	 * This is a generalized fuction and is as such available in all derivations of tuples.
 	 * @param index The index of the value to return.
 	 * @return The value from the tuple at the given index.
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
-	double getUni(int index);
-	
-	
-	/**
-	 * Returns the dimension or value count of the tuple.
-	 * This is often used together with the {@link #getUni(int)} function.
-	 * @return The dimension or value count of the tuple.
-	 */
-	int getDimensions();
+	double get(int index);
 	
 	/**
-	 * Returns true if all values of the tuple are finite values.
-	 * @return True if all values of the tuple are finite values.
+	 * {@inheritDoc}
+	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
-	boolean isFinite();
-	
-	/**
-	 * Checks if all values of the tuple are zero.
-	 * @return Are all values zero.
-	 */
-	default boolean isZero() { return isZero(0.0); }
-	
-	/**
-	 * Checks if all values of the tuple are within a tolerance around zero.
-	 * @param tolerance The threshold around 0.
-	 * @return Are all values within the tolerance around zero.
-	 */
-	boolean isZero(double tolerance);
-	
+	@Override
+	default double getUni(int index)
+	{
+		if(index < 0 || index >= getDimensions()) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (getDimensions() - 1));
 
+		return get(index);
+	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		for(int i = 0; i < getDimensions(); i++)
+		{
+			if(!Double.isFinite(get(i))) return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+	default boolean isZero(double tolerance)
+	{
+		for(int i = 0; i < getDimensions(); i++)
+		{
+			if(Math.abs(get(i)) > tolerance) return false;
+		}
+		
+		return true;
+	}
 }

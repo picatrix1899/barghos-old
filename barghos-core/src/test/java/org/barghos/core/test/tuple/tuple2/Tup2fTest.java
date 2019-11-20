@@ -3,6 +3,7 @@ package org.barghos.core.test.tuple.tuple2;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import org.barghos.core.tuple.tuple2.PTup2f;
 import org.barghos.core.tuple.tuple2.Tup2f;
 
 class Tup2fTest
@@ -96,5 +97,34 @@ class Tup2fTest
 		assertEquals(1.2f, result.getX());
 		assertEquals(3.4f, result.getY());
 		assertNotSame(t, result);
+	}
+	
+	@Test
+	void toStringTest()
+	{
+		Tup2f t = new Tup2f(1.2f, 3.4f);
+		assertEquals("tup2f(x=1.2, y=3.4)", t.toString());
+	}
+	
+	@Test
+	void hashCodeTest()
+	{
+		Tup2f t = new Tup2f(1.2f, 3.4f);
+		assertEquals(-202164479, t.hashCode());
+	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	void equalsTest()
+	{
+		Tup2f t = new Tup2f(1.2f, 3.4f);
+		assertTrue(t.equals(t));
+		assertFalse(t.equals(null));
+		assertFalse(t.equals(0));
+		assertFalse(t.equals(new Tup2f(3.4f, 5.6f)));
+		assertFalse(t.equals(new Tup2f(1.2f, 5.6f)));
+		
+		assertTrue(t.equals(new Tup2f(1.2f, 3.4f)));
+		assertTrue(t.equals(PTup2f.gen(1.2f, 3.4f)));
 	}
 }

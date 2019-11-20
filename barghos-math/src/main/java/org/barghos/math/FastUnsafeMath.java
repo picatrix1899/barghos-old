@@ -22,43 +22,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuplen;
+package org.barghos.math;
+
 
 /**
- * This class is a readonly implementation of a n-dimensional immutable double tuple.
+ * @author picatrix1899
+ *
  */
-public abstract class PTupd implements ITupdR
+public class FastUnsafeMath implements UnsafeMath
 {
-	/**
-	 * Generates a readonly {@link PTupd} that adopts the given values.
-	 * @param values The values to adopt.
-	 * @return A new readonly {@link PTupd} with the given values.
-	 */
-	public static PTupd gen(double... values)
-	{
-		double[] v = new double[values.length];
 
-		int i = 0;
-		for(; i < values.length; i++)
-			v[i] = values[i];
-		
-		return new PTupd()
-		{
-			/**
-			 * {@inheritDoc}
-			 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
-			 */
-			@Override
-			public double get(int index)
-			{
-				if(index < 0 || index > values.length) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (values.length - 1));
-				
-				return v[index];
-			}
-			
-			
-			@Override
-			public int getDimensions() { return v.length; }
-		};
+	private static FastUnsafeMath instance;
+	
+	public static FastUnsafeMath getInstance()
+	{
+		if(instance == null) instance = new FastUnsafeMath();
+		return instance;
 	}
+	
+	private FastUnsafeMath() { }
+	
+	public double sin(double r)
+	{
+		return Math.sin(r);
+	}
+
+	public double cos(double r)
+	{
+		return Math.cos(r);
+	}
+
+	public double sqrt(double n)
+	{
+		if(Math.abs(1.0 - n) < 2.107342e-08)
+		{
+			return (1 + n) * 0.5;
+		}
+		else
+		{
+			return Math.sqrt(n);
+		}
+	}
+
 }

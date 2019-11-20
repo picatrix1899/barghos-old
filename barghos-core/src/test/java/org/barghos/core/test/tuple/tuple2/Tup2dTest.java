@@ -2,12 +2,11 @@ package org.barghos.core.test.tuple.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-
+import org.barghos.core.tuple.tuple2.PTup2d;
 import org.barghos.core.tuple.tuple2.Tup2d;
 
 class Tup2dTest
 {
-
 	@Test
 	void ctorEmptyTest()
 	{
@@ -96,5 +95,34 @@ class Tup2dTest
 		assertEquals(1.2, result.getX());
 		assertEquals(3.4, result.getY());
 		assertNotSame(t, result);
+	}
+	
+	@Test
+	void toStringTest()
+	{
+		Tup2d t = new Tup2d(1.2, 3.4);
+		assertEquals("tup2d(x=1.2, y=3.4)", t.toString());
+	}
+	
+	@Test
+	void hashCodeTest()
+	{
+		Tup2d t = new Tup2d(1.2, 3.4);
+		assertEquals(-25689151, t.hashCode());
+	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	void equalsTest()
+	{
+		Tup2d t = new Tup2d(1.2, 3.4);
+		assertTrue(t.equals(t));
+		assertFalse(t.equals(null));
+		assertFalse(t.equals(0));
+		assertFalse(t.equals(new Tup2d(3.4, 5.6)));
+		assertFalse(t.equals(new Tup2d(1.2, 5.6)));
+		
+		assertTrue(t.equals(new Tup2d(1.2, 3.4)));
+		assertTrue(t.equals(PTup2d.gen(1.2, 3.4)));	
 	}
 }

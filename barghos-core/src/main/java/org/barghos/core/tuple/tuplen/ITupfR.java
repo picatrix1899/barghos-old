@@ -22,18 +22,54 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuplen.api;
+package org.barghos.core.tuple.tuplen;
 
 /**
  * @author picatrix1899
  *
- * This interface represents a n-dimensional immutable double tuple.
+ * This interface represents a readonly version of a n-dimensional immutable float tuple.
  */
-public interface ITupd extends ITupdR, Tup
+public interface ITupfR extends ITupR
 {
 	/**
+	 * Returns the value from the tuple at the given index.
+	 * @param index The index of the value to return.
+	 * @return The value from the tuple at the given index.
+	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
+	 */
+	float get(int index);
+	
+	/**
+	 * {@inheritDoc}
 	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
 	 */
 	@Override
-	ITupd set(int index, double value);
+	default double getUni(int index)
+	{
+		if(index < 0 || index >= getDimensions()) throw new IndexOutOfBoundsException("index: " + index + "; min: 0; max: " + (getDimensions() - 1));
+
+		return get(index);
+	}
+	
+	@Override
+	default boolean isFinite()
+	{
+		for(int i = 0; i < getDimensions(); i++)
+		{
+			if(!Float.isFinite(get(i))) return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+	default boolean isZero(double tolerance)
+	{
+		for(int i = 0; i < getDimensions(); i++)
+		{
+			if(Math.abs(get(i)) > tolerance) return false;
+		}
+		
+		return true;
+	}
 }

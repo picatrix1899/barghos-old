@@ -22,21 +22,37 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuplen.api;
+package org.barghos.math;
+
 
 /**
  * @author picatrix1899
  *
- * This interface represents a unspecialized n-dimensional immutable tuple.
  */
-public interface Tup extends ITupR
+public class JavaUnsafeMath implements UnsafeMath
 {
-	/**
-	 * Sets the value in the tuple at the given index.
-	 * @param index The index of the value in the tuple.
-	 * @param value The new value to save in the tuple.
-	 * @return The current tuple.
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
-	 */
-	Tup set(int index, double value);
+	private static JavaUnsafeMath instance;
+	
+	public static JavaUnsafeMath getInstance()
+	{
+		if(instance == null) instance = new JavaUnsafeMath();
+		return instance;
+	}
+	
+	private JavaUnsafeMath() { }
+	
+	public double sin(double r)
+	{
+		return Math.sin(r);
+	}
+
+	public double cos(double r)
+	{
+		return Math.cos(r);
+	}
+
+	public double sqrt(double n)
+	{
+		return Math.sqrt(n);
+	}
 }

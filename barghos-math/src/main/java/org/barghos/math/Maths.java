@@ -5,13 +5,24 @@ package org.barghos.math;
  */
 public class Maths
 {
-	/** The number PI with 11 digits after point. */
+	/**
+	 * Contains the implementations for unsafe math operations like sqrt, sin, cos etc.
+	 */
+	public static UnsafeMath UNSAFE_MATH_IMPLEMENTATION = JavaUnsafeMath.getInstance();
+	
+	/**
+	 * The number PI with 11 digits after point.
+	 */
 	public static final double PI = 3.14159265359;
 	
-	/** The inverse of PI (1 / PI). */
+	/**
+	 * The inverse of PI (1 / PI).
+	 */
 	public static final double INV_PI = 0.31830988618;
 	
-	/** This is the precalculated Half-PI (PI / 2). It's used in some trigonomic calculations. */
+	/** 
+	 * This is the precalculated Half-PI (PI / 2). It's used in some trigonomic calculations.
+	 */
 	public static final double HALF_PI = 1.570796326795;
 	
 	/**
@@ -271,23 +282,16 @@ public class Maths
 	
 	public static double sin(double a)
 	{
-		return Math.sin(a);
+		return Maths.UNSAFE_MATH_IMPLEMENTATION.sin(a);
 	}
 	
 	public static double cos(double a)
 	{
-		return Math.cos(a);
+		return Maths.UNSAFE_MATH_IMPLEMENTATION.cos(a);
 	}
 	
 	public static double sqrt(double a)
 	{
-		if(Math.abs(1.0 - a) < 2.107342e-08)
-		{
-			return (1 + a) * 0.5;
-		}
-		else
-		{
-			return Math.sqrt(a);
-		}
+		return Maths.UNSAFE_MATH_IMPLEMENTATION.sqrt(a);
 	}
 }

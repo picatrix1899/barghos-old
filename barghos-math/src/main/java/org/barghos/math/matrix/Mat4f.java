@@ -15,6 +15,8 @@ import org.barghos.math.vector.vec4.Vec4;
 
 public class Mat4f
 {	
+	public static final Mat4f IDENTITY = Mat4f.identity();
+	
 	public final float[][] m = new float[4][4];
 	
 	public Mat4f() {  }

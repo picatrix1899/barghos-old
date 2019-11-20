@@ -34,8 +34,6 @@ public class ConvexTriangleMesh3f implements FiniteGeometricObject
 	
 	public ConvexTriangleMesh3f set(List<Triangle3f> triangles)
 	{
-		assert(triangles != null);
-		assert(triangles.size() > 0);
 		this.triangles.clear();
 		
 		for(int i = 0; i < triangles.size(); i++)

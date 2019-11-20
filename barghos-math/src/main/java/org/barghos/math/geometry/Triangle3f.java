@@ -16,54 +16,41 @@ public class Triangle3f implements FiniteGeometricObject
 	public Triangle3f() { }
 	public Triangle3f(Triangle3f t)
 	{
-		assert(t != null);
 		set(t);
 	}
 	
 	public Triangle3f(Tup3fR p1, Tup3fR p2, Tup3fR p3)
 	{
-		assert(p1 != null);
-		assert(p2 != null);
-		assert(p3 != null);
 		set(p1, p2, p3);
 	}
 
 	public Triangle3f(float x1, float y1, float z1, Tup3fR p2, Tup3fR p3)
 	{
-		assert(p2 != null);
-		assert(p3 != null);
 		set(x1, y1, z1, p2, p3);
 	}
 	
 	public Triangle3f(Tup3fR p1, float x2, float y2, float z2, Tup3fR p3)
 	{
-		assert(p1 != null);
-		assert(p3 != null);
 		set(p1, x2, y2, z2, p3);
 	}
 	
 	public Triangle3f(Tup3fR p1, Tup3fR p2, float x3, float y3, float z3)
 	{
-		assert(p1 != null);
-		assert(p2 != null);
 		set(p1, p2, x3, y3, z3);
 	}
 	
 	public Triangle3f(float x1, float y1, float z1, float x2, float y2, float z2, Tup3fR p3)
 	{
-		assert(p3 != null);
 		set(x1, y1, z1, x2, y2, z2, p3);
 	}
 	
 	public Triangle3f(float x1, float y1, float z1, Tup3fR p2, float x3, float y3, float z3)
 	{
-		assert(p2 != null);
 		set(x1, y1, z1, p2, x3, y3, z3);
 	}
 	
 	public Triangle3f(Tup3fR p1, float x2, float y2, float z2, float x3, float y3, float z3)
 	{
-		assert(p1 != null);
 		set(p1, x2, y2, z2, x3, y3, z3);
 	}
 	
@@ -74,54 +61,41 @@ public class Triangle3f implements FiniteGeometricObject
 	
 	public Triangle3f set(Triangle3f t)
 	{
-		assert(t != null);
 		return set(t.p1.getX(), t.p1.getY(), t.p1.getZ(), t.p2.getX(), t.p2.getY(), t.p2.getZ(),t.p3.getX(), t.p3.getY(), t.p3.getZ());
 	}
 	
 	public Triangle3f set(Tup3fR p1, Tup3fR p2, Tup3fR p3)
 	{
-		assert(p1 != null);
-		assert(p2 != null);
-		assert(p3 != null);
 		return set(p1.getX(), p1.getY(), p1.getZ(), p2.getX(), p2.getY(), p2.getZ(), p3.getX(), p3.getY(), p3.getZ());
 	}
 	
 	public Triangle3f set(float x1, float y1, float z1, Tup3fR p2, Tup3fR p3)
 	{
-		assert(p2 != null);
-		assert(p3 != null);
 		return set(x1, y1, z1, p2.getX(), p2.getY(), p2.getZ(), p3.getX(), p3.getY(), p3.getZ());
 	}
 	
 	public Triangle3f set(Tup3fR p1, float x2, float y2, float z2, Tup3fR p3)
 	{
-		assert(p1 != null);
-		assert(p3 != null);
 		return set(p1.getX(), p1.getY(), p1.getZ(), x2, y2, z2, p3.getX(), p3.getY(), p3.getZ());
 	}
 	
 	public Triangle3f set(Tup3fR p1, Tup3fR p2, float x3, float y3, float z3)
 	{
-		assert(p1 != null);
-		assert(p2 != null);
 		return set(p1.getX(), p1.getY(), p1.getZ(), p2.getX(), p2.getY(), p2.getZ(), x3, y3, z3);
 	}
 	
 	public Triangle3f set(float x1, float y1, float z1, float x2, float y2, float z2, Tup3fR p3)
 	{
-		assert(p3 != null);
 		return set(x1, y1, z1, x2, y2, z2, p3.getX(), p3.getY(), p3.getZ());
 	}
 	
 	public Triangle3f set(float x1, float y1, float z1, Tup3fR p2, float x3, float y3, float z3)
 	{
-		assert(p2 != null);
 		return set(x1, y1, z1, p2.getX(), p2.getY(), p2.getZ(), x3, y3, z3);
 	}
 	
 	public Triangle3f set(Tup3fR p1, float x2, float y2, float z2, float x3, float y3, float z3)
 	{
-		assert(p1 != null);
 		return set(p1.getX(), p1.getY(), p1.getZ(), x2, y2, z2, x3, y3, z3);
 	}
 	
@@ -132,7 +106,6 @@ public class Triangle3f implements FiniteGeometricObject
 	
 	public Triangle3f setP1(Tup3fR t)
 	{
-		assert(t != null);
 		return setP1(t.getX(), t.getY(), t.getZ());
 	}
 	
@@ -158,7 +131,6 @@ public class Triangle3f implements FiniteGeometricObject
 	
 	public Triangle3f setP2(Tup3fR t)
 	{
-		assert(t != null);
 		return setP2(t.getX(), t.getY(), t.getZ());
 	}
 	
@@ -184,7 +156,6 @@ public class Triangle3f implements FiniteGeometricObject
 	
 	public Triangle3f setP3(Tup3fR t)
 	{
-		assert(t != null);
 		return setP3(t.getX(), t.getY(), t.getZ());
 	}
 	

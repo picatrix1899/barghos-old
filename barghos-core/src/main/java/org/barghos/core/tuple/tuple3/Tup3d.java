@@ -90,7 +90,7 @@ public class Tup3d implements Tup3dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup3d set(Tup3dR t) { assert(t != null); return set(t.getX(), t.getY(), t.getZ()); }
+	public Tup3d set(Tup3dR t) { return set(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * Sets the values to the given value.

@@ -20,21 +20,16 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	public PointSet3f(PointSet3f set)
 	{
-		assert(set != null);
 		set(set);
 	}
 	
 	public PointSet3f(Point3... points)
 	{
-		assert(points != null);
-		assert(points.length > 0);
-		
 		set(points);
 	}
 	
 	public PointSet3f(Collection<Point3> c)
 	{
-		assert(c != null);
 		set(c);
 	}
 	
@@ -42,7 +37,6 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	public PointSet3f set(PointSet3f set)
 	{
-		assert(set != null);
 		this.points.clear();
 		for(int i = 0; i < set.points.size(); i++)
 			this.points.add(set.points.get(i));
@@ -52,9 +46,6 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	public PointSet3f set(Point3... points)
 	{
-		assert(points != null);
-		assert(points.length > 0);
-		
 		this.points.clear();
 		
 		for(int i = 0; i < points.length; i++)
@@ -67,7 +58,6 @@ public class PointSet3f implements FiniteGeometricObject
 
 	public PointSet3f set(Collection<Point3> c)
 	{
-		assert(c != null);
 		this.points.clear();
 		this.points.addAll(c);
 		
@@ -77,9 +67,6 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	public PointSet3f add(Point3... points)
 	{
-		assert(points != null);
-		assert(points.length > 0);
-		
 		for(int i = 0; i < points.length; i++)
 			this.points.add(points[i]);
 		
@@ -90,7 +77,6 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	public PointSet3f add(Collection<Point3> c)
 	{
-		assert(c != null);
 		this.points.addAll(c);
 		this.isDirty = true;
 		return this;

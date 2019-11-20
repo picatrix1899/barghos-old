@@ -34,7 +34,7 @@ public abstract class PTup3d implements Tup3dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup3f} with the adopted values.
 	 */
-	public static PTup3d gen(Tup3dR t) { assert(t != null); return gen(t.getX(), t.getY(), t.getZ()); }
+	public static PTup3d gen(Tup3dR t) { return gen(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * This generate a readonly {@link PTup23f} with the values set to scalar.

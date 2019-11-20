@@ -22,8 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.tuple.tuplen;
+
 /**
  * @author picatrix1899
  *
+ * This interface represents a n-dimensional immutable double tuple.
  */
-package org.barghos.core.tuple.tuplen.api;
+public interface ITupd extends ITupdR, Tup
+{
+	/**
+	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
+	 */
+	@Override
+	ITupd set(int index, double value);
+}

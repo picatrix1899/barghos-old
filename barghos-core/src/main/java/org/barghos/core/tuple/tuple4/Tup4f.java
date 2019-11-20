@@ -108,7 +108,7 @@ public class Tup4f implements Tup4fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup4f set(Tup4fR t) { assert(t != null); return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public Tup4f set(Tup4fR t) { return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * Sets the values to the given value.

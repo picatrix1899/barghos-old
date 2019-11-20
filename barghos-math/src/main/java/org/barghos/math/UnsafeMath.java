@@ -22,19 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuplen.api;
+package org.barghos.math;
+
 
 /**
  * @author picatrix1899
  *
- * This interface represents a n-dimensional immutable float tuple.
  */
-public interface ITupf extends ITupfR, Tup
+public interface UnsafeMath
 {
-
-	/**
-	 * @throws IndexOutOfBoundsException Thrown when the given index is smaller than 0 or greater than the tuples' size - 1.
-	 */
-	@Override
-	ITupf set(int index, double value);
+	double sin(double r);
+	double cos(double r);
+	
+	double sqrt(double n);
 }

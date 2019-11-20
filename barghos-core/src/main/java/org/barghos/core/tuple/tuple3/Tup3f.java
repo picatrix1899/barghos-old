@@ -90,7 +90,7 @@ public class Tup3f implements Tup3fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup3f set(Tup3fR t) { assert(t != null); return set(t.getX(), t.getY(), t.getZ()); }
+	public Tup3f set(Tup3fR t) { return set(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * Sets the values to the given value.
