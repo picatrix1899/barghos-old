@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class AsyncEvent<Args extends EventArgs>
+public class AsyncEvent<Args>
 {
 	ExecutorService executors;
 	

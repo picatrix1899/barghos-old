@@ -2,7 +2,7 @@ package org.barghos.core.event;
 
 import java.util.HashMap;
 
-public class Event<Args extends EventArgs>
+public class Event<Args>
 {
 	private HashMap<Integer,EventHandler<Args>> handlers = new HashMap<Integer,EventHandler<Args>>();
 	
