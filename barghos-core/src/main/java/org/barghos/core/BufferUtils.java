@@ -98,6 +98,16 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the ByteBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ByteBuffer.
+	 */
+	public static ByteBuffer copyToByteBuffer(ByteBuffer buffer, byte... v)
+	{
+		return buffer.put(v);
+	}
+	
+	/**
 	 * Creates a Byte-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Byte-Buffer.
@@ -116,6 +126,20 @@ public class BufferUtils
 	}
  	
 	/**
+	 * Copies the given elements to the ByteBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ByteBuffer.
+	 */
+	public static ByteBuffer copyToByteBuffer(ByteBuffer buffer, List<Byte> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Short-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Short-Buffer.
@@ -123,6 +147,16 @@ public class BufferUtils
 	public static ShortBuffer copyToShortBuffer(short... v)
 	{
 		return createShortBuffer(v.length).put(v);
+	}
+	
+	/**
+	 * Copies the given elements to the ShortBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ShortBuffer.
+	 */
+	public static ShortBuffer copyToShortBuffer(ShortBuffer buffer, short... v)
+	{
+		return buffer.put(v);
 	}
 	
 	/**
@@ -144,6 +178,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the ShortBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ShortBuffer.
+	 */
+	public static ShortBuffer copyToShortBuffer(ShortBuffer buffer, List<Short> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Int-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Int-Buffer.
@@ -151,6 +199,16 @@ public class BufferUtils
 	public static IntBuffer copyToIntBuffer(int... v)
 	{
 		return createIntBuffer(v.length).put(v);
+	}	
+	
+	/**
+	 * Copies the given elements to the IntBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The IntBuffer.
+	 */
+	public static IntBuffer copyToIntBuffer(IntBuffer buffer, int... v)
+	{
+		return buffer.put(v);
 	}	
 	
 	/**
@@ -171,6 +229,19 @@ public class BufferUtils
 		return buffer;
 	}
  	
+	/**
+	 * Copies the given elements to the IntBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The IntBuffer.
+	 */
+	public static IntBuffer copyToIntBuffer(IntBuffer buffer, List<Integer> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
 	
 	/**
 	 * Creates a Long-Buffer from the given elements.
@@ -180,6 +251,16 @@ public class BufferUtils
 	public static LongBuffer copyToLongBuffer(long... v)
 	{
 		return createLongBuffer(v.length).put(v);
+	}	
+	
+	/**
+	 * Copies the given elements to the LongBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The LongBuffer.
+	 */
+	public static LongBuffer copyToLongBuffer(LongBuffer buffer, long... v)
+	{
+		return buffer.put(v);
 	}	
 	
 	/**
@@ -201,6 +282,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the LongBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The LongBuffer.
+	 */
+	public static LongBuffer copyToLongBuffer(LongBuffer buffer, List<Long> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Float-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
@@ -208,6 +303,16 @@ public class BufferUtils
 	public static FloatBuffer copyToFloatBuffer(float... v)
 	{
 		return createFloatBuffer(v.length).put(v);
+	}
+	
+	/**
+	 * Copies the given elements to the FloatBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFloatBuffer(FloatBuffer buffer, float... v)
+	{
+		return buffer.put(v);
 	}
 	
 	/**
@@ -229,6 +334,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the FloatBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFloatBuffer(FloatBuffer buffer, List<Float> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given elements.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
@@ -236,6 +355,16 @@ public class BufferUtils
 	public static DoubleBuffer copyToDoubleBuffer(double... v)
 	{
 		return createDoubleBuffer(v.length).put(v);
+	}
+	
+	/**
+	 * Copies the given elements to the DoubleBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToDoubleBuffer(DoubleBuffer buffer, double... v)
+	{
+		return buffer.put(v);
 	}
 	
 	/**
@@ -257,6 +386,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the DoubleBuffer.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToDoubleBuffer(DoubleBuffer buffer, List<Double> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+			buffer.put(v.get(i));
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Float-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -270,6 +413,25 @@ public class BufferUtils
 
 		int i = 0;
 		for(; i < length; i++)
+		{
+			Tup2fR current = v[i];
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+		}
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the FloatBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToTuple2FBuffer(FloatBuffer buffer, Tup2fR... v)
+	{
+		int i = 0;
+		for(; i < v.length; i++)
 		{
 			Tup2fR current = v[i];
 			buffer.put(current.getX());
@@ -303,6 +465,25 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the FloatBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToTuple2FBuffer(FloatBuffer buffer, List<Tup2fR> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+		{
+			Tup2fR current = v.get(i);
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+		}
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -316,6 +497,25 @@ public class BufferUtils
 
 		int i = 0;
 		for(; i < length; i++)
+		{
+			Tup2dR current = v[i];
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+		}
+
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the DoubleBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToTuple2DBuffer(DoubleBuffer buffer, Tup2dR... v)
+	{
+		int i = 0;
+		for(; i < v.length; i++)
 		{
 			Tup2dR current = v[i];
 			buffer.put(current.getX());
@@ -349,6 +549,25 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the DoubleBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToTuple2DBuffer(DoubleBuffer buffer, List<Tup2dR> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+		{
+			Tup2dR current = v.get(i);
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+		}
+
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Float-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -362,6 +581,26 @@ public class BufferUtils
 
 		int i = 0;
 		for(; i < length; i++)
+		{
+			Tup3fR current = v[i];
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+		}
+
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the FloatBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToTuple3FBuffer(FloatBuffer buffer, Tup3fR... v)
+	{
+		int i = 0;
+		for(; i < v.length; i++)
 		{
 			Tup3fR current = v[i];
 			buffer.put(current.getX());
@@ -397,6 +636,26 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the FloatBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToTuple3FBuffer(FloatBuffer buffer, List<Tup3fR> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+		{
+			Tup3fR current = v.get(i);
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+		}
+
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -421,6 +680,26 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the DoubleBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToTuple3DBuffer(DoubleBuffer buffer, Tup3dR... v)
+	{
+		int i = 0;
+		for(; i < v.length; i++)
+		{
+			Tup3dR current = v[i];
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+		}
+
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -434,6 +713,26 @@ public class BufferUtils
 
 		int i = 0;
 		for(; i < length; i++)
+		{
+			Tup3dR current = v.get(i);
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+		}
+
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the DoubleBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToTuple3DBuffer(DoubleBuffer buffer, List<Tup3dR> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
 		{
 			Tup3dR current = v.get(i);
 			buffer.put(current.getX());
@@ -470,6 +769,28 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the FloatBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToTuple4FBuffer(FloatBuffer buffer, Tup4fR... v)
+	{
+		int i = 0;
+		for(; i < v.length; i++)
+		{
+			Tup4fR current = v[i];
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+			buffer.put(current.getW());
+		}
+
+		return buffer;
+	}
+	
+	
+	/**
 	 * Creates a Float-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -483,6 +804,27 @@ public class BufferUtils
 
 		int i = 0;
 		for(; i < length; i++)
+		{
+			Tup4fR current = v.get(i);
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+			buffer.put(current.getW());
+		}
+
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the FloatBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToTuple4FBuffer(FloatBuffer buffer, List<Tup4fR> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
 		{
 			Tup4fR current = v.get(i);
 			buffer.put(current.getX());
@@ -520,6 +862,27 @@ public class BufferUtils
 	}
 
 	/**
+	 * Copies the given tuples to the DoubleBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToTuple4DBuffer(DoubleBuffer buffer, Tup4dR... v)
+	{
+		int i = 0;
+		for(; i < v.length; i++)
+		{
+			Tup4dR current = v[i];
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+			buffer.put(current.getW());
+		}
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -545,6 +908,27 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the DoubleBuffer.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToTuple4DBuffer(DoubleBuffer buffer, List<Tup4dR> v)
+	{
+		int i = 0;
+		for(; i < v.size(); i++)
+		{
+			Tup4dR current = v.get(i);
+			buffer.put(current.getX());
+			buffer.put(current.getY());
+			buffer.put(current.getZ());
+			buffer.put(current.getW());
+		}
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Byte-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Byte-Buffer.
@@ -552,6 +936,19 @@ public class BufferUtils
 	public static ByteBuffer copyToFlippedByteBuffer(byte... v)
 	{
 		ByteBuffer buffer = copyToByteBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given elements to the ByteBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ByteBuffer.
+	 */
+	public static ByteBuffer copyToFlippedByteBuffer(ByteBuffer buffer, byte... v)
+	{
+		copyToByteBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -571,6 +968,19 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the ByteBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ByteBuffer.
+	 */
+	public static ByteBuffer copyToFlippedByteBuffer(ByteBuffer buffer, List<Byte> v)
+	{
+		copyToByteBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Short-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Short-Buffer.
@@ -578,6 +988,19 @@ public class BufferUtils
 	public static ShortBuffer copyToFlippedShortBuffer(short... v)
 	{
 		ShortBuffer buffer = copyToShortBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given elements to the ShortBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ShortBuffer.
+	 */
+	public static ShortBuffer copyToFlippedShortBuffer(ShortBuffer buffer, short... v)
+	{
+		copyToShortBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -597,6 +1020,19 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the ShortBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The ShortBuffer.
+	 */
+	public static ShortBuffer copyToFlippedShortBuffer(ShortBuffer buffer, List<Short> v)
+	{
+		copyToShortBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Int-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Int-Buffer.
@@ -604,6 +1040,19 @@ public class BufferUtils
 	public static IntBuffer copyToFlippedIntBuffer(int... v)
 	{
 		IntBuffer buffer = copyToIntBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}	
+	
+	/**
+	 * Copies the given elements to the IntBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The IntBuffer.
+	 */
+	public static IntBuffer copyToFlippedIntBuffer(IntBuffer buffer, int... v)
+	{
+		copyToIntBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -623,6 +1072,19 @@ public class BufferUtils
 	}	
 	
 	/**
+	 * Copies the given elements to the IntBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The IntBuffer.
+	 */
+	public static IntBuffer copyToFlippedIntBuffer(IntBuffer buffer, List<Integer> v)
+	{
+		copyToIntBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}	
+	
+	/**
 	 * Creates a Long-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Long-Buffer.
@@ -630,6 +1092,19 @@ public class BufferUtils
 	public static LongBuffer copyToFlippedLongBuffer(long... v)
 	{
 		LongBuffer buffer = copyToLongBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}	
+	
+	/**
+	 * Copies the given elements to the LongBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The LongBuffer.
+	 */
+	public static LongBuffer copyToFlippedLongBuffer(LongBuffer buffer, long... v)
+	{
+		copyToLongBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -649,6 +1124,19 @@ public class BufferUtils
 	}	
 	
 	/**
+	 * Copies the given elements to the LongBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The LongBuffer.
+	 */
+	public static LongBuffer copyToFlippedLongBuffer(LongBuffer buffer, List<Long> v)
+	{
+		copyToLongBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}	
+	
+	/**
 	 * Creates a Float-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Float-Buffer.
@@ -656,6 +1144,19 @@ public class BufferUtils
 	public static FloatBuffer copyToFlippedFloatBuffer(float... v)
 	{
 		FloatBuffer buffer = copyToFloatBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given elements to the FloatBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedFloatBuffer(FloatBuffer buffer, float... v)
+	{
+		copyToFloatBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -675,6 +1176,19 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the FloatBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedFloatBuffer(FloatBuffer buffer, List<Float> v)
+	{
+		copyToFloatBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
@@ -688,6 +1202,19 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given elements to the DoubleBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedDoubleBuffer(DoubleBuffer buffer, double... v)
+	{
+		copyToDoubleBuffer(buffer, v);
+		buffer.flip();
+
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given elements and flips it so it can be read.
 	 * @param v The elements that should be saved in the buffer.
 	 * @return The new Double-Buffer.
@@ -695,6 +1222,19 @@ public class BufferUtils
 	public static DoubleBuffer copyToFlippedDoubleBuffer(List<Double> v)
 	{
 		DoubleBuffer buffer = copyToDoubleBuffer(v);
+		buffer.flip();
+
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given elements to the DoubleBuffer and flips it so it can be read.
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedDoubleBuffer(DoubleBuffer buffer, List<Double> v)
+	{
+		copyToDoubleBuffer(buffer, v);
 		buffer.flip();
 
 		return buffer;
@@ -715,6 +1255,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedTuple2FBuffer(FloatBuffer buffer, Tup2fR... v)
+	{
+		copyToTuple2FBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Float-Buffer from the given tuples and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -723,6 +1277,20 @@ public class BufferUtils
 	public static FloatBuffer copyToFlippedTuple2FBuffer(List<Tup2fR> v)
 	{
 		FloatBuffer buffer = copyToTuple2FBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedTuple2FBuffer(FloatBuffer buffer, List<Tup2fR> v)
+	{
+		copyToTuple2FBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -743,6 +1311,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedTuple2DBuffer(DoubleBuffer buffer, Tup2dR... v)
+	{
+		copyToTuple2DBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -751,6 +1333,20 @@ public class BufferUtils
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(List<Tup2dR> v)
 	{
 		DoubleBuffer buffer = copyToTuple2DBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t2.x, t2.y, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedTuple2DBuffer(DoubleBuffer buffer, List<Tup2dR> v)
+	{
+		copyToTuple2DBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -771,6 +1367,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedTuple3FBuffer(FloatBuffer buffer, Tup3fR... v)
+	{
+		copyToTuple3FBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Float-Buffer from the given tuples and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -779,6 +1389,20 @@ public class BufferUtils
 	public static FloatBuffer copyToFlippedTuple3FBuffer(List<Tup3fR> v)
 	{
 		FloatBuffer buffer = copyToTuple3FBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedTuple3FBuffer(FloatBuffer buffer, List<Tup3fR> v)
+	{
+		copyToTuple3FBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -799,6 +1423,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedTuple3DBuffer(DoubleBuffer buffer, Tup3dR... v)
+	{
+		copyToTuple3DBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -807,6 +1445,20 @@ public class BufferUtils
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(List<Tup3dR> v)
 	{
 		DoubleBuffer buffer = copyToTuple3DBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z, t2.x, t2.y, t2.z, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedTuple3DBuffer(DoubleBuffer buffer, List<Tup3dR> v)
+	{
+		copyToTuple3DBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -827,6 +1479,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedTuple4FBuffer(FloatBuffer buffer, Tup4fR... v)
+	{
+		copyToTuple4FBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Float-Buffer from the given tuples and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -835,6 +1501,20 @@ public class BufferUtils
 	public static FloatBuffer copyToFlippedTuple4FBuffer(List<Tup4fR> v)
 	{
 		FloatBuffer buffer = copyToTuple4FBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the FloatBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The FloatBuffer.
+	 */
+	public static FloatBuffer copyToFlippedTuple4FBuffer(FloatBuffer buffer, List<Tup4fR> v)
+	{
+		copyToTuple4FBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;
@@ -855,6 +1535,20 @@ public class BufferUtils
 	}
 	
 	/**
+	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedTuple4DBuffer(DoubleBuffer buffer, Tup4dR... v)
+	{
+		copyToTuple4DBuffer(buffer, v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
 	 * Creates a Double-Buffer from the given tuples and flips it so it can be read.
 	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
 	 * @param v The elements that should be saved in the buffer.
@@ -863,6 +1557,20 @@ public class BufferUtils
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(List<Tup4dR> v)
 	{
 		DoubleBuffer buffer = copyToTuple4DBuffer(v);
+		buffer.flip();
+		
+		return buffer;
+	}
+	
+	/**
+	 * Copies the given tuples to the DoubleBuffer and flips it so it can be read.
+	 * They are safed tuplewise componentwise (t1.x, t1.y, t1.z t1.w,, t2.x, t2.y, t2.z, t2.w, ...).
+	 * @param v The elements that should be saved in the buffer.
+	 * @return The DoubleBuffer.
+	 */
+	public static DoubleBuffer copyToFlippedTuple4DBuffer(DoubleBuffer buffer, List<Tup4dR> v)
+	{
+		copyToTuple4DBuffer(buffer, v);
 		buffer.flip();
 		
 		return buffer;

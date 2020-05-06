@@ -1,7 +1,6 @@
 package org.barghos.core;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,7 +17,7 @@ public class ListUtils
 	 * @param element The value to find.
 	 * @return An array of the indices of each occurence of "element" in "list".
 	 */
-	public static <A> int[] indicesOf(ArrayList<A> list, A element)
+	public static <A> int[] indicesOf(List<A> list, A element)
 	{
 		int occurences = ListUtils.occurrencesOf(list, element);
 
@@ -130,5 +129,28 @@ public class ListUtils
 		}
 		
 		return out;
+	}
+	
+	/**
+	 * Prints a List of all items in a List. This is equivalent to interate through a list and call toString for every element.
+	 * @param list
+	 * @return
+	 */
+	public static <T> String iterativeToString(List<T> list)
+	{
+		int size = list.size();
+		
+		if(size == 0) return "{}";
+		
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("{\n");
+		
+		for(int i = 0; i < size ; i++)
+			builder.append(list.get(i) + "\n");
+		
+		builder.append("}\n");
+		
+		return builder.toString();
 	}
 }
