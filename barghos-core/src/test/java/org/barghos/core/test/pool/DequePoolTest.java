@@ -2,10 +2,9 @@ package org.barghos.core.test.pool;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.barghos.core.BufferUtils;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.tuple.tuple2.Tup2f;
-
+import org.barghos.core.util.BufferUtils;
 import org.junit.jupiter.api.Test;
 
 

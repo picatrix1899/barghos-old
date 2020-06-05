@@ -1,4 +1,5 @@
 package org.barghos.math;
+
 public class FastMath
 {
 

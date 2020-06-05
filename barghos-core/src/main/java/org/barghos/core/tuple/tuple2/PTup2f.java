@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * This class is a readonly implementation of a 2-dimensional float tuple.
  */
@@ -36,7 +38,7 @@ public abstract class PTup2f implements	Tup2fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup2f} with the adopted values.
 	 */
-	public static PTup2f gen(Tup2fR t) { return gen(t.getX(), t.getY()); }
+	public static PTup2f gen(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY()); }
 	
 	/**
 	 * This generate a readonly {@link PTup2f} with the values set to scalar.

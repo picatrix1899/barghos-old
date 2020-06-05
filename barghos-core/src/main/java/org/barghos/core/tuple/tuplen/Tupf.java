@@ -41,6 +41,7 @@ public class Tupf implements ITupf
 	 */
 	public Tupf(int dimensions)
 	{
+		if(dimensions <= 0) throw new IllegalArgumentException();
 		this.v = new float[dimensions];
 	}
 	
@@ -51,8 +52,8 @@ public class Tupf implements ITupf
 	public Tupf(double... v)
 	{
 		this(v.length);
-		int i = 0;
-		for(; i < v.length; i++)
+		
+		for(int i = 0; i < v.length; i++)
 			this.v[i] = (float)v[i];
 	}
 	

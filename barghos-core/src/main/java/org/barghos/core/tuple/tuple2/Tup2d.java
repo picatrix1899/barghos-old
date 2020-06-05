@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * @author picatrix1899
  *
@@ -31,8 +33,8 @@ package org.barghos.core.tuple.tuple2;
  */
 public class Tup2d implements Tup2dR
 {
-	private double x;
-	private double y;
+	protected double x;
+	protected double y;
 	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
@@ -42,7 +44,7 @@ public class Tup2d implements Tup2dR
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup2d(Tup2dR t) { set(t); }
+	public Tup2d(Tup2dR t) { if(t == null) throw new ArgumentNullException("t"); set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
@@ -79,7 +81,7 @@ public class Tup2d implements Tup2dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup2d set(Tup2dR t) { return set(t.getX(), t.getY()); }
+	public Tup2d set(Tup2dR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY()); }
 	
 	/**
 	 * Sets the values to the given value.

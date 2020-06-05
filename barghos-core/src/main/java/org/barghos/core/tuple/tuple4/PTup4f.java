@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * This class is a readonly implementation of a 4-dimensional float tuple.
  */
@@ -34,7 +36,7 @@ public abstract class PTup4f implements Tup4fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup4f} with the adopted values.
 	 */
-	public static PTup4f gen(Tup4fR t) { return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public static PTup4f gen(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * This generate a readonly {@link PTup4f} with the values set to scalar.

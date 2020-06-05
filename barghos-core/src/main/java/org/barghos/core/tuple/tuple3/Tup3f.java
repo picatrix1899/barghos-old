@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * @author picatrix1899
  *
@@ -31,9 +33,9 @@ package org.barghos.core.tuple.tuple3;
  */
 public class Tup3f implements Tup3fR
 {
-	private float x;
-	private float y;
-	private float z;
+	protected float x;
+	protected float y;
+	protected float z;
 	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
@@ -43,7 +45,7 @@ public class Tup3f implements Tup3fR
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup3f(Tup3fR t) { set(t); }
+	public Tup3f(Tup3fR t) { if(t == null) throw new ArgumentNullException("t"); set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
@@ -90,7 +92,7 @@ public class Tup3f implements Tup3fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup3f set(Tup3fR t) { return set(t.getX(), t.getY(), t.getZ()); }
+	public Tup3f set(Tup3fR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * Sets the values to the given value.

@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * @author picatrix1899
  *
@@ -31,8 +33,8 @@ package org.barghos.core.tuple.tuple2;
  */
 public class Tup2f implements Tup2fR
 {
-	private float x;
-	private float y;
+	protected float x;
+	protected float y;
 	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
@@ -42,7 +44,7 @@ public class Tup2f implements Tup2fR
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup2f(Tup2fR t) { set(t); }
+	public Tup2f(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
@@ -79,7 +81,7 @@ public class Tup2f implements Tup2fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup2f set(Tup2fR t) { return set(t.getX(), t.getY()); }
+	public Tup2f set(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY()); }
 	
 	/**
 	 * Sets the values to the given value.

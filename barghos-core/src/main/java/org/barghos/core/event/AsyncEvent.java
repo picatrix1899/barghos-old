@@ -13,7 +13,7 @@ public class AsyncEvent<Args>
 		this.executors = Executors.newCachedThreadPool();
 	}
 	
-	private HashMap<Integer,EventHandler<Args>> handlers = new HashMap<Integer,EventHandler<Args>>();
+	private HashMap<Integer,EventHandler<Args>> handlers = new HashMap<>();
 	
 	private int index = 0;
 	

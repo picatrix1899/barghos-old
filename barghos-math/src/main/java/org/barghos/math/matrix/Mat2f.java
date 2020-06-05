@@ -62,8 +62,8 @@ public class Mat2f
 	public Tup2f getRow(int index) { return new Tup2f(this.m[index][0], this.m[index][1]); }
 	public Tup2f getColumn(int index) { return new Tup2f(this.m[0][index], this.m[1][index]); }
 	
-	public void getRow(int index, Tup2f t) { t.set(this.m[index][0], this.m[index][1]); }
-	public void getColumn(int index, Tup2f t) { t.set(this.m[0][index], this.m[1][index]); }
+	public Tup2f getRow(int index, Tup2f t) { return t.set(this.m[index][0], this.m[index][1]); }
+	public Tup2f getColumn(int index, Tup2f t) { return t.set(this.m[0][index], this.m[1][index]); }
 	
 	public static float determinant(Mat2f m)
 	{
@@ -73,7 +73,7 @@ public class Mat2f
 	
 	public static Mat2f transpose(Mat2f m, Mat2f res)
 	{
-		res = res != null ? res : new Mat2f();
+		if(res == null) res = new Mat2f();
 		
 		Tup2f r0 = m.getRow(0);
 		Tup2f r1 = m.getRow(1);

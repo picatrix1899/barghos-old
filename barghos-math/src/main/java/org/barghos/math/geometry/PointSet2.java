@@ -1,0 +1,162 @@
+package org.barghos.math.geometry;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import org.barghos.math.point.Point2;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec2.Vec2;
+
+public class PointSet2 implements Iterable<Point2>
+{
+	protected final List<Point2> points = new ArrayList<>();
+	protected final Vec2 min = new Vec2();
+	protected final Vec2 max = new Vec2();
+	
+	private boolean isDirty;
+	
+	public PointSet2() {}
+	
+	public PointSet2(PointSet2 set)
+	{
+		set(set);
+	}
+	
+	public PointSet2(Point2... points)
+	{
+		set(points);
+	}
+	
+	public PointSet2(Collection<Point2> c)
+	{
+		set(c);
+	}
+	
+	public PointSet2 set() { this.points.clear(); this.isDirty = true; return this; }
+	
+	public PointSet2 set(PointSet2 set)
+	{
+		this.points.clear();
+		for(int i = 0; i < set.points.size(); i++)
+			this.points.add(set.points.get(i));
+		this.isDirty = true;
+		return this;
+	}
+	
+	public PointSet2 set(Point2... points)
+	{
+		this.points.clear();
+		
+		for(int i = 0; i < points.length; i++)
+			this.points.add(points[i]);
+		
+		this.isDirty = true;
+		
+		return this;
+	}
+
+	public PointSet2 set(Collection<Point2> c)
+	{
+		this.points.clear();
+		this.points.addAll(c);
+		
+		this.isDirty = true;
+		return this;
+	}
+	
+	public PointSet2 add(Point2... points)
+	{
+		for(int i = 0; i < points.length; i++)
+			this.points.add(points[i]);
+		
+		this.isDirty = true;
+		
+		return this;
+	}
+	
+	public PointSet2 add(Collection<Point2> c)
+	{
+		this.points.addAll(c);
+		this.isDirty = true;
+		return this;
+	}
+
+	public PointSet2 getPointSet()
+	{
+		return new PointSet2(this);
+	}
+	
+	public Point3[] getPoints()
+	{
+		return this.points.toArray(new Point3[this.points.size()]);
+	}
+	
+	private void calculateExtremes()
+	{
+		this.isDirty = false;
+		
+		// do calculations first internal for providing atomic values.
+		float minX = Float.POSITIVE_INFINITY;
+		float minY = Float.POSITIVE_INFINITY;
+		
+		float maxX = Float.NEGATIVE_INFINITY;
+		float maxY = Float.NEGATIVE_INFINITY;
+		
+		Point2 current;
+		
+		for(int i = 0; i < this.points.size(); i++)
+		{
+			current = this.points.get(i);
+			
+			if(current.getX() < minX)
+				minX = current.getX();
+			
+			if(current.getY() < minY)
+				minY = current.getY();
+			
+			if(current.getX() > maxX)
+				maxX = current.getX();
+			
+			if(current.getY() > maxY)
+				maxY = current.getY();
+		}
+		
+		this.min.set(minX, minY);
+		this.max.set(maxX, maxY);
+	}
+	
+	public float getMinX()
+	{
+		if(this.isDirty) calculateExtremes();
+
+		return this.min.getX();
+	}
+	
+	public float getMinY()
+	{
+		if(this.isDirty) calculateExtremes();
+
+		return this.min.getY();
+	}
+	
+	public float getMaxX()
+	{
+		if(this.isDirty) calculateExtremes();
+
+		return this.max.getX();
+	}
+	
+	public float getMaxY()
+	{
+		if(this.isDirty) calculateExtremes();
+
+		return this.max.getY();
+	}
+
+	public Iterator<Point2> iterator()
+	{
+		return this.points.iterator();
+	}
+}

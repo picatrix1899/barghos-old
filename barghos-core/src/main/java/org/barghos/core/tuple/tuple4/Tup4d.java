@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * @author picatrix1899
  *
@@ -31,42 +33,30 @@ package org.barghos.core.tuple.tuple4;
  */
 public class Tup4d implements Tup4dR
 {
-	private double x;
-	private double y;
-	private double z;
-	private double w;
+	protected double x;
+	protected double y;
+	protected double z;
+	protected double w;
 	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
-	public Tup4d()
-	{
-		set(0);
-	}
+	public Tup4d() { set(0); }
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup4d(Tup4dR t)
-	{
-		set(t);
-	}
+	public Tup4d(Tup4dR t) { if(t == null) throw new ArgumentNullException("t"); set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup4d(double scalar)
-	{
-		set(scalar);
-	}
+	public Tup4d(double scalar) { set(scalar); }
 	
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup4d(double x, double y, double z, double w)
-	{
-		set(x, y, z, w);
-	}
+	public Tup4d(double x, double y, double z, double w) { set(x, y, z, w); }
 
 	public double getX() { return this.x; }
 
@@ -109,7 +99,7 @@ public class Tup4d implements Tup4dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup4d set(Tup4dR t) { return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public Tup4d set(Tup4dR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * Sets the values to the given value.

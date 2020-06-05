@@ -1,5 +1,5 @@
 
-package org.barghos.core;
+package org.barghos.core.util;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

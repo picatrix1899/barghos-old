@@ -1,6 +1,8 @@
-package org.barghos.math.vector;
+package org.barghos.math.vector.quat;
 
+import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.util.Nullable;
 import org.barghos.math.Maths;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.vector.vec3.Vec3;
@@ -11,13 +13,13 @@ import org.barghos.math.vector.vec4.Vec4R;
 public class Quat implements Vec4R
 {
 	/** The w component. */
-	public float w;
+	protected float w;
 	/** The x component. */
-	public float x;
+	protected float x;
 	/** The y component. */
-	public float y;
+	protected float y;
 	/** The z component. */
-	public float z;
+	protected float z;
 
 	/**
 	 * The default constructor. It sets x,y and z to 0 and w to 1.
@@ -46,7 +48,7 @@ public class Quat implements Vec4R
 	 */
 	public Quat(Quat q)
 	{
-		assert(q != null);
+		if(q == null) throw new ArgumentNullException("q");
 		set(q);
 	}
 	
@@ -56,11 +58,16 @@ public class Quat implements Vec4R
 	 */
 	public Quat(Mat4f rot)
 	{
-		assert(rot != null);
+		if(rot == null) throw new ArgumentNullException("rot");
 		set(rot);
 	}
 
-	public static Quat getFromAxis(Tup3fR axis, float angle) { assert(axis != null); return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle); }
+	public static Quat getFromAxis(Tup3fR axis, float angle)
+	{
+		if(axis == null) throw new ArgumentNullException("axis");
+		
+		return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle);
+	}
 	
 	public static Quat getFromAxis(float ax, float ay, float az, float angle)
 	{
@@ -78,8 +85,8 @@ public class Quat implements Vec4R
 	
 	public static Quat getFromVectors(Vec3 v1, Vec3 v2)
 	{
-		assert(v1 != null);
-		assert(v2 != null);
+		if(v1 == null) throw new ArgumentNullException("v1");
+		if(v2 == null) throw new ArgumentNullException("v2");
 		
 		Vec3 a = v1.normal(Vec3Pool.get());
 		Vec3 b = v2.normal(Vec3Pool.get());
@@ -106,7 +113,7 @@ public class Quat implements Vec4R
 	
 	public Quat rotate(Tup3fR axis, float angle)
 	{
-		assert(axis != null);
+		if(axis == null) throw new ArgumentNullException("axis");
 		return rotate(angle, axis.getX(), axis.getY(), axis.getZ());
 	}
 	
@@ -117,16 +124,21 @@ public class Quat implements Vec4R
 	
 	public Quat rotate(Quat q)
 	{
-		assert(q != null);
+		if(q == null) throw new ArgumentNullException("q");
 		return q.mul(this, this);
 	}
 	
-	public Quat set(Quat q) { assert(q != null); return set(q.getW(), q.getX(), q.getY(), q.getZ()); }
+	public Quat set(Quat q)
+	{
+		if(q == null) throw new ArgumentNullException("q");
+		return set(q.getW(), q.getX(), q.getY(), q.getZ());
+	}
 	
 	//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
 	public Quat set(Mat4f rot) 
 	{
-		assert(rot != null);
+		if(rot == null) throw new ArgumentNullException("rot");
+		
 		double trace = rot.m[0][0] + rot.m[1][1] + rot.m[2][2];
 
 		if(trace > 0)
@@ -187,10 +199,10 @@ public class Quat implements Vec4R
 		return conjugate(this);
 	}
 	
-	public Quat conjugate(Quat res)
+	public Quat conjugate(@Nullable Quat res)
 	{
-		res = res != null ? res : new Quat();
-		
+		if(res == null) res = new Quat();
+
 		res.set(this.w, -this.x, -this.y, -this.z);
 
 		return res;
@@ -201,10 +213,10 @@ public class Quat implements Vec4R
 		return inverse(this);
 	}
 	
-	public Quat inverse(Quat res)
+	public Quat inverse(@Nullable Quat res)
 	{
-		res = res != null ? res : new Quat();
-		
+		if(res == null) res = new Quat();
+
 		float l = reciprocalLength();
 		
 		res.set(this.w * l, -this.x * l, -this.y * l, -this.z * l);
@@ -214,15 +226,16 @@ public class Quat implements Vec4R
 	
 	public Quat mul(Quat q)
 	{
-		assert(q != null);
+		if(q == null) throw new ArgumentNullException("q");
 		mul(q, this);
 		
 		return this;
 	}
 	
-	public Quat mul(Quat q, Quat res)
+	public Quat mul(Quat q, @Nullable Quat res)
 	{
-		assert(q != null);
+		if(q == null) throw new ArgumentNullException("q");
+		
 		if(res == null) res = new Quat();
 		
 		float w_ = this.w * q.getW() - this.x * q.getX() - this.y * q.getY() - this.z * q.getZ(); // w * w' - v * v'
@@ -237,15 +250,16 @@ public class Quat implements Vec4R
 	
 	public Quat mul(Tup3fR v)
 	{
-		assert(v != null);
+		if(v == null) throw new ArgumentNullException("v");
 		mul(v, this);
 		
 		return this;
 	}
 	
-	public Quat mul(Tup3fR v, Quat res)
+	public Quat mul(Tup3fR v, @Nullable Quat res)
 	{
-		assert(v != null);
+		if(v == null) throw new ArgumentNullException("v");
+		
 		if(res == null) res = new Quat();
 		
 		float w_ = -this.x * v.getX() - this.y * v.getY() - this.z * v.getZ(); // - v * v'
@@ -258,9 +272,10 @@ public class Quat implements Vec4R
 		return res;
 	}
 	
-	public Vec3 transform(Tup3fR v, Vec3 res)
+	public Vec3 transform(Tup3fR v, @Nullable Vec3 res)
 	{
-		assert(v != null);
+		if(v == null) throw new ArgumentNullException("v");
+		
 		if(res == null) res = new Vec3();
 		
 		Quat r = mul(v, QuatPool.get());
@@ -284,7 +299,7 @@ public class Quat implements Vec4R
 		return normal(this);
 	}
 	
-	public Quat normal(Quat res)
+	public Quat normal(@Nullable Quat res)
 	{
 		if(res == null) res = new Quat();
 		

@@ -28,7 +28,8 @@ import org.barghos.core.tuple.tuple3.Tup3fR;
 
 /**
  * @author picatrix1899
- *
+ * 
+ * This interface grants readonly access to a 3-dimensional mathematical vector.
  */
 public interface Vec3R extends Tup3fR
 {
