@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Event<Args>
 {
-	private HashMap<Integer,EventHandler<Args>> handlers = new HashMap<Integer,EventHandler<Args>>();
+	private HashMap<Integer,EventHandler<Args>> handlers = new HashMap<>();
 	
 	private int index = 0;
 	

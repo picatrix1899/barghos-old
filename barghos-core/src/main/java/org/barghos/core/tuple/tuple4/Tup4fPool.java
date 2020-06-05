@@ -24,34 +24,37 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4;
 
+import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
 
 /**
  * This pool contains instances of the type Tup4f.
  */
-public class Tup4fPool
+public final class Tup4fPool
 {
-	public static IPool<Tup4f> POOL = new DequePool<>(Tup4f.class);
+	private static IPool<Tup4f> pool = new DequePool<>(Tup4f.class);
+	
+	private Tup4fPool() { }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and resets it.
 	 * @return A stored instance.
 	 */
-	public static Tup4f get() { return POOL.get().set(0.0f); }
+	public static Tup4f get() { return pool.get().set(0.0f); }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
-	public static Tup4f get(Tup4fR t) { return POOL.get().set(t); }
+	public static Tup4f get(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return pool.get().set(t); }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public static Tup4f get(float scalar) { return POOL.get().set(scalar); }
+	public static Tup4f get(float scalar) { return pool.get().set(scalar); }
 	
 	/**
 	 * Returns an instance of Tup4f from the pool and sets its components to x, y, z and w.
@@ -60,18 +63,21 @@ public class Tup4fPool
 	 * @param z The z component.
 	 * @param w The w component.
 	 */
-	public static Tup4f get(float x, float y, float z, float w) { return POOL.get().set(x, y, z, w); }
+	public static Tup4f get(float x, float y, float z, float w) { return pool.get().set(x, y, z, w); }
 	
 	/**
 	 * Ensures a certain amount of instances to be present in the pool at any time.
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
 	 * @param count The amount of instances present in the pool at any time.
 	 */
-	public static void ensure(int count) { POOL.ensure(count); }
+	public static void ensure(int count) { if(count < 0) throw new IllegalArgumentException(); pool.ensure(count); }
 	
 	/**
 	 * Stores Tup4f instances in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(Tup4f... instances) { POOL.store(instances); }
+	public static void store(Tup4f... instances) { pool.store(instances); }
+	
+	public static void setInternalPool(IPool<Tup4f> pool) { if(pool == null) throw new ArgumentNullException("pool"); Tup4fPool.pool = pool; }
+	public static IPool<Tup4f> getInternalPool() { return pool; }
 }

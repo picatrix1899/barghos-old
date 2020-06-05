@@ -31,11 +31,11 @@ import org.barghos.math.vector.vec3.Vec3;
  * @author picatrix1899
  *
  */
-public class LinearSystem3
+public class LinearSystem3 implements CoordinateSpaceSystem3
 {
-	private Vec3 up = new Vec3();
-	private Vec3 forward = new Vec3();
-	private Vec3 right = new Vec3();
+	private final Vec3 up = new Vec3();
+	private final Vec3 forward = new Vec3();
+	private final Vec3 right = new Vec3();
 	
 	public LinearSystem3()
 	{
@@ -128,6 +128,5 @@ public class LinearSystem3
 	{
 		return this.right.invert(null);
 	}
-	
 	
 }

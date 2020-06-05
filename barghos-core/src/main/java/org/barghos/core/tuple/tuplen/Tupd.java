@@ -41,6 +41,7 @@ public class Tupd implements ITupd
 	 */
 	public Tupd(int dimensions)
 	{
+		if(dimensions <= 0) throw new IllegalArgumentException();
 		this.v = new double[dimensions];
 	}
 	
@@ -52,8 +53,7 @@ public class Tupd implements ITupd
 	{
 		this(v.length);
 		
-		int i = 0;
-		for(; i < v.length; i++)
+		for(int i = 0; i < v.length; i++)
 			this.v[i] = (float)v[i];
 	}
 	

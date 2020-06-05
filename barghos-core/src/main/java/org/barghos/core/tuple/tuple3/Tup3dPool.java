@@ -24,35 +24,38 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
+import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
 
 /**
  * This pool contains instances of the type Tup3d.
  */
-public class Tup3dPool
+public final class Tup3dPool
 {
 	
-	public static IPool<Tup3d> POOL = new DequePool<>(Tup3d.class);
+	private static IPool<Tup3d> pool = new DequePool<>(Tup3d.class);
+	
+	private Tup3dPool() { }
 	
 	/**
 	 * Returns an instance of Tup3d from the pool and resets it.
 	 * @return A stored instance.
 	 */
-	public static Tup3d get() { return POOL.get().set(0.0f); }
+	public static Tup3d get() { return pool.get().set(0.0f); }
 	
 	/**
 	 * Returns an instance of Tup3d from the pool and sets its components to the values of t.
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * @return A stored instance.
 	 */
-	public static Tup3d get(Tup3dR t) { return POOL.get().set(t); }
+	public static Tup3d get(Tup3dR t) { if(t == null) throw new ArgumentNullException("t"); return pool.get().set(t); }
 	
 	/**
 	 * Returns an instance of Tup3d from the pool and sets its components to scalar.
 	 * @param scalar A value that the components are set to.
 	 */
-	public static Tup3d get(double scalar) { return POOL.get().set(scalar); }
+	public static Tup3d get(double scalar) { return pool.get().set(scalar); }
 	
 	/**
 	 * Returns an instance of Tup3d from the pool and sets its components to x, y and z.
@@ -60,18 +63,21 @@ public class Tup3dPool
 	 * @param y The y component.
 	 * @param z The z component.
 	 */
-	public static Tup3d get(double x, double y, double z) { return POOL.get().set(x, y, z); }
+	public static Tup3d get(double x, double y, double z) { return pool.get().set(x, y, z); }
 	
 	/**
 	 * Ensures a certain amount of instances to be present in the pool at any time.
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
 	 * @param count The amount of instances present in the pool at any time.
 	 */
-	public static void ensure(int count) { POOL.ensure(count); }
+	public static void ensure(int count) { if(count < 0) throw new IllegalArgumentException(); pool.ensure(count); }
 	
 	/**
 	 * Stores Tup3d instances in the pool for later reuse.
 	 * @param elements The instances to store.
 	 */
-	public static void store(Tup3d... instances) { POOL.store(instances); }
+	public static void store(Tup3d... instances) { pool.store(instances); }
+	
+	public static void setInternalPool(IPool<Tup3d> pool) { if(pool == null) throw new ArgumentNullException("pool"); Tup3dPool.pool = pool; }
+	public static IPool<Tup3d> getInternalPool() { return pool; }
 }

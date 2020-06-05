@@ -1,4 +1,4 @@
-package org.barghos.core;
+package org.barghos.core.util;
 
 import java.util.List;
 

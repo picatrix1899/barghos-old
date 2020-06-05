@@ -24,91 +24,89 @@ SOFTWARE.
 
 package org.barghos.math.geometry;
 
+import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.util.Nullable;
 import org.barghos.math.point.Point2;
-import org.barghos.math.vector.vec2.Vec2;
-import org.barghos.math.vector.vec2.Vec2Pool;
 
 /**
  * @author picatrix1899
  *
  */
-public class Area2f
+public class Square2
 {
-	private Point2 center = new Point2();
-	private Vec2 halfExtend = new Vec2();
+	protected final Point2 center = new Point2();
+	protected float halfExtend;
 	
-	public Area2f(Point2 min, Point2 max)
+	public Square2()
 	{
-		set(min, max);
+		set(0.0f, 0.0f, 1.0f);
 	}
 	
-	public Area2f(Point2 center, Vec2 halfExtend)
+	public Square2(Square2 s)
+	{
+		set(s);
+	}
+	
+	public Square2(Tup2fR center, float halfExtend)
 	{
 		set(center, halfExtend);
 	}
-	
-	public Area2f set(Point2 min, Point2 max)
+
+	public Square2(float x, float y, float halfExtend)
 	{
-		Vec2 extend = Vec2Pool.get();
-		max.sub(min, extend);
-		
-		this.halfExtend.set(extend.mul(0.5f, extend));
-		this.center.set(min.add(this.halfExtend, extend));
-		
-		Vec2Pool.store(extend);
-		
+		set(x, y, halfExtend);
+	}
+	
+	public Square2 set(Square2 s)
+	{
+		s.getCenter(this.center);
+		setHalfExtend(s.getHalfExtend());
 		return this;
 	}
 	
-	public Area2f set(Point2 center, Vec2 halfExtend)
+	public Square2 set(Tup2fR center, float halfExtend)
 	{
-		this.center.set(center);
-		this.halfExtend.set(halfExtend);
-		
-		return this;
+		return setCenter(center).setHalfExtend(halfExtend);
+	}
+
+	public Square2 set(float x, float y, float halfExtend)
+	{
+		return setCenter(x, y).setHalfExtend(halfExtend);
 	}
 	
-	public Point2 getCenter(Point2 res)
+	public Square2 setCenter(Tup2fR center)
+	{
+		this.center.set(center); return this;
+	}
+
+	public Square2 setCenter(float x, float y)
+	{
+		this.center.set(x, y); return this;
+	}
+	
+	public Square2 setHalfExtend(float halfExtend)
+	{
+		this.halfExtend = halfExtend; return this;
+	}
+	
+	public Point2 getCenter()
+	{
+		return new Point2(this.center);
+	}
+	
+	public Point2 getCenter(@Nullable Point2 res)
 	{
 		if(res == null) res = new Point2();
-		
-		res.set(this.center);
-		
-		return res;
+		return res.set(this.center);
 	}
 	
-	public Vec2 getHalfExtend(Vec2 res)
+	public float getHalfExtend()
 	{
-		if(res == null) res = new Vec2();
-		
-		res.set(this.halfExtend);
-		
-		return res;
+		return this.halfExtend;
 	}
 	
-	public Point2 getMin(Point2 res)
+	public String toString()
 	{
-		if(res == null) res = new Point2();
-		
-		this.center.sub(this.halfExtend, res);
-		
-		return res;
-	}
-	
-	public Point2 getMax(Point2 res)
-	{
-		if(res == null) res = new Point2();
-		
-		this.center.add(this.halfExtend, res);
-		
-		return res;
-	}
-	
-	public boolean isPointInside(Vec2 point)
-	{
-		Vec2 d = Vec2Pool.get();
-		point.sub(this.center, d).abs();
-		
-		return d.getX() <= this.halfExtend.getX() && d.getY() <= this.halfExtend.getY();
+		return "square2(center=" + this.center + ", halfExtend=" + this.halfExtend + "f)";
 	}
 }

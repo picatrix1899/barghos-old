@@ -2,40 +2,42 @@ package org.barghos.math.geometry;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
+import org.barghos.core.util.Nullable;
 import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
 
-public class PointSet3f implements FiniteGeometricObject
+public class PointSet3 implements FiniteGeometricObject3, Iterable<Point3>
 {
-	private List<Point3> points = new ArrayList<>();
-	private final Vec3 min = new Vec3();
-	private final Vec3 max = new Vec3();
+	protected final List<Point3> points = new ArrayList<>();
+	protected final Vec3 min = new Vec3();
+	protected final Vec3 max = new Vec3();
 	
-	private boolean isDirty;
+	protected boolean isDirty;
 	
-	public PointSet3f() {}
+	public PointSet3() {}
 	
-	public PointSet3f(PointSet3f set)
+	public PointSet3(PointSet3 set)
 	{
 		set(set);
 	}
 	
-	public PointSet3f(Point3... points)
+	public PointSet3(Point3... points)
 	{
 		set(points);
 	}
 	
-	public PointSet3f(Collection<Point3> c)
+	public PointSet3(Collection<Point3> c)
 	{
 		set(c);
 	}
 	
-	public PointSet3f set() { this.points.clear(); this.isDirty = true; return this; }
+	public PointSet3 set() { this.points.clear(); this.isDirty = true; return this; }
 	
-	public PointSet3f set(PointSet3f set)
+	public PointSet3 set(PointSet3 set)
 	{
 		this.points.clear();
 		for(int i = 0; i < set.points.size(); i++)
@@ -44,7 +46,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public PointSet3f set(Point3... points)
+	public PointSet3 set(Point3... points)
 	{
 		this.points.clear();
 		
@@ -56,7 +58,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 
-	public PointSet3f set(Collection<Point3> c)
+	public PointSet3 set(Collection<Point3> c)
 	{
 		this.points.clear();
 		this.points.addAll(c);
@@ -65,7 +67,7 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public PointSet3f add(Point3... points)
+	public PointSet3 add(Point3... points)
 	{
 		for(int i = 0; i < points.length; i++)
 			this.points.add(points[i]);
@@ -75,14 +77,14 @@ public class PointSet3f implements FiniteGeometricObject
 		return this;
 	}
 	
-	public PointSet3f add(Collection<Point3> c)
+	public PointSet3 add(Collection<Point3> c)
 	{
 		this.points.addAll(c);
 		this.isDirty = true;
 		return this;
 	}
 	
-	public PointSet3f transform(Mat4f t)
+	public PointSet3 transform(Mat4f t)
 	{
 		Point3[] p = new Point3[this.points.size()];
 		
@@ -92,9 +94,9 @@ public class PointSet3f implements FiniteGeometricObject
 		return set(p);
 	}
 	
-	public PointSet3f transform(Mat4f t, PointSet3f res)
+	public PointSet3 transform(Mat4f t, @Nullable PointSet3 res)
 	{
-		res = res != null ? res : new PointSet3f();
+		if(res == null) res = new PointSet3();
 		
 		Point3[] p = new Point3[this.points.size()];
 		
@@ -104,9 +106,9 @@ public class PointSet3f implements FiniteGeometricObject
 		return res.set(p);
 	}
 	
-	public PointSet3f getPointSet()
+	public PointSet3 getPointSet()
 	{
-		return new PointSet3f(this);
+		return new PointSet3(this);
 	}
 	
 	public Point3[] getPoints()
@@ -116,6 +118,8 @@ public class PointSet3f implements FiniteGeometricObject
 	
 	private void calculateExtremes()
 	{
+		this.isDirty = false;
+		
 		// do calculations first internal for providing atomic values.
 		float minX = Float.POSITIVE_INFINITY;
 		float minY = Float.POSITIVE_INFINITY;
@@ -152,8 +156,6 @@ public class PointSet3f implements FiniteGeometricObject
 		
 		this.min.set(minX, minY, minZ);
 		this.max.set(maxX, maxY, maxZ);
-		
-		this.isDirty = false;
 	}
 	
 	public float getMinX()
@@ -196,5 +198,10 @@ public class PointSet3f implements FiniteGeometricObject
 		if(this.isDirty) calculateExtremes();
 
 		return this.max.getZ();
+	}
+
+	public Iterator<Point3> iterator()
+	{
+		return this.points.iterator();
 	}
 }

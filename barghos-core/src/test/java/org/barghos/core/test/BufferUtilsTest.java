@@ -11,8 +11,6 @@ import java.nio.ShortBuffer;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
-
-import org.barghos.core.BufferUtils;
 import org.barghos.core.tuple.tuple2.Tup2d;
 import org.barghos.core.tuple.tuple2.Tup2dR;
 import org.barghos.core.tuple.tuple2.Tup2f;
@@ -25,6 +23,7 @@ import org.barghos.core.tuple.tuple4.Tup4d;
 import org.barghos.core.tuple.tuple4.Tup4dR;
 import org.barghos.core.tuple.tuple4.Tup4f;
 import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.util.BufferUtils;
 
 class BufferUtilsTest
 {

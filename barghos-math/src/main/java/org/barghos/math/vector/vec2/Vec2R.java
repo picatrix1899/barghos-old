@@ -28,7 +28,8 @@ import org.barghos.core.tuple.tuple2.Tup2fR;
 
 /**
  * @author picatrix1899
- *
+ * 
+ * This interface grants readonly access to a 2-dimensional mathematical vector.
  */
 public interface Vec2R extends Tup2fR
 {

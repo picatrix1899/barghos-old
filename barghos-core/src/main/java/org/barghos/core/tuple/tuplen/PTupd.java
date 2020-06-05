@@ -38,8 +38,7 @@ public abstract class PTupd implements ITupdR
 	{
 		double[] v = new double[values.length];
 
-		int i = 0;
-		for(; i < values.length; i++)
+		for(int i = 0; i < values.length; i++)
 			v[i] = values[i];
 		
 		return new PTupd()

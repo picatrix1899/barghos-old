@@ -1,4 +1,4 @@
-package org.barghos.core;
+package org.barghos.core.util;
 
 import java.lang.reflect.Array;
 import java.util.List;

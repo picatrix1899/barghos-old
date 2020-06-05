@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple4;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * @author picatrix1899
  *
@@ -31,42 +33,30 @@ package org.barghos.core.tuple.tuple4;
  */
 public class Tup4f implements Tup4fR
 {
-	private float x;
-	private float y;
-	private float z;
-	private float w;
+	protected float x;
+	protected float y;
+	protected float z;
+	protected float w;
 	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
 	 */
-	public Tup4f()
-	{
-		set(0);
-	}
+	public Tup4f() { set(0); }
 	
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup4f(Tup4fR t)
-	{
-		set(t);
-	}
+	public Tup4f(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
 	 */
-	public Tup4f(float scalar)
-	{
-		set(scalar);
-	}
+	public Tup4f(float scalar) { set(scalar); }
 	
 	/**
 	 * This constructor initializes the tuple with the given values.
 	 */
-	public Tup4f(float x, float y, float z, float w)
-	{
-		set(x, y, z, w);
-	}
+	public Tup4f(float x, float y, float z, float w) { set(x, y, z, w); }
 
 	public float getX() { return this.x; }
 
@@ -108,7 +98,7 @@ public class Tup4f implements Tup4fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup4f set(Tup4fR t) { return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public Tup4f set(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
 	
 	/**
 	 * Sets the values to the given value.

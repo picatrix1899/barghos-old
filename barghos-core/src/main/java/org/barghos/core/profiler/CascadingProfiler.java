@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import org.barghos.core.StringUtils;
+import org.barghos.core.util.StringUtils;
 
 public class CascadingProfiler
 {
@@ -105,7 +105,7 @@ public class CascadingProfiler
 		builder.append(profile.name).append("\t")
 			.append((profile.time / 1000000000.0)).append("s | ")
 			.append(profile.time / 1000000.0).append("ms | ")
-			.append(profile.time / 1000.0d).append("µs | ")
+			.append(profile.time / 1000.0d).append("ï¿½s | ")
 			.append(profile.time).append("ns")
 			.append("\n");
 		

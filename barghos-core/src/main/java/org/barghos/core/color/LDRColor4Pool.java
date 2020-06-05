@@ -1,8 +1,8 @@
 package org.barghos.core.color;
 
-import org.barghos.core.Check;
 import org.barghos.core.pool.api.IPool;
 import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.util.Check;
 import org.barghos.core.pool.DequePool;
 
 /**

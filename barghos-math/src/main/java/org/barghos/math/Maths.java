@@ -94,7 +94,7 @@ public class Maths
 		return isZero(value, Maths.SMALL_NUMBER);
 	}
 	
-	public static boolean isExcatNaN(double value)
+	public static boolean isExactNaN(double value)
 	{
 		return Double.isNaN(value);
 	}

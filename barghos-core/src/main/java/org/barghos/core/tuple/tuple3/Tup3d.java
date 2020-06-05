@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * @author picatrix1899
  *
@@ -31,9 +33,9 @@ package org.barghos.core.tuple.tuple3;
  */
 public class Tup3d implements Tup3dR
 {
-	private double x;
-	private double y;
-	private double z;
+	protected double x;
+	protected double y;
+	protected double z;
 	
 	/**
 	 * This constructor initializes the tuple with all values set to 0.
@@ -43,7 +45,7 @@ public class Tup3d implements Tup3dR
 	/**
 	 * This constructor initializes the tuple with the values of the given tuple.
 	 */
-	public Tup3d(Tup3dR t) { set(t); }
+	public Tup3d(Tup3dR t) { if(t == null) throw new ArgumentNullException("t"); set(t); }
 	
 	/**
 	 * This constructor initializes the tuple values with scalar.
@@ -90,7 +92,7 @@ public class Tup3d implements Tup3dR
 	 * @param t The tuple that values will be adopted from.
 	 * @return The current tuple.
 	 */
-	public Tup3d set(Tup3dR t) { return set(t.getX(), t.getY(), t.getZ()); }
+	public Tup3d set(Tup3dR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * Sets the values to the given value.

@@ -16,7 +16,7 @@ public class ManagedFuturePool<T>
 	private ExecutorService threadPool;
 	private CompletionService<T> compService;
 	
-	private Set<Future<T>> activeFutures = new HashSet<Future<T>>();
+	private Set<Future<T>> activeFutures = new HashSet<>();
 	private int pendingFutures = 0;
 	
 	private Thread routine;

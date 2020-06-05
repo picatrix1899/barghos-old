@@ -1,4 +1,4 @@
-package org.barghos.core;
+package org.barghos.core.util;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.SOURCE;

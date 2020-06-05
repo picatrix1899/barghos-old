@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
  * This class is a readonly implementation of a 3-dimensional float tuple.
  */
@@ -34,7 +36,7 @@ public abstract class PTup3f implements	Tup3fR
 	 * @param t The tuple that values will be adopted from.
 	 * @return A new readonly {@link PTup3f} with the adopted values.
 	 */
-	public static PTup3f gen(Tup3fR t) { return gen(t.getX(), t.getY(), t.getZ()); }
+	public static PTup3f gen(Tup3fR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY(), t.getZ()); }
 	
 	/**
 	 * This generate a readonly {@link PTup3f} with the values set to scalar.

@@ -1,6 +1,6 @@
 package org.barghos.math.geometry;
 
-public interface InfiniteGeometricObject
+public interface InfiniteGeometricObject3
 {
 
 }

@@ -5,48 +5,57 @@ import org.barghos.math.matrix.Mat4f;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
 import org.barghos.math.vector.vec3.Vec3Pool;
-import org.barghos.math.vector.vec3.Vec3R;
 
-public class AABB3f implements FiniteGeometricObject
+public class AABB3 implements FiniteGeometricObject3
 {
 	private final Point3 center = new Point3();
 	private final Vec3 halfExtend = new Vec3();
 	private boolean dirty;
-	private Point3[] points = new Point3[8];
+	private final Point3[] points = new Point3[8];
 	
-	public AABB3f() { }
+	public AABB3() { }
 	
-	public AABB3f(Vec3R center, Vec3R halfExtend) { set(center, halfExtend); }
+	public AABB3(AABB3 aabb) { set(aabb); }
 	
-	public AABB3f(float cX, float cY, float cZ, float heX, float heY, float heZ) { set(cX, cY, cZ, heX, heY, heZ); }
+	public AABB3(Tup3fR center, Tup3fR halfExtend) { set(center, halfExtend); }
 	
-	public AABB3f set(Tup3fR center, Tup3fR halfExtend) { return setCenter(center).setHalfExtend(halfExtend); }
+	public AABB3(float cX, float cY, float cZ, float heX, float heY, float heZ) { set(cX, cY, cZ, heX, heY, heZ); }
 	
-	public AABB3f set(float cX, float cY, float cZ, float heX, float heY, float heZ) { return setCenter(cX, cY, cZ).setHalfExtend(heX, heY, heZ); }
+	public AABB3 set(AABB3 aabb)
+	{
+		aabb.getCenter(this.center);
+		aabb.getHalfExtend(this.halfExtend);
+		this.dirty = true;
+		return this;
+	}
 	
-	public AABB3f setHalfExtend(Tup3fR t) { return setHalfExtend(t.getX(), t.getY(), t.getZ()); }
+	public AABB3 set(Tup3fR center, Tup3fR halfExtend) { return setCenter(center).setHalfExtend(halfExtend); }
 	
-	public AABB3f setHalfExtend(float x, float y, float z) { return setHalfExtendX(x).setHalfExtendY(y).setHalfExtendZ(z); }
+	public AABB3 set(float cX, float cY, float cZ, float heX, float heY, float heZ) { return setCenter(cX, cY, cZ).setHalfExtend(heX, heY, heZ); }
 	
-	public AABB3f setHalfExtendX(float x) { this.halfExtend.setX(x); this.dirty = true; return this; }
+	public AABB3 setHalfExtend(Tup3fR t) { return setHalfExtend(t.getX(), t.getY(), t.getZ()); }
 	
-	public AABB3f setHalfExtendY(float y) { this.halfExtend.setY(y); this.dirty = true; return this; }
+	public AABB3 setHalfExtend(float x, float y, float z) { return setHalfExtendX(x).setHalfExtendY(y).setHalfExtendZ(z); }
 	
-	public AABB3f setHalfExtendZ(float z) { this.halfExtend.setZ(z); this.dirty = true; return this; }
+	public AABB3 setHalfExtendX(float x) { this.halfExtend.setX(x); this.dirty = true; return this; }
 	
-	public AABB3f setCenter(Tup3fR t) { return setCenter(t.getX(), t.getY(), t.getZ()); }
+	public AABB3 setHalfExtendY(float y) { this.halfExtend.setY(y); this.dirty = true; return this; }
 	
-	public AABB3f setCenter(float x, float y, float z) { return setCenterX(x).setCenterY(y).setCenterZ(z); }
+	public AABB3 setHalfExtendZ(float z) { this.halfExtend.setZ(z); this.dirty = true; return this; }
 	
-	public AABB3f setCenterX(float x) { this.center.setX(x); this.dirty = true; return this; }
+	public AABB3 setCenter(Tup3fR t) { return setCenter(t.getX(), t.getY(), t.getZ()); }
 	
-	public AABB3f setCenterY(float y) { this.center.setY(y); this.dirty = true; return this; }
+	public AABB3 setCenter(float x, float y, float z) { return setCenterX(x).setCenterY(y).setCenterZ(z); }
 	
-	public AABB3f setCenterZ(float z) { this.center.setZ(z); this.dirty = true; return this; }
+	public AABB3 setCenterX(float x) { this.center.setX(x); this.dirty = true; return this; }
+	
+	public AABB3 setCenterY(float y) { this.center.setY(y); this.dirty = true; return this; }
+	
+	public AABB3 setCenterZ(float z) { this.center.setZ(z); this.dirty = true; return this; }
 	
 	public Point3 getCenter(Point3 res)
 	{
-		res = res != null ? res : new Point3();
+		if(res == null) res = new Point3();
 		return res.set(this.center);
 	}
 	
@@ -57,7 +66,7 @@ public class AABB3f implements FiniteGeometricObject
 	
 	public Vec3 getCenter(Vec3 res)
 	{
-		res = res != null ? res : new Vec3();
+		if(res == null) res = new Vec3();
 		return res.set(this.center);
 	}
 	
@@ -68,7 +77,7 @@ public class AABB3f implements FiniteGeometricObject
 	
 	public Vec3 getHalfExtend(Vec3 res)
 	{
-		res = res != null ? res : new Vec3();
+		if(res == null) res = new Vec3();
 		return res.set(this.halfExtend);
 	}
 	
@@ -87,10 +96,9 @@ public class AABB3f implements FiniteGeometricObject
 	
 	public Point3 getMin()
 	{
-		Vec3 v = this.center.sub(this.halfExtend, Vec3Pool.get());
-		Point3 res = new Point3(v);
-		Vec3Pool.store(v);
-		return res;
+		Point3 result = new Point3();
+		this.center.sub(this.halfExtend, result);
+		return result;
 	}
 	
 	public Point3 getMax(Point3 res)
@@ -108,10 +116,9 @@ public class AABB3f implements FiniteGeometricObject
 	
 	public Point3 getMax()
 	{
-		Vec3 v = this.center.add(this.halfExtend, Vec3Pool.get());
-		Point3 res = new Point3(v);
-		Vec3Pool.store(v);
-		return res;
+		Point3 result = new Point3();
+		this.center.add(this.halfExtend, result);
+		return result;
 	}
 	
 	public Point3[] getPoints()
@@ -144,9 +151,9 @@ public class AABB3f implements FiniteGeometricObject
 		return this.points;
 	}
 
-	public AABB3f transform(Mat4f t, AABB3f res)
+	public AABB3 transform(Mat4f t, AABB3 res)
 	{
-		res = res != null ? res : new AABB3f();
+		if(res == null) res = new AABB3();
 
 		Vec3 min = Vec3Pool.get();
 		Vec3 max = Vec3Pool.get();
@@ -164,25 +171,25 @@ public class AABB3f implements FiniteGeometricObject
 		return res;
 	}
 	
-	public OBB3f getOBB()
+	public OBB3 getOBB()
 	{
-		return new OBB3f(this.center, this.halfExtend, Mat4f.IDENTITY);
+		return new OBB3(this.center, this.halfExtend, Mat4f.IDENTITY);
 	}
 	
-	public OBB3f getOBB(OBB3f res)
+	public OBB3 getOBB(OBB3 res)
 	{
-		res = res != null ? res : new OBB3f();
+		if(res == null) res = new OBB3();
 		return res.set(this.center, this.halfExtend, Mat4f.IDENTITY);
 	}
 	
-	public OBB3f getOBB(Mat4f rotation)
+	public OBB3 getOBB(Mat4f rotation)
 	{
-		return new OBB3f(this.center, this.halfExtend, rotation);
+		return new OBB3(this.center, this.halfExtend, rotation);
 	}
 
-	public OBB3f getOBB(Mat4f rotation, OBB3f res)
+	public OBB3 getOBB(Mat4f rotation, OBB3 res)
 	{
-		res = res != null ? res : new OBB3f();
+		if(res == null) res = new OBB3();
 		return res.set(this.center, this.halfExtend, rotation);
 	}
 	
