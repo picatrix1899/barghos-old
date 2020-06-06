@@ -31,7 +31,7 @@ import org.barghos.core.exception.ArgumentNullException;
  *
  * This class represents a 2-dimensional double tuple.
  */
-public class Tup2d implements Tup2dR
+public class Tup2d implements Tup2dR, Tup2dW
 {
 	protected double x;
 	protected double y;

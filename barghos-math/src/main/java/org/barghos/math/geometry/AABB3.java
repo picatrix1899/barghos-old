@@ -1,7 +1,7 @@
 package org.barghos.math.geometry;
 
 import org.barghos.core.tuple.tuple3.Tup3fR;
-import org.barghos.math.matrix.Mat4f;
+import org.barghos.math.matrix.Mat4;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
 import org.barghos.math.vector.vec3.Vec3Pool;
@@ -151,7 +151,7 @@ public class AABB3 implements FiniteGeometricObject3
 		return this.points;
 	}
 
-	public AABB3 transform(Mat4f t, AABB3 res)
+	public AABB3 transform(Mat4 t, AABB3 res)
 	{
 		if(res == null) res = new AABB3();
 
@@ -173,21 +173,21 @@ public class AABB3 implements FiniteGeometricObject3
 	
 	public OBB3 getOBB()
 	{
-		return new OBB3(this.center, this.halfExtend, Mat4f.IDENTITY);
+		return new OBB3(this.center, this.halfExtend, Mat4.IDENTITY);
 	}
 	
 	public OBB3 getOBB(OBB3 res)
 	{
 		if(res == null) res = new OBB3();
-		return res.set(this.center, this.halfExtend, Mat4f.IDENTITY);
+		return res.set(this.center, this.halfExtend, Mat4.IDENTITY);
 	}
 	
-	public OBB3 getOBB(Mat4f rotation)
+	public OBB3 getOBB(Mat4 rotation)
 	{
 		return new OBB3(this.center, this.halfExtend, rotation);
 	}
 
-	public OBB3 getOBB(Mat4f rotation, OBB3 res)
+	public OBB3 getOBB(Mat4 rotation, OBB3 res)
 	{
 		if(res == null) res = new OBB3();
 		return res.set(this.center, this.halfExtend, rotation);

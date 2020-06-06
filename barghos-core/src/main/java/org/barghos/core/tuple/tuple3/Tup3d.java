@@ -31,7 +31,7 @@ import org.barghos.core.exception.ArgumentNullException;
  *
  * This class represents a 3-dimensional double tuple.
  */
-public class Tup3d implements Tup3dR
+public class Tup3d implements Tup3dR, Tup3dW
 {
 	protected double x;
 	protected double y;

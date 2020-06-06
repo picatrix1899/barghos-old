@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.barghos.math.matrix.Mat4;
 import org.barghos.math.point.Point2;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec2.Vec2;
@@ -155,6 +156,28 @@ public class PointSet2 implements Iterable<Point2>
 		return this.max.getY();
 	}
 
+	public PointSet2 transform(Mat4 t)
+	{
+		Point2[] p = new Point2[this.points.size()];
+
+		for(int i = 0; i < this.points.size(); i++)
+			p[i] = t.transform(this.points.get(i), new Point2());
+
+		return set(p);
+	}
+
+	public PointSet2 transform(Mat4 t, PointSet2 res)
+	{
+		res = res != null ? res : new PointSet2();
+
+		Point2[] p = new Point2[this.points.size()];
+
+		for(int i = 0; i < this.points.size(); i++)
+			p[i] = t.transform(this.points.get(i), new Point2());
+
+		return res.set(p);
+	}
+	
 	public Iterator<Point2> iterator()
 	{
 		return this.points.iterator();

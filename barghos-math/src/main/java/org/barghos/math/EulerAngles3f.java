@@ -1,5 +1,7 @@
 package org.barghos.math;
 
+import org.barghos.math.vector.quat.Quat;
+import org.barghos.math.vector.quat.QuatPool;
 
 public class EulerAngles3f
 {
@@ -38,6 +40,49 @@ public class EulerAngles3f
 
 	public float getRoll() { return this.roll; }
 
+	public Quat getPitchRotation(LinearSystem3 system, Quat res)
+	{
+		if(res == null) res = new Quat();
+
+		return Quat.getFromAxis(system.getRight(), this.pitch, res);
+	}
+
+	public Quat getYawRotation(LinearSystem3 system, Quat res)
+	{
+		if(res == null) res = new Quat();
+
+		return Quat.getFromAxis(system.getUp(), this.yaw, res);
+	}
+
+	public Quat getRollRotation(LinearSystem3 system, Quat res)
+	{
+		if(res == null) res = new Quat();
+
+		return Quat.getFromAxis(system.getForward(), this.roll, res);
+	}
+
+	public Quat getRotation(LinearSystem3 system, Quat res)
+	{	
+		if(res == null) res = new Quat();
+
+		Quat q1 = QuatPool.get();
+		Quat q2 = QuatPool.get();
+		Quat q3 = QuatPool.get();
+
+		res.set(getRollRotation(system, q3).mul(getYawRotation(system, q2).mul(getPitchRotation(system, q1))));
+
+		QuatPool.store(q1, q2, q3);
+
+		return res;
+	}
+
+	public void rotate(float pitch, float yaw, float roll)
+	{
+		this.pitch += pitch;
+		this.yaw += yaw;
+		this.roll += roll;
+	}
+	
 	public String toString()
 	{
 		return "eulerAngles3f(pitch=" + this.pitch + "f, yaw=" + this.yaw + "f, roll=" + this.roll + "f)";

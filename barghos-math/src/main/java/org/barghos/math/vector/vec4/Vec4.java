@@ -26,6 +26,7 @@ package org.barghos.math.vector.vec4;
 
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.tuple.tuple4.Tup4fW;
 import org.barghos.core.util.Nullable;
 import org.barghos.math.Maths;
 
@@ -35,7 +36,7 @@ import org.barghos.math.Maths;
  * Represents a 4-dimensional mathematical vector in euclidean space.
  * This is a full featured version with common operations.
  */
-public class Vec4 implements Vec4R
+public class Vec4 implements Vec4R, Tup4fW
 {
 	protected float x;
 	protected float y;

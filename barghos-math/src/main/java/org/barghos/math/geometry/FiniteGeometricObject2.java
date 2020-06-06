@@ -22,33 +22,61 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple4;
+package org.barghos.math.geometry;
 
-import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.math.matrix.Mat4;
+import org.barghos.math.point.Point2;
 
-public interface Tup4fR extends Tup3fR
+/**
+ * @author picatrix1899
+ *
+ */
+public interface FiniteGeometricObject2
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
-	 */
-	float getX();
-	
-	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
-	 */
-	float getY();
-	
-	/**
-	 * Returns the z value from the tuple.
-	 * @return The z value from the tuple.
-	 */
-	float getZ();
-	
-	/**
-	 * Returns the w value from the tuple.
-	 * @return The w value from the tuple.
-	 */
-	float getW();
+	Point2[] getPoints();
+
+	default Point2[] getTransformedPoints(Mat4 t)
+	{
+		Point2[] p = getPoints();
+
+		int i = 0;
+		for(; i < p.length; i++)
+			t.transform(p[i], p[i]);
+
+		return p;
+	}
+
+	default PointSet2 getPointSet()
+	{
+		return new PointSet2(getPoints());
+	}
+
+	default PointSet2 getPointSet(PointSet2 res)
+	{
+		res = res != null ? res : new PointSet2();
+
+		return res.set(getPoints());
+	}
+
+	default PointSet2 getTransformedPointSet(Mat4 t)
+	{
+		PointSet2 res = new PointSet2();
+
+		PointSet2 s = getPointSet();
+
+		s.transform(t, s);
+
+		return res.set(s);
+	}
+
+	default PointSet2 getTransformedPointSet(Mat4 t, PointSet2 res)
+	{
+		if(res == null) res = new PointSet2();
+
+		getPointSet(res);
+
+		res.transform(t, res);
+
+		return res;
+	}
 }
