@@ -2,6 +2,7 @@ package org.barghos.math.matrix;
 
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple.tuple2.Tup2fW;
 import org.barghos.core.tuple.tuple3.Tup3f;
 import org.barghos.core.tuple.tuple3.Tup3fR;
 import org.barghos.core.tuple.tuple3.Tup3fW;
@@ -486,6 +487,21 @@ public class Mat4 implements Mat4R
 		return Mat4.transform(l, r, r);
 	}
 	
+	public static <T extends Tup2fW> T transform(Mat4 l, Tup2fR r, T res)
+	{
+		float x_ = l.m[0][0] * r.getX() + l.m[0][1] * r.getY() + l.m[0][2] * 1.0f + l.m[0][3] * 1.0f;
+		float y_ = l.m[1][0] * r.getX() + l.m[1][1] * r.getY() + l.m[1][2] * 1.0f + l.m[1][3] * 1.0f;
+
+		res.set(x_, y_);
+
+		return res;
+	}
+
+	public <T extends Tup2fW> T transform(Tup2fR r, T res)
+	{
+		return Mat4.transform(this, r, res);
+	}
+
 	public static Mat4 identity() { return new Mat4().initIdentity(); }
 	public static Mat4 zero() { return new Mat4().initZero(); }
 	public static Mat4 scaling(Tup3fR t)
