@@ -62,15 +62,16 @@ public class Quat implements Vec4R
 		set(rot);
 	}
 
-	public static Quat getFromAxis(Tup3fR axis, float angle)
-	{
-		if(axis == null) throw new ArgumentNullException("axis");
-		
-		return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle);
-	}
+	public static Quat getFromAxis(Tup3fR axis, float angle) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, null); }
 	
-	public static Quat getFromAxis(float ax, float ay, float az, float angle)
+	public static Quat getFromAxis(float ax, float ay, float az, float angle) { return getFromAxis(ax, ay, az, angle, null); }
+	
+	public static Quat getFromAxis(Tup3fR axis, float angle, Quat res) { return getFromAxis(axis.getX(), axis.getY(), axis.getZ(), angle, res); }
+	
+	public static Quat getFromAxis(float ax, float ay, float az, float angle, Quat res)
 	{
+		if(res == null) res = new Quat();
+		
 		float halfAngle = angle * 0.5f * (float)Maths.DEG_TO_RAD;
 		float sinHalfAngle = (float)Maths.sin(halfAngle);
 		float cosHalfAngle = (float)Maths.cos(halfAngle);
@@ -80,7 +81,7 @@ public class Quat implements Vec4R
 		float rZ = az * sinHalfAngle;
 		float rW = cosHalfAngle;
 		
-		return new Quat(rW, rX, rY, rZ).normal();
+		return res.set(rW, rX, rY, rZ).normal();
 	}
 	
 	public static Quat getFromVectors(Vec3 v1, Vec3 v2)
