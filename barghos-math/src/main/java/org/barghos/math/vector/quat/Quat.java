@@ -320,4 +320,9 @@ public class Quat implements Vec4R
 	{
 		return "quat(" + this.w + ", " + this.x + ", " + this.y + ", " + this.z + ")";
 	}
+	
+	public Quat clone()
+	{
+		return new Quat(this);
+	}
 }
