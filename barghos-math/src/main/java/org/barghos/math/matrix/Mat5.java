@@ -1,7 +1,7 @@
 package org.barghos.math.matrix;
 
 
-public class Mat5f
+public class Mat5
 {
 
 }

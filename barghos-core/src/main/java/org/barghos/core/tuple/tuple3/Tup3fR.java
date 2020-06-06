@@ -24,8 +24,9 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple3;
 
+import org.barghos.core.tuple.tuple2.Tup2fR;
 
-public interface Tup3fR
+public interface Tup3fR extends Tup2fR
 {
 	/**
 	 * Returns the x value from the tuple.

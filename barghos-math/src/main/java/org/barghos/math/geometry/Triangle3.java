@@ -3,7 +3,7 @@ package org.barghos.math.geometry;
 import org.barghos.core.tuple.tuple3.Tup3fR;
 import org.barghos.core.util.Nullable;
 import org.barghos.math.Maths;
-import org.barghos.math.matrix.Mat4f;
+import org.barghos.math.matrix.Mat4;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
 import org.barghos.math.vector.vec3.Vec3Pool;
@@ -345,7 +345,7 @@ public class Triangle3 implements FiniteGeometricObject3
 		};
 	}
 
-	public Triangle3 transform(Mat4f t, Triangle3 res)
+	public Triangle3 transform(Mat4 t, Triangle3 res)
 	{
 		if(res == null) res = new Triangle3();
 		
