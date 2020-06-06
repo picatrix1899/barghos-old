@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.barghos.core.util.Nullable;
-import org.barghos.math.matrix.Mat4f;
+import org.barghos.math.matrix.Mat4;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
 
@@ -84,7 +84,7 @@ public class PointSet3 implements FiniteGeometricObject3, Iterable<Point3>
 		return this;
 	}
 	
-	public PointSet3 transform(Mat4f t)
+	public PointSet3 transform(Mat4 t)
 	{
 		Point3[] p = new Point3[this.points.size()];
 		
@@ -94,7 +94,7 @@ public class PointSet3 implements FiniteGeometricObject3, Iterable<Point3>
 		return set(p);
 	}
 	
-	public PointSet3 transform(Mat4f t, @Nullable PointSet3 res)
+	public PointSet3 transform(Mat4 t, @Nullable PointSet3 res)
 	{
 		if(res == null) res = new PointSet3();
 		

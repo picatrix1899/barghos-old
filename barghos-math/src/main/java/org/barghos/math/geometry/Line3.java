@@ -164,7 +164,7 @@ public class Line3 implements FiniteGeometricObject3
 	
 	public Vec3 vector()
 	{
-		return this.p2.sub(this.p1, null);
+		return this.p2.subN(this.p1);
 	}
 
 	@Override

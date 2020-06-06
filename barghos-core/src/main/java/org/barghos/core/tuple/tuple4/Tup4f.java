@@ -31,7 +31,7 @@ import org.barghos.core.exception.ArgumentNullException;
  *
  * This class represents a 4-dimensional float tuple.
  */
-public class Tup4f implements Tup4fR
+public class Tup4f implements Tup4fR, Tup4fW
 {
 	protected float x;
 	protected float y;

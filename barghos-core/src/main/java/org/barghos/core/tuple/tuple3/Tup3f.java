@@ -31,7 +31,7 @@ import org.barghos.core.exception.ArgumentNullException;
  *
  * This class represents a 3-dimensional float tuple.
  */
-public class Tup3f implements Tup3fR
+public class Tup3f implements Tup3fR, Tup3fW
 {
 	protected float x;
 	protected float y;

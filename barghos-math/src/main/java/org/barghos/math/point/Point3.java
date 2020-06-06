@@ -23,4 +23,8 @@ public class Point3 extends Vec3
 		return "point3(" + this.x + "f, " + this.y +"f, " + this.z + "f)";
 	}
 
+	public Point3 clone()
+	{
+		return new Point3(this);
+	}
 }

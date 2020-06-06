@@ -22,33 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple4;
+package org.barghos.math.point;
 
+import org.barghos.core.exception.ArgumentNullException;
+import org.barghos.core.pool.DequePool;
+import org.barghos.core.pool.api.IPool;
 import org.barghos.core.tuple.tuple3.Tup3fR;
 
-public interface Tup4fR extends Tup3fR
+/**
+ * @author picatrix1899
+ *
+ */
+public class Point3Pool
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
-	 */
-	float getX();
+private static IPool<Point3> pool = new DequePool<>(Point3.class);
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
-	 */
-	float getY();
+	private Point3Pool() { }
 	
-	/**
-	 * Returns the z value from the tuple.
-	 * @return The z value from the tuple.
-	 */
-	float getZ();
+	public static Point3 get() { return pool.get().set(0.0f, 0.0f, 0.0f); }
+	public static Point3 get(Tup3fR v) { if(v == null) throw new ArgumentNullException("v"); return pool.get().set(v); }
+	public static Point3 get(float x, float y, float z) { return pool.get().set(x, y, z); }
 	
-	/**
-	 * Returns the w value from the tuple.
-	 * @return The w value from the tuple.
-	 */
-	float getW();
+	public static void ensure(int count) { if(count < 0) throw new IllegalArgumentException(); pool.ensure(count); }
+	
+	public static void store(Point3... instances) { pool.store(instances); }
+	
+	public static void setInternalPool(IPool<Point3> pool) { if(pool == null) throw new ArgumentNullException("pool"); Point3Pool.pool = pool; }
+	public static IPool<Point3> getInternalPool() { return pool; }
 }
