@@ -22,33 +22,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple4;
+package org.barghos.math;
 
-import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.math.matrix.Mat4;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
 
-public interface Tup4fR extends Tup3fR
+/**
+ * @author picatrix1899
+ *
+ */
+public class Main
 {
+
 	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
+	 * @param args
 	 */
-	float getX();
-	
-	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
-	 */
-	float getY();
-	
-	/**
-	 * Returns the z value from the tuple.
-	 * @return The z value from the tuple.
-	 */
-	float getZ();
-	
-	/**
-	 * Returns the w value from the tuple.
-	 * @return The w value from the tuple.
-	 */
-	float getW();
+	public static void main(String[] args)
+	{
+		Point3 p = new Point3(0,0,0);
+		Vec3 p2 = p.addN(1, 2, 3);
+		System.out.println(p2);
+	}
+
 }

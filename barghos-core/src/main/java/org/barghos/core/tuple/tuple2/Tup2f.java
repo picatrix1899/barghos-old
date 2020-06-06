@@ -31,7 +31,7 @@ import org.barghos.core.exception.ArgumentNullException;
  *
  * This class represents a 2-dimensional float tuple.
  */
-public class Tup2f implements Tup2fR
+public class Tup2f implements Tup2fR, Tup2fW
 {
 	protected float x;
 	protected float y;

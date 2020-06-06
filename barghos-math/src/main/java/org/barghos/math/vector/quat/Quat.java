@@ -4,7 +4,7 @@ import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple.tuple3.Tup3fR;
 import org.barghos.core.util.Nullable;
 import org.barghos.math.Maths;
-import org.barghos.math.matrix.Mat4f;
+import org.barghos.math.matrix.Mat4;
 import org.barghos.math.vector.vec3.Vec3;
 import org.barghos.math.vector.vec3.Vec3Pool;
 import org.barghos.math.vector.vec4.Vec4R;
@@ -56,7 +56,7 @@ public class Quat implements Vec4R
 	 * This constructor sets
 	 * @param rot
 	 */
-	public Quat(Mat4f rot)
+	public Quat(Mat4 rot)
 	{
 		if(rot == null) throw new ArgumentNullException("rot");
 		set(rot);
@@ -135,7 +135,7 @@ public class Quat implements Vec4R
 	}
 	
 	//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
-	public Quat set(Mat4f rot) 
+	public Quat set(Mat4 rot) 
 	{
 		if(rot == null) throw new ArgumentNullException("rot");
 		

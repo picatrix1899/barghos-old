@@ -26,6 +26,7 @@ package org.barghos.math.vector.vec2;
 
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple.tuple2.Tup2fW;
 import org.barghos.core.util.Nullable;
 import org.barghos.math.Maths;
 
@@ -35,7 +36,7 @@ import org.barghos.math.Maths;
  * Represents a 2-dimensional mathematical vector in euclidean space.
  * This is a full featured version with common operations.
  */
-public class Vec2 implements Vec2R
+public class Vec2 implements Vec2R, Tup2fW
 {
 		protected float x;
 		protected float y;
@@ -61,7 +62,7 @@ public class Vec2 implements Vec2R
 		public Vec2 add(Tup2fR t, @Nullable Vec2 res) { if(t == null) throw new ArgumentNullException("t"); return add(t.getX(), t.getY(), res); }
 		public Vec2 add(float scalar, @Nullable Vec2 res) { return add(scalar, scalar, res); }
 		public Vec2 add(float x, float y, @Nullable Vec2 res) { if(res == null) res = new Vec2(); return res.set(this.x + x, this.y + y);  }
-
+		
 		public Vec2 sub(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return sub(t.getX(), t.getY()); }
 		public Vec2 sub(float scalar) { return sub(scalar, scalar); }
 		public Vec2 sub(float x, float y) { return set(this.x - x, this.y - y); }
@@ -151,5 +152,10 @@ public class Vec2 implements Vec2R
 			if(this.y != v.y) return false;
 			
 			return true;
+		}
+		
+		public Vec2 clone()
+		{
+			return new Vec2(this);
 		}
 }

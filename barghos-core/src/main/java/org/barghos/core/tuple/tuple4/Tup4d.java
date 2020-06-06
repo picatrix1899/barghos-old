@@ -31,7 +31,7 @@ import org.barghos.core.exception.ArgumentNullException;
  *
  * This class represents a 4-dimensional double tuple.
  */
-public class Tup4d implements Tup4dR
+public class Tup4d implements Tup4dR, Tup4dW
 {
 	protected double x;
 	protected double y;
