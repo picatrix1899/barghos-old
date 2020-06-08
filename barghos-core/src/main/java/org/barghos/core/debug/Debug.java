@@ -29,6 +29,14 @@ public class Debug
 	public static boolean DEBUG_MODE = false;
 	public static boolean PRINT_STACK_ELEMENT = false;
 	
+	public static void printCurrentStack()
+	{
+		if(DEBUG_MODE)
+		{
+			Thread.dumpStack();
+		}
+	}
+	
 	public static void print(boolean b)
 	{
 		if(DEBUG_MODE)

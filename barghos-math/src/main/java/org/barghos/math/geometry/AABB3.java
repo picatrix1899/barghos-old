@@ -156,19 +156,32 @@ public class AABB3 implements FiniteGeometricObject3
 			Vec3 t3 = Vec3Pool.get(-v.getX(), -v.getY(), v.getZ());
 			Vec3 t4 = Vec3Pool.get(v.getX(), -v.getY(), v.getZ());
 
-			Vec3 r = Vec3Pool.get();
+			if(this.points[0] == null)
+			{
+				this.points[0] = this.center.addN(t1);
+				this.points[1] = this.center.addN(t2);
+				this.points[2] = this.center.addN(t3);
+				this.points[3] = this.center.addN(t4);
+				
+				this.points[4] = this.center.sub(t1);
+				this.points[5] = this.center.sub(t2);
+				this.points[6] = this.center.sub(t3);
+				this.points[7] = this.center.sub(t4);
+			}
+			else
+			{
+				this.center.add(t1, this.points[0]);
+				this.center.add(t2, this.points[1]);
+				this.center.add(t3, this.points[2]);
+				this.center.add(t4, this.points[3]);
+				
+				this.center.sub(t1, this.points[4]);
+				this.center.sub(t2, this.points[5]);
+				this.center.sub(t3, this.points[6]);
+				this.center.sub(t4, this.points[7]);
+			}
 			
-			this.points[0] = new Point3(this.center.add(t1, r));
-			this.points[1] = new Point3(this.center.add(t2, r));
-			this.points[2] = new Point3(this.center.add(t3, r));
-			this.points[3] = new Point3(this.center.add(t4, r));
-			
-			this.points[4] = new Point3(this.center.sub(t1, r));
-			this.points[5] = new Point3(this.center.sub(t2, r));
-			this.points[6] = new Point3(this.center.sub(t3, r));
-			this.points[7] = new Point3(this.center.sub(t4, r));
-			
-			Vec3Pool.store(v, t1, t2, t3, t4, r);
+			Vec3Pool.store(v, t1, t2, t3, t4);
 			
 			this.dirty = false;
 		}
@@ -182,8 +195,8 @@ public class AABB3 implements FiniteGeometricObject3
 		Vec3 min = Vec3Pool.get();
 		Vec3 max = Vec3Pool.get();
 
-		t.transform(this.center.sub(this.halfExtend, min), min);
-		t.transform(this.center.add(this.halfExtend, max), max);
+		t.transform(this.center.sub(this.halfExtend, min));
+		t.transform(this.center.add(this.halfExtend, max));
 		
 		Vec3 halfExtend = max.sub(min).mul(0.5f);
 		Vec3 center = min.add(halfExtend);

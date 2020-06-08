@@ -24,6 +24,7 @@ SOFTWARE.
 
 package org.barghos.math.geometry;
 
+import org.barghos.core.tuple.tuple2.Tup2Helper;
 import org.barghos.math.point.Point2;
 import org.barghos.math.vector.vec2.Vec2;
 import org.barghos.math.vector.vec2.Vec2Pool;
@@ -107,7 +108,7 @@ public class Area2
 	public boolean isPointInside(Vec2 point)
 	{
 		Vec2 d = Vec2Pool.get();
-		point.sub(this.center, d).abs();
+		Tup2Helper.abs(point.sub(this.center, d), d);
 		
 		boolean r = d.getX() <= this.halfExtend.getX() && d.getY() <= this.halfExtend.getY();
 		
