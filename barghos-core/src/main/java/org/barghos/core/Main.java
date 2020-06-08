@@ -22,11 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.math;
+package org.barghos.core;
 
-import org.barghos.math.matrix.Mat4;
-import org.barghos.math.point.Point3;
-import org.barghos.math.vector.vec3.Vec3;
 
 /**
  * @author picatrix1899
@@ -34,15 +31,5 @@ import org.barghos.math.vector.vec3.Vec3;
  */
 public class Main
 {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args)
-	{
-		Point3 p = new Point3(0,0,0);
-		Vec3 p2 = p.addN(1, 2, 3);
-		System.out.println(p2);
-	}
-
+	
 }

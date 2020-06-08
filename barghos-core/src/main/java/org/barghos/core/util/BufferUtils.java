@@ -33,6 +33,7 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.List;
 
+import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple.tuple2.Tup2dR;
 import org.barghos.core.tuple.tuple2.Tup2fR;
 import org.barghos.core.tuple.tuple3.Tup3dR;
@@ -1595,6 +1596,87 @@ public class BufferUtils
 	{
 		copyToTuple4DBuffer(buffer, v);
 		buffer.flip();
+		
+		return buffer;
+	}
+	
+	public static FloatBuffer put(FloatBuffer buffer, Tup2fR tuple)
+	{
+		if(buffer == null) throw new ArgumentNullException("buffer");
+		if(tuple == null) throw new ArgumentNullException("tuple");
+		
+		buffer.put(tuple.getX());
+		buffer.put(tuple.getY());
+		
+		return buffer;
+	}
+	
+	public static FloatBuffer put(FloatBuffer buffer, Tup2fR... tuples)
+	{
+		if(buffer == null) throw new ArgumentNullException("buffer");
+		
+		for(Tup2fR t : tuples)
+		{
+			if(t == null) throw new RuntimeException();
+			buffer.put(t.getX());
+			buffer.put(t.getY());
+		}
+		
+		return buffer;
+	}
+	
+	public static FloatBuffer put(FloatBuffer buffer, Tup3fR tuple)
+	{
+		if(buffer == null) throw new ArgumentNullException("buffer");
+		if(tuple == null) throw new ArgumentNullException("tuple");
+		
+		buffer.put(tuple.getX());
+		buffer.put(tuple.getY());
+		buffer.put(tuple.getZ());
+		
+		return buffer;
+	}
+	
+	public static FloatBuffer put(FloatBuffer buffer, Tup3fR... tuples)
+	{
+		if(buffer == null) throw new ArgumentNullException("buffer");
+		
+		for(Tup3fR t : tuples)
+		{
+			if(t == null) throw new RuntimeException();
+			buffer.put(t.getX());
+			buffer.put(t.getY());
+			buffer.put(t.getZ());
+		}
+		
+		return buffer;
+	}
+	
+	public static FloatBuffer put(FloatBuffer buffer, Tup4fR tuple)
+	{
+		if(buffer == null) throw new ArgumentNullException("buffer");
+		if(tuple == null) throw new ArgumentNullException("tuple");
+		
+		buffer.put(tuple.getX());
+		buffer.put(tuple.getY());
+		buffer.put(tuple.getZ());
+		buffer.put(tuple.getW());
+		
+		return buffer;
+	}
+	
+	public static FloatBuffer put(FloatBuffer buffer, Tup4fR... tuples)
+	{
+		if(buffer == null) throw new ArgumentNullException("buffer");
+		
+		for(Tup4fR t : tuples)
+		{
+			if(t == null) throw new RuntimeException();
+			buffer.put(t.getX());
+			buffer.put(t.getY());
+			buffer.put(t.getZ());
+			buffer.put(t.getW());
+		}
 		
 		return buffer;
 	}

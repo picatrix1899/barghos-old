@@ -120,23 +120,6 @@ public class Vec4 implements Vec4R, Tup4fW
 	public Vec4 snapToGrid(float gx, float gy, float gz, float gw) { return set(Maths.gridSnap(this.x, gx), Maths.gridSnap(this.y, gy), Maths.gridSnap(this.z, gz), Maths.gridSnap(this.w, gw)); }
 	public Vec4 snapToGrid(Tup4fR grid, @Nullable Vec4 res) { if(grid == null) throw new ArgumentNullException("t"); return snapToGrid(grid.getX(), grid.getY(), grid.getZ(), grid.getW(), res); }
 	public Vec4 snapToGrid(float gx, float gy, float gz, float gw, @Nullable Vec4 res) { if(res == null) res = new Vec4(); return res.set(Maths.gridSnap(this.x, gx), Maths.gridSnap(this.y, gy), Maths.gridSnap(this.z, gz), Maths.gridSnap(this.w, gw)); }
-	
-	public Vec4 abs() { return set(Math.abs(this.x), Math.abs(this.y), Math.abs(this.z), Math.abs(this.w)); }
-	public Vec4 abs(@Nullable Vec4 res) { if(res == null) res = new Vec4(); return res.set(Math.abs(this.x), Math.abs(this.y), Math.abs(this.z), Math.abs(this.w)); }
-	
-	public Vec4 min(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return min(t.getX(), t.getY(), t.getZ(), t.getW()); }
-	public Vec4 min(float scalar) { return min(scalar, scalar, scalar, scalar); }
-	public Vec4 min(float x, float y, float z, float w) { return set(Math.min(this.x, x), Math.min(this.y, y), Math.min(this.z, z), Math.min(this.w, w));}
-	public Vec4 min(Tup4fR t, @Nullable Vec4 res) { if(t == null) throw new ArgumentNullException("t"); return min(t.getX(), t.getY(), t.getZ(), t.getW(), res); }
-	public Vec4 min(float scalar, @Nullable Vec4 res) { return min(scalar, scalar, scalar, scalar, res); }
-	public Vec4 min(float x, float y, float z, float w, @Nullable Vec4 res) { if(res == null) res = new Vec4(); return res.set(Math.min(this.x, x), Math.min(this.y, y), Math.min(this.z, z), Math.min(this.w, w)); }
-	
-	public Vec4 max(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return max(t.getX(), t.getY(), t.getZ(), t.getW()); }
-	public Vec4 max(float scalar) { return max(scalar, scalar, scalar, scalar); }
-	public Vec4 max(float x, float y, float z, float w) { return set(Math.max(this.x, x), Math.max(this.y, y), Math.max(this.z, z), Math.max(this.w, w)); }
-	public Vec4 max(Tup4fR t, @Nullable Vec4 res) { if(t == null) throw new ArgumentNullException("t"); return max(t.getX(), t.getY(), t.getZ(), t.getW(), res); }
-	public Vec4 max(float scalar, @Nullable Vec4 res) { return max(scalar, scalar, scalar, scalar, res); }
-	public Vec4 max(float x, float y, float z, float w, @Nullable Vec4 res) { if(res == null) res = new Vec4(); return res.set(Math.max(this.x, x), Math.max(this.y, y), Math.max(this.z, z), Math.max(this.w, w)); }
 
 	public boolean isZero() { return this.x == 0.0f && this.y == 0.0f && this.z == 0.0f && this.w == 0.0f; }
 	public boolean isZero(float tolerance) { return Math.abs(this.x) <= tolerance && Math.abs(this.y) <= tolerance && Math.abs(this.z) <= tolerance && Math.abs(this.w) <= tolerance; }

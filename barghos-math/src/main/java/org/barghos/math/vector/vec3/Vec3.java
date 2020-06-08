@@ -153,23 +153,6 @@ public class Vec3 implements Vec3R, Tup3fW
 	public <T extends Tup3fW> T snapToGrid(float gx, float gy, float gz, T res) { res.set(Maths.gridSnap(this.x, gx), Maths.gridSnap(this.y, gy), Maths.gridSnap(this.z, gz)); return res; }
 	public <T extends Vec3> T snapToGridN(Tup3fR grid) { if(grid == null) throw new ArgumentNullException("grid"); return snapToGrid(grid.getX(), grid.getY(), grid.getZ()); }
 	public <T extends Vec3> T snapToGridN(float gx, float gy, float gz) { return clone().snapToGrid(gx, gy, gz); }
-	
-	public Vec3 abs() { return abs(this); }
-	public Vec3 abs(@Nullable Vec3 res) { if(res == null) res = new Vec3(); return res.set(Math.abs(this.x), Math.abs(this.y), Math.abs(this.z)); }
-	
-	public Vec3 min(Tup3fR t) { if(t == null) throw new ArgumentNullException("t"); return min(t.getX(), t.getY(), t.getZ()); }
-	public Vec3 min(float scalar) { return min(scalar, scalar, scalar); }
-	public Vec3 min(float x, float y, float z) { return set(Math.min(this.x, x), Math.min(this.y, y), Math.min(this.z, z)); }
-	public Vec3 min(Tup3fR t, @Nullable Vec3 res) { if(t == null) throw new ArgumentNullException("t"); return min(t.getX(), t.getY(), t.getZ(), res); }
-	public Vec3 min(float scalar, @Nullable Vec3 res) { return min(scalar, scalar, scalar, res); }
-	public Vec3 min(float x, float y, float z, @Nullable Vec3 res) { if(res == null) res = new Vec3(); return res.set(Math.min(this.x, x), Math.min(this.y, y), Math.min(this.z, z)); }
-	
-	public Vec3 max(Tup3fR t) { if(t == null) throw new ArgumentNullException("t"); return max(t.getX(), t.getY(), t.getZ()); }
-	public Vec3 max(float scalar) { return max(scalar, scalar, scalar); }
-	public Vec3 max(float x, float y, float z) { return set(Math.max(this.x, x), Math.max(this.y, y), Math.max(this.z, z)); }
-	public Vec3 max(Tup3fR t, @Nullable Vec3 res) { if(t == null) throw new ArgumentNullException("t"); return max(t.getX(), t.getY(), t.getZ(), res); }
-	public Vec3 max(float scalar, @Nullable Vec3 res) { return max(scalar, scalar, scalar, res); }
-	public Vec3 max(float x, float y, float z, @Nullable Vec3 res) { if(res == null) res = new Vec3(); return res.set(Math.max(this.x, x), Math.max(this.y, y), Math.max(this.z, z)); }
 
 	public boolean isZero() { return this.x == 0.0f && this.y == 0.0f && this.z == 0.0f; }
 	public boolean isZero(float tolerance) { return (Math.abs(this.x) <= tolerance) && (Math.abs(this.y) <= tolerance) && (Math.abs(this.z) <= tolerance); }

@@ -112,23 +112,6 @@ public class Vec2 implements Vec2R, Tup2fW
 		public Vec2 snapToGrid(Tup2fR grid, Vec2 res) { if(grid == null) throw new ArgumentNullException("grid"); return snapToGrid(grid.getX(), grid.getY(), res); }
 		public Vec2 snapToGrid(float gx, float gy, @Nullable Vec2 res) { if(res == null) res = new Vec2(); return res.set(Maths.gridSnap(this.x, gx), Maths.gridSnap(this.y, gy)); }
 
-		public Vec2 abs() { return set(Math.abs(this.x), Math.abs(this.y)); }
-		public Vec2 abs(@Nullable Vec2 res) { if(res == null) res = new Vec2(); return res.set(Math.abs(this.x), Math.abs(this.y)); }
-
-		public Vec2 min(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return min(t.getX(), t.getY()); }
-		public Vec2 min(float scalar) { return min(scalar, scalar); }
-		public Vec2 min(float x, float y) { return set(Math.min(this.x, x), Math.min(this.y, y)); }
-		public Vec2 min(Tup2fR t, @Nullable Vec2 res) { if(t == null) throw new ArgumentNullException("t"); return min(t.getX(), t.getY(), res); }
-		public Vec2 min(float scalar, @Nullable Vec2 res) { return min(scalar, scalar, res); }
-		public Vec2 min(float x, float y, @Nullable Vec2 res) { if(res == null) res = new Vec2(); return res.set(Math.min(this.x, x), Math.min(this.y, y)); }
-
-		public Vec2 max(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return max(t.getX(), t.getY()); }
-		public Vec2 max(float scalar) { return max(scalar, scalar); }
-		public Vec2 max(float x, float y) { return set(Math.max(this.x, x), Math.max(this.y, y)); }
-		public Vec2 max(Tup2fR t, @Nullable Vec2 res) { if(t == null) throw new ArgumentNullException("t"); return max(t.getX(), t.getY(), res); }
-		public Vec2 max(float scalar, @Nullable Vec2 res) { return max(scalar, scalar, res); }
-		public Vec2 max(float x, float y, @Nullable Vec2 res) { if(res == null) res = new Vec2(); return res.set(Math.max(this.x, x), Math.max(this.y, y)); }
-
 		public Vec2 invert() { return set(-this.x, -this.y); }
 		public Vec2 invert(@Nullable Vec2 res) { if(res == null) res = new Vec2(); return res.set(-this.x, -this.y); }
 		
