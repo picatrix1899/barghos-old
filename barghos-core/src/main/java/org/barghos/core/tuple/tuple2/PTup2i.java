@@ -27,7 +27,7 @@ package org.barghos.core.tuple.tuple2;
 import org.barghos.core.exception.ArgumentNullException;
 
 /**
- * Represents a persistent 2-dimensional double tuple.
+ * Represents a persistent 2-dimensional int tuple.
  * This is a readonly version of a 2-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
@@ -41,59 +41,59 @@ import org.barghos.core.exception.ArgumentNullException;
  * 
  * @since 1.0
  * 
- * @see PTup2d#gen(double)
- * @see PTup2d#gen(Tup2dR)
- * @see PTup2d#gen(double, double)
- * @see Tup2d
- * @see Tup2dR
- * @see Tup2dW
+ * @see PTup2i#gen(int)
+ * @see PTup2i#gen(Tup2iR)
+ * @see PTup2i#gen(int, int)
+ * @see Tup2i
+ * @see Tup2iR
+ * @see Tup2iW
  */
-public abstract class PTup2d implements	Tup2dR
+public abstract class PTup2i implements	Tup2iR
 {
-	private PTup2d() { }
+	private PTup2i() { }
 	
 	/**
-	 * Generates a new readonly {@link PTup2d} from an existing instance of {@link Tup2dR} and adopts the values.
+	 * Generates a new readonly {@link PTup2i} from an existing instance of {@link Tup2iR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2dR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
 	 * 
-	 * @return A new readonly {@link PTup2d}.
+	 * @return A new readonly {@link PTup2i}.
 	 */
-	public static PTup2d gen(Tup2dR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY()); }
+	public static PTup2i gen(Tup2iR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY()); }
 	
 	/**
-	 * Generates a new readonly {@link PTup2d} with all values set to a single value.
+	 * Generates a new readonly {@link PTup2i} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
-	 * @return A new readonly {@link PTup2d}.
+	 * @return A new readonly {@link PTup2i}.
 	 */
-	public static PTup2d gen(double value) { return gen(value, value); }
+	public static PTup2i gen(int value) { return gen(value, value); }
 
 	/**
-	 * Generates a new readonly {@link PTup2d} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link PTup2i} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
 	 * 
-	 * @return A new readonly {@link PTup2d}.
+	 * @return A new readonly {@link PTup2i}.
 	 */
-	public static PTup2d gen(double x, double y)
+	public static PTup2i gen(int x, int y)
 	{
-		return new PTup2d()
+		return new PTup2i()
 		{
 			@Override
-			public double getX() { return x; }
+			public int getX() { return x; }
 			
 			@Override
-			public double getY() { return y; }
+			public int getY() { return y; }
 		};
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "ptup2d(x=" + getX() + ", y=" + getY() + ")";
+		return "ptup2i(x=" + getX() + ", y=" + getY() + ")";
 	}
 
 	@Override
@@ -101,11 +101,8 @@ public abstract class PTup2d implements	Tup2dR
 	{
 		final int prime = 31;
 		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(getX());
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(getY());
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + getX();
+		result = prime * result + getY();
 		return result;
 	}
 
@@ -114,11 +111,12 @@ public abstract class PTup2d implements	Tup2dR
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2dR)) return false;
+		if (!(obj instanceof Tup2iR)) return false;
 		
-		Tup2dR other = (Tup2dR) obj;
-		if (Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-		if (Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+		Tup2iR other = (Tup2iR) obj;
+		if (getX() != other.getX()) return false;
+		if (getY() != other.getY()) return false;
+		
 		return true;
 	}
 }

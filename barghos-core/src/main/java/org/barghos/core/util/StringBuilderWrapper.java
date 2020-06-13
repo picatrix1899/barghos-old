@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2019 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,46 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple2;
+package org.barghos.core.util;
+
 
 /**
- * This interface grants readonly access to any 2-dimensional float tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
- * 
  * @author picatrix1899
- * 
- * @since 1.0
- * 
- * @see Tup2f
- * @see Tup2fW
- * @see PTupfi
- * @see Tup2fHelper
- * @see Tup2fPool
+ *
  */
-public interface Tup2fR
+public class StringBuilderWrapper
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
-	 */
-	float getX();
+	private final StringBuilder builder;
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
-	 */
-	float getY();
+	public StringBuilderWrapper()
+	{
+		this.builder = new StringBuilder();
+	}
+	
+	public StringBuilderWrapper(StringBuilder builder)
+	{
+		this.builder = builder;
+	}
+	
+	public StringBuilder getInternal()
+	{
+		return this.builder;
+	}
+	
+	public String toString()
+	{
+		return this.builder.toString();
+	}
+	
+	public StringBuilderWrapper append(String str)
+	{
+		this.builder.append(str);
+		return this;
+	}
+	
+	public StringBuilderWrapper appendLine(String str)
+	{
+		this.builder.append(str + "\n");
+		return this;
+	}
 }

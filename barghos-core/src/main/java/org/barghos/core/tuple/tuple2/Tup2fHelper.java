@@ -30,7 +30,7 @@ import org.barghos.core.exception.ArgumentNullException;
  * @author picatrix1899
  *
  */
-public class Tup2Helper
+public class Tup2fHelper
 {
 	
 	public static Tup2f min(Tup2fR a, Tup2fR b)

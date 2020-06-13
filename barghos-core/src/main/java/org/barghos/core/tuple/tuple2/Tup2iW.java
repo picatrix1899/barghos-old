@@ -24,31 +24,73 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
+import org.barghos.core.exception.ArgumentNullException;
+
 /**
- * This interface grants readonly access to any 2-dimensional float tuples.
+ * This interface grants writeonly access to any 2-dimensional int tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  * 
- * @see Tup2f
- * @see Tup2fW
- * @see PTupfi
- * @see Tup2fHelper
- * @see Tup2fPool
+ * @see Tup2i
+ * @see Tup2iR
+ * @see PTup2i
+ * @see Tup2iHelper
+ * @see Tup2iPool
  */
-public interface Tup2fR
+public interface Tup2iW
 {
 	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
+	 * Sets the x value of the tuple.
+	 * 
+	 * @param x The new x value.
+	 * 
+	 * @return The current tuple.
 	 */
-	float getX();
+	Tup2iW setX(int x);
 	
 	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
+	 * Sets the y value of the tuple.
+	 * 
+	 * @param y The new y value.
+	 * 
+	 * @return The current tuple.
 	 */
-	float getY();
+	Tup2iW setY(int y);
+	
+	/**
+	 * Adopts the values from an existing instance of {@link Tup2iR}.
+	 * 
+	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
+	 * 
+	 * @return The current tuple.
+	 * 
+	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 */
+	Tup2iW set(Tup2iR t);
+	
+	/**
+	 * Sets all values to a single value.
+	 * 
+	 * <p>
+	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
+	 * </p>
+	 * 
+	 * @param value The value used for all values of the tuple.
+	 * 
+	 * @return The current tuple.
+	 */
+	Tup2iW set(int value);
+	
+	/**
+	 * Sets the values to the corresponding paramters.
+	 * 
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * 
+	 * @return The current tuple.
+	 */
+	Tup2iW set(int x, int y);
 }

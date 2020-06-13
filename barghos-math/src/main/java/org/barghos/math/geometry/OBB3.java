@@ -230,9 +230,6 @@ public class OBB3 implements FiniteGeometricObject3
 				this.center.sub(t4, this.points[7]);
 			}
 
-			
-
-			
 			Vec3Pool.store(v, t1, t2, t3, t4, r);
 			
 			this.isPointsDirty = false;

@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2019-2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,20 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
-
+/**
+ * This interface grants readonly access to any 2-dimensional double tuples.
+ * It should be prefered by design before direct usage of the original instance in method parameters.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
+ * 
+ * @see Tup2d
+ * @see Tup2dW
+ * @see PTup2d
+ * @see Tup2dHelper
+ * @see Tup2dPool
+ */
 public interface Tup2dR
 {
 	/**

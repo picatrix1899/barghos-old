@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2019-2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@ SOFTWARE.
 */
 
 /**
+ * This package contains multiple variants of 2-dimensional tuples.
+ * 
  * @author picatrix1899
- *
  */
 package org.barghos.core.tuple.tuple2;

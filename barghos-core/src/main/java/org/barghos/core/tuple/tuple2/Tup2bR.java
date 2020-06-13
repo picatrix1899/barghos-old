@@ -25,30 +25,30 @@ SOFTWARE.
 package org.barghos.core.tuple.tuple2;
 
 /**
- * This interface grants readonly access to any 2-dimensional float tuples.
+ * This interface grants readonly access to any 2-dimensional byte tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  * 
- * @see Tup2f
- * @see Tup2fW
- * @see PTupfi
- * @see Tup2fHelper
- * @see Tup2fPool
+ * @see Tup2b
+ * @see Tup2bW
+ * @see PTup2b
+ * @see Tup2bHelper
+ * @see Tup2bPool
  */
-public interface Tup2fR
+public interface Tup2bR
 {
 	/**
 	 * Returns the x value from the tuple.
 	 * @return The x value from the tuple.
 	 */
-	float getX();
+	byte getX();
 	
 	/**
 	 * Returns the y value from the tuple.
 	 * @return The y value from the tuple.
 	 */
-	float getY();
+	byte getY();
 }

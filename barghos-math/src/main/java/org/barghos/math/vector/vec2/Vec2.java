@@ -54,6 +54,7 @@ public class Vec2 implements Vec2R, Tup2fW
 		public Vec2 setY(float y) { this.y = y; return this; }
 		
 		public Vec2 set(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY()); }
+		public Vec2 set(float value) { return setX(value).setY(value); }
 		public Vec2 set(float x, float y) { return setX(x).setY(y); }
 
 		public Vec2 add(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return add(t.getX(), t.getY()); }
