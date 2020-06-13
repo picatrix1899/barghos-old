@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2019-2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,31 +27,56 @@ package org.barghos.core.tuple.tuple2;
 import org.barghos.core.exception.ArgumentNullException;
 
 /**
- * This class is a readonly implementation of a 2-dimensional float tuple.
+ * Represents a persistent 2-dimensional float tuple.
+ * This is a readonly version of a 2-dimensional tuple with extended protection against modification.
+ * It can be used as a more flexible way to create constants.
+ * 
+ * <p>
+ * This class should not be inherited, not direct by extending nor anonymous,
+ * as this would render the protection mechanism used as useless.
+ * To get an instance you call one of the static generator methods.
+ * </p>
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
+ * 
+ * @see PTup2f#gen(float)
+ * @see PTup2f#gen(Tup2fR)
+ * @see PTup2f#gen(float, float)
+ * @see Tup2f
+ * @see Tup2fR
+ * @see Tup2fW
  */
 public abstract class PTup2f implements	Tup2fR
 {
 	private PTup2f() { }
 	
 	/**
-	 * Generates a readonly {@link PTup2f} that adopts the values from the given tuple.
-	 * @param t The tuple that values will be adopted from.
-	 * @return A new readonly {@link PTup2f} with the adopted values.
+	 * Generates a new readonly {@link PTup2f} from an existing instance of {@link Tup2fR} and adopts the values.
+	 * 
+	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * 
+	 * @return A new readonly {@link PTup2f}.
 	 */
 	public static PTup2f gen(Tup2fR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY()); }
 	
 	/**
-	 * This generate a readonly {@link PTup2f} with the values set to scalar.
-	 * @param scalar The value.
-	 * @return A new readonly {@link PTup2f} with the values set to the given value.
+	 * Generates a new readonly {@link PTup2f} with all values set to a single value.
+	 * 
+	 * @param value The value used for all values of the tuple.
+	 * 
+	 * @return A new readonly {@link PTup2f}.
 	 */
-	public static PTup2f gen(float scalar) { return gen(scalar, scalar); }
+	public static PTup2f gen(float value) { return gen(value, value); }
 
 	/**
-	 * This generate a readonly {@link PTup2f} with the values set to the corresponding given values.
+	 * Generates a new readonly {@link PTup2f} with the values set to the corresponding parameters.
+	 * 
 	 * @param x The x value.
 	 * @param y The y value.
-	 * @return A new readonly {@link PTup2f} with the values set to the corresponding given values.
+	 * 
+	 * @return A new readonly {@link PTup2f}.
 	 */
 	public static PTup2f gen(float x, float y)
 	{

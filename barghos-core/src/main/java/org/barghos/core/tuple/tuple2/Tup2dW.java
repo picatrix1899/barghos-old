@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2019-2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,73 @@ SOFTWARE.
 
 package org.barghos.core.tuple.tuple2;
 
+import org.barghos.core.exception.ArgumentNullException;
+
+/**
+ * This interface grants writeonly access to any 2-dimensional double tuples.
+ * It should be prefered by design before direct usage of the original instance in method parameters.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
+ * 
+ * @see Tup2d
+ * @see Tup2dR
+ * @see PTup2d
+ * @see Tup2dHelper
+ * @see Tup2dPool
+ */
 public interface Tup2dW
 {
+	/**
+	 * Sets the x value of the tuple.
+	 * 
+	 * @param x The new x value.
+	 * 
+	 * @return The current tuple.
+	 */
 	Tup2dW setX(double x);
+	
+	/**
+	 * Sets the y value of the tuple.
+	 * 
+	 * @param y The new y value.
+	 * 
+	 * @return The current tuple.
+	 */
 	Tup2dW setY(double y);
 	
+	/**
+	 * Adopts the values from an existing instance of {@link Tup2iR}.
+	 * 
+	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
+	 * 
+	 * @return The current tuple.
+	 * 
+	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 */
 	Tup2dW set(Tup2dR t);
+	
+	/**
+	 * Sets all values to a single value.
+	 * 
+	 * <p>
+	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
+	 * </p>
+	 * 
+	 * @param value The value used for all values of the tuple.
+	 * 
+	 * @return The current tuple.
+	 */
+	Tup2dW set(double value);
+	
+	/**
+	 * Sets the values to the corresponding paramters.
+	 * 
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * 
+	 * @return The current tuple.
+	 */
 	Tup2dW set(double x, double y);
 }

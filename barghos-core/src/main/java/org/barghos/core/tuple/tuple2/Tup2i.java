@@ -27,7 +27,7 @@ package org.barghos.core.tuple.tuple2;
 import org.barghos.core.exception.ArgumentNullException;
 
 /**
- * This class represents a 2-dimensional float tuple.
+ * This class represents a 2-dimensional int tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -35,40 +35,40 @@ import org.barghos.core.exception.ArgumentNullException;
  * 
  * @since 1.0
  * 
- * @see Tup2fR
- * @see Tup2fW
- * @see PTup2f
- * @see Tup2fHelper
- * @see Tup2fPool
+ * @see Tup2iR
+ * @see Tup2iW
+ * @see PTup2i
+ * @see Tup2iHelper
+ * @see Tup2iPool
  */
-public class Tup2f implements Tup2fR, Tup2fW
+public class Tup2i implements Tup2iR, Tup2iW
 {
 	/**
 	 * The x component.
 	 */
-	protected float x;
+	protected int x;
 
 	/**
 	 * The y component.
 	 */
-	protected float y;
+	protected int y;
 	
 	/**
 	 * Creates a new instance with all components set to 0;
 	 */
-	public Tup2f()
+	public Tup2i()
 	{
-		set(0.0f);
+		set(0);
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2fR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup2iR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
 	 * 
 	 * @throws ArgumentNullException Thrown if the parameter t is null;
 	 */
-	public Tup2f(Tup2fR t)
+	public Tup2i(Tup2iR t)
 	{
 		if(t == null) throw new ArgumentNullException("t");
 		set(t);
@@ -79,7 +79,7 @@ public class Tup2f implements Tup2fR, Tup2fW
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
 	 */
-	public Tup2f(float value)
+	public Tup2i(int value)
 	{
 		set(value);
 	}
@@ -90,52 +90,52 @@ public class Tup2f implements Tup2fR, Tup2fW
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 */
-	public Tup2f(float x, float y)
+	public Tup2i(int x, int y)
 	{
 		set(x, y);
 	}
 	
 	@Override
-	public float getX()
+	public int getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public float getY()
+	public int getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public Tup2f setX(float x)
+	public Tup2i setX(int x)
 	{
 		this.x = x;
 		return this;
 	}
 
 	@Override
-	public Tup2f setY(float y)
+	public Tup2i setY(int y)
 	{
 		this.y = y;
 		return this;
 	}
 	
 	@Override
-	public Tup2f set(Tup2fR t)
+	public Tup2i set(Tup2iR t)
 	{
 		if(t == null) throw new ArgumentNullException("t");
 		return set(t.getX(), t.getY());
 	}
 	
 	@Override
-	public Tup2f set(float value)
+	public Tup2i set(int value)
 	{
 		return set(value, value);
 	}
 	
 	@Override
-	public Tup2f set(float x, float y)
+	public Tup2i set(int x, int y)
 	{
 		return setX(x).setY(y);
 	}
@@ -145,8 +145,8 @@ public class Tup2f implements Tup2fR, Tup2fW
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + getX();
+		result = prime * result + getY();
 		return result;
 	}
 
@@ -155,23 +155,23 @@ public class Tup2f implements Tup2fR, Tup2fW
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2fR)) return false;
+		if (!(obj instanceof Tup2iR)) return false;
 		
-		Tup2fR other = (Tup2fR) obj;
-		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-		if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+		Tup2iR other = (Tup2iR) obj;
+		if(getX() != other.getX()) return false;
+		if(getY() != other.getY()) return false;
 		return true;
 	}
 	
 	@Override
-	public Tup2f clone()
+	public Tup2i clone()
 	{
-		return new Tup2f(this);
+		return new Tup2i(this);
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup2f(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2i(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

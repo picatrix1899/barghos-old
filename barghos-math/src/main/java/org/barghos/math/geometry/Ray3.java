@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2019 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple2;
+package org.barghos.math.geometry;
+
+import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.math.point.Point3;
+import org.barghos.math.vector.vec3.Vec3;
 
 /**
- * This interface grants readonly access to any 2-dimensional float tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
- * 
  * @author picatrix1899
- * 
- * @since 1.0
- * 
- * @see Tup2f
- * @see Tup2fW
- * @see PTupfi
- * @see Tup2fHelper
- * @see Tup2fPool
+ *
  */
-public interface Tup2fR
+public class Ray3
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
-	 */
-	float getX();
+	protected final Point3 origin = new Point3();
+	protected final Vec3 direction = new Vec3();
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
-	 */
-	float getY();
+	public Ray3() { }
+	
+	public Ray3(Tup3fR origin, Tup3fR direction)
+	{
+		this.origin.set(origin);
+		this.direction.set(direction);
+	}
 }

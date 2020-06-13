@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2019 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,33 +22,49 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple.tuple2;
+package org.barghos.math;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.barghos.math.geometry.Circle2;
+import org.barghos.math.vector.vec2.Vec2;
 
 /**
- * This interface grants readonly access to any 2-dimensional float tuples.
- * It should be prefered by design before direct usage of the original instance in method parameters.
- * 
  * @author picatrix1899
- * 
- * @since 1.0
- * 
- * @see Tup2f
- * @see Tup2fW
- * @see PTupfi
- * @see Tup2fHelper
- * @see Tup2fPool
+ *
  */
-public interface Tup2fR
+public class CircleCircleCollision2
 {
-	/**
-	 * Returns the x value from the tuple.
-	 * @return The x value from the tuple.
-	 */
-	float getX();
 	
-	/**
-	 * Returns the y value from the tuple.
-	 * @return The y value from the tuple.
-	 */
-	float getY();
+	public List<Vec2> getContactPoints(Circle2 c1, Circle2 c2)
+	{
+		List<Vec2> out = new ArrayList<>();
+		
+		float r0 = 5.0f;
+		float a0 = 0.0f;
+		float b0 = 2.0f;
+		
+		float r1 = 5.0f;
+		float a1 = 0.0f;
+		float b1 = 10.0f;
+		
+		float x = 3.0f;
+		float y = 6.0f;
+		
+		boolean result = false;
+		double res = 0.0f;
+		
+		result = Math.sqrt(-(p2((p2(b0) - p2(r0) + p2(r1) - p2(b1)) / (2*(b0-b1))) - 2*b0*(p2(b0) - p2(r0) + p2(r1) - p2(b1)) / (2*(b0-b1)) + p2(b0) -p2(r0)))  == x;
+		
+		res = Math.sqrt(-(p2(a0) + p2(y) - 2*b0*y + p2(b0) -p2(r0)));
+		
+		return out;
+	}
+	
+	public static double p2(double in)
+	{
+		return Math.pow(in, 2);
+	}
+	
 }
