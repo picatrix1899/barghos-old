@@ -9,7 +9,7 @@ mathjax: true
 
 # Barghos
 
-\\alpha
+$$f(x)=x^2$$
 
 ## Projects
 
