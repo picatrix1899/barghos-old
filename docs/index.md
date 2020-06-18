@@ -2,7 +2,7 @@
 mathjax: true
 ---
 
-{% include scripts.html %}
+{% include skripts.html %}
 
 # Barghos
 
