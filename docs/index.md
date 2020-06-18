@@ -2,6 +2,8 @@
 mathjax: true
 ---
 
+{% include scripts.html %}
+
 # Barghos
 
 $$\alpha$$
