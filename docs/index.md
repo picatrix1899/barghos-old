@@ -1,4 +1,7 @@
+
 # Barghos
+
+$$\alpha$$
 
 ## Projects
 
