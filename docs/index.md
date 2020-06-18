@@ -1,6 +1,6 @@
 # Barghos
 
-Inline math $f(x)=x^2$
+$$\alpha$$
 
 ## Projects
 
