@@ -9,7 +9,7 @@ mathjax: true
 
 # Barghos
 
-$$\alpha$$
+\\alpha
 
 ## Projects
 
