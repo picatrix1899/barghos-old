@@ -24,8 +24,8 @@ SOFTWARE.
 
 package org.barghos.math.matrix;
 
-import org.barghos.core.tuple.tuple2.Tup2f;
-import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple2.Tup2f;
+import org.barghos.core.tuple2.api.Tup2fR;
 
 public class Mat2
 {

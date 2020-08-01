@@ -25,7 +25,8 @@ SOFTWARE.
 package org.barghos.math.vector.vec3;
 
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple3.api.Tup3fR;
+import org.barghos.math.BarghosMath;
 
 /**
  * @author picatrix1899
@@ -37,7 +38,15 @@ import org.barghos.core.tuple.tuple3.Tup3fR;
 public abstract class PVec3 implements Vec3R
 {
 	
-	public static PVec3 gen(Tup3fR t) { if(t == null) throw new ArgumentNullException("t"); return gen(t.getX(), t.getY(), t.getZ()); }
+	public static PVec3 gen(Tup3fR t)
+	{
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
+		return gen(t.getX(), t.getY(), t.getZ());
+	}
 	public static PVec3 gen(float x, float y, float z)
 	{
 		return new PVec3()

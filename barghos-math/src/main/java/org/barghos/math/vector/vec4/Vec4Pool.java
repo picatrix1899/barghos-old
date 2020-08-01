@@ -27,7 +27,7 @@ package org.barghos.math.vector.vec4;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.tuple4.api.Tup4fR;
 
 public final class Vec4Pool
 {

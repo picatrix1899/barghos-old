@@ -35,18 +35,18 @@ import java.nio.ShortBuffer;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
-import org.barghos.core.tuple.tuple2.Tup2d;
-import org.barghos.core.tuple.tuple2.Tup2dR;
-import org.barghos.core.tuple.tuple2.Tup2f;
-import org.barghos.core.tuple.tuple2.Tup2fR;
-import org.barghos.core.tuple.tuple3.Tup3d;
-import org.barghos.core.tuple.tuple3.Tup3dR;
-import org.barghos.core.tuple.tuple3.Tup3f;
-import org.barghos.core.tuple.tuple3.Tup3fR;
-import org.barghos.core.tuple.tuple4.Tup4d;
-import org.barghos.core.tuple.tuple4.Tup4dR;
-import org.barghos.core.tuple.tuple4.Tup4f;
-import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.tuple2.Tup2d;
+import org.barghos.core.tuple2.Tup2f;
+import org.barghos.core.tuple2.api.Tup2dR;
+import org.barghos.core.tuple2.api.Tup2fR;
+import org.barghos.core.tuple3.Tup3d;
+import org.barghos.core.tuple3.Tup3f;
+import org.barghos.core.tuple3.api.Tup3dR;
+import org.barghos.core.tuple3.api.Tup3fR;
+import org.barghos.core.tuple4.Tup4d;
+import org.barghos.core.tuple4.api.Tup4dR;
+import org.barghos.core.tuple4.Tup4f;
+import org.barghos.core.tuple4.api.Tup4fR;
 import org.barghos.core.util.BufferUtils;
 
 class BufferUtilsTest

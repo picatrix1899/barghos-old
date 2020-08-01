@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.math.vector.vec4;
 
-import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.tuple4.api.Tup4fR;
 
 /**
  * @author picatrix1899

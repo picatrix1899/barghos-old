@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
-import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.tuple4.api.Tup4fR;
 
 /**
  * This class is a simple implementation of an LDRColor4.

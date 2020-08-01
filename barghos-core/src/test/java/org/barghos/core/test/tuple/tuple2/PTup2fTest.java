@@ -25,10 +25,10 @@ SOFTWARE.
 package org.barghos.core.test.tuple.tuple2;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple.tuple2.PTup2f;
-import org.barghos.core.tuple.tuple2.Tup2f;
+import org.barghos.core.tuple2.PTup2f;
+import org.barghos.core.tuple2.Tup2f;
+import org.junit.jupiter.api.Test;
 
 class PTup2fTest
 {

@@ -25,10 +25,10 @@ SOFTWARE.
 package org.barghos.core.test.tuple.tuple3;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
-import org.barghos.core.tuple.tuple3.PTup3d;
-import org.barghos.core.tuple.tuple3.Tup3d;
+import org.barghos.core.tuple3.PTup3d;
+import org.barghos.core.tuple3.Tup3d;
+import org.junit.jupiter.api.Test;
 
 class Tup3dTest
 {

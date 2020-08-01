@@ -27,6 +27,7 @@ package org.barghos.math.geometry;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.barghos.math.Transform3;
 import org.barghos.math.matrix.Mat4;
 import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
@@ -66,7 +67,7 @@ public class ConvexTriangleMesh3 implements FiniteGeometricObject3
 		
 		return this;
 	}
-	
+
 	public Point3[] getPoints()
 	{
 		Point3[] p = new Point3[triangles.size() * 3];

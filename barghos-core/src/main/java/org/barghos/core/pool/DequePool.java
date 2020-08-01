@@ -29,6 +29,7 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.api.IPool;
 
@@ -51,7 +52,11 @@ public class DequePool<T> implements IPool<T>
 	 */
 	public DequePool(Class<? extends T> clazz)
 	{
-		if(clazz == null) throw new ArgumentNullException("clazz");
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(clazz == null) throw new ArgumentNullException("clazz");
+		}
+		
 		this.clazz = clazz;
 	}
 	
