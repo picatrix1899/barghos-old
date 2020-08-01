@@ -25,7 +25,7 @@ SOFTWARE.
 package org.barghos.math.point;
 
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple2.api.Tup2fR;
 import org.barghos.math.vector.vec2.Vec2;
 
 public class Point2 extends Vec2

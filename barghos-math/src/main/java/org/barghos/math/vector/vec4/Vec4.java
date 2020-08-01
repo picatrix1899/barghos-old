@@ -25,8 +25,8 @@ SOFTWARE.
 package org.barghos.math.vector.vec4;
 
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple.tuple4.Tup4fR;
-import org.barghos.core.tuple.tuple4.Tup4fW;
+import org.barghos.core.tuple4.api.Tup4fR;
+import org.barghos.core.tuple4.api.Tup4fW;
 import org.barghos.core.util.Nullable;
 import org.barghos.math.Maths;
 
@@ -60,6 +60,7 @@ public class Vec4 implements Vec4R, Tup4fW
 	public Vec4 setW(float w) { this.w = w; return this; }
 	
 	public Vec4 set(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return set(t.getX(), t.getY(), t.getZ(), t.getW()); }
+	public Vec4 set(float value) { return setX(value).setY(value).setZ(value).setW(value); }
 	public Vec4 set(float x, float y, float z, float w) { return setX(x).setY(y).setZ(z).setW(w); }
 	
 	public Vec4 add(Tup4fR t) { if(t == null) throw new ArgumentNullException("t"); return add(t.getX(), t.getY(), t.getZ(), t.getW()); }

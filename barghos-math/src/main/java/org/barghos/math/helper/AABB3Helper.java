@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.math.helper;
 
-import org.barghos.core.tuple.tuple3.Tup3Helper;
+import org.barghos.core.tuple3.Tup3fHelper;
 import org.barghos.math.geometry.AABB3;
 import org.barghos.math.vector.vec3.Vec3;
 import org.barghos.math.vector.vec3.Vec3Pool;
@@ -42,8 +42,8 @@ public class AABB3Helper
 		Vec3 minB = b.getMin(Vec3Pool.get());
 		Vec3 maxB = b.getMax(Vec3Pool.get());
 		
-		Vec3 min = Tup3Helper.min(minA, minB, minA);
-		Vec3 max = Tup3Helper.max(maxA, maxB, maxA);
+		Vec3 min = Tup3fHelper.min(minA, minB, minA);
+		Vec3 max = Tup3fHelper.max(maxA, maxB, maxA);
 
 		Vec3 he = Vec3Pool.get();
 		max.sub(min, he).mul(0.5f);
@@ -65,8 +65,8 @@ public class AABB3Helper
 		Vec3 minB = b.getMin(Vec3Pool.get());
 		Vec3 maxB = b.getMax(Vec3Pool.get());
 		
-		Vec3 min = Tup3Helper.min(minA, minB, minA);
-		Vec3 max = Tup3Helper.max(maxA, maxB, maxA);
+		Vec3 min = Tup3fHelper.min(minA, minB, minA);
+		Vec3 max = Tup3fHelper.max(maxA, maxB, maxA);
 
 		Vec3 he = Vec3Pool.get();
 		max.sub(min, he).mul(0.5f);

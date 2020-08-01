@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.math;
 
+import org.barghos.core.tuple3.api.Tup3fW;
+import org.barghos.math.point.Point3;
 import org.barghos.math.vector.vec3.Vec3;
 
 /**
@@ -32,7 +34,9 @@ import org.barghos.math.vector.vec3.Vec3;
  */
 public interface ITransform3
 {
-	Vec3 getPosition();
+	Point3 getPosition();
+	<T extends Tup3fW> T getPosition(T w);
 	EulerAngles3f getOrientation();
-	Vec3 getSize();
+	Vec3 getScale();
+	<T extends Tup3fW> T getScale(T w);
 }

@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.core.color;
 
-import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple3.api.Tup3fR;
 
 /**
  * This class is a simple implementation of an HDRColor3.

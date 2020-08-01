@@ -25,11 +25,11 @@ SOFTWARE.
 package org.barghos.math.matrix;
 
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple.tuple2.Tup2fR;
-import org.barghos.core.tuple.tuple3.Tup3f;
-import org.barghos.core.tuple.tuple3.Tup3fPool;
-import org.barghos.core.tuple.tuple3.Tup3fR;
-import org.barghos.core.tuple.tuple3.Tup3fW;
+import org.barghos.core.tuple2.api.Tup2fR;
+import org.barghos.core.tuple3.Tup3f;
+import org.barghos.core.tuple3.api.Tup3fR;
+import org.barghos.core.tuple3.api.Tup3fW;
+import org.barghos.core.tuple3.pool.Tup3fPool;
 import org.barghos.math.vector.quat.Quat;
 
 public class Mat3

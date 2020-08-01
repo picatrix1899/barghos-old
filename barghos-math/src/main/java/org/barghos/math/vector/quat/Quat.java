@@ -25,8 +25,9 @@ SOFTWARE.
 package org.barghos.math.vector.quat;
 
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple3.api.Tup3fR;
 import org.barghos.core.util.Nullable;
+import org.barghos.math.BarghosMath;
 import org.barghos.math.Maths;
 import org.barghos.math.matrix.Mat4;
 import org.barghos.math.vector.vec3.Vec3;
@@ -72,7 +73,11 @@ public class Quat implements Vec4R
 	 */
 	public Quat(Quat q)
 	{
-		if(q == null) throw new ArgumentNullException("q");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(q == null) throw new ArgumentNullException("q");
+		}
+		
 		set(q);
 	}
 	
@@ -82,7 +87,11 @@ public class Quat implements Vec4R
 	 */
 	public Quat(Mat4 rot)
 	{
-		if(rot == null) throw new ArgumentNullException("rot");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(rot == null) throw new ArgumentNullException("rot");
+		}
+		
 		set(rot);
 	}
 
@@ -110,8 +119,12 @@ public class Quat implements Vec4R
 	
 	public static Quat getFromVectors(Vec3 v1, Vec3 v2)
 	{
-		if(v1 == null) throw new ArgumentNullException("v1");
-		if(v2 == null) throw new ArgumentNullException("v2");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v1 == null) throw new ArgumentNullException("v1");
+			if(v2 == null) throw new ArgumentNullException("v2");
+		}
+		
 		
 		Vec3 a = v1.normal(Vec3Pool.get());
 		Vec3 b = v2.normal(Vec3Pool.get());
@@ -138,7 +151,11 @@ public class Quat implements Vec4R
 	
 	public Quat rotate(Tup3fR axis, float angle)
 	{
-		if(axis == null) throw new ArgumentNullException("axis");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(axis == null) throw new ArgumentNullException("axis");
+		}
+		
 		return rotate(angle, axis.getX(), axis.getY(), axis.getZ());
 	}
 	
@@ -149,20 +166,32 @@ public class Quat implements Vec4R
 	
 	public Quat rotate(Quat q)
 	{
-		if(q == null) throw new ArgumentNullException("q");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(q == null) throw new ArgumentNullException("q");
+		}
+		
 		return q.mul(this, this);
 	}
 	
 	public Quat set(Quat q)
 	{
-		if(q == null) throw new ArgumentNullException("q");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(q == null) throw new ArgumentNullException("q");
+		}
+		
 		return set(q.getW(), q.getX(), q.getY(), q.getZ());
 	}
 	
 	//From Ken Shoemake's "Quaternion Calculus and Fast Animation" article
 	public Quat set(Mat4 rot) 
 	{
-		if(rot == null) throw new ArgumentNullException("rot");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(rot == null) throw new ArgumentNullException("rot");
+		}
+		
 		
 		double trace = rot.m[0][0] + rot.m[1][1] + rot.m[2][2];
 
@@ -251,7 +280,11 @@ public class Quat implements Vec4R
 	
 	public Quat mul(Quat q)
 	{
-		if(q == null) throw new ArgumentNullException("q");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(q == null) throw new ArgumentNullException("q");
+		}
+		
 		mul(q, this);
 		
 		return this;
@@ -259,7 +292,10 @@ public class Quat implements Vec4R
 	
 	public Quat mul(Quat q, @Nullable Quat res)
 	{
-		if(q == null) throw new ArgumentNullException("q");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(q == null) throw new ArgumentNullException("q");
+		}
 		
 		if(res == null) res = new Quat();
 		
@@ -275,7 +311,11 @@ public class Quat implements Vec4R
 	
 	public Quat mul(Tup3fR v)
 	{
-		if(v == null) throw new ArgumentNullException("v");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		mul(v, this);
 		
 		return this;
@@ -283,7 +323,10 @@ public class Quat implements Vec4R
 	
 	public Quat mul(Tup3fR v, @Nullable Quat res)
 	{
-		if(v == null) throw new ArgumentNullException("v");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
 		
 		if(res == null) res = new Quat();
 		
@@ -299,7 +342,10 @@ public class Quat implements Vec4R
 	
 	public Vec3 transform(Tup3fR v, @Nullable Vec3 res)
 	{
-		if(v == null) throw new ArgumentNullException("v");
+		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
 		
 		if(res == null) res = new Vec3();
 		

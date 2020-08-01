@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.math.vector.vec3;
 
-import org.barghos.core.tuple.tuple3.Tup3fR;
+import org.barghos.core.tuple3.api.Tup3fR;
 
 /**
  * @author picatrix1899

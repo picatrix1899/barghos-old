@@ -33,13 +33,14 @@ import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
 import java.util.List;
 
+import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple.tuple2.Tup2dR;
-import org.barghos.core.tuple.tuple2.Tup2fR;
-import org.barghos.core.tuple.tuple3.Tup3dR;
-import org.barghos.core.tuple.tuple3.Tup3fR;
-import org.barghos.core.tuple.tuple4.Tup4dR;
-import org.barghos.core.tuple.tuple4.Tup4fR;
+import org.barghos.core.tuple2.api.Tup2dR;
+import org.barghos.core.tuple2.api.Tup2fR;
+import org.barghos.core.tuple3.api.Tup3dR;
+import org.barghos.core.tuple3.api.Tup3fR;
+import org.barghos.core.tuple4.api.Tup4dR;
+import org.barghos.core.tuple4.api.Tup4fR;
 
 
 /**
@@ -128,6 +129,11 @@ public class BufferUtils
 	 */
 	public static ByteBuffer copyToByteBuffer(ByteBuffer buffer, byte... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		return buffer.put(v);
 	}
 	
@@ -138,12 +144,16 @@ public class BufferUtils
 	 */
 	public static ByteBuffer copyToByteBuffer(List<Byte> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		ByteBuffer buffer = createByteBuffer(length);
 		
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -156,8 +166,13 @@ public class BufferUtils
 	 */
 	public static ByteBuffer copyToByteBuffer(ByteBuffer buffer, List<Byte> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -180,6 +195,11 @@ public class BufferUtils
 	 */
 	public static ShortBuffer copyToShortBuffer(ShortBuffer buffer, short... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		return buffer.put(v);
 	}
 	
@@ -190,12 +210,16 @@ public class BufferUtils
 	 */
 	public static ShortBuffer copyToShortBuffer(List<Short> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		ShortBuffer buffer = createShortBuffer(length);
-		
-		int i = 0;
-		for(; i < length; i++)
+
+		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -208,8 +232,13 @@ public class BufferUtils
 	 */
 	public static ShortBuffer copyToShortBuffer(ShortBuffer buffer, List<Short> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -232,6 +261,11 @@ public class BufferUtils
 	 */
 	public static IntBuffer copyToIntBuffer(IntBuffer buffer, int... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		return buffer.put(v);
 	}	
 	
@@ -242,12 +276,16 @@ public class BufferUtils
 	 */
 	public static IntBuffer copyToIntBuffer(List<Integer> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		IntBuffer buffer = createIntBuffer(length);
-		
-		int i = 0;
-		for(; i < length; i++)
+
+		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -260,8 +298,13 @@ public class BufferUtils
 	 */
 	public static IntBuffer copyToIntBuffer(IntBuffer buffer, List<Integer> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -284,6 +327,11 @@ public class BufferUtils
 	 */
 	public static LongBuffer copyToLongBuffer(LongBuffer buffer, long... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		return buffer.put(v);
 	}	
 	
@@ -294,12 +342,16 @@ public class BufferUtils
 	 */
 	public static LongBuffer copyToLongBuffer(List<Long> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		LongBuffer buffer = createLongBuffer(length);
-		
-		int i = 0;
-		for(; i < length; i++)
+
+		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -312,8 +364,13 @@ public class BufferUtils
 	 */
 	public static LongBuffer copyToLongBuffer(LongBuffer buffer, List<Long> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -336,6 +393,11 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFloatBuffer(FloatBuffer buffer, float... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		return buffer.put(v);
 	}
 	
@@ -346,12 +408,16 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFloatBuffer(List<Float> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		FloatBuffer buffer = createFloatBuffer(length);
-		
-		int i = 0;
-		for(; i < length; i++)
+
+		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -364,8 +430,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFloatBuffer(FloatBuffer buffer, List<Float> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -388,6 +459,11 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(DoubleBuffer buffer, double... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		return buffer.put(v);
 	}
 	
@@ -398,12 +474,16 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(List<Double> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		DoubleBuffer buffer = createDoubleBuffer(length);
-		
-		int i = 0;
-		for(; i < length; i++)
+
+		for(int i = 0; i < length; i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -416,8 +496,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToDoubleBuffer(DoubleBuffer buffer, List<Double> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 			buffer.put(v.get(i));
 		
 		return buffer;
@@ -431,12 +516,17 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(Tup2fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		int length = v.length;
 
 		FloatBuffer buffer = createFloatBuffer(length * 2);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup2fR current = v[i];
 			buffer.put(current.getX());
@@ -454,8 +544,14 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(FloatBuffer buffer, Tup2fR... v)
 	{
-		int i = 0;
-		for(; i < v.length; i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < v.length; i++)
 		{
 			Tup2fR current = v[i];
 			buffer.put(current.getX());
@@ -473,12 +569,16 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(List<Tup2fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 
 		FloatBuffer buffer = createFloatBuffer(length * 2);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup2fR current = v.get(i);
 			buffer.put(current.getX());
@@ -496,8 +596,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple2FBuffer(FloatBuffer buffer, List<Tup2fR> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 		{
 			Tup2fR current = v.get(i);
 			buffer.put(current.getX());
@@ -515,12 +620,17 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(Tup2dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		int length = v.length;
 
 		DoubleBuffer buffer = createDoubleBuffer(length * 2);
-
-		int i = 0;
-		for(; i < length; i++)
+		
+		for(int i = 0; i < length; i++)
 		{
 			Tup2dR current = v[i];
 			buffer.put(current.getX());
@@ -538,8 +648,14 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(DoubleBuffer buffer, Tup2dR... v)
 	{
-		int i = 0;
-		for(; i < v.length; i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < v.length; i++)
 		{
 			Tup2dR current = v[i];
 			buffer.put(current.getX());
@@ -557,12 +673,16 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(List<Tup2dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 
 		DoubleBuffer buffer = createDoubleBuffer(length * 2);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup2dR current = v.get(i);
 			buffer.put(current.getX());
@@ -580,8 +700,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple2DBuffer(DoubleBuffer buffer, List<Tup2dR> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 		{
 			Tup2dR current = v.get(i);
 			buffer.put(current.getX());
@@ -599,12 +724,17 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(Tup3fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		int length = v.length;
 		
 		FloatBuffer buffer = createFloatBuffer(length * 3);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup3fR current = v[i];
 			buffer.put(current.getX());
@@ -623,8 +753,14 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(FloatBuffer buffer, Tup3fR... v)
 	{
-		int i = 0;
-		for(; i < v.length; i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < v.length; i++)
 		{
 			Tup3fR current = v[i];
 			buffer.put(current.getX());
@@ -643,12 +779,16 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(List<Tup3fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		FloatBuffer buffer = createFloatBuffer(length * 3);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup3fR current = v.get(i);
 			buffer.put(current.getX());
@@ -667,8 +807,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple3FBuffer(FloatBuffer buffer, List<Tup3fR> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 		{
 			Tup3fR current = v.get(i);
 			buffer.put(current.getX());
@@ -687,12 +832,17 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(Tup3dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		int length = v.length;
 		
 		DoubleBuffer buffer = createDoubleBuffer(length * 3);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup3dR current = v[i];
 			buffer.put(current.getX());
@@ -711,8 +861,14 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(DoubleBuffer buffer, Tup3dR... v)
 	{
-		int i = 0;
-		for(; i < v.length; i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < v.length; i++)
 		{
 			Tup3dR current = v[i];
 			buffer.put(current.getX());
@@ -731,12 +887,16 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(List<Tup3dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		DoubleBuffer buffer = createDoubleBuffer(length * 3);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup3dR current = v.get(i);
 			buffer.put(current.getX());
@@ -755,8 +915,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple3DBuffer(DoubleBuffer buffer, List<Tup3dR> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 		{
 			Tup3dR current = v.get(i);
 			buffer.put(current.getX());
@@ -775,12 +940,17 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(Tup4fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		int length = v.length;
 		
 		FloatBuffer buffer = createFloatBuffer(length * 4);
 
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup4fR current = v[i];
 			buffer.put(current.getX());
@@ -800,8 +970,14 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(FloatBuffer buffer, Tup4fR... v)
 	{
-		int i = 0;
-		for(; i < v.length; i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < v.length; i++)
 		{
 			Tup4fR current = v[i];
 			buffer.put(current.getX());
@@ -822,12 +998,16 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(List<Tup4fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 		
 		FloatBuffer buffer = createFloatBuffer(length * 4);
-
-		int i = 0;
-		for(; i < length; i++)
+		
+		for(int i = 0; i < length; i++)
 		{
 			Tup4fR current = v.get(i);
 			buffer.put(current.getX());
@@ -847,8 +1027,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToTuple4FBuffer(FloatBuffer buffer, List<Tup4fR> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 		{
 			Tup4fR current = v.get(i);
 			buffer.put(current.getX());
@@ -868,12 +1053,17 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(Tup4dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		int length = v.length;
 
 		DoubleBuffer buffer = createDoubleBuffer(length * 4);
 		
-		int i = 0;
-		for(; i < length; i++)
+		for(int i = 0; i < length; i++)
 		{
 			Tup4dR current = v[i];
 			buffer.put(current.getX());
@@ -893,8 +1083,14 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(DoubleBuffer buffer, Tup4dR... v)
 	{
-		int i = 0;
-		for(; i < v.length; i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < v.length; i++)
 		{
 			Tup4dR current = v[i];
 			buffer.put(current.getX());
@@ -914,12 +1110,16 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(List<Tup4dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		int length = v.size();
 
 		DoubleBuffer buffer = createDoubleBuffer(length * 4);
-		
-		int i = 0;
-		for(; i < length; i++)
+
+		for(int i = 0; i < length; i++)
 		{
 			Tup4dR current = v.get(i);
 			buffer.put(current.getX());
@@ -939,8 +1139,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToTuple4DBuffer(DoubleBuffer buffer, List<Tup4dR> v)
 	{
-		int i = 0;
-		for(; i < v.size(); i++)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
+		for(int i = 0; i < v.size(); i++)
 		{
 			Tup4dR current = v.get(i);
 			buffer.put(current.getX());
@@ -972,6 +1177,11 @@ public class BufferUtils
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(ByteBuffer buffer, byte... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		copyToByteBuffer(buffer, v);
 		buffer.flip();
 		
@@ -985,6 +1195,11 @@ public class BufferUtils
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(List<Byte> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		ByteBuffer buffer = copyToByteBuffer(v);
 		buffer.flip();
 		
@@ -998,6 +1213,12 @@ public class BufferUtils
 	 */
 	public static ByteBuffer copyToFlippedByteBuffer(ByteBuffer buffer, List<Byte> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToByteBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1024,6 +1245,11 @@ public class BufferUtils
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(ShortBuffer buffer, short... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		copyToShortBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1037,6 +1263,11 @@ public class BufferUtils
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(List<Short> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		ShortBuffer buffer = copyToShortBuffer(v);
 		buffer.flip();
 		
@@ -1050,6 +1281,12 @@ public class BufferUtils
 	 */
 	public static ShortBuffer copyToFlippedShortBuffer(ShortBuffer buffer, List<Short> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToShortBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1076,6 +1313,11 @@ public class BufferUtils
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(IntBuffer buffer, int... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		copyToIntBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1089,6 +1331,11 @@ public class BufferUtils
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(List<Integer> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		IntBuffer buffer = copyToIntBuffer(v);
 		buffer.flip();
 		
@@ -1102,6 +1349,12 @@ public class BufferUtils
 	 */
 	public static IntBuffer copyToFlippedIntBuffer(IntBuffer buffer, List<Integer> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToIntBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1128,6 +1381,11 @@ public class BufferUtils
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(LongBuffer buffer, long... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		copyToLongBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1141,6 +1399,11 @@ public class BufferUtils
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(List<Long> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		LongBuffer buffer = copyToLongBuffer(v);
 		buffer.flip();
 		
@@ -1154,6 +1417,12 @@ public class BufferUtils
 	 */
 	public static LongBuffer copyToFlippedLongBuffer(LongBuffer buffer, List<Long> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToLongBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1180,6 +1449,11 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(FloatBuffer buffer, float... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		copyToFloatBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1193,6 +1467,11 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(List<Float> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		FloatBuffer buffer = copyToFloatBuffer(v);
 		buffer.flip();
 		
@@ -1206,6 +1485,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedFloatBuffer(FloatBuffer buffer, List<Float> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToFloatBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1232,6 +1517,11 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(DoubleBuffer buffer, double... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+		}
+		
 		copyToDoubleBuffer(buffer, v);
 		buffer.flip();
 
@@ -1245,6 +1535,11 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(List<Double> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		DoubleBuffer buffer = copyToDoubleBuffer(v);
 		buffer.flip();
 
@@ -1258,6 +1553,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedDoubleBuffer(DoubleBuffer buffer, List<Double> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToDoubleBuffer(buffer, v);
 		buffer.flip();
 
@@ -1272,6 +1573,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(Tup2fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		FloatBuffer buffer = copyToTuple2FBuffer(v);
 		buffer.flip();
 		
@@ -1286,6 +1593,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(FloatBuffer buffer, Tup2fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		copyToTuple2FBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1300,6 +1614,11 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(List<Tup2fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		FloatBuffer buffer = copyToTuple2FBuffer(v);
 		buffer.flip();
 		
@@ -1314,6 +1633,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple2FBuffer(FloatBuffer buffer, List<Tup2fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToTuple2FBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1328,6 +1653,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(Tup2dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		DoubleBuffer buffer = copyToTuple2DBuffer(v);
 		buffer.flip();
 		
@@ -1342,6 +1673,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(DoubleBuffer buffer, Tup2dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		copyToTuple2DBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1356,6 +1694,11 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(List<Tup2dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		DoubleBuffer buffer = copyToTuple2DBuffer(v);
 		buffer.flip();
 		
@@ -1370,6 +1713,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple2DBuffer(DoubleBuffer buffer, List<Tup2dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToTuple2DBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1384,6 +1733,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(Tup3fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		FloatBuffer buffer = copyToTuple3FBuffer(v);
 		buffer.flip();
 		
@@ -1398,6 +1753,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(FloatBuffer buffer, Tup3fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		copyToTuple3FBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1412,6 +1774,11 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(List<Tup3fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		FloatBuffer buffer = copyToTuple3FBuffer(v);
 		buffer.flip();
 		
@@ -1426,6 +1793,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple3FBuffer(FloatBuffer buffer, List<Tup3fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToTuple3FBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1440,6 +1813,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(Tup3dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		DoubleBuffer buffer = copyToTuple3DBuffer(v);
 		buffer.flip();
 		
@@ -1454,6 +1833,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(DoubleBuffer buffer, Tup3dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		copyToTuple3DBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1468,6 +1854,11 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(List<Tup3dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		DoubleBuffer buffer = copyToTuple3DBuffer(v);
 		buffer.flip();
 		
@@ -1482,6 +1873,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple3DBuffer(DoubleBuffer buffer, List<Tup3dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToTuple3DBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1496,6 +1893,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(Tup4fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		FloatBuffer buffer = copyToTuple4FBuffer(v);
 		buffer.flip();
 		
@@ -1510,6 +1913,13 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(FloatBuffer buffer, Tup4fR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		copyToTuple4FBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1524,6 +1934,11 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(List<Tup4fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		FloatBuffer buffer = copyToTuple4FBuffer(v);
 		buffer.flip();
 		
@@ -1538,6 +1953,12 @@ public class BufferUtils
 	 */
 	public static FloatBuffer copyToFlippedTuple4FBuffer(FloatBuffer buffer, List<Tup4fR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToTuple4FBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1552,6 +1973,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(Tup4dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		DoubleBuffer buffer = copyToTuple4DBuffer(v);
 		buffer.flip();
 		
@@ -1566,6 +1993,13 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(DoubleBuffer buffer, Tup4dR... v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < v.length; i++)
+				if(v[i] == null) throw new RuntimeException();
+		}
+		
 		copyToTuple4DBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1580,6 +2014,11 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(List<Tup4dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		DoubleBuffer buffer = copyToTuple4DBuffer(v);
 		buffer.flip();
 		
@@ -1594,6 +2033,12 @@ public class BufferUtils
 	 */
 	public static DoubleBuffer copyToFlippedTuple4DBuffer(DoubleBuffer buffer, List<Tup4dR> v)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(v == null) throw new ArgumentNullException("v");
+		}
+		
 		copyToTuple4DBuffer(buffer, v);
 		buffer.flip();
 		
@@ -1602,8 +2047,11 @@ public class BufferUtils
 	
 	public static FloatBuffer put(FloatBuffer buffer, Tup2fR tuple)
 	{
-		if(buffer == null) throw new ArgumentNullException("buffer");
-		if(tuple == null) throw new ArgumentNullException("tuple");
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(tuple == null) throw new ArgumentNullException("tuple");
+		}
 		
 		buffer.put(tuple.getX());
 		buffer.put(tuple.getY());
@@ -1613,11 +2061,16 @@ public class BufferUtils
 	
 	public static FloatBuffer put(FloatBuffer buffer, Tup2fR... tuples)
 	{
-		if(buffer == null) throw new ArgumentNullException("buffer");
-		
-		for(Tup2fR t : tuples)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
-			if(t == null) throw new RuntimeException();
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < tuples.length; i++)
+				if(tuples[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < tuples.length; i++)
+		{
+			Tup2fR t = tuples[i];
 			buffer.put(t.getX());
 			buffer.put(t.getY());
 		}
@@ -1627,8 +2080,11 @@ public class BufferUtils
 	
 	public static FloatBuffer put(FloatBuffer buffer, Tup3fR tuple)
 	{
-		if(buffer == null) throw new ArgumentNullException("buffer");
-		if(tuple == null) throw new ArgumentNullException("tuple");
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(tuple == null) throw new ArgumentNullException("tuple");
+		}
 		
 		buffer.put(tuple.getX());
 		buffer.put(tuple.getY());
@@ -1639,11 +2095,16 @@ public class BufferUtils
 	
 	public static FloatBuffer put(FloatBuffer buffer, Tup3fR... tuples)
 	{
-		if(buffer == null) throw new ArgumentNullException("buffer");
-		
-		for(Tup3fR t : tuples)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
-			if(t == null) throw new RuntimeException();
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < tuples.length; i++)
+				if(tuples[i] == null) throw new RuntimeException();
+		}
+
+		for(int i = 0; i < tuples.length; i++)
+		{
+			Tup3fR t = tuples[i];
 			buffer.put(t.getX());
 			buffer.put(t.getY());
 			buffer.put(t.getZ());
@@ -1654,8 +2115,11 @@ public class BufferUtils
 	
 	public static FloatBuffer put(FloatBuffer buffer, Tup4fR tuple)
 	{
-		if(buffer == null) throw new ArgumentNullException("buffer");
-		if(tuple == null) throw new ArgumentNullException("tuple");
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			if(tuple == null) throw new ArgumentNullException("tuple");
+		}
 		
 		buffer.put(tuple.getX());
 		buffer.put(tuple.getY());
@@ -1667,11 +2131,16 @@ public class BufferUtils
 	
 	public static FloatBuffer put(FloatBuffer buffer, Tup4fR... tuples)
 	{
-		if(buffer == null) throw new ArgumentNullException("buffer");
-		
-		for(Tup4fR t : tuples)
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
-			if(t == null) throw new RuntimeException();
+			if(buffer == null) throw new ArgumentNullException("buffer");
+			for(int i = 0; i < tuples.length; i++)
+				if(tuples[i] == null) throw new RuntimeException();
+		}
+		
+		for(int i = 0; i < tuples.length; i++)
+		{
+			Tup4fR t = tuples[i];
 			buffer.put(t.getX());
 			buffer.put(t.getY());
 			buffer.put(t.getZ());

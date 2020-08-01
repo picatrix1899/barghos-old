@@ -24,8 +24,8 @@ SOFTWARE.
 
 package org.barghos.math.geometry;
 
-import org.barghos.core.tuple.tuple4.Tup4f;
-import org.barghos.core.tuple.tuple4.Tup4fPool;
+import org.barghos.core.tuple4.Tup4f;
+import org.barghos.core.tuple4.pool.Tup4fPool;
 import org.barghos.math.matrix.Mat4;
 import org.barghos.math.vector.vec3.Vec3;
 import org.barghos.math.vector.vec3.Vec3Pool;

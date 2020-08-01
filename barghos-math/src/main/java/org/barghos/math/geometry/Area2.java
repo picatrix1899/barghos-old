@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.math.geometry;
 
-import org.barghos.core.tuple.tuple2.Tup2fHelper;
+import org.barghos.core.tuple2.Tup2fHelper;
 import org.barghos.math.point.Point2;
 import org.barghos.math.vector.vec2.Vec2;
 import org.barghos.math.vector.vec2.Vec2Pool;

@@ -24,7 +24,7 @@ SOFTWARE.
 
 package org.barghos.math.geometry;
 
-import org.barghos.core.tuple.tuple2.Tup2fR;
+import org.barghos.core.tuple2.api.Tup2fR;
 import org.barghos.math.point.Point2;
 
 /**
