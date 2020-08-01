@@ -1,4 +1,12 @@
+---
+mathjax: true
+---
+
+{% mathjax.html %}
+
 # Barghos
+
+$$f(x)=x^2$$
 
 ## Projects
 
