@@ -22,11 +22,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.tuple2.api;
+
 /**
- * This package contains api interfaces of multiple variants of 2-dimensional tuples.
+ * This interface grants readonly access to any 2-dimensional char tuples.
+ * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-package org.barghos.core.tuple2.api;
+public interface Tup2cR
+{
+	/**
+	 * Returns the x value from the tuple.
+	 * 
+	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	char getX();
+	
+	/**
+	 * Returns the y value from the tuple.
+	 * 
+	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	char getY();
+}
