@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,24 +31,24 @@ package org.barghos.core.tuple2.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup2i
- * @see Tup2iW
- * @see PTup2i
- * @see Tup2iHelper
- * @see Tup2iPool
  */
 public interface Tup2iR
 {
 	/**
 	 * Returns the x value from the tuple.
+	 * 
 	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	int getX();
 	
 	/**
 	 * Returns the y value from the tuple.
+	 * 
 	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	int getY();
 }

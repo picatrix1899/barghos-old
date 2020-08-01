@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,6 @@ package org.barghos.core.tuple2.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup2f
- * @see Tup2fR
- * @see PTup2f
- * @see Tup2fHelper
- * @see Tup2fPool
  */
 public interface Tup2fW
 {
@@ -46,6 +40,8 @@ public interface Tup2fW
 	 * @param x The new x value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup2fW setX(float x);
 	
@@ -55,6 +51,8 @@ public interface Tup2fW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup2fW setY(float y);
 	
@@ -65,7 +63,7 @@ public interface Tup2fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 * @since 1.0
 	 */
 	Tup2fW set(Tup2fR t);
 	
@@ -79,6 +77,8 @@ public interface Tup2fW
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup2fW set(float value);
 	
@@ -89,6 +89,8 @@ public interface Tup2fW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup2fW set(float x, float y);
 }
