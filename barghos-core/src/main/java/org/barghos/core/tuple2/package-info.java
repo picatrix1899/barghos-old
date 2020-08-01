@@ -23,7 +23,8 @@ SOFTWARE.
 */
 
 /**
- * This package contains multiple variants of 2-dimensional tuples.
+ * This package contains multiple variants of 2-dimensional tuples and corresponding utilities
+ * like instance pools, api-layers, readonly versions and helpers.
  * 
  * @author picatrix1899
  */

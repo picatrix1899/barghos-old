@@ -33,17 +33,30 @@ import org.barghos.core.tuple2.api.Tup2bR;
 
 /**
  * This specialized instance pool contains instances of the type {@link Tup2b}.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public final class Tup2bPool
 {
-	
+	/**
+	 * This variable contains the internal pool that is backing this specialized pool..
+	 */
 	private static IPool<Tup2b> pool = new DequePool<>(Tup2b.class);
 	
+	/**
+	 * This class contains only static methods and therefore it should not be possible to create
+	 * instances from it.
+	 */
 	private Tup2bPool() { }
 	
 	/**
 	 * Returns an instance of {@link Tup2b} from the pool and resets it.
+	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup2b get()
 	{
@@ -52,8 +65,12 @@ public final class Tup2bPool
 	
 	/**
 	 * Returns an instance of {@link Tup2b} from the pool and sets its components to the values of t.
+	 * 
 	 * @param t A tuple that is used as initial values of the returned tuple.
+	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup2b get(Tup2bR t)
 	{
@@ -67,7 +84,12 @@ public final class Tup2bPool
 	
 	/**
 	 * Returns an instance of {@link Tup2b} from the pool and sets its components to scalar.
+	 * 
 	 * @param scalar A value that the components are set to.
+	 * 
+	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup2b get(byte scalar)
 	{
@@ -76,8 +98,13 @@ public final class Tup2bPool
 	
 	/**
 	 * Returns an instance of {@link Tup2b} from the pool and sets its components to x and y.
+	 * 
 	 * @param x The x component.
 	 * @param y The y component.
+	 * 
+	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup2b get(byte x, byte y)
 	{
@@ -87,7 +114,10 @@ public final class Tup2bPool
 	/**
 	 * Ensures a certain amount of instances to be present in the pool at any time.
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
+	 * 
 	 * @param count The amount of instances present in the pool at any time.
+	 * 
+	 * @since 1.0
 	 */
 	public static void ensure(int count)
 	{
@@ -101,7 +131,10 @@ public final class Tup2bPool
 	
 	/**
 	 * Stores {@link Tup2b} instances in the pool for later reuse.
+	 * 
 	 * @param elements The instances to store.
+	 * 
+	 * @since 1.0
 	 */
 	public static void store(Tup2b... instances)
 	{
@@ -111,7 +144,10 @@ public final class Tup2bPool
 	/** 
 	 * Sets the internal used pool. This can be used for replacing the default pool
 	 * by a more efficient pool or a debuggable pool.
-	 * @param pool The new pool instance the specialized {@link Tup2bPool} should use internal. 
+	 * 
+	 * @param pool The new pool instance the specialized {@link Tup2bPool} should use internal.
+	 * 
+	 * @since 1.0
 	 */
 	public static void setInternalPool(IPool<Tup2b> pool)
 	{
@@ -121,15 +157,17 @@ public final class Tup2bPool
 		}
 		
 		Tup2bPool.pool = pool;
-		}
+	}
 	
 	/**
 	 * Returns the internal used pool instance.
+	 * 
 	 * @return The internal used pool instance of the specialized pool {@link Tup2bPool}.
+	 * 
+	 * @since 1.0
 	 */
 	public static IPool<Tup2b> getInternalPool()
 	{
 		return pool;
 	}
-	
 }
