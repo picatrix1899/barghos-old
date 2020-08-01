@@ -23,8 +23,10 @@ SOFTWARE.
 */
 
 /**
+ * This package contains instance pools of multiple variants of 2-dimensional tuples.
+ * 
  * @author picatrix1899
  *
+ * @since 1.0
  */
-
 package org.barghos.core.tuple2.pool;
