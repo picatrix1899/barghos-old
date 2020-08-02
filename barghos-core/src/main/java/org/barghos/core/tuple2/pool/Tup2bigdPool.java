@@ -54,7 +54,7 @@ public final class Tup2bigdPool
 	private Tup2bigdPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup2b} from the pool and resets it.
+	 * Returns an instance of {@link Tup2bigd} from the pool and resets it.
 	 * 
 	 * @return A stored instance.
 	 * 
@@ -66,7 +66,7 @@ public final class Tup2bigdPool
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2b} from the pool and sets its components to the values of t.
+	 * Returns an instance of {@link Tup2bigd} from the pool and sets its components to the values of t.
 	 * 
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * 
@@ -87,7 +87,7 @@ public final class Tup2bigdPool
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2b} from the pool and sets its components to scalar.
+	 * Returns an instance of {@link Tup2bigd} from the pool and sets its components to scalar.
 	 * 
 	 * @param scalar A value that the components are set to.
 	 * 
@@ -106,7 +106,7 @@ public final class Tup2bigdPool
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2b} from the pool and sets its components to x and y.
+	 * Returns an instance of {@link Tup2bigd} from the pool and sets its components to x and y.
 	 * 
 	 * @param x The x component.
 	 * @param y The y component.
@@ -145,7 +145,7 @@ public final class Tup2bigdPool
 	}
 	
 	/**
-	 * Stores {@link Tup2b} instances in the pool for later reuse.
+	 * Stores {@link Tup2bigd} instances in the pool for later reuse.
 	 * 
 	 * @param elements The instances to store.
 	 * 

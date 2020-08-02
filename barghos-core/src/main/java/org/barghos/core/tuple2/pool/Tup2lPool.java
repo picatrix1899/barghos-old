@@ -33,7 +33,7 @@ import org.barghos.core.tuple2.Tup2l;
 import org.barghos.core.tuple2.api.Tup2lR;
 
 /**
- * This specialized instance pool contains instances of the type {@link Tup2f}.
+ * This specialized instance pool contains instances of the type {@link Tup2l}.
  * 
  * @author picatrix1899
  * 
