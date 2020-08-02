@@ -83,17 +83,17 @@ public final class Tup2iPool
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2i} from the pool and sets its components to scalar.
+	 * Returns an instance of {@link Tup2i} from the pool and sets its components to value.
 	 * 
-	 * @param scalar A value that the components are set to.
+	 * @param value A value that the components are set to.
 	 * 
 	 * @return A stored instance.
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup2i get(int scalar)
+	public static Tup2i get(int value)
 	{
-		return pool.get().set(scalar);
+		return pool.get().set(value);
 	}
 	
 	/**

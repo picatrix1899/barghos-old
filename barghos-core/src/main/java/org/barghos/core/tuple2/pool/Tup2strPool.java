@@ -85,22 +85,22 @@ public final class Tup2strPool
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2str} from the pool and sets its components to scalar.
+	 * Returns an instance of {@link Tup2str} from the pool and sets its components to value.
 	 * 
-	 * @param scalar A value that the components are set to.
+	 * @param value A value that the components are set to.
 	 * 
 	 * @return A stored instance.
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup2str get(String scalar)
+	public static Tup2str get(String value)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
-			if(scalar == null) throw new ArgumentNullException("value");
+			if(value == null) throw new ArgumentNullException("value");
 		}
 		
-		return pool.get().set(scalar);
+		return pool.get().set(value);
 	}
 	
 	/**
