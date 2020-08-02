@@ -26,10 +26,10 @@ package org.barghos.core.tuple2;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2lR;
+import org.barghos.core.tuple2.api.Tup2sR;
 
 /**
- * Represents a persistent 2-dimensional byte tuple.
+ * Represents a persistent 2-dimensional short tuple.
  * This is a readonly version of a 2-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
@@ -43,20 +43,20 @@ import org.barghos.core.tuple2.api.Tup2lR;
  * 
  * @since 1.0
  */
-public abstract class PTup2l implements	Tup2lR
+public abstract class PTup2s implements	Tup2sR
 {
-	private PTup2l() { }
+	private PTup2s() { }
 	
 	/**
-	 * Generates a new readonly {@link PTup2l} from an existing instance of {@link Tup2lR} and adopts the values.
+	 * Generates a new readonly {@link PTup2s} from an existing instance of {@link Tup2sR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2lR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2sR} to adopt the values from.
 	 * 
-	 * @return A new readonly {@link PTup2l}.
+	 * @return A new readonly {@link PTup2s}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup2l gen(Tup2lR t)
+	public static PTup2s gen(Tup2sR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -67,48 +67,54 @@ public abstract class PTup2l implements	Tup2lR
 	}
 	
 	/**
-	 * Generates a new readonly {@link PTup2l} with all values set to a single value.
+	 * Generates a new readonly {@link PTup2s} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
-	 * @return A new readonly {@link PTup2l}.
+	 * @return A new readonly {@link PTup2s}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup2l gen(long value)
+	public static PTup2s gen(short value)
 	{
 		return gen(value, value);
 	}
 
 	/**
-	 * Generates a new readonly {@link PTup2l} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link PTup2s} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
 	 * 
-	 * @return A new readonly {@link PTup2l}.
+	 * @return A new readonly {@link PTup2s}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup2l gen(long x, long y)
+	public static PTup2s gen(short x, short y)
 	{
-		return new PTup2l()
+		return new PTup2s()
 		{
 			@Override
-			public long getX() { return x; }
+			public short getX() { return x; }
 			
 			@Override
-			public long getY() { return y; }
+			public short getY() { return y; }
 		};
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "ptup2s(x=" + getX() + ", y=" + getY() + ")";
+	}
+
 	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
+		result = prime * result + getX();
+		result = prime * result + getY();
 		return result;
 	}
 
@@ -117,18 +123,12 @@ public abstract class PTup2l implements	Tup2lR
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2lR)) return false;
+		if (!(obj instanceof Tup2sR)) return false;
 		
-		Tup2lR other = (Tup2lR) obj;
+		Tup2sR other = (Tup2sR) obj;
 		if (getX() != other.getX()) return false;
 		if (getY() != other.getY()) return false;
 		
 		return true;
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "ptup2l(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

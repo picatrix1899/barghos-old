@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@ package org.barghos.core.tuple2;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2dR;
-import org.barghos.core.tuple2.api.Tup2dW;
 
 /**
  * Represents a persistent 2-dimensional double tuple.
@@ -43,13 +42,6 @@ import org.barghos.core.tuple2.api.Tup2dW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup2d#gen(double)
- * @see PTup2d#gen(Tup2dR)
- * @see PTup2d#gen(double, double)
- * @see Tup2d
- * @see Tup2dR
- * @see Tup2dW
  */
 public abstract class PTup2d implements	Tup2dR
 {
@@ -61,6 +53,8 @@ public abstract class PTup2d implements	Tup2dR
 	 * @param t An existing implementation of {@link Tup2dR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup2d}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2d gen(Tup2dR t)
 	{
@@ -78,6 +72,8 @@ public abstract class PTup2d implements	Tup2dR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup2d}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2d gen(double value)
 	{
@@ -91,6 +87,8 @@ public abstract class PTup2d implements	Tup2dR
 	 * @param y The y value.
 	 * 
 	 * @return A new readonly {@link PTup2d}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2d gen(double x, double y)
 	{
@@ -102,12 +100,6 @@ public abstract class PTup2d implements	Tup2dR
 			@Override
 			public double getY() { return y; }
 		};
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "ptup2d(x=" + getX() + ", y=" + getY() + ")";
 	}
 
 	@Override
@@ -133,5 +125,11 @@ public abstract class PTup2d implements	Tup2dR
 		if (Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
 		if (Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup2d(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

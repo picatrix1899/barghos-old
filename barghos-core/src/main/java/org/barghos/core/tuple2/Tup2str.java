@@ -28,11 +28,11 @@ import java.io.Serializable;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2fR;
-import org.barghos.core.tuple2.api.Tup2fW;
+import org.barghos.core.tuple2.api.Tup2strR;
+import org.barghos.core.tuple2.api.Tup2strW;
 
 /**
- * This class represents a 2-dimensional float tuple.
+ * This class represents a 2-dimensional string tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -40,7 +40,7 @@ import org.barghos.core.tuple2.api.Tup2fW;
  * 
  * @since 1.0
  */
-public class Tup2f implements Tup2fR, Tup2fW, Serializable
+public class Tup2str implements Tup2strR, Tup2strW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -50,35 +50,37 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	/**
 	 * The x component.
 	 */
-	protected float x;
+	protected String x;
 
 	/**
 	 * The y component.
 	 */
-	protected float y;
+	protected String y;
 	
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f()
+	public Tup2str()
 	{
-		set(0.0f);
+		set("");
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2fR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup2strR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2strR} to adopt the values from.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(Tup2fR t)
+	public Tup2str(Tup2strR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
 		}
 		
 		set(t);
@@ -91,8 +93,13 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(float value)
+	public Tup2str(String value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		set(value);
 	}
 	
@@ -104,59 +111,88 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(float x, float y)
+	public Tup2str(String x, String y)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
 		set(x, y);
 	}
 	
 	@Override
-	public float getX()
+	public String getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public float getY()
+	public String getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public Tup2f setX(float x)
+	public Tup2str setX(String x)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+		}
+		
 		this.x = x;
 		
 		return this;
 	}
 
 	@Override
-	public Tup2f setY(float y)
+	public Tup2str setY(String y)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
 		this.y = y;
 		
 		return this;
 	}
 	
 	@Override
-	public Tup2f set(Tup2fR t)
+	public Tup2str set(Tup2strR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
 		}
 		
 		return set(t.getX(), t.getY());
 	}
 	
 	@Override
-	public Tup2f set(float value)
+	public Tup2str set(String value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		return set(value, value);
 	}
 	
 	@Override
-	public Tup2f set(float x, float y)
+	public Tup2str set(String x, String y)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
 		return setX(x).setY(y);
 	}
 
@@ -165,8 +201,8 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + getX().hashCode();
+		result = prime * result + getY().hashCode();
 		return result;
 	}
 
@@ -175,23 +211,23 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2fR)) return false;
+		if (!(obj instanceof Tup2strR)) return false;
 		
-		Tup2fR other = (Tup2fR) obj;
-		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-		if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+		Tup2strR other = (Tup2strR) obj;
+		if(getX().equals(other.getX())) return false;
+		if(getY().equals(other.getY())) return false;
 		return true;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup2f(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2str(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
 	@Override
-	public Tup2f clone()
+	public Tup2str clone()
 	{
-		return new Tup2f(this);
+		return new Tup2str(this);
 	}
 }

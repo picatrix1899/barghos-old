@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@ package org.barghos.core.tuple2;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2iR;
-import org.barghos.core.tuple2.api.Tup2iW;
 
 /**
  * Represents a persistent 2-dimensional int tuple.
@@ -43,13 +42,6 @@ import org.barghos.core.tuple2.api.Tup2iW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup2i#gen(int)
- * @see PTup2i#gen(Tup2iR)
- * @see PTup2i#gen(int, int)
- * @see Tup2i
- * @see Tup2iR
- * @see Tup2iW
  */
 public abstract class PTup2i implements	Tup2iR
 {
@@ -61,6 +53,8 @@ public abstract class PTup2i implements	Tup2iR
 	 * @param t An existing implementation of {@link Tup2iR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup2i}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2i gen(Tup2iR t)
 	{
@@ -78,6 +72,8 @@ public abstract class PTup2i implements	Tup2iR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup2i}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2i gen(int value)
 	{
@@ -91,6 +87,8 @@ public abstract class PTup2i implements	Tup2iR
 	 * @param y The y value.
 	 * 
 	 * @return A new readonly {@link PTup2i}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2i gen(int x, int y)
 	{
@@ -104,12 +102,6 @@ public abstract class PTup2i implements	Tup2iR
 		};
 	}
 	
-	@Override
-	public String toString()
-	{
-		return "ptup2i(x=" + getX() + ", y=" + getY() + ")";
-	}
-
 	@Override
 	public int hashCode()
 	{
@@ -132,5 +124,11 @@ public abstract class PTup2i implements	Tup2iR
 		if (getY() != other.getY()) return false;
 		
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup2i(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@ package org.barghos.core.tuple2;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2bR;
-import org.barghos.core.tuple2.api.Tup2bW;
 
 /**
  * Represents a persistent 2-dimensional byte tuple.
@@ -43,15 +42,8 @@ import org.barghos.core.tuple2.api.Tup2bW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup2b#gen(byte)
- * @see PTup2b#gen(Tup2bR)
- * @see PTup2b#gen(byte, byte)
- * @see Tup2b
- * @see Tup2bR
- * @see Tup2bW
  */
-public abstract class PTup2b implements	Tup2bR
+public abstract class PTup2b implements Tup2bR
 {
 	private PTup2b() { }
 	
@@ -61,6 +53,8 @@ public abstract class PTup2b implements	Tup2bR
 	 * @param t An existing implementation of {@link Tup2bR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup2b}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2b gen(Tup2bR t)
 	{
@@ -78,6 +72,8 @@ public abstract class PTup2b implements	Tup2bR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup2b}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2b gen(byte value)
 	{
@@ -91,6 +87,8 @@ public abstract class PTup2b implements	Tup2bR
 	 * @param y The y value.
 	 * 
 	 * @return A new readonly {@link PTup2b}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2b gen(byte x, byte y)
 	{
@@ -104,12 +102,6 @@ public abstract class PTup2b implements	Tup2bR
 		};
 	}
 	
-	@Override
-	public String toString()
-	{
-		return "ptup2b(x=" + getX() + ", y=" + getY() + ")";
-	}
-
 	@Override
 	public int hashCode()
 	{
@@ -133,4 +125,11 @@ public abstract class PTup2b implements	Tup2bR
 		
 		return true;
 	}
+	
+		@Override
+	public String toString()
+	{
+		return "ptup2b(x=" + getX() + ", y=" + getY() + ")";
+	}
+
 }

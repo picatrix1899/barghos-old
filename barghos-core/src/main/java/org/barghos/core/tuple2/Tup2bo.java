@@ -28,11 +28,11 @@ import java.io.Serializable;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2fR;
-import org.barghos.core.tuple2.api.Tup2fW;
+import org.barghos.core.tuple2.api.Tup2boR;
+import org.barghos.core.tuple2.api.Tup2boW;
 
 /**
- * This class represents a 2-dimensional float tuple.
+ * This class represents a 2-dimensional boolean tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -40,7 +40,7 @@ import org.barghos.core.tuple2.api.Tup2fW;
  * 
  * @since 1.0
  */
-public class Tup2f implements Tup2fR, Tup2fW, Serializable
+public class Tup2bo implements Tup2boR, Tup2boW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -50,31 +50,31 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	/**
 	 * The x component.
 	 */
-	protected float x;
+	protected boolean x;
 
 	/**
 	 * The y component.
 	 */
-	protected float y;
+	protected boolean y;
 	
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f()
+	public Tup2bo()
 	{
-		set(0.0f);
+		set(false);
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2fR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup2boR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2boR} to adopt the values from.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(Tup2fR t)
+	public Tup2bo(Tup2boR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -91,7 +91,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(float value)
+	public Tup2bo(boolean value)
 	{
 		set(value);
 	}
@@ -104,25 +104,25 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(float x, float y)
+	public Tup2bo(boolean x, boolean y)
 	{
 		set(x, y);
 	}
 	
 	@Override
-	public float getX()
+	public boolean getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public float getY()
+	public boolean getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public Tup2f setX(float x)
+	public Tup2bo setX(boolean x)
 	{
 		this.x = x;
 		
@@ -130,7 +130,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	}
 
 	@Override
-	public Tup2f setY(float y)
+	public Tup2bo setY(boolean y)
 	{
 		this.y = y;
 		
@@ -138,7 +138,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	}
 	
 	@Override
-	public Tup2f set(Tup2fR t)
+	public Tup2bo set(Tup2boR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -149,13 +149,13 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	}
 	
 	@Override
-	public Tup2f set(float value)
+	public Tup2bo set(boolean value)
 	{
 		return set(value, value);
 	}
 	
 	@Override
-	public Tup2f set(float x, float y)
+	public Tup2bo set(boolean x, boolean y)
 	{
 		return setX(x).setY(y);
 	}
@@ -165,8 +165,8 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + (getX() ? 1 : 0);
+		result = prime * result + (getY() ? 1 : 0);
 		return result;
 	}
 
@@ -175,23 +175,23 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2fR)) return false;
+		if (!(obj instanceof Tup2boR)) return false;
 		
-		Tup2fR other = (Tup2fR) obj;
-		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-		if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+		Tup2boR other = (Tup2boR) obj;
+		if(getX() != other.getX()) return false;
+		if(getY() != other.getY()) return false;
 		return true;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup2f(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2bo(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
 	@Override
-	public Tup2f clone()
+	public Tup2bo clone()
 	{
-		return new Tup2f(this);
+		return new Tup2bo(this);
 	}
 }

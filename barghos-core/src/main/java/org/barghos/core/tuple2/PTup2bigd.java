@@ -24,12 +24,14 @@ SOFTWARE.
 
 package org.barghos.core.tuple2;
 
+import java.math.BigDecimal;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2lR;
+import org.barghos.core.tuple2.api.Tup2bigdR;
 
 /**
- * Represents a persistent 2-dimensional byte tuple.
+ * Represents a persistent 2-dimensional big decimal tuple.
  * This is a readonly version of a 2-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
@@ -43,62 +45,75 @@ import org.barghos.core.tuple2.api.Tup2lR;
  * 
  * @since 1.0
  */
-public abstract class PTup2l implements	Tup2lR
+public abstract class PTup2bigd implements Tup2bigdR
 {
-	private PTup2l() { }
+	private PTup2bigd() { }
 	
 	/**
-	 * Generates a new readonly {@link PTup2l} from an existing instance of {@link Tup2lR} and adopts the values.
+	 * Generates a new readonly {@link PTup2bigd} from an existing instance of {@link Tup2bigdR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2lR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2bigdR} to adopt the values from.
 	 * 
-	 * @return A new readonly {@link PTup2l}.
+	 * @return A new readonly {@link PTup2bigd}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup2l gen(Tup2lR t)
+	public static PTup2bigd gen(Tup2bigdR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
 		}
 		
 		return gen(t.getX(), t.getY());
 	}
 	
 	/**
-	 * Generates a new readonly {@link PTup2l} with all values set to a single value.
+	 * Generates a new readonly {@link PTup2bigd} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
-	 * @return A new readonly {@link PTup2l}.
+	 * @return A new readonly {@link PTup2bigd}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup2l gen(long value)
+	public static PTup2bigd gen(BigDecimal value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		return gen(value, value);
 	}
 
 	/**
-	 * Generates a new readonly {@link PTup2l} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link PTup2bigd} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
 	 * 
-	 * @return A new readonly {@link PTup2l}.
+	 * @return A new readonly {@link PTup2bigd}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup2l gen(long x, long y)
+	public static PTup2bigd gen(BigDecimal x, BigDecimal y)
 	{
-		return new PTup2l()
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
+		return new PTup2bigd()
 		{
 			@Override
-			public long getX() { return x; }
+			public BigDecimal getX() { return x; }
 			
 			@Override
-			public long getY() { return y; }
+			public BigDecimal getY() { return y; }
 		};
 	}
 	
@@ -107,8 +122,8 @@ public abstract class PTup2l implements	Tup2lR
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
+		result = prime * result + getX().hashCode();
+		result = prime * result + getY().hashCode();
 		return result;
 	}
 
@@ -117,18 +132,18 @@ public abstract class PTup2l implements	Tup2lR
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2lR)) return false;
+		if (!(obj instanceof Tup2bigdR)) return false;
 		
-		Tup2lR other = (Tup2lR) obj;
-		if (getX() != other.getX()) return false;
-		if (getY() != other.getY()) return false;
+		Tup2bigdR other = (Tup2bigdR) obj;
+		if (!getX().equals(other.getX())) return false;
+		if (!getY().equals(other.getY())) return false;
 		
 		return true;
 	}
 	
-	@Override
+		@Override
 	public String toString()
 	{
-		return "ptup2l(x=" + getX() + ", y=" + getY() + ")";
+		return "ptup2bigd(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

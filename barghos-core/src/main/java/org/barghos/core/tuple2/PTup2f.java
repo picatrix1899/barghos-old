@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@ package org.barghos.core.tuple2;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2fR;
-import org.barghos.core.tuple2.api.Tup2fW;
 
 /**
  * Represents a persistent 2-dimensional float tuple.
@@ -43,13 +42,6 @@ import org.barghos.core.tuple2.api.Tup2fW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup2f#gen(float)
- * @see PTup2f#gen(Tup2fR)
- * @see PTup2f#gen(float, float)
- * @see Tup2f
- * @see Tup2fR
- * @see Tup2fW
  */
 public abstract class PTup2f implements	Tup2fR
 {
@@ -61,6 +53,8 @@ public abstract class PTup2f implements	Tup2fR
 	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup2f}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2f gen(Tup2fR t)
 	{
@@ -78,6 +72,8 @@ public abstract class PTup2f implements	Tup2fR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup2f}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2f gen(float value)
 	{
@@ -91,6 +87,8 @@ public abstract class PTup2f implements	Tup2fR
 	 * @param y The y value.
 	 * 
 	 * @return A new readonly {@link PTup2f}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup2f gen(float x, float y)
 	{
@@ -102,12 +100,6 @@ public abstract class PTup2f implements	Tup2fR
 			@Override
 			public float getY() { return y; }
 		};
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "ptup2f(x=" + getX() + ", y=" + getY() + ")";
 	}
 
 	@Override
@@ -131,5 +123,11 @@ public abstract class PTup2f implements	Tup2fR
 		if (Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
 		if (Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup2f(x=" + getX() + ", y=" + getY() + ")";
 	}
 }

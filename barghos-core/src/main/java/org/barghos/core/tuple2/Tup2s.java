@@ -28,11 +28,11 @@ import java.io.Serializable;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple2.api.Tup2fR;
-import org.barghos.core.tuple2.api.Tup2fW;
+import org.barghos.core.tuple2.api.Tup2sR;
+import org.barghos.core.tuple2.api.Tup2sW;
 
 /**
- * This class represents a 2-dimensional float tuple.
+ * This class represents a 2-dimensional short tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -40,7 +40,7 @@ import org.barghos.core.tuple2.api.Tup2fW;
  * 
  * @since 1.0
  */
-public class Tup2f implements Tup2fR, Tup2fW, Serializable
+public class Tup2s implements Tup2sR, Tup2sW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -50,31 +50,31 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	/**
 	 * The x component.
 	 */
-	protected float x;
+	protected short x;
 
 	/**
 	 * The y component.
 	 */
-	protected float y;
+	protected short y;
 	
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f()
+	public Tup2s()
 	{
-		set(0.0f);
+		set((short)0);
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup2fR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup2sR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup2fR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup2sR} to adopt the values from.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(Tup2fR t)
+	public Tup2s(Tup2sR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -91,7 +91,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(float value)
+	public Tup2s(short value)
 	{
 		set(value);
 	}
@@ -104,25 +104,25 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup2f(float x, float y)
+	public Tup2s(short x, short y)
 	{
 		set(x, y);
 	}
 	
 	@Override
-	public float getX()
+	public short getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public float getY()
+	public short getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public Tup2f setX(float x)
+	public Tup2s setX(short x)
 	{
 		this.x = x;
 		
@@ -130,7 +130,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	}
 
 	@Override
-	public Tup2f setY(float y)
+	public Tup2s setY(short y)
 	{
 		this.y = y;
 		
@@ -138,7 +138,7 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	}
 	
 	@Override
-	public Tup2f set(Tup2fR t)
+	public Tup2s set(Tup2sR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -149,13 +149,13 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	}
 	
 	@Override
-	public Tup2f set(float value)
+	public Tup2s set(short value)
 	{
 		return set(value, value);
 	}
 	
 	@Override
-	public Tup2f set(float x, float y)
+	public Tup2s set(short x, short y)
 	{
 		return setX(x).setY(y);
 	}
@@ -165,8 +165,8 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(getX());
-		result = prime * result + Float.floatToIntBits(getY());
+		result = prime * result + getX();
+		result = prime * result + getY();
 		return result;
 	}
 
@@ -175,23 +175,23 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup2fR)) return false;
+		if (!(obj instanceof Tup2sR)) return false;
 		
-		Tup2fR other = (Tup2fR) obj;
-		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;
-		if(Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
+		Tup2sR other = (Tup2sR) obj;
+		if(getX() != other.getX()) return false;
+		if(getY() != other.getY()) return false;
 		return true;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup2f(x=" + getX() + ", y=" + getY() + ")";
+		return "tup2s(x=" + getX() + ", y=" + getY() + ")";
 	}
 	
 	@Override
-	public Tup2f clone()
+	public Tup2s clone()
 	{
-		return new Tup2f(this);
+		return new Tup2s(this);
 	}
 }

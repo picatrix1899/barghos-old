@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.tuple2;
 
+import java.io.Serializable;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2bR;
 import org.barghos.core.tuple2.api.Tup2bW;
-import org.barghos.core.tuple2.pool.Tup2bPool;
 
 /**
  * This class represents a 2-dimensional byte tuple.
@@ -38,15 +39,14 @@ import org.barghos.core.tuple2.pool.Tup2bPool;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup2bR
- * @see Tup2bW
- * @see PTup2b
- * @see Tup2bHelper
- * @see Tup2bPool
  */
-public class Tup2b implements Tup2bR, Tup2bW
+public class Tup2b implements Tup2bR, Tup2bW, Serializable
 {
+	/**
+	 * The class version for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The x component.
 	 */
@@ -58,7 +58,9 @@ public class Tup2b implements Tup2bR, Tup2bW
 	protected byte y;
 	
 	/**
-	 * Creates a new instance with all components set to 0;
+	 * Creates a new instance with all components set to 0.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup2b()
 	{
@@ -70,7 +72,7 @@ public class Tup2b implements Tup2bR, Tup2bW
 	 * 
 	 * @param t An existing implementation of {@link Tup2bR} to adopt the values from.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null;
+	 * @since 1.0
 	 */
 	public Tup2b(Tup2bR t)
 	{
@@ -86,6 +88,8 @@ public class Tup2b implements Tup2bR, Tup2bW
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup2b(byte value)
 	{
@@ -97,6 +101,8 @@ public class Tup2b implements Tup2bR, Tup2bW
 	 * 
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup2b(byte x, byte y)
 	{
@@ -119,6 +125,7 @@ public class Tup2b implements Tup2bR, Tup2bW
 	public Tup2b setX(byte x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -126,6 +133,7 @@ public class Tup2b implements Tup2bR, Tup2bW
 	public Tup2b setY(byte y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -176,14 +184,14 @@ public class Tup2b implements Tup2bR, Tup2bW
 	}
 	
 	@Override
-	public Tup2b clone()
-	{
-		return new Tup2b(this);
-	}
-	
-	@Override
 	public String toString()
 	{
 		return "tup2b(x=" + getX() + ", y=" + getY() + ")";
+	}
+	
+	@Override
+	public Tup2b clone()
+	{
+		return new Tup2b(this);
 	}
 }

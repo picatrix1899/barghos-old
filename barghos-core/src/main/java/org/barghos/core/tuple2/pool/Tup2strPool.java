@@ -28,45 +28,43 @@ import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple2.Tup2d;
-import org.barghos.core.tuple2.Tup2f;
-import org.barghos.core.tuple2.Tup2i;
-import org.barghos.core.tuple2.api.Tup2iR;
+import org.barghos.core.tuple2.Tup2str;
+import org.barghos.core.tuple2.api.Tup2strR;
 
 /**
- * This specialized instance pool contains instances of the type {@link Tup2f}.
+ * This specialized instance pool contains instances of the type {@link Tup2str}.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public final class Tup2iPool
+public final class Tup2strPool
 {
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool..
 	 */
-	private static IPool<Tup2i> pool = new DequePool<>(Tup2i.class);
+	private static IPool<Tup2str> pool = new DequePool<>(Tup2str.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
 	 */
-	private Tup2iPool() { }
+	private Tup2strPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup2i} from the pool and resets it.
+	 * Returns an instance of {@link Tup2b} from the pool and resets it.
 	 * 
 	 * @return A stored instance.
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup2i get()
+	public static Tup2str get()
 	{
-		return pool.get().set(0);
+		return pool.get().set("");
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2i} from the pool and sets its components to the values of t.
+	 * Returns an instance of {@link Tup2b} from the pool and sets its components to the values of t.
 	 * 
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * 
@@ -74,18 +72,20 @@ public final class Tup2iPool
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup2i get(Tup2iR t)
+	public static Tup2str get(Tup2strR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.GetY()");
 		}
 		
 		return pool.get().set(t);
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2i} from the pool and sets its components to scalar.
+	 * Returns an instance of {@link Tup2b} from the pool and sets its components to scalar.
 	 * 
 	 * @param scalar A value that the components are set to.
 	 * 
@@ -93,13 +93,18 @@ public final class Tup2iPool
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup2i get(int scalar)
+	public static Tup2str get(String scalar)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(scalar == null) throw new ArgumentNullException("value");
+		}
+		
 		return pool.get().set(scalar);
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup2i} from the pool and sets its components to x and y.
+	 * Returns an instance of {@link Tup2b} from the pool and sets its components to x and y.
 	 * 
 	 * @param x The x component.
 	 * @param y The y component.
@@ -108,8 +113,14 @@ public final class Tup2iPool
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup2i get(int x, int y)
+	public static Tup2str get(String x, String y)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
 		return pool.get().set(x, y);
 	}
 	
@@ -118,8 +129,6 @@ public final class Tup2iPool
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
 	 * 
 	 * @param count The amount of instances present in the pool at any time.
-	 * 
-	 * @return A stored instance.
 	 * 
 	 * @since 1.0
 	 */
@@ -134,13 +143,13 @@ public final class Tup2iPool
 	}
 	
 	/**
-	 * Stores {@link Tup2d} instances in the pool for later reuse.
+	 * Stores {@link Tup2b} instances in the pool for later reuse.
 	 * 
 	 * @param elements The instances to store.
 	 * 
 	 * @since 1.0
 	 */
-	public static void store(Tup2i... instances)
+	public static void store(Tup2str... instances)
 	{
 		pool.store(instances);
 	}
@@ -149,28 +158,28 @@ public final class Tup2iPool
 	 * Sets the internal used pool. This can be used for replacing the default pool
 	 * by a more efficient pool or a debuggable pool.
 	 * 
-	 * @param pool The new pool instance the specialized {@link Tup2iPool} should use internal.
+	 * @param pool The new pool instance the specialized {@link Tup2strPool} should use internal.
 	 * 
 	 * @since 1.0
 	 */
-	public static void setInternalPool(IPool<Tup2i> pool)
+	public static void setInternalPool(IPool<Tup2str> pool)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(pool == null) throw new ArgumentNullException("pool");
 		}
 		
-		Tup2iPool.pool = pool;
+		Tup2strPool.pool = pool;
 	}
 	
 	/**
 	 * Returns the internal used pool instance.
 	 * 
-	 * @return The internal used pool instance of the specialized pool {@link Tup2iPool}.
+	 * @return The internal used pool instance of the specialized pool {@link Tup2strPool}.
 	 * 
 	 * @since 1.0
 	 */
-	public static IPool<Tup2i> getInternalPool()
+	public static IPool<Tup2str> getInternalPool()
 	{
 		return pool;
 	}
