@@ -58,7 +58,7 @@ public class Tup2bo implements Tup2boR, Tup2boW, Serializable
 	protected boolean y;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to false.
 	 * 
 	 * @since 1.0
 	 */

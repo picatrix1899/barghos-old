@@ -59,7 +59,7 @@ public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
 	protected BigInteger y;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to {@link BigInteger#ZERO}.
 	 * 
 	 * @since 1.0
 	 */

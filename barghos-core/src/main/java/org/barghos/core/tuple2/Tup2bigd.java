@@ -59,7 +59,7 @@ public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
 	protected BigDecimal y;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to {@link BigDecimal#ZERO}.
 	 * 
 	 * @since 1.0
 	 */

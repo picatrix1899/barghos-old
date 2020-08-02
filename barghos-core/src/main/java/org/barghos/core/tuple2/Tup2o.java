@@ -51,7 +51,7 @@ public class Tup2o<X,Y> implements Tup2oR<X,Y>, Tup2oW<X,Y>
 	protected Y y;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to null.
 	 * 
 	 * @since 1.0
 	 */

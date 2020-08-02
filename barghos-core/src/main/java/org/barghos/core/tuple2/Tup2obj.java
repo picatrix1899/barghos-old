@@ -58,7 +58,7 @@ public class Tup2obj implements Tup2objR, Tup2objW, Serializable
 	protected Object y;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to new Object().
 	 * 
 	 * @since 1.0
 	 */

@@ -58,7 +58,7 @@ public class Tup2str implements Tup2strR, Tup2strW, Serializable
 	protected String y;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to "".
 	 * 
 	 * @since 1.0
 	 */
