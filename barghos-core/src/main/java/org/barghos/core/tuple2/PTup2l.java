@@ -43,7 +43,7 @@ import org.barghos.core.tuple2.api.Tup2lR;
  * 
  * @since 1.0
  */
-public abstract class PTup2l implements	Tup2lR
+public abstract class PTup2l implements Tup2lR
 {
 	private PTup2l() { }
 	
