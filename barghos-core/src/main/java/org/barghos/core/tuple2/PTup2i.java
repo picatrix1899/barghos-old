@@ -29,7 +29,7 @@ import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple2.api.Tup2iR;
 
 /**
- * Represents a persistent 2-dimensional int tuple.
+ * Represents a persistent 2-dimensional integer tuple.
  * This is a readonly version of a 2-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 

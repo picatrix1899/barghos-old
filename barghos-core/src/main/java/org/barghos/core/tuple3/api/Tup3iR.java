@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,36 +25,39 @@ SOFTWARE.
 package org.barghos.core.tuple3.api;
 
 /**
- * This interface grants readonly access to any 3-dimensional int tuples.
+ * This interface grants readonly access to any 3-dimensional integer tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4i
- * @see Tup3iW
- * @see PTup3i
- * @see Tup3iHelper
- * @see Tup3iPool
  */
 public interface Tup3iR
 {
 	/**
 	 * Returns the x value from the tuple.
+	 * 
 	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	int getX();
 	
 	/**
 	 * Returns the y value from the tuple.
+	 * 
 	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	int getY();
 	
 	/**
 	 * Returns the z value from the tuple.
+	 * 
 	 * @return The z value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	int getZ();
 }

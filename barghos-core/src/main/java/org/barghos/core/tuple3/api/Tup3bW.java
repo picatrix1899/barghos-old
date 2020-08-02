@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,6 @@ package org.barghos.core.tuple3.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup3b
- * @see Tup3bR
- * @see PTup3b
- * @see Tup3bHelper
- * @see Tup3bPool
  */
 public interface Tup3bW
 {
@@ -46,6 +40,8 @@ public interface Tup3bW
 	 * @param x The new x value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3bW setX(byte x);
 	
@@ -55,6 +51,8 @@ public interface Tup3bW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3bW setY(byte y);
 	
@@ -74,7 +72,7 @@ public interface Tup3bW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 * @since 1.0
 	 */
 	Tup3bW set(Tup3bR t);
 	
@@ -88,6 +86,8 @@ public interface Tup3bW
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3bW set(byte value);
 	
@@ -99,6 +99,8 @@ public interface Tup3bW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3bW set(byte x, byte y, byte z);
 }

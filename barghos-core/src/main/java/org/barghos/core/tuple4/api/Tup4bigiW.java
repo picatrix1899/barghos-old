@@ -24,15 +24,17 @@ SOFTWARE.
 
 package org.barghos.core.tuple4.api;
 
+import java.math.BigInteger;
+
 /**
- * This interface grants writeonly access to any 4-dimensional double tuples.
+ * This interface grants writeonly access to any 4-dimensional big integer tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public interface Tup4dW
+public interface Tup4bigiW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -43,7 +45,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setX(double x);
+	Tup4bigiW setX(BigInteger x);
 	
 	/**
 	 * Sets the y value of the tuple.
@@ -54,7 +56,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setY(double y);
+	Tup4bigiW setY(BigInteger y);
 	
 	/**
 	 * Sets the z value of the tuple.
@@ -65,7 +67,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setZ(double z);
+	Tup4bigiW setZ(BigInteger z);
 	
 	/**
 	 * Sets the w value of the tuple.
@@ -76,24 +78,24 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setW(double w);
+	Tup4bigiW setW(BigInteger w);
 	
 	/**
-	 * Adopts the values from an existing instance of {@link Tup4dR}.
+	 * Adopts the values from an existing instance of {@link Tup4bigiR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup4dR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4bigiR} to adopt the values from.
 	 * 
 	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW set(Tup4dR t);
+	Tup4bigiW set(Tup4bigiR t);
 	
 	/**
 	 * Sets all values to a single value.
 	 * 
 	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
+	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(BigInteger.ZERO)</code>.
 	 * </p>
 	 * 
 	 * @param value The value used for all values of the tuple.
@@ -102,7 +104,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW set(double value);
+	Tup4bigiW set(BigInteger value);
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -116,5 +118,5 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW set(double x, double y, double z, double w);
+	Tup4bigiW set(BigInteger x, BigInteger y, BigInteger z, BigInteger w);
 }

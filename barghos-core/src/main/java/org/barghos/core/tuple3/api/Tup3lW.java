@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,6 @@ package org.barghos.core.tuple3.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup3l
- * @see Tup3lR
- * @see PTup3l
- * @see Tup3lHelper
- * @see Tup3lPool
  */
 public interface Tup3lW
 {
@@ -46,6 +40,8 @@ public interface Tup3lW
 	 * @param x The new x value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3lW setX(long x);
 	
@@ -55,6 +51,8 @@ public interface Tup3lW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3lW setY(long y);
 	
@@ -64,6 +62,8 @@ public interface Tup3lW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3lW setZ(long z);
 	
@@ -74,7 +74,7 @@ public interface Tup3lW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 * @since 1.0
 	 */
 	Tup3lW set(Tup3lR t);
 	
@@ -88,6 +88,8 @@ public interface Tup3lW
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3lW set(long value);
 	
@@ -99,6 +101,8 @@ public interface Tup3lW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3lW set(long x, long y, long z);
 }

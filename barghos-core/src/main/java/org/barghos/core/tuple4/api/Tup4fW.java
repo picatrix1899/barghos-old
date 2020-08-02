@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,6 @@ package org.barghos.core.tuple4.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4f
- * @see Tup4fR
- * @see PTup4f
- * @see Tup4fHelper
- * @see Tup4fPool
  */
 public interface Tup4fW
 {
@@ -46,6 +40,8 @@ public interface Tup4fW
 	 * @param x The new x value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4fW setX(float x);
 	
@@ -55,6 +51,8 @@ public interface Tup4fW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4fW setY(float y);
 	
@@ -64,6 +62,8 @@ public interface Tup4fW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4fW setZ(float z);
 	
@@ -73,6 +73,8 @@ public interface Tup4fW
 	 * @param w The new w value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4fW setW(float w);
 	
@@ -83,7 +85,7 @@ public interface Tup4fW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 * @since 1.0
 	 */
 	Tup4fW set(Tup4fR t);
 	
@@ -97,6 +99,8 @@ public interface Tup4fW
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4fW set(float value);
 	
@@ -106,9 +110,11 @@ public interface Tup4fW
 	 * @param x The new x value.
 	 * @param y The new y value.
 	 * @param z The new z value.
-	 * @param z The new z value.
+	 * @param w The new w value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4fW set(float x, float y, float z, float w);
 }

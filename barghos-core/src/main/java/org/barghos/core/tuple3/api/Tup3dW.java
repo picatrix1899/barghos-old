@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,6 @@ package org.barghos.core.tuple3.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tupdf
- * @see TupdfR
- * @see PTupdf
- * @see TupdfHelper
- * @see TupdfPool
  */
 public interface Tup3dW
 {
@@ -46,6 +40,8 @@ public interface Tup3dW
 	 * @param x The new x value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3dW setX(double x);
 	
@@ -55,6 +51,8 @@ public interface Tup3dW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3dW setY(double y);
 	
@@ -74,7 +72,7 @@ public interface Tup3dW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 * @since 1.0
 	 */
 	Tup3dW set(Tup3dR t);
 	
@@ -88,6 +86,8 @@ public interface Tup3dW
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3dW set(double value);
 	
@@ -99,6 +99,8 @@ public interface Tup3dW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup3dW set(double x, double y, double z);
 }

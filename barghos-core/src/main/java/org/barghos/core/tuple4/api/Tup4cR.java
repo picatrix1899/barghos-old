@@ -22,11 +22,51 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.tuple4.api;
+
 /**
- * This package contains api interfaces of multiple variants of 3-dimensional tuples.
+ * This interface grants readonly access to any 4-dimensional char tuples.
+ * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-package org.barghos.core.tuple3.api;
+public interface Tup4cR
+{
+	/**
+	 * Returns the x value from the tuple.
+	 * 
+	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	char getX();
+	
+	/**
+	 * Returns the y value from the tuple.
+	 * 
+	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	char getY();
+	
+	/**
+	 * Returns the z value from the tuple.
+	 * 
+	 * @return The z value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	char getZ();
+	
+	/**
+	 * Returns the w value from the tuple.
+	 * 
+	 * @return The w value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	char getW();
+}

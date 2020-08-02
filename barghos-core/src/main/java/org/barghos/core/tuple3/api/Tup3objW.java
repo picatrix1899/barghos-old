@@ -22,51 +22,85 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple4.api;
+package org.barghos.core.tuple3.api;
 
 /**
- * This interface grants readonly access to any 4-dimensional long tuples.
+ * This interface grants writeonly access to any 3-dimensional object tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public interface Tup4lR
+public interface Tup3objW
 {
 	/**
-	 * Returns the x value from the tuple.
+	 * Sets the x value of the tuple.
 	 * 
-	 * @return The x value from the tuple.
+	 * @param x The new x value.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getX();
+	Tup3objW setX(Object x);
 	
 	/**
-	 * Returns the y value from the tuple.
+	 * Sets the y value of the tuple.
 	 * 
-	 * @return The y value from the tuple.
+	 * @param y The new y value.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getY();
+	Tup3objW setY(Object y);
 	
 	/**
-	 * Returns the z value from the tuple.
+	 * Sets the z value of the tuple.
 	 * 
-	 * @return The z value from the tuple.
+	 * @param z The new z value.
 	 * 
-	 * @since 1.0
+	 * @return The current tuple.
 	 */
-	long getZ();
+	Tup3objW setZ(Object z);
 	
 	/**
-	 * Returns the w value from the tuple.
+	 * Adopts the values from an existing instance of {@link Tup3objR}.
 	 * 
-	 * @return The w value from the tuple.
+	 * @param t An existing implementation of {@link Tup3objR} to adopt the values from.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getW();
+	Tup3objW set(Tup3objR t);
+	
+	/**
+	 * Sets all values to a single value.
+	 * 
+	 * <p>
+	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(new Object())</code>.
+	 * </p>
+	 * 
+	 * @param value The value used for all values of the tuple.
+	 * 
+	 * @return The current tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Tup3objW set(Object value);
+	
+	/**
+	 * Sets the values to the corresponding paramters.
+	 * 
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @param z The new z value.
+	 * 
+	 * @return The current tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Tup3objW set(Object x, Object y, Object z);
 }

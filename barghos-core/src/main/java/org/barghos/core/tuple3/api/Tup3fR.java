@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,30 +31,33 @@ package org.barghos.core.tuple3.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup3f
- * @see Tup3fW
- * @see PTup3f
- * @see Tup3fHelper
- * @see Tup3fPool
  */
 public interface Tup3fR
 {
 	/**
 	 * Returns the x value from the tuple.
+	 * 
 	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	float getX();
 	
 	/**
 	 * Returns the y value from the tuple.
+	 * 
 	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	float getY();
 	
 	/**
 	 * Returns the z value from the tuple.
+	 * 
 	 * @return The z value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	float getZ();
 }

@@ -25,48 +25,81 @@ SOFTWARE.
 package org.barghos.core.tuple4.api;
 
 /**
- * This interface grants readonly access to any 4-dimensional long tuples.
+ * This interface grants writeonly access to any 4-dimensional object tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public interface Tup4lR
+public interface Tup4oW<X,Y,W,Z>
 {
 	/**
-	 * Returns the x value from the tuple.
+	 * Sets the x value of the tuple.
 	 * 
-	 * @return The x value from the tuple.
+	 * @param x The new x value.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getX();
+	Tup4oW<X,Y,Z,W> setX(X x);
 	
 	/**
-	 * Returns the y value from the tuple.
+	 * Sets the y value of the tuple.
 	 * 
-	 * @return The y value from the tuple.
+	 * @param y The new y value.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getY();
+	Tup4oW<X,Y,Z,W> setY(Y y);
 	
 	/**
-	 * Returns the z value from the tuple.
+	 * Sets the z value of the tuple.
 	 * 
-	 * @return The z value from the tuple.
+	 * @param z The new z value.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getZ();
+	Tup4oW<X,Y,Z,W> setZ(Z z);
 	
 	/**
-	 * Returns the w value from the tuple.
+	 * Sets the w value of the tuple.
 	 * 
-	 * @return The w value from the tuple.
+	 * @param w The new w value.
+	 * 
+	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	long getW();
+	Tup4oW<X,Y,Z,W> setW(W w);
+	
+	/**
+	 * Adopts the values from an existing instance of {@link Tup4oR}.
+	 * 
+	 * @param t An existing implementation of {@link Tup4oR} to adopt the values from.
+	 * 
+	 * @return The current tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Tup4oW<X,Y,Z,W> set(Tup4oR<X,Y,Z,W> t);
+	
+	/**
+	 * Sets the values to the corresponding paramters.
+	 * 
+	 * @param x The new x value.
+	 * @param y The new y value.
+	 * @param z The new z value.
+	 * @param w The new w value.
+	 * 
+	 * @return The current tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Tup4oW<X,Y,Z,W> set(X x, Y y, Z z, W w);
 }

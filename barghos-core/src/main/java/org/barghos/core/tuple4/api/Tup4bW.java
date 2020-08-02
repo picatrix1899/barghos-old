@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,12 +31,6 @@ package org.barghos.core.tuple4.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4b
- * @see Tup4bR
- * @see PTup4b
- * @see Tup4bHelper
- * @see Tup4bPool
  */
 public interface Tup4bW
 {
@@ -46,6 +40,8 @@ public interface Tup4bW
 	 * @param x The new x value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4bW setX(byte x);
 	
@@ -55,6 +51,8 @@ public interface Tup4bW
 	 * @param y The new y value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4bW setY(byte y);
 	
@@ -64,6 +62,8 @@ public interface Tup4bW
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4bW setZ(byte z);
 	
@@ -73,6 +73,8 @@ public interface Tup4bW
 	 * @param w The new w value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4bW setW(byte w);
 	
@@ -83,7 +85,7 @@ public interface Tup4bW
 	 * 
 	 * @return The current tuple.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null.
+	 * @since 1.0
 	 */
 	Tup4bW set(Tup4bR t);
 	
@@ -97,6 +99,8 @@ public interface Tup4bW
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4bW set(byte value);
 	
@@ -106,9 +110,11 @@ public interface Tup4bW
 	 * @param x The new x value.
 	 * @param y The new y value.
 	 * @param z The new z value.
-	 * @param z The new z value.
+	 * @param w The new w value.
 	 * 
 	 * @return The current tuple.
+	 * 
+	 * @since 1.0
 	 */
 	Tup4bW set(byte x, byte y, byte z, byte w);
 }

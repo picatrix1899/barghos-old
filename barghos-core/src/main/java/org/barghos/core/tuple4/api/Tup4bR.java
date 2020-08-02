@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019-2020 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,36 +31,42 @@ package org.barghos.core.tuple4.api;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4b
- * @see Tup4bW
- * @see PTup4b
- * @see Tup4bHelper
- * @see Tup4bPool
  */
 public interface Tup4bR
 {
 	/**
 	 * Returns the x value from the tuple.
+	 * 
 	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	byte getX();
 	
 	/**
 	 * Returns the y value from the tuple.
+	 * 
 	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	byte getY();
 	
 	/**
 	 * Returns the z value from the tuple.
+	 * 
 	 * @return The z value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	byte getZ();
 	
 	/**
 	 * Returns the w value from the tuple.
+	 * 
 	 * @return The w value from the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	byte getW();
 }

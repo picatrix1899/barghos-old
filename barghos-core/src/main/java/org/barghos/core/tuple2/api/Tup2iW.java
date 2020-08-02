@@ -25,7 +25,7 @@ SOFTWARE.
 package org.barghos.core.tuple2.api;
 
 /**
- * This interface grants writeonly access to any 2-dimensional int tuples.
+ * This interface grants writeonly access to any 2-dimensional integer tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899

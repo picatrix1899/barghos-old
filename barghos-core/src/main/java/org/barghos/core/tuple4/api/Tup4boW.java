@@ -25,14 +25,14 @@ SOFTWARE.
 package org.barghos.core.tuple4.api;
 
 /**
- * This interface grants writeonly access to any 4-dimensional double tuples.
+ * This interface grants writeonly access to any 4-dimensional boolean tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public interface Tup4dW
+public interface Tup4boW
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -43,7 +43,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setX(double x);
+	Tup4boW setX(boolean x);
 	
 	/**
 	 * Sets the y value of the tuple.
@@ -54,7 +54,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setY(double y);
+	Tup4boW setY(boolean y);
 	
 	/**
 	 * Sets the z value of the tuple.
@@ -65,7 +65,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setZ(double z);
+	Tup4boW setZ(boolean z);
 	
 	/**
 	 * Sets the w value of the tuple.
@@ -76,24 +76,24 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW setW(double w);
+	Tup4boW setW(boolean w);
 	
 	/**
-	 * Adopts the values from an existing instance of {@link Tup4dR}.
+	 * Adopts the values from an existing instance of {@link Tup4boR}.
 	 * 
-	 * @param t An existing implementation of {@link Tup4dR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4boR} to adopt the values from.
 	 * 
 	 * @return The current tuple.
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW set(Tup4dR t);
+	Tup4boW set(Tup4boR t);
 	
 	/**
 	 * Sets all values to a single value.
 	 * 
 	 * <p>
-	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(0)</code>.
+	 * This is usually used for resetting the tuple back to 0 again, by calling <code>set(false)</code>.
 	 * </p>
 	 * 
 	 * @param value The value used for all values of the tuple.
@@ -102,7 +102,7 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW set(double value);
+	Tup4boW set(boolean value);
 	
 	/**
 	 * Sets the values to the corresponding paramters.
@@ -116,5 +116,5 @@ public interface Tup4dW
 	 * 
 	 * @since 1.0
 	 */
-	Tup4dW set(double x, double y, double z, double w);
+	Tup4boW set(boolean x, boolean y, boolean z, boolean w);
 }

@@ -22,11 +22,42 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+package org.barghos.core.tuple3.api;
+
 /**
- * This package contains api interfaces of multiple variants of 3-dimensional tuples.
+ * This interface grants readonly access to any 3-dimensional object tuples.
+ * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-package org.barghos.core.tuple3.api;
+public interface Tup3objR
+{
+	/**
+	 * Returns the x value from the tuple.
+	 * 
+	 * @return The x value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Object getX();
+	
+	/**
+	 * Returns the y value from the tuple.
+	 * 
+	 * @return The y value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Object getY();
+	
+	/**
+	 * Returns the z value from the tuple.
+	 * 
+	 * @return The z value from the tuple.
+	 * 
+	 * @since 1.0
+	 */
+	Object getZ();
+}

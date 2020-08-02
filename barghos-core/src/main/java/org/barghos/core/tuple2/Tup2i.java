@@ -32,7 +32,7 @@ import org.barghos.core.tuple2.api.Tup2iR;
 import org.barghos.core.tuple2.api.Tup2iW;
 
 /**
- * This class represents a 2-dimensional int tuple.
+ * This class represents a 2-dimensional integer tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
