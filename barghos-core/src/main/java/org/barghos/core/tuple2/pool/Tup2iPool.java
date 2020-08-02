@@ -28,7 +28,6 @@ import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple2.Tup2d;
 import org.barghos.core.tuple2.Tup2f;
 import org.barghos.core.tuple2.Tup2i;
 import org.barghos.core.tuple2.api.Tup2iR;
