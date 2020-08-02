@@ -28,43 +28,43 @@ import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple3.Tup3b;
-import org.barghos.core.tuple3.api.Tup3bR;
+import org.barghos.core.tuple3.Tup3obj;
+import org.barghos.core.tuple3.api.Tup3objR;
 
 /**
- * This specialized instance pool contains instances of the type {@link Tup3b}.
+ * This specialized instance pool contains instances of the type {@link Tup3obj}.
  * 
  * @author picatrix1899
  * 
  * @since 1.0
  */
-public final class Tup3bPool
+public final class Tup3objPool
 {
 	/**
 	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
-	private static IPool<Tup3b> pool = new DequePool<>(Tup3b.class);
+	private static IPool<Tup3obj> pool = new DequePool<>(Tup3obj.class);
 	
 	/**
 	 * This class contains only static methods and therefore it should not be possible to create
 	 * instances from it.
 	 */
-	private Tup3bPool() { }
+	private Tup3objPool() { }
 	
 	/**
-	 * Returns an instance of {@link Tup3b} from the pool and resets it.
+	 * Returns an instance of {@link Tup3obj} from the pool and resets it.
 	 * 
 	 * @return A stored instance.
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup3b get()
+	public static Tup3obj get()
 	{
-		return pool.get().set((byte)0);
+		return pool.get().set(new Object());
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup3b} from the pool and sets its components to the values of t.
+	 * Returns an instance of {@link Tup3obj} from the pool and sets its components to the values of t.
 	 * 
 	 * @param t A tuple that is used as initial values of the returned tuple.
 	 * 
@@ -72,18 +72,21 @@ public final class Tup3bPool
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup3b get(Tup3bR t)
+	public static Tup3obj get(Tup3objR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.GetY()");
+			if(t.getZ() == null) throw new ArgumentNullException("t.GetZ()");
 		}
 		
 		return pool.get().set(t);
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup3b} from the pool and sets its components to value.
+	 * Returns an instance of {@link Tup3obj} from the pool and sets its components to value.
 	 * 
 	 * @param value A value that the components are set to.
 	 * 
@@ -91,13 +94,18 @@ public final class Tup3bPool
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup3b get(byte value)
+	public static Tup3obj get(Object value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		return pool.get().set(value);
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup3b} from the pool and sets its components to x, y and z.
+	 * Returns an instance of {@link Tup3obj} from the pool and sets its components to x, y and z.
 	 * 
 	 * @param x The x component.
 	 * @param y The y component.
@@ -107,8 +115,15 @@ public final class Tup3bPool
 	 * 
 	 * @since 1.0
 	 */
-	public static Tup3b get(byte x, byte y, byte z)
+	public static Tup3obj get(Object x, Object y, Object z)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+			if(z == null) throw new ArgumentNullException("z");
+		}
+		
 		return pool.get().set(x, y, z);
 	}
 	
@@ -131,13 +146,13 @@ public final class Tup3bPool
 	}
 	
 	/**
-	 * Stores {@link Tup3b} instances in the pool for later reuse.
+	 * Stores {@link Tup3obj} instances in the pool for later reuse.
 	 * 
 	 * @param elements The instances to store.
 	 * 
 	 * @since 1.0
 	 */
-	public static void store(Tup3b... instances)
+	public static void store(Tup3obj... instances)
 	{
 		pool.store(instances);
 	}
@@ -146,28 +161,28 @@ public final class Tup3bPool
 	 * Sets the internal used pool. This can be used for replacing the default pool
 	 * by a more efficient pool or a debuggable pool.
 	 * 
-	 * @param pool The new pool instance the specialized {@link Tup3bPool} should use internal.
+	 * @param pool The new pool instance the specialized {@link Tup3objPool} should use internal.
 	 * 
 	 * @since 1.0
 	 */
-	public static void setInternalPool(IPool<Tup3b> pool)
+	public static void setInternalPool(IPool<Tup3obj> pool)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(pool == null) throw new ArgumentNullException("pool");
 		}
 		
-		Tup3bPool.pool = pool;
+		Tup3objPool.pool = pool;
 	}
 	
 	/**
 	 * Returns the internal used pool instance.
 	 * 
-	 * @return The internal used pool instance of the specialized pool {@link Tup3bPool}.
+	 * @return The internal used pool instance of the specialized pool {@link Tup3objPool}.
 	 * 
 	 * @since 1.0
 	 */
-	public static IPool<Tup3b> getInternalPool()
+	public static IPool<Tup3obj> getInternalPool()
 	{
 		return pool;
 	}

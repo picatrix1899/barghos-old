@@ -41,7 +41,7 @@ import org.barghos.core.tuple3.api.Tup3dR;
 public final class Tup3dPool
 {
 	/**
-	 * This variable contains the internal pool that is backing this specialized pool..
+	 * This variable contains the internal pool that is backing this specialized pool.
 	 */
 	private static IPool<Tup3d> pool = new DequePool<>(Tup3d.class);
 	
