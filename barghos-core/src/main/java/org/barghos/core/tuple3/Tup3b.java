@@ -24,6 +24,9 @@ SOFTWARE.
 
 package org.barghos.core.tuple3;
 
+import java.io.Serializable;
+
+import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3bR;
 import org.barghos.core.tuple3.api.Tup3bW;
@@ -36,15 +39,14 @@ import org.barghos.core.tuple3.api.Tup3bW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup3bR
- * @see Tup3bW
- * @see PTup3b
- * @see Tup3bHelper
- * @see Tup3bPool
  */
-public class Tup3b implements Tup3bR, Tup3bW
+public class Tup3b implements Tup3bR, Tup3bW, Serializable
 {
+	/**
+	 * The class version for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The x component.
 	 */
@@ -61,7 +63,9 @@ public class Tup3b implements Tup3bR, Tup3bW
 	protected byte z;
 	
 	/**
-	 * Creates a new instance with all components set to 0;
+	 * Creates a new instance with all components set to 0.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup3b()
 	{
@@ -69,15 +73,19 @@ public class Tup3b implements Tup3bR, Tup3bW
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup3iR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup3bR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup3iR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null;
+	 * @since 1.0
 	 */
 	public Tup3b(Tup3bR t)
 	{
-		if(t == null) throw new ArgumentNullException("t");
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
 		set(t);
 	}
 	
@@ -85,6 +93,8 @@ public class Tup3b implements Tup3bR, Tup3bW
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup3b(byte value)
 	{
@@ -97,6 +107,8 @@ public class Tup3b implements Tup3bR, Tup3bW
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup3b(byte x, byte y, byte z)
 	{
@@ -125,6 +137,7 @@ public class Tup3b implements Tup3bR, Tup3bW
 	public Tup3b setX(byte x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -132,6 +145,7 @@ public class Tup3b implements Tup3bR, Tup3bW
 	public Tup3b setY(byte y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -139,13 +153,18 @@ public class Tup3b implements Tup3bR, Tup3bW
 	public Tup3b setZ(byte z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	
 	@Override
 	public Tup3b set(Tup3bR t)
 	{
-		if(t == null) throw new ArgumentNullException("t");
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(t == null) throw new ArgumentNullException("t");
+		}
+		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	

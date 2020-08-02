@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple3;
 
+import java.io.Serializable;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3lR;
@@ -37,15 +39,14 @@ import org.barghos.core.tuple3.api.Tup3lW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup3lR
- * @see Tup3lW
- * @see PTup3l
- * @see Tup3lHelper
- * @see Tup3lPool
  */
-public class Tup3l implements Tup3lR, Tup3lW
+public class Tup3l implements Tup3lR, Tup3lW, Serializable
 {
+	/**
+	 * The class version for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * The x component.
 	 */
@@ -62,7 +63,9 @@ public class Tup3l implements Tup3lR, Tup3lW
 	protected long z;
 	
 	/**
-	 * Creates a new instance with all components set to 0;
+	 * Creates a new instance with all components set to 0.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup3l()
 	{
@@ -74,7 +77,7 @@ public class Tup3l implements Tup3lR, Tup3lW
 	 * 
 	 * @param t An existing implementation of {@link Tup3lR} to adopt the values from.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null;
+	 * @since 1.0
 	 */
 	public Tup3l(Tup3lR t)
 	{
@@ -90,6 +93,8 @@ public class Tup3l implements Tup3lR, Tup3lW
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup3l(long value)
 	{
@@ -102,6 +107,8 @@ public class Tup3l implements Tup3lR, Tup3lW
 	 * @param x The initial x value of the tuple.
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup3l(long x, long y, long z)
 	{

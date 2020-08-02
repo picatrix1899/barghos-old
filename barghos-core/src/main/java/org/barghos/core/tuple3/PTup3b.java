@@ -42,15 +42,8 @@ import org.barghos.core.tuple3.api.Tup3bR;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup3b#gen(byte)
- * @see PTup3b#gen(Tup3lR)
- * @see PTup3b#gen(byte, byte, byte)
- * @see Tup3b
- * @see Tup3bR
- * @see Tup3bW
  */
-public abstract class PTup3b implements	Tup3bR
+public abstract class PTup3b implements Tup3bR
 {
 	private PTup3b() { }
 	
@@ -60,6 +53,8 @@ public abstract class PTup3b implements	Tup3bR
 	 * @param t An existing implementation of {@link Tup3bR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup3b}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3b gen(Tup3bR t)
 	{
@@ -77,6 +72,8 @@ public abstract class PTup3b implements	Tup3bR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup3b}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3b gen(byte value)
 	{
@@ -91,6 +88,8 @@ public abstract class PTup3b implements	Tup3bR
 	 * @param z The z value.
 	 * 
 	 * @return A new readonly {@link PTup3b}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3b gen(byte x, byte y, byte z)
 	{
@@ -105,12 +104,6 @@ public abstract class PTup3b implements	Tup3bR
 			@Override
 			public byte getZ() { return z; }
 		};
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "ptup3b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 
 	@Override
@@ -136,5 +129,11 @@ public abstract class PTup3b implements	Tup3bR
 		if (getY() != other.getY()) return false;
 		if (getZ() != other.getZ()) return false;
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup3b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }

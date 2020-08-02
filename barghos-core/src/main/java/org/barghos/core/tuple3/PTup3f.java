@@ -27,7 +27,6 @@ package org.barghos.core.tuple3;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3fR;
-import org.barghos.core.tuple3.api.Tup3fW;
 
 /**
  * Represents a persistent 3-dimensional float tuple.
@@ -43,15 +42,8 @@ import org.barghos.core.tuple3.api.Tup3fW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup3f#gen(float)
- * @see PTup3f#gen(Tup3fR)
- * @see PTup3f#gen(float, float, float)
- * @see Tup3f
- * @see Tup3fR
- * @see Tup3fW
  */
-public abstract class PTup3f implements	Tup3fR
+public abstract class PTup3f implements Tup3fR
 {
 	private PTup3f() { }
 	
@@ -61,6 +53,8 @@ public abstract class PTup3f implements	Tup3fR
 	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup3f}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3f gen(Tup3fR t)
 	{
@@ -78,6 +72,8 @@ public abstract class PTup3f implements	Tup3fR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup3f}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3f gen(float value)
 	{
@@ -92,6 +88,8 @@ public abstract class PTup3f implements	Tup3fR
 	 * @param z The z value.
 	 * 
 	 * @return A new readonly {@link PTup3f}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3f gen(float x, float y, float z)
 	{
@@ -108,12 +106,6 @@ public abstract class PTup3f implements	Tup3fR
 		};
 	}
 	
-	@Override
-	public String toString()
-	{
-		return "ptup3f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
-	}
-
 	@Override
 	public int hashCode()
 	{
@@ -137,5 +129,11 @@ public abstract class PTup3f implements	Tup3fR
 		if (Float.floatToIntBits(getY()) != Float.floatToIntBits(other.getY())) return false;
 		if (Float.floatToIntBits(getZ()) != Float.floatToIntBits(other.getZ())) return false;
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup3f(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }

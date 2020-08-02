@@ -26,10 +26,10 @@ package org.barghos.core.tuple3;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3lR;
+import org.barghos.core.tuple3.api.Tup3cR;
 
 /**
- * Represents a persistent 3-dimensional long tuple.
+ * Represents a persistent 3-dimensional char tuple.
  * This is a readonly version of a 3-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
@@ -43,20 +43,20 @@ import org.barghos.core.tuple3.api.Tup3lR;
  * 
  * @since 1.0
  */
-public abstract class PTup3l implements Tup3lR
+public abstract class PTup3c implements Tup3cR
 {
-	private PTup3l() { }
+	private PTup3c() { }
 	
 	/**
-	 * Generates a new readonly {@link PTup3l} from an existing instance of {@link Tup3lR} and adopts the values.
+	 * Generates a new readonly {@link PTup3c} from an existing instance of {@link Tup3cR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup3lR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup3cR} to adopt the values from.
 	 * 
-	 * @return A new readonly {@link PTup3l}.
+	 * @return A new readonly {@link PTup3c}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3l gen(Tup3lR t)
+	public static PTup3c gen(Tup3cR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -67,42 +67,42 @@ public abstract class PTup3l implements Tup3lR
 	}
 	
 	/**
-	 * Generates a new readonly {@link PTup3l} with all values set to a single value.
+	 * Generates a new readonly {@link PTup3c} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
-	 * @return A new readonly {@link PTup3l}.
+	 * @return A new readonly {@link PTup3c}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3l gen(long value)
+	public static PTup3c gen(char value)
 	{
-		return gen(value, value, value); 
+		return gen(value, value, value);
 	}
 
 	/**
-	 * Generates a new readonly {@link PTup3l} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link PTup3c} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
 	 * 
-	 * @return A new readonly {@link PTup3l}.
+	 * @return A new readonly {@link PTup3c}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3l gen(long x, long y, long z)
+	public static PTup3c gen(char x, char y, char z)
 	{
-		return new PTup3l()
+		return new PTup3c()
 		{
 			@Override
-			public long getX() { return x; }
+			public char getX() { return x; }
 			
 			@Override
-			public long getY() { return y; }
+			public char getY() { return y; }
 			
 			@Override
-			public long getZ() { return z; }
+			public char getZ() { return z; }
 		};
 	}
 
@@ -111,9 +111,9 @@ public abstract class PTup3l implements Tup3lR
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
-		result = prime * result + (int) (getZ() ^ (getZ() >>> 32));
+		result = prime * result + getX();
+		result = prime * result + getY();
+		result = prime * result + getZ();
 		return result;
 	}
 
@@ -122,9 +122,9 @@ public abstract class PTup3l implements Tup3lR
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup3lR)) return false;
+		if (!(obj instanceof Tup3cR)) return false;
 		
-		Tup3lR other = (Tup3lR) obj;
+		Tup3cR other = (Tup3cR) obj;
 		if (getX() != other.getX()) return false;
 		if (getY() != other.getY()) return false;
 		if (getZ() != other.getZ()) return false;
@@ -134,6 +134,6 @@ public abstract class PTup3l implements Tup3lR
 	@Override
 	public String toString()
 	{
-		return "ptup3l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
+		return "ptup3c(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }

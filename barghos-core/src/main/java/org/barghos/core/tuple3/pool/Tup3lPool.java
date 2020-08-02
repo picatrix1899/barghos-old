@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 picatrix1899
+Copyright (c) 2020 picatrix1899
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,17 +32,31 @@ import org.barghos.core.tuple3.Tup3l;
 import org.barghos.core.tuple3.api.Tup3lR;
 
 /**
- * This pool contains instances of the type {@link Tup3l}.
+ * This specialized instance pool contains instances of the type {@link Tup3l}.
+ * 
+ * @author picatrix1899
+ * 
+ * @since 1.0
  */
 public final class Tup3lPool
 {
+	/**
+	 * This variable contains the internal pool that is backing this specialized pool..
+	 */
 	private static IPool<Tup3l> pool = new DequePool<>(Tup3l.class);
 	
+	/**
+	 * This class contains only static methods and therefore it should not be possible to create
+	 * instances from it.
+	 */
 	private Tup3lPool() { }
 	
 	/**
 	 * Returns an instance of {@link Tup3l} from the pool and resets it.
+	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup3l get()
 	{
@@ -51,8 +65,12 @@ public final class Tup3lPool
 	
 	/**
 	 * Returns an instance of {@link Tup3l} from the pool and sets its components to the values of t.
+	 * 
 	 * @param t A tuple that is used as initial values of the returned tuple.
+	 * 
 	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup3l get(Tup3lR t)
 	{
@@ -65,19 +83,29 @@ public final class Tup3lPool
 	}
 	
 	/**
-	 * Returns an instance of  {@link Tup3l} from the pool and sets its components to scalar.
-	 * @param scalar A value that the components are set to.
+	 * Returns an instance of {@link Tup3l} from the pool and sets its components to value.
+	 * 
+	 * @param value A value that the components are set to.
+	 * 
+	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
-	public static Tup3l get(long scalar)
+	public static Tup3l get(long value)
 	{
-		return pool.get().set(scalar);
+		return pool.get().set(value);
 	}
 	
 	/**
-	 * Returns an instance of {@link Tup3l} from the pool and sets its components to x and y.
+	 * Returns an instance of {@link Tup3l} from the pool and sets its components to x, y and z.
+	 * 
 	 * @param x The x component.
 	 * @param y The y component.
 	 * @param z The z component.
+	 * 
+	 * @return A stored instance.
+	 * 
+	 * @since 1.0
 	 */
 	public static Tup3l get(long x, long y, long z)
 	{
@@ -87,7 +115,10 @@ public final class Tup3lPool
 	/**
 	 * Ensures a certain amount of instances to be present in the pool at any time.
 	 * A call to this method will eventually cause the pool to create instances to fullfill the ensured amount.
+	 * 
 	 * @param count The amount of instances present in the pool at any time.
+	 * 
+	 * @since 1.0
 	 */
 	public static void ensure(int count)
 	{
@@ -101,13 +132,24 @@ public final class Tup3lPool
 	
 	/**
 	 * Stores {@link Tup3l} instances in the pool for later reuse.
+	 * 
 	 * @param elements The instances to store.
+	 * 
+	 * @since 1.0
 	 */
 	public static void store(Tup3l... instances)
 	{
 		pool.store(instances);
 	}
 	
+	/** 
+	 * Sets the internal used pool. This can be used for replacing the default pool
+	 * by a more efficient pool or a debuggable pool.
+	 * 
+	 * @param pool The new pool instance the specialized {@link Tup3lPool} should use internal.
+	 * 
+	 * @since 1.0
+	 */
 	public static void setInternalPool(IPool<Tup3l> pool)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
@@ -118,6 +160,13 @@ public final class Tup3lPool
 		Tup3lPool.pool = pool;
 	}
 	
+	/**
+	 * Returns the internal used pool instance.
+	 * 
+	 * @return The internal used pool instance of the specialized pool {@link Tup3lPool}.
+	 * 
+	 * @since 1.0
+	 */
 	public static IPool<Tup3l> getInternalPool()
 	{
 		return pool;

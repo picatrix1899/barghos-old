@@ -27,7 +27,6 @@ package org.barghos.core.tuple3;
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3dR;
-import org.barghos.core.tuple3.api.Tup3dW;
 import org.barghos.core.tuple3.api.Tup3fR;
 
 /**
@@ -44,15 +43,8 @@ import org.barghos.core.tuple3.api.Tup3fR;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup3d#gen(double)
- * @see PTup3d#gen(Tup3dR)
- * @see PTup3d#gen(double, double, double)
- * @see Tup3d
- * @see Tup3dR
- * @see Tup3dW
  */
-public abstract class PTup3d implements	Tup3dR
+public abstract class PTup3d implements Tup3dR
 {
 	private PTup3d() { }
 	
@@ -62,6 +54,8 @@ public abstract class PTup3d implements	Tup3dR
 	 * @param t An existing implementation of {@link Tup3fR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup3d}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3d gen(Tup3dR t)
 	{
@@ -79,6 +73,8 @@ public abstract class PTup3d implements	Tup3dR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup3d}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3d gen(double value)
 	{
@@ -93,6 +89,8 @@ public abstract class PTup3d implements	Tup3dR
 	 * @param z The z value.
 	 * 
 	 * @return A new readonly {@link PTup3d}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3d gen(double x, double y, double z)
 	{
@@ -109,12 +107,6 @@ public abstract class PTup3d implements	Tup3dR
 		};
 	}
 	
-	@Override
-	public String toString()
-	{
-		return "ptup3d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
-	}
-
 	@Override
 	public int hashCode()
 	{
@@ -141,5 +133,11 @@ public abstract class PTup3d implements	Tup3dR
 		if (Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
 		if (Double.doubleToLongBits(getZ()) != Double.doubleToLongBits(other.getZ())) return false;
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup3d(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }

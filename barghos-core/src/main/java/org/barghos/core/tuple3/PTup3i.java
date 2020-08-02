@@ -29,7 +29,7 @@ import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple3.api.Tup3iR;
 
 /**
- * Represents a persistent 3-dimensional int tuple.
+ * Represents a persistent 3-dimensional integer tuple.
  * This is a readonly version of a 3-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
@@ -42,15 +42,8 @@ import org.barghos.core.tuple3.api.Tup3iR;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see PTup3i#gen(int)
- * @see PTup3i#gen(Tup3lR)
- * @see PTup3i#gen(int, int, int)
- * @see Tup3i
- * @see Tup3iR
- * @see Tup3iW
  */
-public abstract class PTup3i implements	Tup3iR
+public abstract class PTup3i implements Tup3iR
 {
 	private PTup3i() { }
 	
@@ -60,6 +53,8 @@ public abstract class PTup3i implements	Tup3iR
 	 * @param t An existing implementation of {@link Tup3iR} to adopt the values from.
 	 * 
 	 * @return A new readonly {@link PTup3i}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3i gen(Tup3iR t)
 	{
@@ -77,6 +72,8 @@ public abstract class PTup3i implements	Tup3iR
 	 * @param value The value used for all values of the tuple.
 	 * 
 	 * @return A new readonly {@link PTup3i}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3i gen(int value)
 	{
@@ -91,6 +88,8 @@ public abstract class PTup3i implements	Tup3iR
 	 * @param z The z value.
 	 * 
 	 * @return A new readonly {@link PTup3i}.
+	 * 
+	 * @since 1.0
 	 */
 	public static PTup3i gen(int x, int y, int z)
 	{
@@ -105,12 +104,6 @@ public abstract class PTup3i implements	Tup3iR
 			@Override
 			public int getZ() { return z; }
 		};
-	}
-	
-	@Override
-	public String toString()
-	{
-		return "ptup3i(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 
 	@Override
@@ -136,5 +129,11 @@ public abstract class PTup3i implements	Tup3iR
 		if (getY() != other.getY()) return false;
 		if (getZ() != other.getZ()) return false;
 		return true;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "ptup3i(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }

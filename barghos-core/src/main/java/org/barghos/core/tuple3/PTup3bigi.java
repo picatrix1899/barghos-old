@@ -24,12 +24,14 @@ SOFTWARE.
 
 package org.barghos.core.tuple3;
 
+import java.math.BigInteger;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3lR;
+import org.barghos.core.tuple3.api.Tup3bigiR;
 
 /**
- * Represents a persistent 3-dimensional long tuple.
+ * Represents a persistent 3-dimensional big integer tuple.
  * This is a readonly version of a 3-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
@@ -43,66 +45,81 @@ import org.barghos.core.tuple3.api.Tup3lR;
  * 
  * @since 1.0
  */
-public abstract class PTup3l implements Tup3lR
+public abstract class PTup3bigi implements Tup3bigiR
 {
-	private PTup3l() { }
+	private PTup3bigi() { }
 	
 	/**
-	 * Generates a new readonly {@link PTup3l} from an existing instance of {@link Tup3lR} and adopts the values.
+	 * Generates a new readonly {@link PTup3bigi} from an existing instance of {@link Tup3bigiR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup3lR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup3bigiR} to adopt the values from.
 	 * 
-	 * @return A new readonly {@link PTup3l}.
+	 * @return A new readonly {@link PTup3bigi}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3l gen(Tup3lR t)
+	public static PTup3bigi gen(Tup3bigiR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
+			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
 		}
 		
 		return gen(t.getX(), t.getY(), t.getZ());
 	}
 	
 	/**
-	 * Generates a new readonly {@link PTup3l} with all values set to a single value.
+	 * Generates a new readonly {@link PTup3bigi} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
-	 * @return A new readonly {@link PTup3l}.
+	 * @return A new readonly {@link PTup3bigi}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3l gen(long value)
+	public static PTup3bigi gen(BigInteger value)
 	{
-		return gen(value, value, value); 
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
+		return gen(value, value, value);
 	}
 
 	/**
-	 * Generates a new readonly {@link PTup3l} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link PTup3bigi} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
 	 * 
-	 * @return A new readonly {@link PTup3l}.
+	 * @return A new readonly {@link PTup3bigi}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3l gen(long x, long y, long z)
+	public static PTup3bigi gen(BigInteger x, BigInteger y, BigInteger z)
 	{
-		return new PTup3l()
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+			if(z == null) throw new ArgumentNullException("z");
+		}
+		
+		return new PTup3bigi()
 		{
 			@Override
-			public long getX() { return x; }
+			public BigInteger getX() { return x; }
 			
 			@Override
-			public long getY() { return y; }
+			public BigInteger getY() { return y; }
 			
 			@Override
-			public long getZ() { return z; }
+			public BigInteger getZ() { return z; }
 		};
 	}
 
@@ -111,9 +128,9 @@ public abstract class PTup3l implements Tup3lR
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (getX() ^ (getX() >>> 32));
-		result = prime * result + (int) (getY() ^ (getY() >>> 32));
-		result = prime * result + (int) (getZ() ^ (getZ() >>> 32));
+		result = prime * result + getX().hashCode();
+		result = prime * result + getY().hashCode();
+		result = prime * result + getZ().hashCode();
 		return result;
 	}
 
@@ -122,9 +139,9 @@ public abstract class PTup3l implements Tup3lR
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup3lR)) return false;
+		if (!(obj instanceof Tup3bigiR)) return false;
 		
-		Tup3lR other = (Tup3lR) obj;
+		Tup3bigiR other = (Tup3bigiR) obj;
 		if (getX() != other.getX()) return false;
 		if (getY() != other.getY()) return false;
 		if (getZ() != other.getZ()) return false;
@@ -134,6 +151,6 @@ public abstract class PTup3l implements Tup3lR
 	@Override
 	public String toString()
 	{
-		return "ptup3l(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
+		return "ptup3bigi(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }

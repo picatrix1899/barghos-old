@@ -28,11 +28,11 @@ import java.io.Serializable;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3iR;
-import org.barghos.core.tuple3.api.Tup3iW;
+import org.barghos.core.tuple3.api.Tup3strR;
+import org.barghos.core.tuple3.api.Tup3strW;
 
 /**
- * This class represents a 3-dimensional integer tuple.
+ * This class represents a 3-dimensional string tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -40,50 +40,53 @@ import org.barghos.core.tuple3.api.Tup3iW;
  * 
  * @since 1.0
  */
-public class Tup3i implements Tup3iR, Tup3iW, Serializable
+public class Tup3str implements Tup3strR, Tup3strW, Serializable
 {
 	/**
 	 * The class version for serialization.
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * The x component.
 	 */
-	protected int x;
+	protected String x;
 
 	/**
 	 * The y component.
 	 */
-	protected int y;
+	protected String y;
 	
 	/**
 	 * The z component.
 	 */
-	protected int z;
+	protected String z;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to "".
 	 * 
 	 * @since 1.0
 	 */
-	public Tup3i()
+	public Tup3str()
 	{
-		set(0);
+		set("");
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup3iR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup3strR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup3iR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup3strR} to adopt the values from.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup3i(Tup3iR t)
+	public Tup3str(Tup3strR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
+			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
 		}
 		
 		set(t);
@@ -92,12 +95,17 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	/**
 	 * Creates a new instance with all values set to a single value.
 	 * 
-	 * @param value The value used as the initial value for all values of the tuple.#
+	 * @param value The value used as the initial value for all values of the tuple.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup3i(int value)
+	public Tup3str(String value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		set(value);
 	}
 	
@@ -110,70 +118,110 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup3i(int x, int y, int z)
+	public Tup3str(String x, String y, String z)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+			if(z == null) throw new ArgumentNullException("z");
+		}
+		
 		set(x, y, z);
 	}
 	
 	@Override
-	public int getX()
+	public String getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public int getY()
+	public String getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public int getZ()
+	public String getZ()
 	{
 		return this.z;
 	}
 	
 	@Override
-	public Tup3i setX(int x)
+	public Tup3str setX(String x)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+		}
+		
 		this.x = x;
+		
 		return this;
 	}
 
 	@Override
-	public Tup3i setY(int y)
+	public Tup3str setY(String y)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
 		this.y = y;
+		
 		return this;
 	}
 	
 	@Override
-	public Tup3i setZ(int z)
+	public Tup3str setZ(String z)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(z == null) throw new ArgumentNullException("z");
+		}
+		
 		this.z = z;
+		
 		return this;
 	}
 	
 	@Override
-	public Tup3i set(Tup3iR t)
+	public Tup3str set(Tup3strR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
+			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
 		}
 		
 		return set(t.getX(), t.getY(), t.getZ());
 	}
 	
 	@Override
-	public Tup3i set(int value)
+	public Tup3str set(String value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		return set(value, value, value);
 	}
 	
 	@Override
-	public Tup3i set(int x, int y, int z)
+	public Tup3str set(String x, String y, String z)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+			if(z == null) throw new ArgumentNullException("z");
+		}
+		
 		return setX(x).setY(y).setZ(z);
 	}
 
@@ -182,9 +230,9 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
-		result = prime * result + getZ();
+		result = prime * result + getX().hashCode();
+		result = prime * result + getY().hashCode();
+		result = prime * result + getZ().hashCode();
 		return result;
 	}
 
@@ -193,9 +241,9 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	{
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (!(obj instanceof Tup3iR)) return false;
+		if (!(obj instanceof Tup3strR)) return false;
 		
-		Tup3iR other = (Tup3iR) obj;
+		Tup3strR other = (Tup3strR) obj;
 		if(getX() != other.getX()) return false;
 		if(getY() != other.getY()) return false;
 		if(getZ() != other.getZ()) return false;
@@ -203,14 +251,14 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	}
 	
 	@Override
-	public Tup3i clone()
+	public Tup3str clone()
 	{
-		return new Tup3i(this);
+		return new Tup3str(this);
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup3i(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
+		return "tup3str(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
 	}
 }
