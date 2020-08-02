@@ -43,7 +43,7 @@ import org.barghos.core.exception.ArgumentNullException;
  * 
  * @since 1.0
  */
-public abstract class BufferUtilsPrimitives
+abstract class BufferUtilsPrimitives
 {
 	/** 
 	 * Contains the byte order used in creating buffers.
