@@ -137,6 +137,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	public Tup3f setX(float x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -144,6 +145,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	public Tup3f setY(float y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -151,6 +153,7 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	public Tup3f setZ(float z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	

@@ -137,6 +137,7 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	public Tup3i setX(int x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -144,6 +145,7 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	public Tup3i setY(int y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -151,6 +153,7 @@ public class Tup3i implements Tup3iR, Tup3iW, Serializable
 	public Tup3i setZ(int z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	

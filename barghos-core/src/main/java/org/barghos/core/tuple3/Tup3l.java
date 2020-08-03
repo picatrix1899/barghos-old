@@ -137,6 +137,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	public Tup3l setX(long x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -144,6 +145,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	public Tup3l setY(long y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -151,6 +153,7 @@ public class Tup3l implements Tup3lR, Tup3lW, Serializable
 	public Tup3l setZ(long z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	

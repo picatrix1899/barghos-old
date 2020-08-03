@@ -137,6 +137,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	public Tup3d setX(double x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -144,6 +145,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	public Tup3d setY(double y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -151,6 +153,7 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	public Tup3d setZ(double z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	
