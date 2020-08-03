@@ -32,7 +32,7 @@ package org.barghos.core.tuple4.api;
  * 
  * @since 1.0
  */
-public interface Tup4oW<X,Y,W,Z>
+public interface Tup4oW<X,Y,Z,W>
 {
 	/**
 	 * Sets the x value of the tuple.
@@ -62,8 +62,6 @@ public interface Tup4oW<X,Y,W,Z>
 	 * @param z The new z value.
 	 * 
 	 * @return The current tuple.
-	 * 
-	 * @since 1.0
 	 */
 	Tup4oW<X,Y,Z,W> setZ(Z z);
 	
@@ -73,8 +71,6 @@ public interface Tup4oW<X,Y,W,Z>
 	 * @param w The new w value.
 	 * 
 	 * @return The current tuple.
-	 * 
-	 * @since 1.0
 	 */
 	Tup4oW<X,Y,Z,W> setW(W w);
 	

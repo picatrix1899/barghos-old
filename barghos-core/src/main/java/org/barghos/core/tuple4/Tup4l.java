@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple4;
 
+import java.io.Serializable;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple4.api.Tup4lR;
@@ -37,15 +39,14 @@ import org.barghos.core.tuple4.api.Tup4lW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4lR
- * @see Tup4lW
- * @see PTup4l
- * @see Tup4lHelper
- * @see Tup4lPool
  */
-public class Tup4l implements Tup4lR, Tup4lW
+public class Tup4l implements Tup4lR, Tup4lW, Serializable
 {
+	/**
+	 * The class version for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * The x component.
 	 */
@@ -67,7 +68,9 @@ public class Tup4l implements Tup4lR, Tup4lW
 	protected long w;
 	
 	/**
-	 * Creates a new instance with all components set to 0;
+	 * Creates a new instance with all components set to 0.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4l()
 	{
@@ -79,7 +82,7 @@ public class Tup4l implements Tup4lR, Tup4lW
 	 * 
 	 * @param t An existing implementation of {@link Tup4iR} to adopt the values from.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null;
+	 * @since 1.0
 	 */
 	public Tup4l(Tup4lR t)
 	{
@@ -95,6 +98,8 @@ public class Tup4l implements Tup4lR, Tup4lW
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4l(long value)
 	{
@@ -108,6 +113,8 @@ public class Tup4l implements Tup4lR, Tup4lW
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4l(long x, long y, long z, long w)
 	{
@@ -142,6 +149,7 @@ public class Tup4l implements Tup4lR, Tup4lW
 	public Tup4l setX(long x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -149,6 +157,7 @@ public class Tup4l implements Tup4lR, Tup4lW
 	public Tup4l setY(long y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -156,6 +165,7 @@ public class Tup4l implements Tup4lR, Tup4lW
 	public Tup4l setZ(long z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	
@@ -163,6 +173,7 @@ public class Tup4l implements Tup4lR, Tup4lW
 	public Tup4l setW(long w)
 	{
 		this.w = w;
+		
 		return this;
 	}
 	
@@ -204,9 +215,9 @@ public class Tup4l implements Tup4lR, Tup4lW
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup4lR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup4lR)) return false;
 		
 		Tup4lR other = (Tup4lR) obj;
 		if(getX() != other.getX()) return false;

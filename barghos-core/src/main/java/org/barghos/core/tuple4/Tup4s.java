@@ -28,11 +28,11 @@ import java.io.Serializable;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple4.api.Tup4iR;
-import org.barghos.core.tuple4.api.Tup4iW;
+import org.barghos.core.tuple4.api.Tup4sR;
+import org.barghos.core.tuple4.api.Tup4sW;
 
 /**
- * This class represents a 4-dimensional int tuple.
+ * This class represents a 4-dimensional short tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -40,7 +40,7 @@ import org.barghos.core.tuple4.api.Tup4iW;
  * 
  * @since 1.0
  */
-public class Tup4i implements Tup4iR, Tup4iW, Serializable
+public class Tup4s implements Tup4sR, Tup4sW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -50,41 +50,41 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	/**
 	 * The x component.
 	 */
-	protected int x;
+	protected short x;
 
 	/**
 	 * The y component.
 	 */
-	protected int y;
+	protected short y;
 	
 	/**
 	 * The z component.
 	 */
-	protected int z;
+	protected short z;
 	
 	/**
 	 * The w component.
 	 */
-	protected int w;
+	protected short w;
 	
 	/**
 	 * Creates a new instance with all components set to 0.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i()
+	public Tup4s()
 	{
-		set(0);
+		set((short)0);
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4iR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup4sR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup4iR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4sR} to adopt the values from.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i(Tup4iR t)
+	public Tup4s(Tup4sR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -101,7 +101,7 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i(int value)
+	public Tup4s(short value)
 	{
 		set(value);
 	}
@@ -116,37 +116,37 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i(int x, int y, int z, int w)
+	public Tup4s(short x, short y, short z, short w)
 	{
 		set(x, y, z, w);
 	}
 	
 	@Override
-	public int getX()
+	public short getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public int getY()
+	public short getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public int getZ()
+	public short getZ()
 	{
 		return this.z;
 	}
 	
 	@Override
-	public int getW()
+	public short getW()
 	{
 		return this.w;
 	}
 	
 	@Override
-	public Tup4i setX(int x)
+	public Tup4s setX(short x)
 	{
 		this.x = x;
 		
@@ -154,7 +154,7 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	}
 
 	@Override
-	public Tup4i setY(int y)
+	public Tup4s setY(short y)
 	{
 		this.y = y;
 		
@@ -162,7 +162,7 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	}
 	
 	@Override
-	public Tup4i setZ(int z)
+	public Tup4s setZ(short z)
 	{
 		this.z = z;
 		
@@ -170,7 +170,7 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	}
 	
 	@Override
-	public Tup4i setW(int w)
+	public Tup4s setW(short w)
 	{
 		this.w = w;
 		
@@ -178,7 +178,7 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	}
 	
 	@Override
-	public Tup4i set(Tup4iR t)
+	public Tup4s set(Tup4sR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -189,13 +189,13 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	}
 	
 	@Override
-	public Tup4i set(int value)
+	public Tup4s set(short value)
 	{
 		return set(value, value, value, value);
 	}
 	
 	@Override
-	public Tup4i set(int x, int y, int z, int w)
+	public Tup4s set(short x, short y, short z, short w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
@@ -217,9 +217,9 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup4iR)) return false;
+		if(!(obj instanceof Tup4sR)) return false;
 		
-		Tup4iR other = (Tup4iR) obj;
+		Tup4sR other = (Tup4sR) obj;
 		if(getX() != other.getX()) return false;
 		if(getY() != other.getY()) return false;
 		if(getZ() != other.getZ()) return false;
@@ -228,14 +228,14 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	}
 	
 	@Override
-	public Tup4i clone()
+	public Tup4s clone()
 	{
-		return new Tup4i(this);
+		return new Tup4s(this);
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup4i(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return "tup4s(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 }

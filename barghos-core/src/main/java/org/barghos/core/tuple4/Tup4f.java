@@ -24,11 +24,12 @@ SOFTWARE.
 
 package org.barghos.core.tuple4;
 
+import java.io.Serializable;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple4.api.Tup4fR;
 import org.barghos.core.tuple4.api.Tup4fW;
-import org.barghos.core.tuple4.pool.Tup4fPool;
 
 /**
  * This class represents a 4-dimensional float tuple.
@@ -38,15 +39,14 @@ import org.barghos.core.tuple4.pool.Tup4fPool;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4fR
- * @see Tup4fW
- * @see PTup4f
- * @see Tup4fHelper
- * @see Tup4fPool
  */
-public class Tup4f implements Tup4fR, Tup4fW
+public class Tup4f implements Tup4fR, Tup4fW, Serializable
 {
+	/**
+	 * The class version for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * The x component.
 	 */
@@ -68,7 +68,9 @@ public class Tup4f implements Tup4fR, Tup4fW
 	protected float w;
 	
 	/**
-	 * Creates a new instance with all components set to 0;
+	 * Creates a new instance with all components set to 0.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4f()
 	{
@@ -80,7 +82,7 @@ public class Tup4f implements Tup4fR, Tup4fW
 	 * 
 	 * @param t An existing implementation of {@link Tup4fR} to adopt the values from.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null;
+	 * @since 1.0
 	 */
 	public Tup4f(Tup4fR t)
 	{
@@ -96,6 +98,8 @@ public class Tup4f implements Tup4fR, Tup4fW
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4f(float value)
 	{
@@ -109,6 +113,8 @@ public class Tup4f implements Tup4fR, Tup4fW
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4f(float x, float y, float z, float w)
 	{
@@ -143,6 +149,7 @@ public class Tup4f implements Tup4fR, Tup4fW
 	public Tup4f setX(float x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -150,6 +157,7 @@ public class Tup4f implements Tup4fR, Tup4fW
 	public Tup4f setY(float y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -157,6 +165,7 @@ public class Tup4f implements Tup4fR, Tup4fW
 	public Tup4f setZ(float z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	
@@ -164,6 +173,7 @@ public class Tup4f implements Tup4fR, Tup4fW
 	public Tup4f setW(float w)
 	{
 		this.w = w;
+		
 		return this;
 	}
 	
@@ -205,9 +215,9 @@ public class Tup4f implements Tup4fR, Tup4fW
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup4fR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup4fR)) return false;
 		
 		Tup4fR other = (Tup4fR) obj;
 		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;

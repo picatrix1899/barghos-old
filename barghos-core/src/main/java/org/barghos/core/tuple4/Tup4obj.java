@@ -28,11 +28,11 @@ import java.io.Serializable;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple4.api.Tup4iR;
-import org.barghos.core.tuple4.api.Tup4iW;
+import org.barghos.core.tuple4.api.Tup4objR;
+import org.barghos.core.tuple4.api.Tup4objW;
 
 /**
- * This class represents a 4-dimensional int tuple.
+ * This class represents a 4-dimensional object tuple.
  * A tuple unlike a vector contains data that is not necessarly in any relation to each other,
  * where the data of a vector describes the same logical structure.
  * 
@@ -40,7 +40,7 @@ import org.barghos.core.tuple4.api.Tup4iW;
  * 
  * @since 1.0
  */
-public class Tup4i implements Tup4iR, Tup4iW, Serializable
+public class Tup4obj implements Tup4objR, Tup4objW, Serializable
 {
 	/**
 	 * The class version for serialization.
@@ -50,45 +50,49 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	/**
 	 * The x component.
 	 */
-	protected int x;
+	protected Object x;
 
 	/**
 	 * The y component.
 	 */
-	protected int y;
+	protected Object y;
 	
 	/**
 	 * The z component.
 	 */
-	protected int z;
+	protected Object z;
 	
 	/**
 	 * The w component.
 	 */
-	protected int w;
+	protected Object w;
 	
 	/**
-	 * Creates a new instance with all components set to 0.
+	 * Creates a new instance with all components set to new Object().
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i()
+	public Tup4obj()
 	{
-		set(0);
+		set(new Object());
 	}
 	
 	/**
-	 * Creates a new instance from an existing instance of {@link Tup4iR} and adopts the values.
+	 * Creates a new instance from an existing instance of {@link Tup4strR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup4iR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4strR} to adopt the values from.
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i(Tup4iR t)
+	public Tup4obj(Tup4objR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
+			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
+			if(t.getW() == null) throw new ArgumentNullException("t.getW()");
 		}
 		
 		set(t);
@@ -101,8 +105,13 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i(int value)
+	public Tup4obj(Object value)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(value == null) throw new ArgumentNullException("value");
+		}
+		
 		set(value);
 	}
 	
@@ -116,86 +125,118 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	 * 
 	 * @since 1.0
 	 */
-	public Tup4i(int x, int y, int z, int w)
+	public Tup4obj(Object x, Object y, Object z, Object w)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+			if(y == null) throw new ArgumentNullException("y");
+			if(z == null) throw new ArgumentNullException("z");
+			if(w == null) throw new ArgumentNullException("w");
+		}
+		
 		set(x, y, z, w);
 	}
 	
 	@Override
-	public int getX()
+	public Object getX()
 	{
 		return this.x;
 	}
 	
 	@Override
-	public int getY()
+	public Object getY()
 	{
 		return this.y;
 	}
 
 	@Override
-	public int getZ()
+	public Object getZ()
 	{
 		return this.z;
 	}
 	
 	@Override
-	public int getW()
+	public Object getW()
 	{
 		return this.w;
 	}
 	
 	@Override
-	public Tup4i setX(int x)
+	public Tup4obj setX(Object x)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(x == null) throw new ArgumentNullException("x");
+		}
+		
 		this.x = x;
 		
 		return this;
 	}
 
 	@Override
-	public Tup4i setY(int y)
+	public Tup4obj setY(Object y)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(y == null) throw new ArgumentNullException("y");
+		}
+		
 		this.y = y;
 		
 		return this;
 	}
 	
 	@Override
-	public Tup4i setZ(int z)
+	public Tup4obj setZ(Object z)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(z == null) throw new ArgumentNullException("z");
+		}
+		
 		this.z = z;
 		
 		return this;
 	}
 	
 	@Override
-	public Tup4i setW(int w)
+	public Tup4obj setW(Object w)
 	{
+		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
+		{
+			if(w == null) throw new ArgumentNullException("w");
+		}
+		
 		this.w = w;
 		
 		return this;
 	}
 	
 	@Override
-	public Tup4i set(Tup4iR t)
+	public Tup4obj set(Tup4objR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
+			if(t.getX() == null) throw new ArgumentNullException("t.getX()");
+			if(t.getY() == null) throw new ArgumentNullException("t.getY()");
+			if(t.getZ() == null) throw new ArgumentNullException("t.getZ()");
+			if(t.getW() == null) throw new ArgumentNullException("t.getW()");
 		}
 		
 		return set(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	@Override
-	public Tup4i set(int value)
+	public Tup4obj set(Object value)
 	{
 		return set(value, value, value, value);
 	}
 	
 	@Override
-	public Tup4i set(int x, int y, int z, int w)
+	public Tup4obj set(Object x, Object y, Object z, Object w)
 	{
 		return setX(x).setY(y).setZ(z).setW(w);
 	}
@@ -205,10 +246,10 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + getX();
-		result = prime * result + getY();
-		result = prime * result + getZ();
-		result = prime * result + getW();
+		result = prime * result + getX().hashCode();
+		result = prime * result + getY().hashCode();
+		result = prime * result + getZ().hashCode();
+		result = prime * result + getW().hashCode();
 		return result;
 	}
 
@@ -217,25 +258,25 @@ public class Tup4i implements Tup4iR, Tup4iW, Serializable
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup4iR)) return false;
+		if(!(obj instanceof Tup4objR)) return false;
 		
-		Tup4iR other = (Tup4iR) obj;
-		if(getX() != other.getX()) return false;
-		if(getY() != other.getY()) return false;
-		if(getZ() != other.getZ()) return false;
-		if(getW() != other.getW()) return false;
+		Tup4objR other = (Tup4objR) obj;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
+		if(!getZ().equals(other.getZ())) return false;
+		if(!getW().equals(other.getW())) return false;
 		return true;
 	}
 	
 	@Override
-	public Tup4i clone()
+	public Tup4obj clone()
 	{
-		return new Tup4i(this);
+		return new Tup4obj(this);
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "tup4i(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
+		return "tup4obj(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 }

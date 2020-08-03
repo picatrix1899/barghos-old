@@ -25,7 +25,7 @@ SOFTWARE.
 package org.barghos.core.tuple4.api;
 
 /**
- * This interface grants readonly access to any 3-dimensional object tuples.
+ * This interface grants readonly access to any 4-dimensional object tuples.
  * It should be prefered by design before direct usage of the original instance in method parameters.
  * 
  * @author picatrix1899
@@ -62,9 +62,9 @@ public interface Tup4oR<X,Y,Z,W>
 	Z getZ();
 	
 	/**
-	 * Returns the z value from the tuple.
+	 * Returns the w value from the tuple.
 	 * 
-	 * @return The z value from the tuple.
+	 * @return The w value from the tuple.
 	 * 
 	 * @since 1.0
 	 */

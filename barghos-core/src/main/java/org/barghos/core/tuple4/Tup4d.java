@@ -24,6 +24,8 @@ SOFTWARE.
 
 package org.barghos.core.tuple4;
 
+import java.io.Serializable;
+
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.tuple4.api.Tup4dR;
@@ -37,15 +39,14 @@ import org.barghos.core.tuple4.api.Tup4dW;
  * @author picatrix1899
  * 
  * @since 1.0
- * 
- * @see Tup4dR
- * @see Tup4dW
- * @see PTup4d
- * @see Tup4dHelper
- * @see Tup4dPool
  */
-public class Tup4d implements Tup4dR, Tup4dW
+public class Tup4d implements Tup4dR, Tup4dW, Serializable
 {
+	/**
+	 * The class version for serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * The x component.
 	 */
@@ -67,7 +68,9 @@ public class Tup4d implements Tup4dR, Tup4dW
 	protected double w;
 	
 	/**
-	 * Creates a new instance with all components set to 0;
+	 * Creates a new instance with all components set to 0.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4d()
 	{
@@ -79,7 +82,7 @@ public class Tup4d implements Tup4dR, Tup4dW
 	 * 
 	 * @param t An existing implementation of {@link Tup4dR} to adopt the values from.
 	 * 
-	 * @throws ArgumentNullException Thrown if the parameter t is null;
+	 * @since 1.0
 	 */
 	public Tup4d(Tup4dR t)
 	{
@@ -95,6 +98,8 @@ public class Tup4d implements Tup4dR, Tup4dW
 	 * Creates a new instance with all values set to a single value.
 	 * 
 	 * @param value The value used as the initial value for all values of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4d(double value)
 	{
@@ -108,6 +113,8 @@ public class Tup4d implements Tup4dR, Tup4dW
 	 * @param y The initial y value of the tuple.
 	 * @param z The initial z value of the tuple.
 	 * @param w The initial w value of the tuple.
+	 * 
+	 * @since 1.0
 	 */
 	public Tup4d(double x, double y, double z, double w)
 	{
@@ -142,6 +149,7 @@ public class Tup4d implements Tup4dR, Tup4dW
 	public Tup4d setX(double x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -149,6 +157,7 @@ public class Tup4d implements Tup4dR, Tup4dW
 	public Tup4d setY(double y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	
@@ -156,6 +165,7 @@ public class Tup4d implements Tup4dR, Tup4dW
 	public Tup4d setZ(double z)
 	{
 		this.z = z;
+		
 		return this;
 	}
 	
@@ -163,6 +173,7 @@ public class Tup4d implements Tup4dR, Tup4dW
 	public Tup4d setW(double w)
 	{
 		this.w = w;
+		
 		return this;
 	}
 	
@@ -208,9 +219,9 @@ public class Tup4d implements Tup4dR, Tup4dW
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup4dR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup4dR)) return false;
 		
 		Tup4dR other = (Tup4dR) obj;
 		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
@@ -219,7 +230,7 @@ public class Tup4d implements Tup4dR, Tup4dW
 		if(Double.doubleToLongBits(getW()) != Double.doubleToLongBits(other.getW())) return false;
 		return true;
 	}
-	
+
 	@Override
 	public Tup4d clone()
 	{
