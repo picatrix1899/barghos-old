@@ -82,5 +82,5 @@ public final class QuatPool
 	public static IPool<Quat> getInternalPool()
 	{
 		return pool;
-		}
+	}
 }

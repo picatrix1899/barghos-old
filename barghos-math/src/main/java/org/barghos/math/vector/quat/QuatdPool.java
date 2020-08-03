@@ -22,43 +22,45 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.math.vector.vec3;
+package org.barghos.math.vector.quat;
 
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple3.api.Tup3fR;
 import org.barghos.math.BarghosMath;
+import org.barghos.core.pool.DequePool;
 
-
-public final class Vec3Pool
+public final class QuatdPool
 {
-	private static IPool<Vec3> pool = new DequePool<>(Vec3.class);
+	private static IPool<Quatd> pool = new DequePool<>(Quatd.class);
 	
-	private Vec3Pool() { }
+	private QuatdPool() { }
 	
-	public static Vec3 get()
+	public static Quatd get()
 	{
-		return pool.get().set(0.0f, 0.0f, 0.0f);
+		return pool.get().set(1.0f, 0.0f, 0.0f, 0.0f);
 	}
 	
-	public static Vec3 get(Tup3fR v)
-	{	
+	public static Quatd get(Quatd q)
+	{
 		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
 		{
-			if(v == null) throw new ArgumentNullException("v");
+			if(q == null) throw new ArgumentNullException("q");
 		}
 		
-		return pool.get().set(v);
+		return pool.get().set(q);
+	}
+	public static Quatd get(float x, float y, float z, float w)
+	{
+		return pool.get().set(x ,y ,z ,w);
 	}
 	
-	public static Vec3 get(float x, float y, float z)
+	public static void store(Quatd... instances)
 	{
-		return pool.get().set(x, y, z);
+		pool.store(instances);
 	}
 	
 	public static void ensure(int count)
-	{ 
+	{
 		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(count < 0) throw new IllegalArgumentException();
@@ -67,22 +69,17 @@ public final class Vec3Pool
 		pool.ensure(count);
 	}
 	
-	public static void store(Vec3... instances)
-	{
-		pool.store(instances);
-	}
-	
-	public static void setInternalPool(IPool<Vec3> pool)
+	public static void setInternalPool(IPool<Quatd> pool)
 	{
 		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(pool == null) throw new ArgumentNullException("pool");
 		}
 		
-		Vec3Pool.pool = pool; 
+		QuatdPool.pool = pool;
 	}
 	
-	public static IPool<Vec3> getInternalPool()
+	public static IPool<Quatd> getInternalPool()
 	{
 		return pool;
 	}

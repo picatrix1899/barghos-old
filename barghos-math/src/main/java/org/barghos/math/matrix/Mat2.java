@@ -91,7 +91,7 @@ public class Mat2
 	
 	public static float determinant(Mat2 m)
 	{
-		return MatUtils.det2x2( m.m[0][0], m.m[0][1],
+		return (float) MatUtils.det2x2( m.m[0][0], m.m[0][1],
 								m.m[1][0], m.m[1][1]);
 	}
 	

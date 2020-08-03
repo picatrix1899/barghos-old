@@ -27,22 +27,22 @@ package org.barghos.math.vector.vec3;
 import org.barghos.core.exception.ArgumentNullException;
 import org.barghos.core.pool.DequePool;
 import org.barghos.core.pool.api.IPool;
-import org.barghos.core.tuple3.api.Tup3fR;
+import org.barghos.core.tuple3.api.Tup3dR;
 import org.barghos.math.BarghosMath;
 
 
-public final class Vec3Pool
+public final class Vec3dPool
 {
-	private static IPool<Vec3> pool = new DequePool<>(Vec3.class);
+	private static IPool<Vec3d> pool = new DequePool<>(Vec3d.class);
 	
-	private Vec3Pool() { }
+	private Vec3dPool() { }
 	
-	public static Vec3 get()
+	public static Vec3d get()
 	{
-		return pool.get().set(0.0f, 0.0f, 0.0f);
+		return pool.get().set(0.0, 0.0, 0.0);
 	}
 	
-	public static Vec3 get(Tup3fR v)
+	public static Vec3d get(Tup3dR v)
 	{	
 		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
 		{
@@ -52,7 +52,7 @@ public final class Vec3Pool
 		return pool.get().set(v);
 	}
 	
-	public static Vec3 get(float x, float y, float z)
+	public static Vec3d get(double x, double y, double z)
 	{
 		return pool.get().set(x, y, z);
 	}
@@ -67,22 +67,22 @@ public final class Vec3Pool
 		pool.ensure(count);
 	}
 	
-	public static void store(Vec3... instances)
+	public static void store(Vec3d... instances)
 	{
 		pool.store(instances);
 	}
 	
-	public static void setInternalPool(IPool<Vec3> pool)
+	public static void setInternalPool(IPool<Vec3d> pool)
 	{
 		if(BarghosMath.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(pool == null) throw new ArgumentNullException("pool");
 		}
 		
-		Vec3Pool.pool = pool; 
+		Vec3dPool.pool = pool; 
 	}
 	
-	public static IPool<Vec3> getInternalPool()
+	public static IPool<Vec3d> getInternalPool()
 	{
 		return pool;
 	}

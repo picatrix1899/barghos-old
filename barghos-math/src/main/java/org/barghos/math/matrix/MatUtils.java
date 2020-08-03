@@ -26,26 +26,26 @@ package org.barghos.math.matrix;
 
 public class MatUtils
 {
-	public static float det2x2( float m0x, float m0y,
-								float m1x, float m1y)
+	public static double det2x2( double m0x, double m0y,
+								double m1x, double m1y)
 	{
 		return	m0x * +m1y +
 				m0y * -m1x;
 	}
 	
-	public static float det3x3( float m0x, float m0y, float m0z,
-								float m1x, float m1y, float m1z,
-								float m2x, float m2y, float m2z)
+	public static double det3x3( double m0x, double m0y, double m0z,
+								double m1x, double m1y, double m1z,
+								double m2x, double m2y, double m2z)
 	{
 		return	m0x * +det2x2(m1y, m1z, m2y, m2z) +
 				m0y * -det2x2(m1x, m1z, m2x, m2z) +
 				m0z * +det2x2(m1x, m1y, m2x, m2y);
 	}
 	
-	public static float det4x4(	float m0x, float m0y, float m0z, float m0w,
-								float m1x, float m1y, float m1z, float m1w,
-								float m2x, float m2y, float m2z, float m2w,
-								float m3x, float m3y, float m3z, float m3w)
+	public static double det4x4(	double m0x, double m0y, double m0z, double m0w,
+								double m1x, double m1y, double m1z, double m1w,
+								double m2x, double m2y, double m2z, double m2w,
+								double m3x, double m3y, double m3z, double m3w)
 	{
 		return	m0x * +det3x3(m1y, m1z, m1w, m2y, m2z, m2w, m3y, m3z, m3w) +
 				m0y * -det3x3(m1x, m1z, m1w, m2x, m2z, m2w, m3x, m3z, m3w) +
@@ -53,11 +53,11 @@ public class MatUtils
 				m0w * -det3x3(m1x, m1y, m1z, m2x, m2y, m2z, m3x, m3y, m3z);
 	}
 	
-	public static float det5x5( float m0x, float m0y, float m0z, float m0w, float m0v,
-								float m1x, float m1y, float m1z, float m1w, float m1v,
-								float m2x, float m2y, float m2z, float m2w, float m2v,
-								float m3x, float m3y, float m3z, float m3w, float m3v,
-								float m4x, float m4y, float m4z, float m4w, float m4v)
+	public static double det5x5( double m0x, double m0y, double m0z, double m0w, double m0v,
+								double m1x, double m1y, double m1z, double m1w, double m1v,
+								double m2x, double m2y, double m2z, double m2w, double m2v,
+								double m3x, double m3y, double m3z, double m3w, double m3v,
+								double m4x, double m4y, double m4z, double m4w, double m4v)
 	{
 		return  m0x * +det4x4(m1y, m1z, m1w, m1v, m2y, m2z, m2w, m2v, m3y, m3z, m3w, m3v, m4y, m4z, m4w, m4v) +
 				m0y * -det4x4(m1x, m1z, m1w, m1v, m2x, m2z, m2w, m2v, m3x, m3z, m3w, m3v, m4x, m4z, m4w, m4v) +
