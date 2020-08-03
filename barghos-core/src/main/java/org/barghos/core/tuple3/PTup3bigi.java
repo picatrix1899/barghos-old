@@ -142,9 +142,9 @@ public abstract class PTup3bigi implements Tup3bigiR
 		if (!(obj instanceof Tup3bigiR)) return false;
 		
 		Tup3bigiR other = (Tup3bigiR) obj;
-		if (getX() != other.getX()) return false;
-		if (getY() != other.getY()) return false;
-		if (getZ() != other.getZ()) return false;
+		if (getX().compareTo(other.getX()) != 0) return false;
+		if (getY().compareTo(other.getY()) != 0) return false;
+		if (getZ().compareTo(other.getZ()) != 0) return false;
 		return true;
 	}
 	

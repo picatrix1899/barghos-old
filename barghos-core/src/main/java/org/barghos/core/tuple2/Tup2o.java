@@ -177,8 +177,8 @@ public class Tup2o<X,Y> implements Tup2oR<X,Y>, Tup2oW<X,Y>
 		
 		@SuppressWarnings("unchecked")
 		Tup2oR<X,Y> other = (Tup2oR<X,Y>) obj;
-		if(getX().equals(other.getX())) return false;
-		if(getY().equals(other.getY())) return false;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
 		return true;
 	}
 	

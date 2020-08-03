@@ -211,8 +211,8 @@ public class Tup2obj implements Tup2objR, Tup2objW, Serializable
 		if (!(obj instanceof Tup2objR)) return false;
 		
 		Tup2objR other = (Tup2objR) obj;
-		if(getX().equals(other.getX())) return false;
-		if(getY().equals(other.getY())) return false;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
 		return true;
 	}
 	

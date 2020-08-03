@@ -245,9 +245,9 @@ public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
 		if (!(obj instanceof Tup3bigiR)) return false;
 		
 		Tup3bigiR other = (Tup3bigiR) obj;
-		if(getX().compareTo(other.getX()) == 0) return false;
-		if(getY().compareTo(other.getY()) == 0) return false;
-		if(getZ().compareTo(other.getZ()) == 0) return false;
+		if(getX().compareTo(other.getX()) != 0) return false;
+		if(getY().compareTo(other.getY()) != 0) return false;
+		if(getZ().compareTo(other.getZ()) != 0) return false;
 		return true;
 	}
 	

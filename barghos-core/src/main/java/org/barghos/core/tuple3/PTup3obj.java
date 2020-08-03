@@ -140,9 +140,9 @@ public abstract class PTup3obj implements Tup3objR
 		if (!(obj instanceof Tup3objR)) return false;
 		
 		Tup3objR other = (Tup3objR) obj;
-		if (getX() != other.getX()) return false;
-		if (getY() != other.getY()) return false;
-		if (getZ() != other.getZ()) return false;
+		if (!getX().equals(other.getX())) return false;
+		if (!getY().equals(other.getY())) return false;
+		if (!getZ().equals(other.getZ())) return false;
 		return true;
 	}
 	

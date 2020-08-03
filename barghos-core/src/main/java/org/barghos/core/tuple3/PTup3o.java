@@ -122,9 +122,9 @@ public abstract class PTup3o<X,Y,Z> implements Tup3oR<X,Y,Z>
 		
 		@SuppressWarnings("unchecked")
 		Tup3oR<X,Y,Z> other = (Tup3oR<X,Y,Z>) obj;
-		if (getX() != other.getX()) return false;
-		if (getY() != other.getY()) return false;
-		if (getZ() != other.getZ()) return false;
+		if (!getX().equals(other.getX())) return false;
+		if (!getY().equals(other.getY())) return false;
+		if (!getZ().equals(other.getZ())) return false;
 		return true;
 	}
 	
