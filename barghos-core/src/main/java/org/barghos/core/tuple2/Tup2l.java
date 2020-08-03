@@ -125,6 +125,7 @@ public class Tup2l implements Tup2lR, Tup2lW, Serializable
 	public Tup2l setX(long x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -132,6 +133,7 @@ public class Tup2l implements Tup2lR, Tup2lW, Serializable
 	public Tup2l setY(long y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	

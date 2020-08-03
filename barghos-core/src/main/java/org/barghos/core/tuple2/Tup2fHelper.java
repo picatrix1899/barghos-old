@@ -54,7 +54,6 @@ public class Tup2fHelper
 			if(a == null) throw new ArgumentNullException("a");
 		}
 		
-		
 		return min(a.getX(), a.getY(), b, b);
 	}
 	

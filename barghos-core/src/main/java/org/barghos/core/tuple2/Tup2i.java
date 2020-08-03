@@ -125,6 +125,7 @@ public class Tup2i implements Tup2iR, Tup2iW, Serializable
 	public Tup2i setX(int x)
 	{
 		this.x = x;
+		
 		return this;
 	}
 
@@ -132,6 +133,7 @@ public class Tup2i implements Tup2iR, Tup2iW, Serializable
 	public Tup2i setY(int y)
 	{
 		this.y = y;
+		
 		return this;
 	}
 	

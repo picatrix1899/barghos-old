@@ -215,8 +215,8 @@ public class Tup2bigi implements Tup2bigiR, Tup2bigiW, Serializable
 		if (!(obj instanceof Tup2bigiR)) return false;
 		
 		Tup2bigiR other = (Tup2bigiR) obj;
-		if(getX().equals(other.getX())) return false;
-		if(getY().equals(other.getY())) return false;
+		if(getX().compareTo(other.getX()) == 0) return false;
+		if(getY().compareTo(other.getY()) == 0) return false;
 		return true;
 	}
 	
