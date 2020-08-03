@@ -135,8 +135,8 @@ public abstract class PTup2bigd implements Tup2bigdR
 		if (!(obj instanceof Tup2bigdR)) return false;
 		
 		Tup2bigdR other = (Tup2bigdR) obj;
-		if (!getX().equals(other.getX())) return false;
-		if (!getY().equals(other.getY())) return false;
+		if (getX().compareTo(other.getX()) != 0) return false;
+		if (getY().compareTo(other.getY()) != 0) return false;
 		
 		return true;
 	}
