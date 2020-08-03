@@ -173,9 +173,9 @@ public class Tup2s implements Tup2sR, Tup2sW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2sR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2sR)) return false;
 		
 		Tup2sR other = (Tup2sR) obj;
 		if(getX() != other.getX()) return false;

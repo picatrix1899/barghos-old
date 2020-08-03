@@ -115,14 +115,14 @@ public abstract class PTup2o<X,Y> implements Tup2oR<X,Y>
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2oR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2oR)) return false;
 		
 		@SuppressWarnings("unchecked")
 		Tup2oR<X,Y> other = (Tup2oR<X,Y>) obj;
-		if (!getX().equals(other.getX())) return false;
-		if (!getY().equals(other.getY())) return false;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
 		
 		return true;
 	}

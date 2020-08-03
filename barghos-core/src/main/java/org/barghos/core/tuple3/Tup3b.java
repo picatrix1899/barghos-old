@@ -194,9 +194,9 @@ public class Tup3b implements Tup3bR, Tup3bW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3bR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3bR)) return false;
 		
 		Tup3bR other = (Tup3bR) obj;
 		if(getX() != other.getX()) return false;

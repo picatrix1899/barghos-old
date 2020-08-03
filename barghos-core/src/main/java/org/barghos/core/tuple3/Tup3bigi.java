@@ -240,9 +240,9 @@ public class Tup3bigi implements Tup3bigiR, Tup3bigiW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3bigiR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3bigiR)) return false;
 		
 		Tup3bigiR other = (Tup3bigiR) obj;
 		if(getX().compareTo(other.getX()) != 0) return false;

@@ -239,14 +239,14 @@ public class Tup3str implements Tup3strR, Tup3strW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3strR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3strR)) return false;
 		
 		Tup3strR other = (Tup3strR) obj;
-		if(getX().equals(other.getX())) return false;
-		if(getY().equals(other.getY())) return false;
-		if(getZ().equals(other.getZ())) return false;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
+		if(!getZ().equals(other.getZ())) return false;
 		return true;
 	}
 	

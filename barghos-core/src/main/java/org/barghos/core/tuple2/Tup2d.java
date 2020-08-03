@@ -175,9 +175,9 @@ public class Tup2d implements Tup2dR, Tup2dW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2dR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2dR)) return false;
 		
 		Tup2dR other = (Tup2dR) obj;
 		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;

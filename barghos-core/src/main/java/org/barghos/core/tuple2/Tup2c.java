@@ -173,9 +173,9 @@ public class Tup2c implements Tup2cR, Tup2cW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2cR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2cR)) return false;
 		
 		Tup2cR other = (Tup2cR) obj;
 		if(getX() != other.getX()) return false;

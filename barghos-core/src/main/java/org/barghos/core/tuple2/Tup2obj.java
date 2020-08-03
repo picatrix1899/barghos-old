@@ -206,9 +206,9 @@ public class Tup2obj implements Tup2objR, Tup2objW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2objR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2objR)) return false;
 		
 		Tup2objR other = (Tup2objR) obj;
 		if(!getX().equals(other.getX())) return false;

@@ -115,13 +115,13 @@ public abstract class PTup2i implements Tup2iR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2iR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2iR)) return false;
 		
 		Tup2iR other = (Tup2iR) obj;
-		if (getX() != other.getX()) return false;
-		if (getY() != other.getY()) return false;
+		if(getX() != other.getX()) return false;
+		if(getY() != other.getY()) return false;
 		
 		return true;
 	}

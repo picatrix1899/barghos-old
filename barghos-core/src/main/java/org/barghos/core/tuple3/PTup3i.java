@@ -120,14 +120,14 @@ public abstract class PTup3i implements Tup3iR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3iR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3iR)) return false;
 		
 		Tup3iR other = (Tup3iR) obj;
-		if (getX() != other.getX()) return false;
-		if (getY() != other.getY()) return false;
-		if (getZ() != other.getZ()) return false;
+		if(getX() != other.getX()) return false;
+		if(getY() != other.getY()) return false;
+		if(getZ() != other.getZ()) return false;
 		return true;
 	}
 	

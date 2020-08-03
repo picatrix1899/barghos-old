@@ -117,13 +117,13 @@ public abstract class PTup2d implements Tup2dR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2dR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2dR)) return false;
 		
 		Tup2dR other = (Tup2dR) obj;
-		if (Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-		if (Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
+		if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
 		return true;
 	}
 	

@@ -210,9 +210,9 @@ public class Tup2bigd implements Tup2bigdR, Tup2bigdW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2bigdR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2bigdR)) return false;
 		
 		Tup2bigdR other = (Tup2bigdR) obj;
 		if(getX().compareTo(other.getX()) != 0) return false;

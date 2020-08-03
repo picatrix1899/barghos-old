@@ -194,9 +194,9 @@ public class Tup3f implements Tup3fR, Tup3fW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3fR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3fR)) return false;
 		
 		Tup3fR other = (Tup3fR) obj;
 		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;

@@ -215,9 +215,9 @@ public class Tup4b implements Tup4bR, Tup4bW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup4bR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup4bR)) return false;
 		
 		Tup4bR other = (Tup4bR) obj;
 		if(getX() != other.getX()) return false;

@@ -194,9 +194,9 @@ public class Tup3s implements Tup3sR, Tup3sW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3sR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3sR)) return false;
 		
 		Tup3sR other = (Tup3sR) obj;
 		if(getX() != other.getX()) return false;

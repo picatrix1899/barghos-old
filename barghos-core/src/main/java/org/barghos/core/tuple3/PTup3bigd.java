@@ -137,14 +137,14 @@ public abstract class PTup3bigd implements Tup3bigdR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3bigdR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3bigdR)) return false;
 		
 		Tup3bigdR other = (Tup3bigdR) obj;
-		if (getX().compareTo(other.getX()) != 0) return false;
-		if (getY().compareTo(other.getY()) != 0) return false;
-		if (getZ().compareTo(other.getZ()) != 0) return false;
+		if(getX().compareTo(other.getX()) != 0) return false;
+		if(getY().compareTo(other.getY()) != 0) return false;
+		if(getZ().compareTo(other.getZ()) != 0) return false;
 		return true;
 	}
 	

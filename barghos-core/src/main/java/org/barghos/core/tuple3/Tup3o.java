@@ -201,9 +201,9 @@ public class Tup3o<X,Y,Z> implements Tup3oR<X,Y,Z>, Tup3oW<X,Y,Z>
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3oR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3oR)) return false;
 		
 		@SuppressWarnings("unchecked")
 		Tup3oR<X,Y,Z> other = (Tup3oR<X,Y,Z>) obj;

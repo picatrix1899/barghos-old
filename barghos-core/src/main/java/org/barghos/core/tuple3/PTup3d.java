@@ -124,14 +124,14 @@ public abstract class PTup3d implements Tup3dR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3dR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3dR)) return false;
 		
 		Tup3dR other = (Tup3dR) obj;
-		if (Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
-		if (Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
-		if (Double.doubleToLongBits(getZ()) != Double.doubleToLongBits(other.getZ())) return false;
+		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;
+		if(Double.doubleToLongBits(getY()) != Double.doubleToLongBits(other.getY())) return false;
+		if(Double.doubleToLongBits(getZ()) != Double.doubleToLongBits(other.getZ())) return false;
 		return true;
 	}
 	

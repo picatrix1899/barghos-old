@@ -173,9 +173,9 @@ public class Tup2f implements Tup2fR, Tup2fW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2fR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2fR)) return false;
 		
 		Tup2fR other = (Tup2fR) obj;
 		if(Float.floatToIntBits(getX()) != Float.floatToIntBits(other.getX())) return false;

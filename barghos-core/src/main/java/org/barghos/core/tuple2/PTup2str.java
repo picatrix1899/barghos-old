@@ -134,13 +134,13 @@ public abstract class PTup2str implements Tup2strR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2strR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2strR)) return false;
 		
 		Tup2strR other = (Tup2strR) obj;
-		if (!getX().equals(other.getX())) return false;
-		if (!getY().equals(other.getY())) return false;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
 		
 		return true;
 	}

@@ -173,9 +173,9 @@ public class Tup2l implements Tup2lR, Tup2lW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2lR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2lR)) return false;
 		
 		Tup2lR other = (Tup2lR) obj;
 		if(getX() != other.getX()) return false;

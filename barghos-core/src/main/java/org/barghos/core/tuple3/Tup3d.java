@@ -197,9 +197,9 @@ public class Tup3d implements Tup3dR, Tup3dW, Serializable
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3dR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3dR)) return false;
 		
 		Tup3dR other = (Tup3dR) obj;
 		if(Double.doubleToLongBits(getX()) != Double.doubleToLongBits(other.getX())) return false;

@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package org.barghos.core.tuple3;
+package org.barghos.core.tuple4;
 
 import org.barghos.core.Barghos;
 import org.barghos.core.exception.ArgumentNullException;
-import org.barghos.core.tuple3.api.Tup3cR;
+import org.barghos.core.tuple4.api.Tup4bR;
 
 /**
- * Represents a persistent 3-dimensional char tuple.
- * This is a readonly version of a 3-dimensional tuple with extended protection against modification.
+ * Represents a persistent 4-dimensional byte tuple.
+ * This is a readonly version of a 4-dimensional tuple with extended protection against modification.
  * It can be used as a more flexible way to create constants.
  * 
  * <p>
@@ -43,66 +43,70 @@ import org.barghos.core.tuple3.api.Tup3cR;
  * 
  * @since 1.0
  */
-public abstract class PTup3c implements Tup3cR
+public abstract class PTup4b implements Tup4bR
 {
-	private PTup3c() { }
+	private PTup4b() { }
 	
 	/**
-	 * Generates a new readonly {@link PTup3c} from an existing instance of {@link Tup3cR} and adopts the values.
+	 * Generates a new readonly {@link PTup4b} from an existing instance of {@link Tup4bR} and adopts the values.
 	 * 
-	 * @param t An existing implementation of {@link Tup3cR} to adopt the values from.
+	 * @param t An existing implementation of {@link Tup4bR} to adopt the values from.
 	 * 
-	 * @return A new readonly {@link PTup3c}.
+	 * @return A new readonly {@link PTup4b}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3c gen(Tup3cR t)
+	public static PTup4b gen(Tup4bR t)
 	{
 		if(Barghos.BUILD_FLAG__PARAMETER_CHECKS)
 		{
 			if(t == null) throw new ArgumentNullException("t");
 		}
 		
-		return gen(t.getX(), t.getY(), t.getZ());
+		return gen(t.getX(), t.getY(), t.getZ(), t.getW());
 	}
 	
 	/**
-	 * Generates a new readonly {@link PTup3c} with all values set to a single value.
+	 * Generates a new readonly {@link PTup4b} with all values set to a single value.
 	 * 
 	 * @param value The value used for all values of the tuple.
 	 * 
-	 * @return A new readonly {@link PTup3c}.
+	 * @return A new readonly {@link PTup4b}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3c gen(char value)
+	public static PTup4b gen(byte value)
 	{
-		return gen(value, value, value);
+		return gen(value, value, value, value);
 	}
 
 	/**
-	 * Generates a new readonly {@link PTup3c} with the values set to the corresponding parameters.
+	 * Generates a new readonly {@link PTup4b} with the values set to the corresponding parameters.
 	 * 
 	 * @param x The x value.
 	 * @param y The y value.
 	 * @param z The z value.
+	 * @param w The w value.
 	 * 
-	 * @return A new readonly {@link PTup3c}.
+	 * @return A new readonly {@link PTup4b}.
 	 * 
 	 * @since 1.0
 	 */
-	public static PTup3c gen(char x, char y, char z)
+	public static PTup4b gen(byte x, byte y, byte z, byte w)
 	{
-		return new PTup3c()
+		return new PTup4b()
 		{
 			@Override
-			public char getX() { return x; }
+			public byte getX() { return x; }
 			
 			@Override
-			public char getY() { return y; }
+			public byte getY() { return y; }
 			
 			@Override
-			public char getZ() { return z; }
+			public byte getZ() { return z; }
+			
+			@Override
+			public byte getW() { return w; }
 		};
 	}
 
@@ -114,6 +118,7 @@ public abstract class PTup3c implements Tup3cR
 		result = prime * result + getX();
 		result = prime * result + getY();
 		result = prime * result + getZ();
+		result = prime * result + getW();
 		return result;
 	}
 
@@ -122,18 +127,19 @@ public abstract class PTup3c implements Tup3cR
 	{
 		if(this == obj) return true;
 		if(obj == null) return false;
-		if(!(obj instanceof Tup3cR)) return false;
+		if(!(obj instanceof Tup4bR)) return false;
 		
-		Tup3cR other = (Tup3cR) obj;
+		Tup4bR other = (Tup4bR) obj;
 		if(getX() != other.getX()) return false;
 		if(getY() != other.getY()) return false;
 		if(getZ() != other.getZ()) return false;
+		if(getW() != other.getW()) return false;
 		return true;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "ptup3c(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ")";
+		return "ptup4b(x=" + getX() + ", y=" + getY() + ", z=" + getZ() + ", w=" + getW() + ")";
 	}
 }

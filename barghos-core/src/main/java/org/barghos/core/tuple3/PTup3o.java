@@ -116,15 +116,15 @@ public abstract class PTup3o<X,Y,Z> implements Tup3oR<X,Y,Z>
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup3oR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup3oR)) return false;
 		
 		@SuppressWarnings("unchecked")
 		Tup3oR<X,Y,Z> other = (Tup3oR<X,Y,Z>) obj;
-		if (!getX().equals(other.getX())) return false;
-		if (!getY().equals(other.getY())) return false;
-		if (!getZ().equals(other.getZ())) return false;
+		if(!getX().equals(other.getX())) return false;
+		if(!getY().equals(other.getY())) return false;
+		if(!getZ().equals(other.getZ())) return false;
 		return true;
 	}
 	

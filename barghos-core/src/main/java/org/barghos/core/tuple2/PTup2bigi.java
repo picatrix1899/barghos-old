@@ -130,13 +130,13 @@ public abstract class PTup2bigi implements Tup2bigiR
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (!(obj instanceof Tup2bigiR)) return false;
+		if(this == obj) return true;
+		if(obj == null) return false;
+		if(!(obj instanceof Tup2bigiR)) return false;
 		
 		Tup2bigiR other = (Tup2bigiR) obj;
-		if (getX().compareTo(other.getX()) != 0) return false;
-		if (getY().compareTo(other.getY()) != 0) return false;
+		if(getX().compareTo(other.getX()) != 0) return false;
+		if(getY().compareTo(other.getY()) != 0) return false;
 		
 		return true;
 	}
